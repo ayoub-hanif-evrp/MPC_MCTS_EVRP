@@ -1,0 +1,58 @@
+{
+  "base_instance": "r104C5",
+  "customer_release_times": [
+    [
+      "C1",
+      0.0
+    ],
+    [
+      "C5",
+      0.0
+    ],
+    [
+      "C71",
+      0.0
+    ],
+    [
+      "C87",
+      18.433820284726952
+    ],
+    [
+      "C99",
+      0.0
+    ]
+  ],
+  "eligible_count": 1,
+  "fleet_size": 2,
+  "instance_sha256": "e4e665255b473a872d956cd6d4fb222766298d4c4a5bb4710c92a7f8bf70aa3b",
+  "realized_DoD": 0.2,
+  "reference_schedule_identifier": "a1f18733e4b9e74fa848fb713000e2cbef36a547b40f416c69647d3c48421bf3",
+  "release_upper_bounds": [
+    [
+      "C1",
+      0.0
+    ],
+    [
+      "C5",
+      0.0
+    ],
+    [
+      "C71",
+      0.0
+    ],
+    [
+      "C87",
+      76.15846149922108
+    ],
+    [
+      "C99",
+      0.0
+    ]
+  ],
+  "requested_dynamic_count": 3,
+  "scenario_method": "reference-schedule-preserving dynamicization inspired by Yang et al.",
+  "scenario_seed": 0,
+  "schema_version": 1,
+  "selection_mode": "exact_count",
+  "target_DoD": 0.5
+}

@@ -2,6 +2,9 @@
 __pycache__/
 *.py[cod]
 .pytest_cache/
+*.egg-info/
+build/
+dist/
 
 # Virtual environments
 .venv/
@@ -14,7 +17,6 @@ env/
 .DS_Store
 Thumbs.db
 
-# Experiment outputs
+# Local runtime outputs (research results are versioned)
 outputs/
-results/
 logs/

@@ -1,0 +1,44 @@
+{
+  "error": "Wait must advance time",
+  "metadata": {
+    "DoD_target": 0.5,
+    "algorithm": "GREEDY",
+    "algorithm_seed": 0,
+    "instance": "c101_21",
+    "scenario_seed": 0
+  },
+  "metrics": {
+    "feasible": false
+  },
+  "provenance": {
+    "source_sha256": "cf51a598d28a8f4ca85fc7d27e2a625774fa9a126e1a65ad63d132f5df198783"
+  },
+  "requested_config": {
+    "algorithm": "GREEDY",
+    "budget_mode": "iterations",
+    "candidate_limit": 12,
+    "charge_fractions": [
+      0.5,
+      0.75,
+      1.0
+    ],
+    "charging_mode": "partial",
+    "control_horizon": 1,
+    "dynamic_selection_mode": "exact_count",
+    "dynamicity": 0.5,
+    "experiment_seed": 0,
+    "mcts_iterations": 2,
+    "mcts_time_limit": 0.1,
+    "parallel_agents": false,
+    "prediction_horizon": 1,
+    "reference_improvement_passes": 1,
+    "reference_seed": 0,
+    "reference_solver_multistarts": 1,
+    "scenario_seed": 0,
+    "top_L": 3,
+    "uct_c": 1.4,
+    "workers": 2
+  },
+  "status": "failed",
+  "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\AYOUB\\OneDrive - EMSI\\Bureau\\PHD_WORK\\MPC_MCTS_Multi_agents_EVRP\\evrp\\experiments.py\", line 159, in run_single\n    result = EventDrivenSimulator(instance, scenario, simulation_config(config)).run()\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\AYOUB\\OneDrive - EMSI\\Bureau\\PHD_WORK\\MPC_MCTS_Multi_agents_EVRP\\evrp\\simulator.py\", line 108, in run\n    step = transition(vehicle, Action(\"wait\", wait_duration=state.time - vehicle.time),\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\AYOUB\\OneDrive - EMSI\\Bureau\\PHD_WORK\\MPC_MCTS_Multi_agents_EVRP\\evrp\\model.py\", line 186, in transition\n    raise InfeasibleAction(\"Wait must advance time\")\nevrp.model.InfeasibleAction: Wait must advance time\n"
+}

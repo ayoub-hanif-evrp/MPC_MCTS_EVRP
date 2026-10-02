@@ -1,0 +1,21 @@
+# Omit instances to use every local *_21 instance (all six families).
+prediction_horizon: 5
+control_horizon: 1
+candidate_limit: 12
+top_L: 3
+uct_c: 1.4
+mcts_iterations: 250
+mcts_time_limit: 0.5
+budget_mode: iterations
+charging_mode: partial
+parallel_agents: false
+workers: 2
+dynamic_selection_mode: exact_count
+reference_solver_multistarts: 3
+reference_improvement_passes: 1
+reference_seed: 0
+grid:
+  dynamicity: [0.0, 0.1, 0.25, 0.5, 0.75]
+  scenario_seed: [0, 1, 2, 3, 4]
+  experiment_seed: [0, 1, 2]
+  algorithm: [GREEDY, MPC_MCTS_H1, INDEPENDENT_MPC_MCTS, COORDINATED_MPC_MCTS, STATIC_REFERENCE]

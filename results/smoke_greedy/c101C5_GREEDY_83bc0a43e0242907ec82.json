@@ -1,0 +1,3809 @@
+{
+  "audit": {
+    "no_future_information": true,
+    "safe_returns": true,
+    "trace_replay": true,
+    "unique_service": true
+  },
+  "decisions": [
+    {
+      "available": [
+        "C12",
+        "C30",
+        "C64"
+      ],
+      "committed_before": {},
+      "epoch": 0,
+      "plans": {
+        "0": {
+          "actions": [
+            {
+              "destination": "C30",
+              "kind": "serve",
+              "target_battery": 0.0,
+              "wait_duration": 0.0
+            }
+          ],
+          "charging_time": 0.0,
+          "completion_time": 445.0,
+          "cost": 41.23105625617661,
+          "predicted_charging_actions": 0,
+          "predicted_customer_sequence": [
+            "C30"
+          ],
+          "predicted_distance": 20.615528128088304,
+          "predicted_end_state": {
+            "battery": 57.1344718719117,
+            "charging_time": 0.0,
+            "current_committed_action": null,
+            "departed": true,
+            "distance_travelled": 20.615528128088304,
+            "finished": false,
+            "id": 0,
+            "load": 190.0,
+            "location": {
+              "demand": 10.0,
+              "due": 407.0,
+              "id": "C30",
+              "kind": "c",
+              "ready": 355.0,
+              "service": 90.0,
+              "x": 20.0,
+              "y": 55.0
+            },
+            "route_history": [
+              "D0",
+              "C30"
+            ],
+            "served_customers": [
+              "C30"
+            ],
+            "status": "idle",
+            "time": 445.0,
+            "waiting_time": 334.38447187191167
+          },
+          "vehicle_id": 0,
+          "visits": 0,
+          "waiting_time": 334.38447187191167
+        },
+        "1": {
+          "actions": [
+            {
+              "destination": "",
+              "kind": "wait",
+              "target_battery": 0.0,
+              "wait_duration": 1236.0
+            }
+          ],
+          "charging_time": 0.0,
+          "completion_time": 1236.0,
+          "cost": 0.0,
+          "predicted_charging_actions": 0,
+          "predicted_customer_sequence": [],
+          "predicted_distance": 0.0,
+          "predicted_end_state": {
+            "battery": 77.75,
+            "charging_time": 0.0,
+            "current_committed_action": null,
+            "departed": false,
+            "distance_travelled": 0.0,
+            "finished": false,
+            "id": 1,
+            "load": 200.0,
+            "location": {
+              "demand": 0.0,
+              "due": 1236.0,
+              "id": "D0",
+              "kind": "d",
+              "ready": 0.0,
+              "service": 0.0,
+              "x": 40.0,
+              "y": 50.0
+            },
+            "route_history": [
+              "D0"
+            ],
+            "served_customers": [],
+            "status": "idle",
+            "time": 1236.0,
+            "waiting_time": 1236.0
+          },
+          "vehicle_id": 1,
+          "visits": 0,
+          "waiting_time": 1236.0
+        },
+        "2": {
+          "actions": [
+            {
+              "destination": "",
+              "kind": "wait",
+              "target_battery": 0.0,
+              "wait_duration": 1236.0
+            }
+          ],
+          "charging_time": 0.0,
+          "completion_time": 1236.0,
+          "cost": 0.0,
+          "predicted_charging_actions": 0,
+          "predicted_customer_sequence": [],
+          "predicted_distance": 0.0,
+          "predicted_end_state": {
+            "battery": 77.75,
+            "charging_time": 0.0,
+            "current_committed_action": null,
+            "departed": false,
+            "distance_travelled": 0.0,
+            "finished": false,
+            "id": 2,
+            "load": 200.0,
+            "location": {
+              "demand": 0.0,
+              "due": 1236.0,
+              "id": "D0",
+              "kind": "d",
+              "ready": 0.0,
+              "service": 0.0,
+              "x": 40.0,
+              "y": 50.0
+            },
+            "route_history": [
+              "D0"
+            ],
+            "served_customers": [],
+            "status": "idle",
+            "time": 1236.0,
+            "waiting_time": 1236.0
+          },
+          "vehicle_id": 2,
+          "visits": 0,
+          "waiting_time": 1236.0
+        }
+      },
+      "time": 0.0
+    },
+    {
+      "available": [
+        "C12",
+        "C64",
+        "C85"
+      ],
+      "committed_before": {
+        "C30": 0
+      },
+      "epoch": 1,
+      "plans": {
+        "1": {
+          "actions": [
+            {
+              "destination": "C12",
+              "kind": "serve",
+              "target_battery": 0.0,
+              "wait_duration": 0.0
+            }
+          ],
+          "charging_time": 0.0,
+          "completion_time": 266.0,
+          "cost": 76.15773105863909,
+          "predicted_charging_actions": 0,
+          "predicted_customer_sequence": [
+            "C12"
+          ],
+          "predicted_distance": 38.07886552931954,
+          "predicted_end_state": {
+            "battery": 39.67113447068046,
+            "charging_time": 0.0,
+            "current_committed_action": null,
+            "departed": true,
+            "distance_travelled": 38.07886552931954,
+            "finished": false,
+            "id": 1,
+            "load": 180.0,
+            "location": {
+              "demand": 20.0,
+              "due": 228.0,
+              "id": "C12",
+              "kind": "c",
+              "ready": 176.0,
+              "service": 90.0,
+              "x": 25.0,
+              "y": 85.0
+            },
+            "route_history": [
+              "D0",
+              "C12"
+            ],
+            "served_customers": [
+              "C12"
+            ],
+            "status": "idle",
+            "time": 266.0,
+            "waiting_time": 137.92113447068044
+          },
+          "vehicle_id": 1,
+          "visits": 0,
+          "waiting_time": 119.82360098892079
+        },
+        "2": {
+          "actions": [
+            {
+              "destination": "",
+              "kind": "wait",
+              "target_battery": 0.0,
+              "wait_duration": 1217.9024665182403
+            }
+          ],
+          "charging_time": 0.0,
+          "completion_time": 1236.0,
+          "cost": 0.0,
+          "predicted_charging_actions": 0,
+          "predicted_customer_sequence": [],
+          "predicted_distance": 0.0,
+          "predicted_end_state": {
+            "battery": 77.75,
+            "charging_time": 0.0,
+            "current_committed_action": null,
+            "departed": false,
+            "distance_travelled": 0.0,
+            "finished": false,
+            "id": 2,
+            "load": 200.0,
+            "location": {
+              "demand": 0.0,
+              "due": 1236.0,
+              "id": "D0",
+              "kind": "d",
+              "ready": 0.0,
+              "service": 0.0,
+              "x": 40.0,
+              "y": 50.0
+            },
+            "route_history": [
+              "D0"
+            ],
+            "served_customers": [],
+            "status": "idle",
+            "time": 1236.0,
+            "waiting_time": 1236.0
+          },
+          "vehicle_id": 2,
+          "visits": 0,
+          "waiting_time": 1217.9024665182403
+        }
+      },
+      "time": 18.09753348175965
+    },
+    {
+      "available": [
+        "C64",
+        "C85"
+      ],
+      "committed_before": {
+        "C30": 0
+      },
+      "epoch": 2,
+      "plans": {
+        "1": {
+          "actions": [
+            {
+              "destination": "S0",
+              "kind": "charge",
+              "target_battery": 77.75,
+              "wait_duration": 0.0
+            },
+            {
+              "destination": "C85",
+              "kind": "serve",
+              "target_battery": 0.0,
+              "wait_duration": 0.0
+            }
+          ],
+          "charging_time": 264.26732677347763,
+          "completion_time": 827.0,
+          "cost": 97.54314051859357,
+          "predicted_charging_actions": 1,
+          "predicted_customer_sequence": [
+            "C85"
+          ],
+          "predicted_distance": 67.81100302395656,
+          "predicted_end_state": {
+            "battery": 48.017862505362984,
+            "charging_time": 264.26732677347763,
+            "current_committed_action": null,
+            "departed": true,
+            "distance_travelled": 105.8898685532761,
+            "finished": false,
+            "id": 1,
+            "load": 150.0,
+            "location": {
+              "demand": 30.0,
+              "due": 809.0,
+              "id": "C85",
+              "kind": "c",
+              "ready": 737.0,
+              "service": 90.0,
+              "x": 68.0,
+              "y": 60.0
+            },
+            "route_history": [
+              "D0",
+              "C12",
+              "S0",
+              "C85"
+            ],
+            "served_customers": [
+              "C12",
+              "C85"
+            ],
+            "status": "idle",
+            "time": 827.0,
+            "waiting_time": 276.8428046732464
+          },
+          "vehicle_id": 1,
+          "visits": 0,
+          "waiting_time": 138.92167020256596
+        },
+        "2": {
+          "actions": [
+            {
+              "destination": "C64",
+              "kind": "serve",
+              "target_battery": 0.0,
+              "wait_duration": 0.0
+            }
+          ],
+          "charging_time": 0.0,
+          "completion_time": 377.540659228538,
+          "cost": 43.08131845707603,
+          "predicted_charging_actions": 0,
+          "predicted_customer_sequence": [
+            "C64"
+          ],
+          "predicted_distance": 21.540659228538015,
+          "predicted_end_state": {
+            "battery": 56.20934077146198,
+            "charging_time": 0.0,
+            "current_committed_action": null,
+            "departed": true,
+            "distance_travelled": 21.540659228538015,
+            "finished": false,
+            "id": 2,
+            "load": 190.0,
+            "location": {
+              "demand": 10.0,
+              "due": 325.0,
+              "id": "C64",
+              "kind": "c",
+              "ready": 263.0,
+              "service": 90.0,
+              "x": 48.0,
+              "y": 30.0
+            },
+            "route_history": [
+              "D0",
+              "C64"
+            ],
+            "served_customers": [
+              "C64"
+            ],
+            "status": "idle",
+            "time": 377.540659228538,
+            "waiting_time": 266.00000000000006
+          },
+          "vehicle_id": 2,
+          "visits": 0,
+          "waiting_time": 5.684341886080802e-14
+        }
+      },
+      "time": 266.0
+    },
+    {
+      "available": [
+        "C85"
+      ],
+      "committed_before": {
+        "C30": 0
+      },
+      "epoch": 3,
+      "plans": {
+        "2": {
+          "actions": [
+            {
+              "destination": "S0",
+              "kind": "charge",
+              "target_battery": 77.75,
+              "wait_duration": 0.0
+            },
+            {
+              "destination": "C85",
+              "kind": "serve",
+              "target_battery": 0.0,
+              "wait_duration": 0.0
+            }
+          ],
+          "charging_time": 149.49217504605386,
+          "completion_time": 827.0,
+          "cost": 81.00493421781204,
+          "predicted_charging_actions": 1,
+          "predicted_customer_sequence": [
+            "C85"
+          ],
+          "predicted_distance": 51.27279672317503,
+          "predicted_end_state": {
+            "battery": 48.017862505362984,
+            "charging_time": 149.49217504605386,
+            "current_committed_action": null,
+            "departed": true,
+            "distance_travelled": 72.81345595171304,
+            "finished": false,
+            "id": 2,
+            "load": 160.0,
+            "location": {
+              "demand": 30.0,
+              "due": 809.0,
+              "id": "C85",
+              "kind": "c",
+              "ready": 737.0,
+              "service": 90.0,
+              "x": 68.0,
+              "y": 60.0
+            },
+            "route_history": [
+              "D0",
+              "C64",
+              "S0",
+              "C85"
+            ],
+            "served_customers": [
+              "C64",
+              "C85"
+            ],
+            "status": "idle",
+            "time": 827.0,
+            "waiting_time": 424.6943690022333
+          },
+          "vehicle_id": 2,
+          "visits": 0,
+          "waiting_time": 158.69436900223326
+        }
+      },
+      "time": 377.540659228538
+    },
+    {
+      "available": [
+        "C100",
+        "C85"
+      ],
+      "committed_before": {},
+      "epoch": 4,
+      "plans": {
+        "0": {
+          "actions": [
+            {
+              "destination": "S5",
+              "kind": "charge",
+              "target_battery": 77.75,
+              "wait_duration": 0.0
+            },
+            {
+              "destination": "C100",
+              "kind": "serve",
+              "target_battery": 0.0,
+              "wait_duration": 0.0
+            }
+          ],
+          "charging_time": 179.1618357942059,
+          "completion_time": 834.0,
+          "cost": 93.11581466678982,
+          "predicted_charging_actions": 1,
+          "predicted_customer_sequence": [
+            "C100"
+          ],
+          "predicted_distance": 55.03694913747027,
+          "predicted_end_state": {
+            "battery": 53.72917570107137,
+            "charging_time": 179.1618357942059,
+            "current_committed_action": null,
+            "departed": true,
+            "distance_travelled": 75.65247726555857,
+            "finished": false,
+            "id": 0,
+            "load": 170.0,
+            "location": {
+              "demand": 20.0,
+              "due": 798.0,
+              "id": "C100",
+              "kind": "c",
+              "ready": 744.0,
+              "service": 90.0,
+              "x": 55.0,
+              "y": 85.0
+            },
+            "route_history": [
+              "D0",
+              "C30",
+              "S5",
+              "C100"
+            ],
+            "served_customers": [
+              "C30",
+              "C100"
+            ],
+            "status": "idle",
+            "time": 834.0,
+            "waiting_time": 399.18568694023566
+          },
+          "vehicle_id": 0,
+          "visits": 0,
+          "waiting_time": 64.80121506832398
+        }
+      },
+      "time": 445.0
+    },
+    {
+      "available": [
+        "C100",
+        "C85"
+      ],
+      "committed_before": {},
+      "epoch": 5,
+      "plans": {
+        "2": {
+          "actions": [
+            {
+              "destination": "C100",
+              "kind": "serve",
+              "target_battery": 0.0,
+              "wait_duration": 0.0
+            }
+          ],
+          "charging_time": 0.0,
+          "completion_time": 834.0,
+          "cost": 76.15773105863909,
+          "predicted_charging_actions": 0,
+          "predicted_customer_sequence": [
+            "C100"
+          ],
+          "predicted_distance": 38.07886552931954,
+          "predicted_end_state": {
+            "battery": 39.67113447068046,
+            "charging_time": 149.49217504605386,
+            "current_committed_action": null,
+            "departed": true,
+            "distance_travelled": 81.16018398639557,
+            "finished": false,
+            "id": 2,
+            "load": 170.0,
+            "location": {
+              "demand": 20.0,
+              "due": 798.0,
+              "id": "C100",
+              "kind": "c",
+              "ready": 744.0,
+              "service": 90.0,
+              "x": 55.0,
+              "y": 85.0
+            },
+            "route_history": [
+              "D0",
+              "C64",
+              "S0",
+              "C100"
+            ],
+            "served_customers": [
+              "C64",
+              "C100"
+            ],
+            "status": "idle",
+            "time": 834.0,
+            "waiting_time": 423.3476409675508
+          },
+          "vehicle_id": 2,
+          "visits": 0,
+          "waiting_time": 157.34764096755066
+        }
+      },
+      "time": 548.5734935031298
+    },
+    {
+      "available": [
+        "C85"
+      ],
+      "committed_before": {
+        "C100": 2
+      },
+      "epoch": 6,
+      "plans": {
+        "1": {
+          "actions": [
+            {
+              "destination": "C85",
+              "kind": "serve",
+              "target_battery": 0.0,
+              "wait_duration": 0.0
+            }
+          ],
+          "charging_time": 0.0,
+          "completion_time": 827.0,
+          "cost": 59.464274989274024,
+          "predicted_charging_actions": 0,
+          "predicted_customer_sequence": [
+            "C85"
+          ],
+          "predicted_distance": 29.732137494637012,
+          "predicted_end_state": {
+            "battery": 48.017862505362984,
+            "charging_time": 264.26732677347763,
+            "current_committed_action": null,
+            "departed": true,
+            "distance_travelled": 105.8898685532761,
+            "finished": false,
+            "id": 1,
+            "load": 150.0,
+            "location": {
+              "demand": 30.0,
+              "due": 809.0,
+              "id": "C85",
+              "kind": "c",
+              "ready": 737.0,
+              "service": 90.0,
+              "x": 68.0,
+              "y": 60.0
+            },
+            "route_history": [
+              "D0",
+              "C12",
+              "S0",
+              "C85"
+            ],
+            "served_customers": [
+              "C12",
+              "C85"
+            ],
+            "status": "idle",
+            "time": 827.0,
+            "waiting_time": 276.8428046732464
+          },
+          "vehicle_id": 1,
+          "visits": 0,
+          "waiting_time": 138.92167020256596
+        }
+      },
+      "time": 568.3461923027971
+    },
+    {
+      "available": [],
+      "committed_before": {
+        "C100": 2,
+        "C85": 1
+      },
+      "epoch": 7,
+      "plans": {
+        "0": {
+          "actions": [
+            {
+              "destination": "",
+              "kind": "wait",
+              "target_battery": 0.0,
+              "wait_duration": 545.6510285771145
+            }
+          ],
+          "charging_time": 0.0,
+          "completion_time": 1200.828989209862,
+          "cost": 35.17101079013795,
+          "predicted_charging_actions": 0,
+          "predicted_customer_sequence": [],
+          "predicted_distance": 0.0,
+          "predicted_end_state": {
+            "battery": 77.75,
+            "charging_time": 179.1618357942059,
+            "current_committed_action": null,
+            "departed": true,
+            "distance_travelled": 51.63165296662995,
+            "finished": false,
+            "id": 0,
+            "load": 190.0,
+            "location": {
+              "demand": 0.0,
+              "due": 1236.0,
+              "id": "S5",
+              "kind": "f",
+              "ready": 0.0,
+              "service": 0.0,
+              "x": 31.0,
+              "y": 84.0
+            },
+            "route_history": [
+              "D0",
+              "C30",
+              "S5"
+            ],
+            "served_customers": [
+              "C30"
+            ],
+            "status": "idle",
+            "time": 1200.828989209862,
+            "waiting_time": 880.0355004490261
+          },
+          "vehicle_id": 0,
+          "visits": 0,
+          "waiting_time": 545.6510285771144
+        }
+      },
+      "time": 655.1779606327475
+    },
+    {
+      "available": [],
+      "committed_before": {
+        "C100": 2
+      },
+      "epoch": 8,
+      "plans": {
+        "0": {
+          "actions": [
+            {
+              "destination": "",
+              "kind": "wait",
+              "target_battery": 0.0,
+              "wait_duration": 373.828989209862
+            }
+          ],
+          "charging_time": 0.0,
+          "completion_time": 1200.828989209862,
+          "cost": 35.17101079013795,
+          "predicted_charging_actions": 0,
+          "predicted_customer_sequence": [],
+          "predicted_distance": 0.0,
+          "predicted_end_state": {
+            "battery": 77.75,
+            "charging_time": 179.1618357942059,
+            "current_committed_action": null,
+            "departed": true,
+            "distance_travelled": 51.63165296662995,
+            "finished": false,
+            "id": 0,
+            "load": 190.0,
+            "location": {
+              "demand": 0.0,
+              "due": 1236.0,
+              "id": "S5",
+              "kind": "f",
+              "ready": 0.0,
+              "service": 0.0,
+              "x": 31.0,
+              "y": 84.0
+            },
+            "route_history": [
+              "D0",
+              "C30",
+              "S5"
+            ],
+            "served_customers": [
+              "C30"
+            ],
+            "status": "idle",
+            "time": 1200.828989209862,
+            "waiting_time": 880.0355004490261
+          },
+          "vehicle_id": 0,
+          "visits": 0,
+          "waiting_time": 373.82898920986196
+        },
+        "1": {
+          "actions": [
+            {
+              "destination": "",
+              "kind": "wait",
+              "target_battery": 0.0,
+              "wait_duration": 379.26786250536304
+            }
+          ],
+          "charging_time": 0.0,
+          "completion_time": 1206.2678625053632,
+          "cost": 29.732137494637012,
+          "predicted_charging_actions": 0,
+          "predicted_customer_sequence": [],
+          "predicted_distance": 0.0,
+          "predicted_end_state": {
+            "battery": 48.017862505362984,
+            "charging_time": 264.26732677347763,
+            "current_committed_action": null,
+            "departed": true,
+            "distance_travelled": 105.8898685532761,
+            "finished": false,
+            "id": 1,
+            "load": 150.0,
+            "location": {
+              "demand": 30.0,
+              "due": 809.0,
+              "id": "C85",
+              "kind": "c",
+              "ready": 737.0,
+              "service": 90.0,
+              "x": 68.0,
+              "y": 60.0
+            },
+            "route_history": [
+              "D0",
+              "C12",
+              "S0",
+              "C85"
+            ],
+            "served_customers": [
+              "C12",
+              "C85"
+            ],
+            "status": "idle",
+            "time": 1206.2678625053632,
+            "waiting_time": 656.1106671786094
+          },
+          "vehicle_id": 1,
+          "visits": 0,
+          "waiting_time": 379.26786250536304
+        }
+      },
+      "time": 827.0
+    },
+    {
+      "available": [],
+      "committed_before": {},
+      "epoch": 9,
+      "plans": {
+        "0": {
+          "actions": [
+            {
+              "destination": "",
+              "kind": "wait",
+              "target_battery": 0.0,
+              "wait_duration": 366.828989209862
+            }
+          ],
+          "charging_time": 0.0,
+          "completion_time": 1200.828989209862,
+          "cost": 35.17101079013795,
+          "predicted_charging_actions": 0,
+          "predicted_customer_sequence": [],
+          "predicted_distance": 0.0,
+          "predicted_end_state": {
+            "battery": 77.75,
+            "charging_time": 179.1618357942059,
+            "current_committed_action": null,
+            "departed": true,
+            "distance_travelled": 51.63165296662995,
+            "finished": false,
+            "id": 0,
+            "load": 190.0,
+            "location": {
+              "demand": 0.0,
+              "due": 1236.0,
+              "id": "S5",
+              "kind": "f",
+              "ready": 0.0,
+              "service": 0.0,
+              "x": 31.0,
+              "y": 84.0
+            },
+            "route_history": [
+              "D0",
+              "C30",
+              "S5"
+            ],
+            "served_customers": [
+              "C30"
+            ],
+            "status": "idle",
+            "time": 1200.828989209862,
+            "waiting_time": 880.0355004490262
+          },
+          "vehicle_id": 0,
+          "visits": 0,
+          "waiting_time": 366.828989209862
+        },
+        "1": {
+          "actions": [
+            {
+              "destination": "",
+              "kind": "wait",
+              "target_battery": 0.0,
+              "wait_duration": 372.26786250536304
+            }
+          ],
+          "charging_time": 0.0,
+          "completion_time": 1206.2678625053632,
+          "cost": 29.732137494637012,
+          "predicted_charging_actions": 0,
+          "predicted_customer_sequence": [],
+          "predicted_distance": 0.0,
+          "predicted_end_state": {
+            "battery": 48.017862505362984,
+            "charging_time": 264.26732677347763,
+            "current_committed_action": null,
+            "departed": true,
+            "distance_travelled": 105.8898685532761,
+            "finished": false,
+            "id": 1,
+            "load": 150.0,
+            "location": {
+              "demand": 30.0,
+              "due": 809.0,
+              "id": "C85",
+              "kind": "c",
+              "ready": 737.0,
+              "service": 90.0,
+              "x": 68.0,
+              "y": 60.0
+            },
+            "route_history": [
+              "D0",
+              "C12",
+              "S0",
+              "C85"
+            ],
+            "served_customers": [
+              "C12",
+              "C85"
+            ],
+            "status": "idle",
+            "time": 1206.2678625053632,
+            "waiting_time": 656.1106671786094
+          },
+          "vehicle_id": 1,
+          "visits": 0,
+          "waiting_time": 372.26786250536304
+        },
+        "2": {
+          "actions": [
+            {
+              "destination": "",
+              "kind": "wait",
+              "target_battery": 0.0,
+              "wait_duration": 363.9211344706805
+            }
+          ],
+          "charging_time": 0.0,
+          "completion_time": 1197.9211344706805,
+          "cost": 38.07886552931954,
+          "predicted_charging_actions": 0,
+          "predicted_customer_sequence": [],
+          "predicted_distance": 0.0,
+          "predicted_end_state": {
+            "battery": 39.67113447068046,
+            "charging_time": 149.49217504605386,
+            "current_committed_action": null,
+            "departed": true,
+            "distance_travelled": 81.16018398639557,
+            "finished": false,
+            "id": 2,
+            "load": 170.0,
+            "location": {
+              "demand": 20.0,
+              "due": 798.0,
+              "id": "C100",
+              "kind": "c",
+              "ready": 744.0,
+              "service": 90.0,
+              "x": 55.0,
+              "y": 85.0
+            },
+            "route_history": [
+              "D0",
+              "C64",
+              "S0",
+              "C100"
+            ],
+            "served_customers": [
+              "C64",
+              "C100"
+            ],
+            "status": "idle",
+            "time": 1197.9211344706805,
+            "waiting_time": 787.2687754382313
+          },
+          "vehicle_id": 2,
+          "visits": 0,
+          "waiting_time": 363.9211344706805
+        }
+      },
+      "time": 834.0
+    },
+    {
+      "available": [],
+      "committed_before": {},
+      "epoch": 10,
+      "plans": {
+        "0": {
+          "actions": [
+            {
+              "destination": "",
+              "kind": "wait",
+              "target_battery": 0.0,
+              "wait_duration": 2.90785473918163
+            }
+          ],
+          "charging_time": 0.0,
+          "completion_time": 1200.8289892098621,
+          "cost": 35.17101079013795,
+          "predicted_charging_actions": 0,
+          "predicted_customer_sequence": [],
+          "predicted_distance": 0.0,
+          "predicted_end_state": {
+            "battery": 77.75,
+            "charging_time": 179.1618357942059,
+            "current_committed_action": null,
+            "departed": true,
+            "distance_travelled": 51.63165296662995,
+            "finished": false,
+            "id": 0,
+            "load": 190.0,
+            "location": {
+              "demand": 0.0,
+              "due": 1236.0,
+              "id": "S5",
+              "kind": "f",
+              "ready": 0.0,
+              "service": 0.0,
+              "x": 31.0,
+              "y": 84.0
+            },
+            "route_history": [
+              "D0",
+              "C30",
+              "S5"
+            ],
+            "served_customers": [
+              "C30"
+            ],
+            "status": "idle",
+            "time": 1200.8289892098621,
+            "waiting_time": 880.0355004490264
+          },
+          "vehicle_id": 0,
+          "visits": 0,
+          "waiting_time": 2.90785473918163
+        },
+        "1": {
+          "actions": [
+            {
+              "destination": "",
+              "kind": "wait",
+              "target_battery": 0.0,
+              "wait_duration": 8.346728034682428
+            }
+          ],
+          "charging_time": 0.0,
+          "completion_time": 1206.267862505363,
+          "cost": 29.732137494637012,
+          "predicted_charging_actions": 0,
+          "predicted_customer_sequence": [],
+          "predicted_distance": 0.0,
+          "predicted_end_state": {
+            "battery": 48.017862505362984,
+            "charging_time": 264.26732677347763,
+            "current_committed_action": null,
+            "departed": true,
+            "distance_travelled": 105.8898685532761,
+            "finished": false,
+            "id": 1,
+            "load": 150.0,
+            "location": {
+              "demand": 30.0,
+              "due": 809.0,
+              "id": "C85",
+              "kind": "c",
+              "ready": 737.0,
+              "service": 90.0,
+              "x": 68.0,
+              "y": 60.0
+            },
+            "route_history": [
+              "D0",
+              "C12",
+              "S0",
+              "C85"
+            ],
+            "served_customers": [
+              "C12",
+              "C85"
+            ],
+            "status": "idle",
+            "time": 1206.267862505363,
+            "waiting_time": 656.1106671786093
+          },
+          "vehicle_id": 1,
+          "visits": 0,
+          "waiting_time": 8.346728034682428
+        },
+        "2": {
+          "actions": [
+            {
+              "destination": "D0",
+              "kind": "return",
+              "target_battery": 0.0,
+              "wait_duration": 0.0
+            }
+          ],
+          "charging_time": 0.0,
+          "completion_time": 1236.0,
+          "cost": 38.07886552931954,
+          "predicted_charging_actions": 0,
+          "predicted_customer_sequence": [],
+          "predicted_distance": 38.07886552931954,
+          "predicted_end_state": {
+            "battery": 1.5922689413609135,
+            "charging_time": 149.49217504605386,
+            "current_committed_action": null,
+            "departed": true,
+            "distance_travelled": 119.23904951571511,
+            "finished": true,
+            "id": 2,
+            "load": 170.0,
+            "location": {
+              "demand": 0.0,
+              "due": 1236.0,
+              "id": "D0",
+              "kind": "d",
+              "ready": 0.0,
+              "service": 0.0,
+              "x": 40.0,
+              "y": 50.0
+            },
+            "route_history": [
+              "D0",
+              "C64",
+              "S0",
+              "C100",
+              "D0"
+            ],
+            "served_customers": [
+              "C64",
+              "C100"
+            ],
+            "status": "finished",
+            "time": 1236.0,
+            "waiting_time": 787.2687754382314
+          },
+          "vehicle_id": 2,
+          "visits": 0,
+          "waiting_time": 1.1368683772161603e-13
+        }
+      },
+      "time": 1197.9211344706805
+    },
+    {
+      "available": [],
+      "committed_before": {},
+      "epoch": 11,
+      "plans": {
+        "0": {
+          "actions": [
+            {
+              "destination": "D0",
+              "kind": "return",
+              "target_battery": 0.0,
+              "wait_duration": 0.0
+            }
+          ],
+          "charging_time": 0.0,
+          "completion_time": 1236.0,
+          "cost": 35.17101079013795,
+          "predicted_charging_actions": 0,
+          "predicted_customer_sequence": [],
+          "predicted_distance": 35.17101079013795,
+          "predicted_end_state": {
+            "battery": 42.57898920986205,
+            "charging_time": 179.1618357942059,
+            "current_committed_action": null,
+            "departed": true,
+            "distance_travelled": 86.8026637567679,
+            "finished": true,
+            "id": 0,
+            "load": 190.0,
+            "location": {
+              "demand": 0.0,
+              "due": 1236.0,
+              "id": "D0",
+              "kind": "d",
+              "ready": 0.0,
+              "service": 0.0,
+              "x": 40.0,
+              "y": 50.0
+            },
+            "route_history": [
+              "D0",
+              "C30",
+              "S5",
+              "D0"
+            ],
+            "served_customers": [
+              "C30"
+            ],
+            "status": "finished",
+            "time": 1236.0,
+            "waiting_time": 880.0355004490266
+          },
+          "vehicle_id": 0,
+          "visits": 0,
+          "waiting_time": 2.2737367544323206e-13
+        },
+        "1": {
+          "actions": [
+            {
+              "destination": "",
+              "kind": "wait",
+              "target_battery": 0.0,
+              "wait_duration": 5.438873295500798
+            }
+          ],
+          "charging_time": 0.0,
+          "completion_time": 1206.267862505363,
+          "cost": 29.732137494637012,
+          "predicted_charging_actions": 0,
+          "predicted_customer_sequence": [],
+          "predicted_distance": 0.0,
+          "predicted_end_state": {
+            "battery": 48.017862505362984,
+            "charging_time": 264.26732677347763,
+            "current_committed_action": null,
+            "departed": true,
+            "distance_travelled": 105.8898685532761,
+            "finished": false,
+            "id": 1,
+            "load": 150.0,
+            "location": {
+              "demand": 30.0,
+              "due": 809.0,
+              "id": "C85",
+              "kind": "c",
+              "ready": 737.0,
+              "service": 90.0,
+              "x": 68.0,
+              "y": 60.0
+            },
+            "route_history": [
+              "D0",
+              "C12",
+              "S0",
+              "C85"
+            ],
+            "served_customers": [
+              "C12",
+              "C85"
+            ],
+            "status": "idle",
+            "time": 1206.267862505363,
+            "waiting_time": 656.1106671786093
+          },
+          "vehicle_id": 1,
+          "visits": 0,
+          "waiting_time": 5.438873295500798
+        }
+      },
+      "time": 1200.8289892098621
+    },
+    {
+      "available": [],
+      "committed_before": {},
+      "epoch": 12,
+      "plans": {
+        "1": {
+          "actions": [
+            {
+              "destination": "D0",
+              "kind": "return",
+              "target_battery": 0.0,
+              "wait_duration": 0.0
+            }
+          ],
+          "charging_time": 0.0,
+          "completion_time": 1236.0,
+          "cost": 29.732137494637012,
+          "predicted_charging_actions": 0,
+          "predicted_customer_sequence": [],
+          "predicted_distance": 29.732137494637012,
+          "predicted_end_state": {
+            "battery": 18.285725010725972,
+            "charging_time": 264.26732677347763,
+            "current_committed_action": null,
+            "departed": true,
+            "distance_travelled": 135.62200604791312,
+            "finished": true,
+            "id": 1,
+            "load": 150.0,
+            "location": {
+              "demand": 0.0,
+              "due": 1236.0,
+              "id": "D0",
+              "kind": "d",
+              "ready": 0.0,
+              "service": 0.0,
+              "x": 40.0,
+              "y": 50.0
+            },
+            "route_history": [
+              "D0",
+              "C12",
+              "S0",
+              "C85",
+              "D0"
+            ],
+            "served_customers": [
+              "C12",
+              "C85"
+            ],
+            "status": "finished",
+            "time": 1236.0,
+            "waiting_time": 656.1106671786092
+          },
+          "vehicle_id": 1,
+          "visits": 0,
+          "waiting_time": -1.1368683772161603e-13
+        }
+      },
+      "time": 1206.267862505363
+    }
+  ],
+  "effective_config": {
+    "algorithm": "GREEDY",
+    "experiment_seed": 0,
+    "max_events": 100000,
+    "mpc": {
+      "budget_mode": "iterations",
+      "candidate_limit": 12,
+      "charge_fractions": [
+        0.5,
+        0.75,
+        1.0
+      ],
+      "charging_mode": "partial",
+      "control_horizon": 1,
+      "iterations": 8,
+      "prediction_horizon": 3,
+      "time_limit": 0.1,
+      "top_l": 3,
+      "uct_c": 1.4
+    },
+    "parallel_agents": false,
+    "workers": 2
+  },
+  "events": [
+    {
+      "action": null,
+      "customer_id": "C12",
+      "kind": "release",
+      "time": 0.0,
+      "vehicle_id": null
+    },
+    {
+      "action": null,
+      "customer_id": "C30",
+      "kind": "release",
+      "time": 0.0,
+      "vehicle_id": null
+    },
+    {
+      "action": null,
+      "customer_id": "C64",
+      "kind": "release",
+      "time": 0.0,
+      "vehicle_id": null
+    },
+    {
+      "action": {
+        "destination": "C30",
+        "kind": "serve",
+        "target_battery": 0.0,
+        "wait_duration": 0.0
+      },
+      "customer_id": "C30",
+      "kind": "dispatch",
+      "time": 0.0,
+      "vehicle_id": 0
+    },
+    {
+      "action": {
+        "destination": "",
+        "kind": "wait",
+        "target_battery": 0.0,
+        "wait_duration": 1236.0
+      },
+      "customer_id": null,
+      "kind": "dispatch",
+      "time": 0.0,
+      "vehicle_id": 1
+    },
+    {
+      "action": {
+        "destination": "",
+        "kind": "wait",
+        "target_battery": 0.0,
+        "wait_duration": 1236.0
+      },
+      "customer_id": null,
+      "kind": "dispatch",
+      "time": 0.0,
+      "vehicle_id": 2
+    },
+    {
+      "action": null,
+      "customer_id": "C85",
+      "kind": "release",
+      "time": 18.09753348175965,
+      "vehicle_id": null
+    },
+    {
+      "action": {
+        "destination": "C12",
+        "kind": "serve",
+        "target_battery": 0.0,
+        "wait_duration": 0.0
+      },
+      "customer_id": "C12",
+      "kind": "dispatch",
+      "time": 18.09753348175965,
+      "vehicle_id": 1
+    },
+    {
+      "action": {
+        "destination": "",
+        "kind": "wait",
+        "target_battery": 0.0,
+        "wait_duration": 1217.9024665182403
+      },
+      "customer_id": null,
+      "kind": "dispatch",
+      "time": 18.09753348175965,
+      "vehicle_id": 2
+    },
+    {
+      "action": {
+        "destination": "C12",
+        "kind": "serve",
+        "target_battery": 0.0,
+        "wait_duration": 0.0
+      },
+      "customer_id": "C12",
+      "kind": "complete",
+      "time": 266.0,
+      "vehicle_id": 1
+    },
+    {
+      "action": {
+        "destination": "S0",
+        "kind": "charge",
+        "target_battery": 77.75,
+        "wait_duration": 0.0
+      },
+      "customer_id": null,
+      "kind": "dispatch",
+      "time": 266.0,
+      "vehicle_id": 1
+    },
+    {
+      "action": {
+        "destination": "C64",
+        "kind": "serve",
+        "target_battery": 0.0,
+        "wait_duration": 0.0
+      },
+      "customer_id": "C64",
+      "kind": "dispatch",
+      "time": 266.0,
+      "vehicle_id": 2
+    },
+    {
+      "action": {
+        "destination": "C64",
+        "kind": "serve",
+        "target_battery": 0.0,
+        "wait_duration": 0.0
+      },
+      "customer_id": "C64",
+      "kind": "complete",
+      "time": 377.540659228538,
+      "vehicle_id": 2
+    },
+    {
+      "action": {
+        "destination": "S0",
+        "kind": "charge",
+        "target_battery": 77.75,
+        "wait_duration": 0.0
+      },
+      "customer_id": null,
+      "kind": "dispatch",
+      "time": 377.540659228538,
+      "vehicle_id": 2
+    },
+    {
+      "action": null,
+      "customer_id": "C100",
+      "kind": "release",
+      "time": 408.10464994391253,
+      "vehicle_id": null
+    },
+    {
+      "action": {
+        "destination": "C30",
+        "kind": "serve",
+        "target_battery": 0.0,
+        "wait_duration": 0.0
+      },
+      "customer_id": "C30",
+      "kind": "complete",
+      "time": 445.0,
+      "vehicle_id": 0
+    },
+    {
+      "action": {
+        "destination": "S5",
+        "kind": "charge",
+        "target_battery": 77.75,
+        "wait_duration": 0.0
+      },
+      "customer_id": null,
+      "kind": "dispatch",
+      "time": 445.0,
+      "vehicle_id": 0
+    },
+    {
+      "action": {
+        "destination": "S0",
+        "kind": "charge",
+        "target_battery": 77.75,
+        "wait_duration": 0.0
+      },
+      "customer_id": null,
+      "kind": "complete",
+      "time": 548.5734935031298,
+      "vehicle_id": 2
+    },
+    {
+      "action": {
+        "destination": "C100",
+        "kind": "serve",
+        "target_battery": 0.0,
+        "wait_duration": 0.0
+      },
+      "customer_id": "C100",
+      "kind": "dispatch",
+      "time": 548.5734935031298,
+      "vehicle_id": 2
+    },
+    {
+      "action": {
+        "destination": "S0",
+        "kind": "charge",
+        "target_battery": 77.75,
+        "wait_duration": 0.0
+      },
+      "customer_id": null,
+      "kind": "complete",
+      "time": 568.3461923027971,
+      "vehicle_id": 1
+    },
+    {
+      "action": {
+        "destination": "C85",
+        "kind": "serve",
+        "target_battery": 0.0,
+        "wait_duration": 0.0
+      },
+      "customer_id": "C85",
+      "kind": "dispatch",
+      "time": 568.3461923027971,
+      "vehicle_id": 1
+    },
+    {
+      "action": {
+        "destination": "S5",
+        "kind": "charge",
+        "target_battery": 77.75,
+        "wait_duration": 0.0
+      },
+      "customer_id": null,
+      "kind": "complete",
+      "time": 655.1779606327475,
+      "vehicle_id": 0
+    },
+    {
+      "action": {
+        "destination": "",
+        "kind": "wait",
+        "target_battery": 0.0,
+        "wait_duration": 545.6510285771145
+      },
+      "customer_id": null,
+      "kind": "dispatch",
+      "time": 655.1779606327475,
+      "vehicle_id": 0
+    },
+    {
+      "action": {
+        "destination": "C85",
+        "kind": "serve",
+        "target_battery": 0.0,
+        "wait_duration": 0.0
+      },
+      "customer_id": "C85",
+      "kind": "complete",
+      "time": 827.0,
+      "vehicle_id": 1
+    },
+    {
+      "action": {
+        "destination": "",
+        "kind": "wait",
+        "target_battery": 0.0,
+        "wait_duration": 373.828989209862
+      },
+      "customer_id": null,
+      "kind": "dispatch",
+      "time": 827.0,
+      "vehicle_id": 0
+    },
+    {
+      "action": {
+        "destination": "",
+        "kind": "wait",
+        "target_battery": 0.0,
+        "wait_duration": 379.26786250536304
+      },
+      "customer_id": null,
+      "kind": "dispatch",
+      "time": 827.0,
+      "vehicle_id": 1
+    },
+    {
+      "action": {
+        "destination": "C100",
+        "kind": "serve",
+        "target_battery": 0.0,
+        "wait_duration": 0.0
+      },
+      "customer_id": "C100",
+      "kind": "complete",
+      "time": 834.0,
+      "vehicle_id": 2
+    },
+    {
+      "action": {
+        "destination": "",
+        "kind": "wait",
+        "target_battery": 0.0,
+        "wait_duration": 366.828989209862
+      },
+      "customer_id": null,
+      "kind": "dispatch",
+      "time": 834.0,
+      "vehicle_id": 0
+    },
+    {
+      "action": {
+        "destination": "",
+        "kind": "wait",
+        "target_battery": 0.0,
+        "wait_duration": 372.26786250536304
+      },
+      "customer_id": null,
+      "kind": "dispatch",
+      "time": 834.0,
+      "vehicle_id": 1
+    },
+    {
+      "action": {
+        "destination": "",
+        "kind": "wait",
+        "target_battery": 0.0,
+        "wait_duration": 363.9211344706805
+      },
+      "customer_id": null,
+      "kind": "dispatch",
+      "time": 834.0,
+      "vehicle_id": 2
+    },
+    {
+      "action": {
+        "destination": "",
+        "kind": "wait",
+        "target_battery": 0.0,
+        "wait_duration": 2.90785473918163
+      },
+      "customer_id": null,
+      "kind": "dispatch",
+      "time": 1197.9211344706805,
+      "vehicle_id": 0
+    },
+    {
+      "action": {
+        "destination": "",
+        "kind": "wait",
+        "target_battery": 0.0,
+        "wait_duration": 8.346728034682428
+      },
+      "customer_id": null,
+      "kind": "dispatch",
+      "time": 1197.9211344706805,
+      "vehicle_id": 1
+    },
+    {
+      "action": {
+        "destination": "D0",
+        "kind": "return",
+        "target_battery": 0.0,
+        "wait_duration": 0.0
+      },
+      "customer_id": null,
+      "kind": "dispatch",
+      "time": 1197.9211344706805,
+      "vehicle_id": 2
+    },
+    {
+      "action": {
+        "destination": "D0",
+        "kind": "return",
+        "target_battery": 0.0,
+        "wait_duration": 0.0
+      },
+      "customer_id": null,
+      "kind": "dispatch",
+      "time": 1200.8289892098621,
+      "vehicle_id": 0
+    },
+    {
+      "action": {
+        "destination": "",
+        "kind": "wait",
+        "target_battery": 0.0,
+        "wait_duration": 5.438873295500798
+      },
+      "customer_id": null,
+      "kind": "dispatch",
+      "time": 1200.8289892098621,
+      "vehicle_id": 1
+    },
+    {
+      "action": {
+        "destination": "D0",
+        "kind": "return",
+        "target_battery": 0.0,
+        "wait_duration": 0.0
+      },
+      "customer_id": null,
+      "kind": "dispatch",
+      "time": 1206.267862505363,
+      "vehicle_id": 1
+    },
+    {
+      "action": {
+        "destination": "D0",
+        "kind": "return",
+        "target_battery": 0.0,
+        "wait_duration": 0.0
+      },
+      "customer_id": null,
+      "kind": "complete",
+      "time": 1236.0,
+      "vehicle_id": 0
+    },
+    {
+      "action": {
+        "destination": "D0",
+        "kind": "return",
+        "target_battery": 0.0,
+        "wait_duration": 0.0
+      },
+      "customer_id": null,
+      "kind": "complete",
+      "time": 1236.0,
+      "vehicle_id": 1
+    },
+    {
+      "action": {
+        "destination": "D0",
+        "kind": "return",
+        "target_battery": 0.0,
+        "wait_duration": 0.0
+      },
+      "customer_id": null,
+      "kind": "complete",
+      "time": 1236.0,
+      "vehicle_id": 2
+    },
+    {
+      "action": null,
+      "customer_id": null,
+      "kind": "end",
+      "time": 1236.0,
+      "vehicle_id": null
+    }
+  ],
+  "metadata": {
+    "DoD_realized": 0.4,
+    "DoD_target": 0.5,
+    "K": 3,
+    "algorithm": "GREEDY",
+    "algorithm_seed": 0,
+    "instance": "c101C5",
+    "instance_family": "C1",
+    "instance_sha256": "8612d6d9aad051776097a5e50c7408f39352b8107b0639d58e5eda713f9ff876",
+    "number_of_customers": 5,
+    "number_of_stations": 3,
+    "reference_schedule_identifier": "754f73d3ac16c72d3c9b8ae0d15bf4191c74606e952c31f67dd2227c473c4a63",
+    "scenario_identifier": "e471a10c6abd58ce9ed2fb86cc1901635f4ffec0842388f4203557d339bf4976",
+    "scenario_seed": 0
+  },
+  "metrics": {
+    "agent_replans": 23,
+    "battery_violations": 0,
+    "capacity_violations": 0,
+    "conflicts_resolved": 3,
+    "customers_served": 5,
+    "customers_unserved": 0,
+    "decision_epochs": 13,
+    "distance_per_served_customer": 68.33274386407922,
+    "duplicate_customer_proposal_conflicts": 3,
+    "feasible": true,
+    "final_return_feasibility": true,
+    "maximum_planning_time": 0.0021228999830782413,
+    "mcts_iterations": 0,
+    "mean_planning_time": 0.0008785846070028269,
+    "median_planning_time": 0.0006976999575272202,
+    "nodes_expanded": 0,
+    "p95_planning_time": 0.0019931799732148645,
+    "service_ratio": 1.0,
+    "time_window_violations": 0,
+    "total_charging_time": 592.9213376137374,
+    "total_charging_visits": 3,
+    "total_distance": 341.6637193203961,
+    "total_energy_charged": 170.87070248234505,
+    "total_planning_time": 0.011421599891036749,
+    "total_waiting_time": 2323.414943065867,
+    "vehicles_activated": 3,
+    "wait_selected": 12
+  },
+  "provenance": {
+    "packages": {
+      "PyYAML": "6.0.3",
+      "matplotlib": "3.11.2",
+      "numpy": "2.5.3",
+      "pandas": "3.0.6",
+      "scipy": "1.18.1"
+    },
+    "python": "3.12.10",
+    "source_sha256": "cf51a598d28a8f4ca85fc7d27e2a625774fa9a126e1a65ad63d132f5df198783"
+  },
+  "requested_config": {
+    "algorithm": "GREEDY",
+    "budget_mode": "iterations",
+    "candidate_limit": 12,
+    "charge_fractions": [
+      0.5,
+      0.75,
+      1.0
+    ],
+    "charging_mode": "partial",
+    "control_horizon": 1,
+    "dynamic_selection_mode": "exact_count",
+    "dynamicity": 0.5,
+    "experiment_seed": 0,
+    "mcts_iterations": 8,
+    "mcts_time_limit": 0.1,
+    "parallel_agents": false,
+    "prediction_horizon": 3,
+    "reference_improvement_passes": 1,
+    "reference_seed": 0,
+    "reference_solver_multistarts": 1,
+    "scenario_seed": 0,
+    "top_L": 3,
+    "uct_c": 1.4,
+    "workers": 2
+  },
+  "scenario_path": "C:\\Users\\AYOUB\\OneDrive - EMSI\\Bureau\\PHD_WORK\\MPC_MCTS_Multi_agents_EVRP\\data\\generated_scenarios\\c101C5_e471a10c6abd58ce.json",
+  "searches": [
+    {
+      "elapsed": 0.0008024000562727451,
+      "epoch": 0,
+      "iterations": 0,
+      "nodes_expanded": 0,
+      "root_actions": [],
+      "vehicle_id": 0
+    },
+    {
+      "elapsed": 0.0005376000190153718,
+      "epoch": 0,
+      "iterations": 0,
+      "nodes_expanded": 0,
+      "root_actions": [],
+      "vehicle_id": 1
+    },
+    {
+      "elapsed": 0.0005256000440567732,
+      "epoch": 0,
+      "iterations": 0,
+      "nodes_expanded": 0,
+      "root_actions": [],
+      "vehicle_id": 2
+    },
+    {
+      "elapsed": 0.0004331000382080674,
+      "epoch": 1,
+      "iterations": 0,
+      "nodes_expanded": 0,
+      "root_actions": [],
+      "vehicle_id": 1
+    },
+    {
+      "elapsed": 0.0004121999954804778,
+      "epoch": 1,
+      "iterations": 0,
+      "nodes_expanded": 0,
+      "root_actions": [],
+      "vehicle_id": 2
+    },
+    {
+      "elapsed": 0.0008142999140545726,
+      "epoch": 2,
+      "iterations": 0,
+      "nodes_expanded": 0,
+      "root_actions": [],
+      "vehicle_id": 1
+    },
+    {
+      "elapsed": 0.0003330999752506614,
+      "epoch": 2,
+      "iterations": 0,
+      "nodes_expanded": 0,
+      "root_actions": [],
+      "vehicle_id": 2
+    },
+    {
+      "elapsed": 0.0005922999698668718,
+      "epoch": 3,
+      "iterations": 0,
+      "nodes_expanded": 0,
+      "root_actions": [],
+      "vehicle_id": 2
+    },
+    {
+      "elapsed": 0.0021044000750407577,
+      "epoch": 4,
+      "iterations": 0,
+      "nodes_expanded": 0,
+      "root_actions": [],
+      "vehicle_id": 0
+    },
+    {
+      "elapsed": 0.0006603000219911337,
+      "epoch": 5,
+      "iterations": 0,
+      "nodes_expanded": 0,
+      "root_actions": [],
+      "vehicle_id": 2
+    },
+    {
+      "elapsed": 0.00046140002086758614,
+      "epoch": 6,
+      "iterations": 0,
+      "nodes_expanded": 0,
+      "root_actions": [],
+      "vehicle_id": 1
+    },
+    {
+      "elapsed": 0.0003501999890431762,
+      "epoch": 7,
+      "iterations": 0,
+      "nodes_expanded": 0,
+      "root_actions": [],
+      "vehicle_id": 0
+    },
+    {
+      "elapsed": 0.0003869999200105667,
+      "epoch": 8,
+      "iterations": 0,
+      "nodes_expanded": 0,
+      "root_actions": [],
+      "vehicle_id": 0
+    },
+    {
+      "elapsed": 0.0005917999660596251,
+      "epoch": 8,
+      "iterations": 0,
+      "nodes_expanded": 0,
+      "root_actions": [],
+      "vehicle_id": 1
+    },
+    {
+      "elapsed": 0.00033790001180022955,
+      "epoch": 9,
+      "iterations": 0,
+      "nodes_expanded": 0,
+      "root_actions": [],
+      "vehicle_id": 0
+    },
+    {
+      "elapsed": 0.0005667000077664852,
+      "epoch": 9,
+      "iterations": 0,
+      "nodes_expanded": 0,
+      "root_actions": [],
+      "vehicle_id": 1
+    },
+    {
+      "elapsed": 0.0003429000498726964,
+      "epoch": 9,
+      "iterations": 0,
+      "nodes_expanded": 0,
+      "root_actions": [],
+      "vehicle_id": 2
+    },
+    {
+      "elapsed": 0.00013509998098015785,
+      "epoch": 10,
+      "iterations": 0,
+      "nodes_expanded": 0,
+      "root_actions": [],
+      "vehicle_id": 0
+    },
+    {
+      "elapsed": 0.00015879992861300707,
+      "epoch": 10,
+      "iterations": 0,
+      "nodes_expanded": 0,
+      "root_actions": [],
+      "vehicle_id": 1
+    },
+    {
+      "elapsed": 0.00014430005103349686,
+      "epoch": 10,
+      "iterations": 0,
+      "nodes_expanded": 0,
+      "root_actions": [],
+      "vehicle_id": 2
+    },
+    {
+      "elapsed": 0.00011909997556358576,
+      "epoch": 11,
+      "iterations": 0,
+      "nodes_expanded": 0,
+      "root_actions": [],
+      "vehicle_id": 0
+    },
+    {
+      "elapsed": 0.0001694000093266368,
+      "epoch": 11,
+      "iterations": 0,
+      "nodes_expanded": 0,
+      "root_actions": [],
+      "vehicle_id": 1
+    },
+    {
+      "elapsed": 0.00014729995746165514,
+      "epoch": 12,
+      "iterations": 0,
+      "nodes_expanded": 0,
+      "root_actions": [],
+      "vehicle_id": 1
+    }
+  ],
+  "status": "completed",
+  "steps": [
+    {
+      "action": {
+        "destination": "",
+        "kind": "wait",
+        "target_battery": 0.0,
+        "wait_duration": 18.09753348175965
+      },
+      "after": {
+        "battery": 77.75,
+        "charging_time": 0.0,
+        "current_committed_action": null,
+        "departed": false,
+        "distance_travelled": 0.0,
+        "finished": false,
+        "id": 1,
+        "load": 200.0,
+        "location": {
+          "demand": 0.0,
+          "due": 1236.0,
+          "id": "D0",
+          "kind": "d",
+          "ready": 0.0,
+          "service": 0.0,
+          "x": 40.0,
+          "y": 50.0
+        },
+        "route_history": [
+          "D0"
+        ],
+        "served_customers": [],
+        "status": "idle",
+        "time": 18.09753348175965,
+        "waiting_time": 18.09753348175965
+      },
+      "arrival": 0.0,
+      "before": {
+        "battery": 77.75,
+        "charging_time": 0.0,
+        "current_committed_action": null,
+        "departed": false,
+        "distance_travelled": 0.0,
+        "finished": false,
+        "id": 1,
+        "load": 200.0,
+        "location": {
+          "demand": 0.0,
+          "due": 1236.0,
+          "id": "D0",
+          "kind": "d",
+          "ready": 0.0,
+          "service": 0.0,
+          "x": 40.0,
+          "y": 50.0
+        },
+        "route_history": [
+          "D0"
+        ],
+        "served_customers": [],
+        "status": "idle",
+        "time": 0.0,
+        "waiting_time": 0.0
+      },
+      "distance": 0.0,
+      "energy_charged": 0.0,
+      "served": null,
+      "service_start": 0.0
+    },
+    {
+      "action": {
+        "destination": "",
+        "kind": "wait",
+        "target_battery": 0.0,
+        "wait_duration": 18.09753348175965
+      },
+      "after": {
+        "battery": 77.75,
+        "charging_time": 0.0,
+        "current_committed_action": null,
+        "departed": false,
+        "distance_travelled": 0.0,
+        "finished": false,
+        "id": 2,
+        "load": 200.0,
+        "location": {
+          "demand": 0.0,
+          "due": 1236.0,
+          "id": "D0",
+          "kind": "d",
+          "ready": 0.0,
+          "service": 0.0,
+          "x": 40.0,
+          "y": 50.0
+        },
+        "route_history": [
+          "D0"
+        ],
+        "served_customers": [],
+        "status": "idle",
+        "time": 18.09753348175965,
+        "waiting_time": 18.09753348175965
+      },
+      "arrival": 0.0,
+      "before": {
+        "battery": 77.75,
+        "charging_time": 0.0,
+        "current_committed_action": null,
+        "departed": false,
+        "distance_travelled": 0.0,
+        "finished": false,
+        "id": 2,
+        "load": 200.0,
+        "location": {
+          "demand": 0.0,
+          "due": 1236.0,
+          "id": "D0",
+          "kind": "d",
+          "ready": 0.0,
+          "service": 0.0,
+          "x": 40.0,
+          "y": 50.0
+        },
+        "route_history": [
+          "D0"
+        ],
+        "served_customers": [],
+        "status": "idle",
+        "time": 0.0,
+        "waiting_time": 0.0
+      },
+      "distance": 0.0,
+      "energy_charged": 0.0,
+      "served": null,
+      "service_start": 0.0
+    },
+    {
+      "action": {
+        "destination": "C12",
+        "kind": "serve",
+        "target_battery": 0.0,
+        "wait_duration": 0.0
+      },
+      "after": {
+        "battery": 39.67113447068046,
+        "charging_time": 0.0,
+        "current_committed_action": null,
+        "departed": true,
+        "distance_travelled": 38.07886552931954,
+        "finished": false,
+        "id": 1,
+        "load": 180.0,
+        "location": {
+          "demand": 20.0,
+          "due": 228.0,
+          "id": "C12",
+          "kind": "c",
+          "ready": 176.0,
+          "service": 90.0,
+          "x": 25.0,
+          "y": 85.0
+        },
+        "route_history": [
+          "D0",
+          "C12"
+        ],
+        "served_customers": [
+          "C12"
+        ],
+        "status": "idle",
+        "time": 266.0,
+        "waiting_time": 137.92113447068044
+      },
+      "arrival": 56.1763990110792,
+      "before": {
+        "battery": 77.75,
+        "charging_time": 0.0,
+        "current_committed_action": null,
+        "departed": false,
+        "distance_travelled": 0.0,
+        "finished": false,
+        "id": 1,
+        "load": 200.0,
+        "location": {
+          "demand": 0.0,
+          "due": 1236.0,
+          "id": "D0",
+          "kind": "d",
+          "ready": 0.0,
+          "service": 0.0,
+          "x": 40.0,
+          "y": 50.0
+        },
+        "route_history": [
+          "D0"
+        ],
+        "served_customers": [],
+        "status": "idle",
+        "time": 18.09753348175965,
+        "waiting_time": 18.09753348175965
+      },
+      "distance": 38.07886552931954,
+      "energy_charged": 0.0,
+      "served": "C12",
+      "service_start": 176.0
+    },
+    {
+      "action": {
+        "destination": "",
+        "kind": "wait",
+        "target_battery": 0.0,
+        "wait_duration": 247.90246651824035
+      },
+      "after": {
+        "battery": 77.75,
+        "charging_time": 0.0,
+        "current_committed_action": null,
+        "departed": false,
+        "distance_travelled": 0.0,
+        "finished": false,
+        "id": 2,
+        "load": 200.0,
+        "location": {
+          "demand": 0.0,
+          "due": 1236.0,
+          "id": "D0",
+          "kind": "d",
+          "ready": 0.0,
+          "service": 0.0,
+          "x": 40.0,
+          "y": 50.0
+        },
+        "route_history": [
+          "D0"
+        ],
+        "served_customers": [],
+        "status": "idle",
+        "time": 266.0,
+        "waiting_time": 266.0
+      },
+      "arrival": 18.09753348175965,
+      "before": {
+        "battery": 77.75,
+        "charging_time": 0.0,
+        "current_committed_action": null,
+        "departed": false,
+        "distance_travelled": 0.0,
+        "finished": false,
+        "id": 2,
+        "load": 200.0,
+        "location": {
+          "demand": 0.0,
+          "due": 1236.0,
+          "id": "D0",
+          "kind": "d",
+          "ready": 0.0,
+          "service": 0.0,
+          "x": 40.0,
+          "y": 50.0
+        },
+        "route_history": [
+          "D0"
+        ],
+        "served_customers": [],
+        "status": "idle",
+        "time": 18.09753348175965,
+        "waiting_time": 18.09753348175965
+      },
+      "distance": 0.0,
+      "energy_charged": 0.0,
+      "served": null,
+      "service_start": 18.09753348175965
+    },
+    {
+      "action": {
+        "destination": "C64",
+        "kind": "serve",
+        "target_battery": 0.0,
+        "wait_duration": 0.0
+      },
+      "after": {
+        "battery": 56.20934077146198,
+        "charging_time": 0.0,
+        "current_committed_action": null,
+        "departed": true,
+        "distance_travelled": 21.540659228538015,
+        "finished": false,
+        "id": 2,
+        "load": 190.0,
+        "location": {
+          "demand": 10.0,
+          "due": 325.0,
+          "id": "C64",
+          "kind": "c",
+          "ready": 263.0,
+          "service": 90.0,
+          "x": 48.0,
+          "y": 30.0
+        },
+        "route_history": [
+          "D0",
+          "C64"
+        ],
+        "served_customers": [
+          "C64"
+        ],
+        "status": "idle",
+        "time": 377.540659228538,
+        "waiting_time": 266.00000000000006
+      },
+      "arrival": 287.540659228538,
+      "before": {
+        "battery": 77.75,
+        "charging_time": 0.0,
+        "current_committed_action": null,
+        "departed": false,
+        "distance_travelled": 0.0,
+        "finished": false,
+        "id": 2,
+        "load": 200.0,
+        "location": {
+          "demand": 0.0,
+          "due": 1236.0,
+          "id": "D0",
+          "kind": "d",
+          "ready": 0.0,
+          "service": 0.0,
+          "x": 40.0,
+          "y": 50.0
+        },
+        "route_history": [
+          "D0"
+        ],
+        "served_customers": [],
+        "status": "idle",
+        "time": 266.0,
+        "waiting_time": 266.0
+      },
+      "distance": 21.540659228538015,
+      "energy_charged": 0.0,
+      "served": "C64",
+      "service_start": 287.540659228538
+    },
+    {
+      "action": {
+        "destination": "C30",
+        "kind": "serve",
+        "target_battery": 0.0,
+        "wait_duration": 0.0
+      },
+      "after": {
+        "battery": 57.1344718719117,
+        "charging_time": 0.0,
+        "current_committed_action": null,
+        "departed": true,
+        "distance_travelled": 20.615528128088304,
+        "finished": false,
+        "id": 0,
+        "load": 190.0,
+        "location": {
+          "demand": 10.0,
+          "due": 407.0,
+          "id": "C30",
+          "kind": "c",
+          "ready": 355.0,
+          "service": 90.0,
+          "x": 20.0,
+          "y": 55.0
+        },
+        "route_history": [
+          "D0",
+          "C30"
+        ],
+        "served_customers": [
+          "C30"
+        ],
+        "status": "idle",
+        "time": 445.0,
+        "waiting_time": 334.38447187191167
+      },
+      "arrival": 20.615528128088304,
+      "before": {
+        "battery": 77.75,
+        "charging_time": 0.0,
+        "current_committed_action": null,
+        "departed": false,
+        "distance_travelled": 0.0,
+        "finished": false,
+        "id": 0,
+        "load": 200.0,
+        "location": {
+          "demand": 0.0,
+          "due": 1236.0,
+          "id": "D0",
+          "kind": "d",
+          "ready": 0.0,
+          "service": 0.0,
+          "x": 40.0,
+          "y": 50.0
+        },
+        "route_history": [
+          "D0"
+        ],
+        "served_customers": [],
+        "status": "idle",
+        "time": 0.0,
+        "waiting_time": 0.0
+      },
+      "distance": 20.615528128088304,
+      "energy_charged": 0.0,
+      "served": "C30",
+      "service_start": 355.0
+    },
+    {
+      "action": {
+        "destination": "S0",
+        "kind": "charge",
+        "target_battery": 77.75,
+        "wait_duration": 0.0
+      },
+      "after": {
+        "battery": 77.75,
+        "charging_time": 149.49217504605386,
+        "current_committed_action": null,
+        "departed": true,
+        "distance_travelled": 43.08131845707603,
+        "finished": false,
+        "id": 2,
+        "load": 190.0,
+        "location": {
+          "demand": 0.0,
+          "due": 1236.0,
+          "id": "S0",
+          "kind": "f",
+          "ready": 0.0,
+          "service": 0.0,
+          "x": 40.0,
+          "y": 50.0
+        },
+        "route_history": [
+          "D0",
+          "C64",
+          "S0"
+        ],
+        "served_customers": [
+          "C64"
+        ],
+        "status": "idle",
+        "time": 548.5734935031298,
+        "waiting_time": 266.0000000000001
+      },
+      "arrival": 399.081318457076,
+      "before": {
+        "battery": 56.20934077146198,
+        "charging_time": 0.0,
+        "current_committed_action": null,
+        "departed": true,
+        "distance_travelled": 21.540659228538015,
+        "finished": false,
+        "id": 2,
+        "load": 190.0,
+        "location": {
+          "demand": 10.0,
+          "due": 325.0,
+          "id": "C64",
+          "kind": "c",
+          "ready": 263.0,
+          "service": 90.0,
+          "x": 48.0,
+          "y": 30.0
+        },
+        "route_history": [
+          "D0",
+          "C64"
+        ],
+        "served_customers": [
+          "C64"
+        ],
+        "status": "idle",
+        "time": 377.540659228538,
+        "waiting_time": 266.00000000000006
+      },
+      "distance": 21.540659228538015,
+      "energy_charged": 43.08131845707604,
+      "served": null,
+      "service_start": 399.081318457076
+    },
+    {
+      "action": {
+        "destination": "S0",
+        "kind": "charge",
+        "target_battery": 77.75,
+        "wait_duration": 0.0
+      },
+      "after": {
+        "battery": 77.75,
+        "charging_time": 264.26732677347763,
+        "current_committed_action": null,
+        "departed": true,
+        "distance_travelled": 76.15773105863909,
+        "finished": false,
+        "id": 1,
+        "load": 180.0,
+        "location": {
+          "demand": 0.0,
+          "due": 1236.0,
+          "id": "S0",
+          "kind": "f",
+          "ready": 0.0,
+          "service": 0.0,
+          "x": 40.0,
+          "y": 50.0
+        },
+        "route_history": [
+          "D0",
+          "C12",
+          "S0"
+        ],
+        "served_customers": [
+          "C12"
+        ],
+        "status": "idle",
+        "time": 568.3461923027971,
+        "waiting_time": 137.92113447068044
+      },
+      "arrival": 304.07886552931956,
+      "before": {
+        "battery": 39.67113447068046,
+        "charging_time": 0.0,
+        "current_committed_action": null,
+        "departed": true,
+        "distance_travelled": 38.07886552931954,
+        "finished": false,
+        "id": 1,
+        "load": 180.0,
+        "location": {
+          "demand": 20.0,
+          "due": 228.0,
+          "id": "C12",
+          "kind": "c",
+          "ready": 176.0,
+          "service": 90.0,
+          "x": 25.0,
+          "y": 85.0
+        },
+        "route_history": [
+          "D0",
+          "C12"
+        ],
+        "served_customers": [
+          "C12"
+        ],
+        "status": "idle",
+        "time": 266.0,
+        "waiting_time": 137.92113447068044
+      },
+      "distance": 38.07886552931954,
+      "energy_charged": 76.15773105863909,
+      "served": null,
+      "service_start": 304.07886552931956
+    },
+    {
+      "action": {
+        "destination": "S5",
+        "kind": "charge",
+        "target_battery": 77.75,
+        "wait_duration": 0.0
+      },
+      "after": {
+        "battery": 77.75,
+        "charging_time": 179.1618357942059,
+        "current_committed_action": null,
+        "departed": true,
+        "distance_travelled": 51.63165296662995,
+        "finished": false,
+        "id": 0,
+        "load": 190.0,
+        "location": {
+          "demand": 0.0,
+          "due": 1236.0,
+          "id": "S5",
+          "kind": "f",
+          "ready": 0.0,
+          "service": 0.0,
+          "x": 31.0,
+          "y": 84.0
+        },
+        "route_history": [
+          "D0",
+          "C30",
+          "S5"
+        ],
+        "served_customers": [
+          "C30"
+        ],
+        "status": "idle",
+        "time": 655.1779606327475,
+        "waiting_time": 334.38447187191167
+      },
+      "arrival": 476.01612483854166,
+      "before": {
+        "battery": 57.1344718719117,
+        "charging_time": 0.0,
+        "current_committed_action": null,
+        "departed": true,
+        "distance_travelled": 20.615528128088304,
+        "finished": false,
+        "id": 0,
+        "load": 190.0,
+        "location": {
+          "demand": 10.0,
+          "due": 407.0,
+          "id": "C30",
+          "kind": "c",
+          "ready": 355.0,
+          "service": 90.0,
+          "x": 20.0,
+          "y": 55.0
+        },
+        "route_history": [
+          "D0",
+          "C30"
+        ],
+        "served_customers": [
+          "C30"
+        ],
+        "status": "idle",
+        "time": 445.0,
+        "waiting_time": 334.38447187191167
+      },
+      "distance": 31.016124838541646,
+      "energy_charged": 51.63165296662994,
+      "served": null,
+      "service_start": 476.01612483854166
+    },
+    {
+      "action": {
+        "destination": "C85",
+        "kind": "serve",
+        "target_battery": 0.0,
+        "wait_duration": 0.0
+      },
+      "after": {
+        "battery": 48.017862505362984,
+        "charging_time": 264.26732677347763,
+        "current_committed_action": null,
+        "departed": true,
+        "distance_travelled": 105.8898685532761,
+        "finished": false,
+        "id": 1,
+        "load": 150.0,
+        "location": {
+          "demand": 30.0,
+          "due": 809.0,
+          "id": "C85",
+          "kind": "c",
+          "ready": 737.0,
+          "service": 90.0,
+          "x": 68.0,
+          "y": 60.0
+        },
+        "route_history": [
+          "D0",
+          "C12",
+          "S0",
+          "C85"
+        ],
+        "served_customers": [
+          "C12",
+          "C85"
+        ],
+        "status": "idle",
+        "time": 827.0,
+        "waiting_time": 276.8428046732464
+      },
+      "arrival": 598.0783297974341,
+      "before": {
+        "battery": 77.75,
+        "charging_time": 264.26732677347763,
+        "current_committed_action": null,
+        "departed": true,
+        "distance_travelled": 76.15773105863909,
+        "finished": false,
+        "id": 1,
+        "load": 180.0,
+        "location": {
+          "demand": 0.0,
+          "due": 1236.0,
+          "id": "S0",
+          "kind": "f",
+          "ready": 0.0,
+          "service": 0.0,
+          "x": 40.0,
+          "y": 50.0
+        },
+        "route_history": [
+          "D0",
+          "C12",
+          "S0"
+        ],
+        "served_customers": [
+          "C12"
+        ],
+        "status": "idle",
+        "time": 568.3461923027971,
+        "waiting_time": 137.92113447068044
+      },
+      "distance": 29.732137494637012,
+      "energy_charged": 0.0,
+      "served": "C85",
+      "service_start": 737.0
+    },
+    {
+      "action": {
+        "destination": "",
+        "kind": "wait",
+        "target_battery": 0.0,
+        "wait_duration": 171.8220393672525
+      },
+      "after": {
+        "battery": 77.75,
+        "charging_time": 179.1618357942059,
+        "current_committed_action": null,
+        "departed": true,
+        "distance_travelled": 51.63165296662995,
+        "finished": false,
+        "id": 0,
+        "load": 190.0,
+        "location": {
+          "demand": 0.0,
+          "due": 1236.0,
+          "id": "S5",
+          "kind": "f",
+          "ready": 0.0,
+          "service": 0.0,
+          "x": 31.0,
+          "y": 84.0
+        },
+        "route_history": [
+          "D0",
+          "C30",
+          "S5"
+        ],
+        "served_customers": [
+          "C30"
+        ],
+        "status": "idle",
+        "time": 827.0,
+        "waiting_time": 506.2065112391642
+      },
+      "arrival": 655.1779606327475,
+      "before": {
+        "battery": 77.75,
+        "charging_time": 179.1618357942059,
+        "current_committed_action": null,
+        "departed": true,
+        "distance_travelled": 51.63165296662995,
+        "finished": false,
+        "id": 0,
+        "load": 190.0,
+        "location": {
+          "demand": 0.0,
+          "due": 1236.0,
+          "id": "S5",
+          "kind": "f",
+          "ready": 0.0,
+          "service": 0.0,
+          "x": 31.0,
+          "y": 84.0
+        },
+        "route_history": [
+          "D0",
+          "C30",
+          "S5"
+        ],
+        "served_customers": [
+          "C30"
+        ],
+        "status": "idle",
+        "time": 655.1779606327475,
+        "waiting_time": 334.38447187191167
+      },
+      "distance": 0.0,
+      "energy_charged": 0.0,
+      "served": null,
+      "service_start": 655.1779606327475
+    },
+    {
+      "action": {
+        "destination": "C100",
+        "kind": "serve",
+        "target_battery": 0.0,
+        "wait_duration": 0.0
+      },
+      "after": {
+        "battery": 39.67113447068046,
+        "charging_time": 149.49217504605386,
+        "current_committed_action": null,
+        "departed": true,
+        "distance_travelled": 81.16018398639557,
+        "finished": false,
+        "id": 2,
+        "load": 170.0,
+        "location": {
+          "demand": 20.0,
+          "due": 798.0,
+          "id": "C100",
+          "kind": "c",
+          "ready": 744.0,
+          "service": 90.0,
+          "x": 55.0,
+          "y": 85.0
+        },
+        "route_history": [
+          "D0",
+          "C64",
+          "S0",
+          "C100"
+        ],
+        "served_customers": [
+          "C64",
+          "C100"
+        ],
+        "status": "idle",
+        "time": 834.0,
+        "waiting_time": 423.3476409675508
+      },
+      "arrival": 586.6523590324493,
+      "before": {
+        "battery": 77.75,
+        "charging_time": 149.49217504605386,
+        "current_committed_action": null,
+        "departed": true,
+        "distance_travelled": 43.08131845707603,
+        "finished": false,
+        "id": 2,
+        "load": 190.0,
+        "location": {
+          "demand": 0.0,
+          "due": 1236.0,
+          "id": "S0",
+          "kind": "f",
+          "ready": 0.0,
+          "service": 0.0,
+          "x": 40.0,
+          "y": 50.0
+        },
+        "route_history": [
+          "D0",
+          "C64",
+          "S0"
+        ],
+        "served_customers": [
+          "C64"
+        ],
+        "status": "idle",
+        "time": 548.5734935031298,
+        "waiting_time": 266.0000000000001
+      },
+      "distance": 38.07886552931954,
+      "energy_charged": 0.0,
+      "served": "C100",
+      "service_start": 744.0
+    },
+    {
+      "action": {
+        "destination": "",
+        "kind": "wait",
+        "target_battery": 0.0,
+        "wait_duration": 7.0
+      },
+      "after": {
+        "battery": 77.75,
+        "charging_time": 179.1618357942059,
+        "current_committed_action": null,
+        "departed": true,
+        "distance_travelled": 51.63165296662995,
+        "finished": false,
+        "id": 0,
+        "load": 190.0,
+        "location": {
+          "demand": 0.0,
+          "due": 1236.0,
+          "id": "S5",
+          "kind": "f",
+          "ready": 0.0,
+          "service": 0.0,
+          "x": 31.0,
+          "y": 84.0
+        },
+        "route_history": [
+          "D0",
+          "C30",
+          "S5"
+        ],
+        "served_customers": [
+          "C30"
+        ],
+        "status": "idle",
+        "time": 834.0,
+        "waiting_time": 513.2065112391642
+      },
+      "arrival": 827.0,
+      "before": {
+        "battery": 77.75,
+        "charging_time": 179.1618357942059,
+        "current_committed_action": null,
+        "departed": true,
+        "distance_travelled": 51.63165296662995,
+        "finished": false,
+        "id": 0,
+        "load": 190.0,
+        "location": {
+          "demand": 0.0,
+          "due": 1236.0,
+          "id": "S5",
+          "kind": "f",
+          "ready": 0.0,
+          "service": 0.0,
+          "x": 31.0,
+          "y": 84.0
+        },
+        "route_history": [
+          "D0",
+          "C30",
+          "S5"
+        ],
+        "served_customers": [
+          "C30"
+        ],
+        "status": "idle",
+        "time": 827.0,
+        "waiting_time": 506.2065112391642
+      },
+      "distance": 0.0,
+      "energy_charged": 0.0,
+      "served": null,
+      "service_start": 827.0
+    },
+    {
+      "action": {
+        "destination": "",
+        "kind": "wait",
+        "target_battery": 0.0,
+        "wait_duration": 7.0
+      },
+      "after": {
+        "battery": 48.017862505362984,
+        "charging_time": 264.26732677347763,
+        "current_committed_action": null,
+        "departed": true,
+        "distance_travelled": 105.8898685532761,
+        "finished": false,
+        "id": 1,
+        "load": 150.0,
+        "location": {
+          "demand": 30.0,
+          "due": 809.0,
+          "id": "C85",
+          "kind": "c",
+          "ready": 737.0,
+          "service": 90.0,
+          "x": 68.0,
+          "y": 60.0
+        },
+        "route_history": [
+          "D0",
+          "C12",
+          "S0",
+          "C85"
+        ],
+        "served_customers": [
+          "C12",
+          "C85"
+        ],
+        "status": "idle",
+        "time": 834.0,
+        "waiting_time": 283.8428046732464
+      },
+      "arrival": 827.0,
+      "before": {
+        "battery": 48.017862505362984,
+        "charging_time": 264.26732677347763,
+        "current_committed_action": null,
+        "departed": true,
+        "distance_travelled": 105.8898685532761,
+        "finished": false,
+        "id": 1,
+        "load": 150.0,
+        "location": {
+          "demand": 30.0,
+          "due": 809.0,
+          "id": "C85",
+          "kind": "c",
+          "ready": 737.0,
+          "service": 90.0,
+          "x": 68.0,
+          "y": 60.0
+        },
+        "route_history": [
+          "D0",
+          "C12",
+          "S0",
+          "C85"
+        ],
+        "served_customers": [
+          "C12",
+          "C85"
+        ],
+        "status": "idle",
+        "time": 827.0,
+        "waiting_time": 276.8428046732464
+      },
+      "distance": 0.0,
+      "energy_charged": 0.0,
+      "served": null,
+      "service_start": 827.0
+    },
+    {
+      "action": {
+        "destination": "",
+        "kind": "wait",
+        "target_battery": 0.0,
+        "wait_duration": 363.9211344706805
+      },
+      "after": {
+        "battery": 77.75,
+        "charging_time": 179.1618357942059,
+        "current_committed_action": null,
+        "departed": true,
+        "distance_travelled": 51.63165296662995,
+        "finished": false,
+        "id": 0,
+        "load": 190.0,
+        "location": {
+          "demand": 0.0,
+          "due": 1236.0,
+          "id": "S5",
+          "kind": "f",
+          "ready": 0.0,
+          "service": 0.0,
+          "x": 31.0,
+          "y": 84.0
+        },
+        "route_history": [
+          "D0",
+          "C30",
+          "S5"
+        ],
+        "served_customers": [
+          "C30"
+        ],
+        "status": "idle",
+        "time": 1197.9211344706805,
+        "waiting_time": 877.1276457098447
+      },
+      "arrival": 834.0,
+      "before": {
+        "battery": 77.75,
+        "charging_time": 179.1618357942059,
+        "current_committed_action": null,
+        "departed": true,
+        "distance_travelled": 51.63165296662995,
+        "finished": false,
+        "id": 0,
+        "load": 190.0,
+        "location": {
+          "demand": 0.0,
+          "due": 1236.0,
+          "id": "S5",
+          "kind": "f",
+          "ready": 0.0,
+          "service": 0.0,
+          "x": 31.0,
+          "y": 84.0
+        },
+        "route_history": [
+          "D0",
+          "C30",
+          "S5"
+        ],
+        "served_customers": [
+          "C30"
+        ],
+        "status": "idle",
+        "time": 834.0,
+        "waiting_time": 513.2065112391642
+      },
+      "distance": 0.0,
+      "energy_charged": 0.0,
+      "served": null,
+      "service_start": 834.0
+    },
+    {
+      "action": {
+        "destination": "",
+        "kind": "wait",
+        "target_battery": 0.0,
+        "wait_duration": 363.9211344706805
+      },
+      "after": {
+        "battery": 48.017862505362984,
+        "charging_time": 264.26732677347763,
+        "current_committed_action": null,
+        "departed": true,
+        "distance_travelled": 105.8898685532761,
+        "finished": false,
+        "id": 1,
+        "load": 150.0,
+        "location": {
+          "demand": 30.0,
+          "due": 809.0,
+          "id": "C85",
+          "kind": "c",
+          "ready": 737.0,
+          "service": 90.0,
+          "x": 68.0,
+          "y": 60.0
+        },
+        "route_history": [
+          "D0",
+          "C12",
+          "S0",
+          "C85"
+        ],
+        "served_customers": [
+          "C12",
+          "C85"
+        ],
+        "status": "idle",
+        "time": 1197.9211344706805,
+        "waiting_time": 647.7639391439269
+      },
+      "arrival": 834.0,
+      "before": {
+        "battery": 48.017862505362984,
+        "charging_time": 264.26732677347763,
+        "current_committed_action": null,
+        "departed": true,
+        "distance_travelled": 105.8898685532761,
+        "finished": false,
+        "id": 1,
+        "load": 150.0,
+        "location": {
+          "demand": 30.0,
+          "due": 809.0,
+          "id": "C85",
+          "kind": "c",
+          "ready": 737.0,
+          "service": 90.0,
+          "x": 68.0,
+          "y": 60.0
+        },
+        "route_history": [
+          "D0",
+          "C12",
+          "S0",
+          "C85"
+        ],
+        "served_customers": [
+          "C12",
+          "C85"
+        ],
+        "status": "idle",
+        "time": 834.0,
+        "waiting_time": 283.8428046732464
+      },
+      "distance": 0.0,
+      "energy_charged": 0.0,
+      "served": null,
+      "service_start": 834.0
+    },
+    {
+      "action": {
+        "destination": "",
+        "kind": "wait",
+        "target_battery": 0.0,
+        "wait_duration": 363.9211344706805
+      },
+      "after": {
+        "battery": 39.67113447068046,
+        "charging_time": 149.49217504605386,
+        "current_committed_action": null,
+        "departed": true,
+        "distance_travelled": 81.16018398639557,
+        "finished": false,
+        "id": 2,
+        "load": 170.0,
+        "location": {
+          "demand": 20.0,
+          "due": 798.0,
+          "id": "C100",
+          "kind": "c",
+          "ready": 744.0,
+          "service": 90.0,
+          "x": 55.0,
+          "y": 85.0
+        },
+        "route_history": [
+          "D0",
+          "C64",
+          "S0",
+          "C100"
+        ],
+        "served_customers": [
+          "C64",
+          "C100"
+        ],
+        "status": "idle",
+        "time": 1197.9211344706805,
+        "waiting_time": 787.2687754382313
+      },
+      "arrival": 834.0,
+      "before": {
+        "battery": 39.67113447068046,
+        "charging_time": 149.49217504605386,
+        "current_committed_action": null,
+        "departed": true,
+        "distance_travelled": 81.16018398639557,
+        "finished": false,
+        "id": 2,
+        "load": 170.0,
+        "location": {
+          "demand": 20.0,
+          "due": 798.0,
+          "id": "C100",
+          "kind": "c",
+          "ready": 744.0,
+          "service": 90.0,
+          "x": 55.0,
+          "y": 85.0
+        },
+        "route_history": [
+          "D0",
+          "C64",
+          "S0",
+          "C100"
+        ],
+        "served_customers": [
+          "C64",
+          "C100"
+        ],
+        "status": "idle",
+        "time": 834.0,
+        "waiting_time": 423.3476409675508
+      },
+      "distance": 0.0,
+      "energy_charged": 0.0,
+      "served": null,
+      "service_start": 834.0
+    },
+    {
+      "action": {
+        "destination": "",
+        "kind": "wait",
+        "target_battery": 0.0,
+        "wait_duration": 2.90785473918163
+      },
+      "after": {
+        "battery": 77.75,
+        "charging_time": 179.1618357942059,
+        "current_committed_action": null,
+        "departed": true,
+        "distance_travelled": 51.63165296662995,
+        "finished": false,
+        "id": 0,
+        "load": 190.0,
+        "location": {
+          "demand": 0.0,
+          "due": 1236.0,
+          "id": "S5",
+          "kind": "f",
+          "ready": 0.0,
+          "service": 0.0,
+          "x": 31.0,
+          "y": 84.0
+        },
+        "route_history": [
+          "D0",
+          "C30",
+          "S5"
+        ],
+        "served_customers": [
+          "C30"
+        ],
+        "status": "idle",
+        "time": 1200.8289892098621,
+        "waiting_time": 880.0355004490264
+      },
+      "arrival": 1197.9211344706805,
+      "before": {
+        "battery": 77.75,
+        "charging_time": 179.1618357942059,
+        "current_committed_action": null,
+        "departed": true,
+        "distance_travelled": 51.63165296662995,
+        "finished": false,
+        "id": 0,
+        "load": 190.0,
+        "location": {
+          "demand": 0.0,
+          "due": 1236.0,
+          "id": "S5",
+          "kind": "f",
+          "ready": 0.0,
+          "service": 0.0,
+          "x": 31.0,
+          "y": 84.0
+        },
+        "route_history": [
+          "D0",
+          "C30",
+          "S5"
+        ],
+        "served_customers": [
+          "C30"
+        ],
+        "status": "idle",
+        "time": 1197.9211344706805,
+        "waiting_time": 877.1276457098447
+      },
+      "distance": 0.0,
+      "energy_charged": 0.0,
+      "served": null,
+      "service_start": 1197.9211344706805
+    },
+    {
+      "action": {
+        "destination": "",
+        "kind": "wait",
+        "target_battery": 0.0,
+        "wait_duration": 2.90785473918163
+      },
+      "after": {
+        "battery": 48.017862505362984,
+        "charging_time": 264.26732677347763,
+        "current_committed_action": null,
+        "departed": true,
+        "distance_travelled": 105.8898685532761,
+        "finished": false,
+        "id": 1,
+        "load": 150.0,
+        "location": {
+          "demand": 30.0,
+          "due": 809.0,
+          "id": "C85",
+          "kind": "c",
+          "ready": 737.0,
+          "service": 90.0,
+          "x": 68.0,
+          "y": 60.0
+        },
+        "route_history": [
+          "D0",
+          "C12",
+          "S0",
+          "C85"
+        ],
+        "served_customers": [
+          "C12",
+          "C85"
+        ],
+        "status": "idle",
+        "time": 1200.8289892098621,
+        "waiting_time": 650.6717938831085
+      },
+      "arrival": 1197.9211344706805,
+      "before": {
+        "battery": 48.017862505362984,
+        "charging_time": 264.26732677347763,
+        "current_committed_action": null,
+        "departed": true,
+        "distance_travelled": 105.8898685532761,
+        "finished": false,
+        "id": 1,
+        "load": 150.0,
+        "location": {
+          "demand": 30.0,
+          "due": 809.0,
+          "id": "C85",
+          "kind": "c",
+          "ready": 737.0,
+          "service": 90.0,
+          "x": 68.0,
+          "y": 60.0
+        },
+        "route_history": [
+          "D0",
+          "C12",
+          "S0",
+          "C85"
+        ],
+        "served_customers": [
+          "C12",
+          "C85"
+        ],
+        "status": "idle",
+        "time": 1197.9211344706805,
+        "waiting_time": 647.7639391439269
+      },
+      "distance": 0.0,
+      "energy_charged": 0.0,
+      "served": null,
+      "service_start": 1197.9211344706805
+    },
+    {
+      "action": {
+        "destination": "",
+        "kind": "wait",
+        "target_battery": 0.0,
+        "wait_duration": 5.438873295500798
+      },
+      "after": {
+        "battery": 48.017862505362984,
+        "charging_time": 264.26732677347763,
+        "current_committed_action": null,
+        "departed": true,
+        "distance_travelled": 105.8898685532761,
+        "finished": false,
+        "id": 1,
+        "load": 150.0,
+        "location": {
+          "demand": 30.0,
+          "due": 809.0,
+          "id": "C85",
+          "kind": "c",
+          "ready": 737.0,
+          "service": 90.0,
+          "x": 68.0,
+          "y": 60.0
+        },
+        "route_history": [
+          "D0",
+          "C12",
+          "S0",
+          "C85"
+        ],
+        "served_customers": [
+          "C12",
+          "C85"
+        ],
+        "status": "idle",
+        "time": 1206.267862505363,
+        "waiting_time": 656.1106671786093
+      },
+      "arrival": 1200.8289892098621,
+      "before": {
+        "battery": 48.017862505362984,
+        "charging_time": 264.26732677347763,
+        "current_committed_action": null,
+        "departed": true,
+        "distance_travelled": 105.8898685532761,
+        "finished": false,
+        "id": 1,
+        "load": 150.0,
+        "location": {
+          "demand": 30.0,
+          "due": 809.0,
+          "id": "C85",
+          "kind": "c",
+          "ready": 737.0,
+          "service": 90.0,
+          "x": 68.0,
+          "y": 60.0
+        },
+        "route_history": [
+          "D0",
+          "C12",
+          "S0",
+          "C85"
+        ],
+        "served_customers": [
+          "C12",
+          "C85"
+        ],
+        "status": "idle",
+        "time": 1200.8289892098621,
+        "waiting_time": 650.6717938831085
+      },
+      "distance": 0.0,
+      "energy_charged": 0.0,
+      "served": null,
+      "service_start": 1200.8289892098621
+    },
+    {
+      "action": {
+        "destination": "D0",
+        "kind": "return",
+        "target_battery": 0.0,
+        "wait_duration": 0.0
+      },
+      "after": {
+        "battery": 42.57898920986205,
+        "charging_time": 179.1618357942059,
+        "current_committed_action": null,
+        "departed": true,
+        "distance_travelled": 86.8026637567679,
+        "finished": true,
+        "id": 0,
+        "load": 190.0,
+        "location": {
+          "demand": 0.0,
+          "due": 1236.0,
+          "id": "D0",
+          "kind": "d",
+          "ready": 0.0,
+          "service": 0.0,
+          "x": 40.0,
+          "y": 50.0
+        },
+        "route_history": [
+          "D0",
+          "C30",
+          "S5",
+          "D0"
+        ],
+        "served_customers": [
+          "C30"
+        ],
+        "status": "finished",
+        "time": 1236.0,
+        "waiting_time": 880.0355004490266
+      },
+      "arrival": 1236.0,
+      "before": {
+        "battery": 77.75,
+        "charging_time": 179.1618357942059,
+        "current_committed_action": null,
+        "departed": true,
+        "distance_travelled": 51.63165296662995,
+        "finished": false,
+        "id": 0,
+        "load": 190.0,
+        "location": {
+          "demand": 0.0,
+          "due": 1236.0,
+          "id": "S5",
+          "kind": "f",
+          "ready": 0.0,
+          "service": 0.0,
+          "x": 31.0,
+          "y": 84.0
+        },
+        "route_history": [
+          "D0",
+          "C30",
+          "S5"
+        ],
+        "served_customers": [
+          "C30"
+        ],
+        "status": "idle",
+        "time": 1200.8289892098621,
+        "waiting_time": 880.0355004490264
+      },
+      "distance": 35.17101079013795,
+      "energy_charged": 0.0,
+      "served": null,
+      "service_start": 1236.0
+    },
+    {
+      "action": {
+        "destination": "D0",
+        "kind": "return",
+        "target_battery": 0.0,
+        "wait_duration": 0.0
+      },
+      "after": {
+        "battery": 18.285725010725972,
+        "charging_time": 264.26732677347763,
+        "current_committed_action": null,
+        "departed": true,
+        "distance_travelled": 135.62200604791312,
+        "finished": true,
+        "id": 1,
+        "load": 150.0,
+        "location": {
+          "demand": 0.0,
+          "due": 1236.0,
+          "id": "D0",
+          "kind": "d",
+          "ready": 0.0,
+          "service": 0.0,
+          "x": 40.0,
+          "y": 50.0
+        },
+        "route_history": [
+          "D0",
+          "C12",
+          "S0",
+          "C85",
+          "D0"
+        ],
+        "served_customers": [
+          "C12",
+          "C85"
+        ],
+        "status": "finished",
+        "time": 1236.0,
+        "waiting_time": 656.1106671786092
+      },
+      "arrival": 1236.0,
+      "before": {
+        "battery": 48.017862505362984,
+        "charging_time": 264.26732677347763,
+        "current_committed_action": null,
+        "departed": true,
+        "distance_travelled": 105.8898685532761,
+        "finished": false,
+        "id": 1,
+        "load": 150.0,
+        "location": {
+          "demand": 30.0,
+          "due": 809.0,
+          "id": "C85",
+          "kind": "c",
+          "ready": 737.0,
+          "service": 90.0,
+          "x": 68.0,
+          "y": 60.0
+        },
+        "route_history": [
+          "D0",
+          "C12",
+          "S0",
+          "C85"
+        ],
+        "served_customers": [
+          "C12",
+          "C85"
+        ],
+        "status": "idle",
+        "time": 1206.267862505363,
+        "waiting_time": 656.1106671786093
+      },
+      "distance": 29.732137494637012,
+      "energy_charged": 0.0,
+      "served": null,
+      "service_start": 1236.0
+    },
+    {
+      "action": {
+        "destination": "D0",
+        "kind": "return",
+        "target_battery": 0.0,
+        "wait_duration": 0.0
+      },
+      "after": {
+        "battery": 1.5922689413609135,
+        "charging_time": 149.49217504605386,
+        "current_committed_action": null,
+        "departed": true,
+        "distance_travelled": 119.23904951571511,
+        "finished": true,
+        "id": 2,
+        "load": 170.0,
+        "location": {
+          "demand": 0.0,
+          "due": 1236.0,
+          "id": "D0",
+          "kind": "d",
+          "ready": 0.0,
+          "service": 0.0,
+          "x": 40.0,
+          "y": 50.0
+        },
+        "route_history": [
+          "D0",
+          "C64",
+          "S0",
+          "C100",
+          "D0"
+        ],
+        "served_customers": [
+          "C64",
+          "C100"
+        ],
+        "status": "finished",
+        "time": 1236.0,
+        "waiting_time": 787.2687754382314
+      },
+      "arrival": 1236.0,
+      "before": {
+        "battery": 39.67113447068046,
+        "charging_time": 149.49217504605386,
+        "current_committed_action": null,
+        "departed": true,
+        "distance_travelled": 81.16018398639557,
+        "finished": false,
+        "id": 2,
+        "load": 170.0,
+        "location": {
+          "demand": 20.0,
+          "due": 798.0,
+          "id": "C100",
+          "kind": "c",
+          "ready": 744.0,
+          "service": 90.0,
+          "x": 55.0,
+          "y": 85.0
+        },
+        "route_history": [
+          "D0",
+          "C64",
+          "S0",
+          "C100"
+        ],
+        "served_customers": [
+          "C64",
+          "C100"
+        ],
+        "status": "idle",
+        "time": 1197.9211344706805,
+        "waiting_time": 787.2687754382313
+      },
+      "distance": 38.07886552931954,
+      "energy_charged": 0.0,
+      "served": null,
+      "service_start": 1236.0
+    }
+  ],
+  "unserved_customers": []
+}

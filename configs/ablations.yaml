@@ -1,0 +1,29 @@
+# One factor at a time; main benchmark handles repeated scenarios/seeds.
+instances: [c101_21, r101_21, rc101_21]
+experiment_seed: 0
+scenario_seed: 0
+dynamicity: 0.5
+dynamic_selection_mode: exact_count
+algorithm: COORDINATED_MPC_MCTS
+prediction_horizon: 5
+control_horizon: 1
+candidate_limit: 12
+top_L: 3
+uct_c: 1.4
+mcts_iterations: 250
+mcts_time_limit: 0.5
+budget_mode: iterations
+charging_mode: partial
+parallel_agents: false
+workers: 2
+reference_solver_multistarts: 3
+reference_improvement_passes: 1
+reference_seed: 0
+ablations:
+  prediction_horizon: [1, 3, 5, 8]
+  top_L: [1, 3, 5]
+  mcts_iterations: [250, 500, 1000, 2500]
+  charging_mode: [full, partial]
+  algorithm: [INDEPENDENT_MPC_MCTS, COORDINATED_MPC_MCTS]
+  parallel_agents: [false, true]
+  dynamicity: [0.0, 0.1, 0.25, 0.5, 0.75]
