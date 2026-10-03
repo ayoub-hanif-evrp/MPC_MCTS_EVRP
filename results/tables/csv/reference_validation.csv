@@ -1,0 +1,5 @@
+instance,published_vehicles,our_vehicles,vehicle_match,published_distance,our_distance,distance_gap_percent,validation_status
+c101C5,2,2,True,257.75,257.75,-0.0,passed
+c103C5,1,1,True,176.05,176.05,0.0,passed
+c206C5,1,1,True,242.56,242.56,-0.0,passed
+c208C5,1,1,True,158.48,158.48,0.0,passed

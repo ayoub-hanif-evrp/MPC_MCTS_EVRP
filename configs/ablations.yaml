@@ -1,4 +1,5 @@
 # One factor at a time; main benchmark handles repeated scenarios/seeds.
+study: ablations
 instances: [c101_21, r101_21, rc101_21]
 experiment_seed: 0
 scenario_seed: 0

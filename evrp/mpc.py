@@ -58,6 +58,29 @@ class MPCProposal:
     charging_time: float = 0.0
     waiting_time: float = 0.0
     completion_time: float = 0.0
+    terminal_return_distance: float = 0.0
+    new_activation: bool = False
+    mcts_value_estimate: float | None = None
+    unique_predicted_customer_set: tuple[str, ...] = field(init=False)
+    predicted_service_count: int = field(init=False)
+    total_predicted_distance: float = field(init=False)
+    first_action: Action = field(init=False)
+    root_visits: int = field(init=False)
+
+    def __post_init__(self):
+        if not self.actions:
+            raise ValueError("Proposal must contain a first action")
+        sequence = tuple(a.destination for a in self.actions if a.kind == "serve")
+        if self.predicted_customer_sequence and self.predicted_customer_sequence != sequence:
+            raise ValueError("Proposal sequence differs from its actions")
+        if len(sequence) != len(set(sequence)):
+            raise ValueError("Duplicate predicted service")
+        object.__setattr__(self, "predicted_customer_sequence", sequence)
+        object.__setattr__(self, "unique_predicted_customer_set", tuple(sorted(set(sequence))))
+        object.__setattr__(self, "predicted_service_count", len(sequence))
+        object.__setattr__(self, "total_predicted_distance", self.cost)
+        object.__setattr__(self, "first_action", self.actions[0])
+        object.__setattr__(self, "root_visits", self.visits)
 
     @property
     def first(self) -> Action:
@@ -96,7 +119,7 @@ def action_key(action: Action) -> tuple:
 
 
 def proposal_key(proposal: MPCProposal) -> tuple:
-    return (proposal.cost, proposal.charging_time, proposal.waiting_time,
+    return (-proposal.predicted_service_count, proposal.total_predicted_distance, proposal.charging_time, proposal.waiting_time,
             proposal.completion_time, tuple(action_key(a) for a in proposal.actions))
 
 
@@ -136,6 +159,15 @@ class MPCPlanningProblem:
 
     def stage_cost(self, step: Transition) -> float:
         return step.distance
+
+    def reward(self, proposal: MPCProposal) -> float:
+        """One service dominates the entire [0, 0.5] distance contribution."""
+        infra = self.observation.infrastructure
+        bound = infra.parameters.speed * max(0.0, infra.depot.due - self.current_state.time)
+        if proposal.total_predicted_distance < 0 or proposal.total_predicted_distance > bound + 1e-6:
+            raise ValueError("Feasible route exceeds remaining-time distance bound")
+        normalized = min(1.0, proposal.total_predicted_distance / bound) if bound > 0 else 0.0
+        return proposal.predicted_service_count - 0.5 * normalized
 
     def terminal_cost(self, state: MPCState) -> float:
         if self.config.charging_mode == "full":
@@ -233,18 +265,21 @@ class MPCPlanningProblem:
     def proposal(self, actions: tuple[Action, ...], visits: int = 0) -> MPCProposal:
         if not actions:
             raise ValueError("Empty proposal")
-        state, cost, charged = self.initial, 0.0, 0
+        state, cost, charged, activation = self.initial, 0.0, 0, False
         for action in actions:
             if self.done(state):
                 raise ValueError("Plan extends beyond its horizon")
             state, step = self.predict(state, action)
+            if step.before == self.current_state:
+                activation = not self.current_state.departed and step.after.departed and action.kind in {"serve", "charge"}
             cost += self.stage_cost(step)
             charged += int(action.kind == "charge")
         vehicle = state.vehicle
         return MPCProposal(actions, cost + self.terminal_cost(state), visits, vehicle.id, vehicle, cost,
                            charged, tuple(a.destination for a in actions if a.kind == "serve"),
                            vehicle.charging_time - self.current_state.charging_time,
-                           vehicle.waiting_time - self.current_state.waiting_time, vehicle.time)
+                           vehicle.waiting_time - self.current_state.waiting_time, vehicle.time,
+                           self.terminal_cost(state), activation)
 
 
 class MPCController:

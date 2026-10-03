@@ -1,118 +1,177 @@
-# Implementation Audit (2026-10-02)
+# Implementation Report (2026-10-03)
 
-## Status
+## Outcome and Scope
 
-The task is **not yet complete**. A fundamental objective choice is pending.
-The requested distance-only cost, together with a free Wait fallback, causes the
-coordinator to select all-Wait solutions. Tests and end-to-end smoke records prove
-the issue. Adding a service requirement changes the stated mathematical selection
-problem; a service-first lexicographic alternative has been proposed to the user
-but has not been substituted without their answer.
+The requested service-first objective correction and research-output pipeline are
+implemented in the existing architecture. No automatic commit or push was made.
+No full main benchmark, ablation grid, or realtime grid was run. Original Schneider
+benchmark files have no working-tree changes; no external dataset was downloaded.
 
-## Implemented Files and Architecture
+Latest full test command: `python -m pytest -q`: **116 passed in 9.33 seconds**.
+All 24 current small-case records pass independent structural/physical/information
+audits. There are zero execution failures, six complete-service runs and eighteen
+incomplete-service runs across four algorithms. Incompleteness is reported, not
+discarded or misclassified as a physical violation.
 
-- `evrp/instance.py`, `model.py`: verified Schneider parser and common physical engine.
-- `evrp/reference.py`, `scenario.py`: heuristic references, fleet size, reproducible releases.
-- `evrp/observation.py`: simulator-private global partition and filtered observation boundary.
-- `evrp/mpc.py`, `mcts.py`, `agent.py`: explicit MPC formulation/controller, UCT optimizer, EV agents.
-- `evrp/coordinator.py`, `baselines.py`, `simulator.py`: assignment, baselines, non-preemptive events.
-- `evrp/experiments.py`, `analysis.py`, `plotting.py`, `cli.py`, `storage.py`: file-based runs, auditing, statistics, figures, protected artifact storage.
-- `configs/`: debug, default, full benchmark, one-factor ablations, wall-clock experiments.
-- `tests/`: physical, reference/scenario, information boundary, planning, simulator, experiment, regression tests.
-- `docs/`, `README.md`, `requirements.txt`, `pyproject.toml`, `.gitignore`: methodology, assumptions, installation, reproducibility.
-- `data/reference_schedules/`, `data/generated_scenarios/`: generated artifacts, separate from originals.
+## Changed Files
 
-Hierarchy: EVAgent owns MPCController, which builds MPCPlanningProblem and calls
-MCTSOptimizer.solve. Proposals pass to the assignment coordinator, then only their
-first action is dispatched by EventDrivenSimulator. Service horizon and one-action
-control horizon are separate. Tail overlap is permitted; duplicate first-action
-customer commitment is prohibited.
+- `evrp/mpc.py`, `mcts.py`: service-first proposal keys, bounded UCT reward,
+  explicit proposal coverage, activation, distance decomposition and root metadata.
+- `evrp/coordinator.py`: three sequential SciPy binary MILPs for coverage,
+  new activations, then distance; no production enumeration or large penalty.
+- `evrp/reference.py`, `scenario.py`: Pareto charging repair, small subset search,
+  route elimination, dependency versions and stale-artifact rejection.
+- `evrp/simulator.py`: candidate/selection records, coverage and activation metrics.
+- `evrp/experiments.py`: shared persisted scenarios, provenance-bound IDs, structured
+  result sections, safe resume, failure retention and stronger runtime trace checks.
+- `evrp/versions.py`, `validation.py`, `audit.py`: version constants, published
+  reference gate, disk-level schema/hash/trace/configuration integrity auditing.
+- `evrp/analysis.py`, `plotting.py`, `cli.py`: hierarchical service-first statistics,
+  conditional pairing, CSV/LaTeX tables, exact-data figures and study commands.
+- `configs/validation.yaml`, `pilot.yaml`, `main.yaml`, `representative.yaml` added;
+  debug/default/benchmark/ablations/realtime configurations updated.
+- `tests/test_hierarchy.py`, `test_reporting.py`, `tests/__init__.py` added;
+  planning/regression objective expectations updated.
+- README, methodology, assumptions, this report, results policy and `.gitignore`
+  updated; generated summaries/tables/figures and current references/scenarios added.
+- Existing result directories moved intact to `results/archive_preobjective_fix/`.
+  Earlier reporting-pipeline trials remain under an excluded raw pilot subarchive.
 
-## Verified Data and Assumptions
+## Exact Formulation
 
-Actual fields are `StringID Type x y demand ReadyTime DueDate ServiceTime`, with
-vehicle parameters `Q C r g v`. All 92 instances parse. The original benchmark
-directory has no git diff. Tests also compare SHA-256 values around operations.
-No original file was edited and no alternate dataset was downloaded.
+Final execution minimizes `(unserved customers, activated EVs, distance)`
+lexicographically. Local MPC minimizes `(-predicted services, D + terminal_return,
+charging time, waiting time, completion time, canonical actions)`.
 
-The model uses one tour per EV, uniform station hours/rate, hard service-start
-windows, full-precision distances with a 1e-8 feasibility tolerance, and a fixed
-fleet from a heuristic reference. Dynamic uniform releases, discrete partial-charge
-targets, candidate pruning, service-count horizons, and terminal safe return are
-explicit experimental assumptions, detailed in `assumptions.md`.
+MCTS reward is `R = N - 0.5*D_total/B`, where
+`B = speed*(depot_due-current_time)` and the ratio is zero when B=0. Feasibility
+bounds the ratio in [0,1], so another service improves reward by at least 0.5.
+Explicit lexicographic keys, not mean UCT rewards, retain root trajectories/top-L.
 
-## Reference Solver
+The coordinator has binary proposal variables y and union-coverage variables z.
+Exactly one proposal is chosen per ready EV; each first-action customer has at most
+one commitment. `z_i <= sum(covering y)` and `y_kp <= z_i` for every covered i
+define unique intent coverage. Stage 1 maximizes sum z and fixes it; stage 2
+minimizes new first-action activations and fixes them; stage 3 minimizes sum D*y.
+Hidden/committed intent customers are rejected, tails may overlap, and only first
+actions execute. See [methodology](methodology.md) for equations and scope.
 
-Multi-start time-window-aware feasible insertion, full-charge station repair,
-and feasible relocate improvement use the common physical model. Selection is
-lexicographic by fewer routes then shorter distance. It is not claimed optimal.
-The selected one-start `c101_21` reference has 16 routes and distance
-1796.0462117634954. The development construction took approximately 50 seconds.
-All requested smoke instances received feasible references; none failed reference
-construction. The entire benchmark reference grid was not executed.
+## Published Reference Checks
 
-## Verification
+All requested validation cases pass, including exact published vehicle counts:
 
-Latest complete test invocation: `python -m pytest -q`: **76 passed**.
-Coverage includes all-instance parsing, missing-parameter rejection, time/energy/load
-physics, partial/full charge, multi-station return, scenario preservation, exact
-release visibility, hidden-state perturbation, MCTS/terminal information isolation,
-distinct proposals, customer-count horizons, UCT, root statistics, commitment/tail
-separation, exhaustive assignment comparisons, non-preemption during customer-window
-waiting, simultaneous events, fixed-seed replay, process-parallel equivalence,
-reference persistence, failed-run retention, and trace tampering detection.
-End-to-end GREEDY tests separately verify full-charge targets and actual partial
-charges. Independent C5 release scenarios have been persisted for seeds 0, 1, 2.
+| Instance | Published / our EVs | Published distance | Our distance |
+| --- | --- | ---: | ---: |
+| c101C5 | 2 / 2 | 257.75 | 257.7474518642 |
+| c103C5 | 1 / 1 | 176.05 | 176.0544331488 |
+| c206C5 | 1 / 1 | 242.56 | 242.5556517150 |
+| c208C5 | 1 / 1 | 158.48 | 158.4806595843 |
 
-A near-simultaneous event exposed rejection of a positive wait below 1e-8; this was
-fixed and given a regression test. Full-charge SOC assignment was also corrected
-to land exactly at the requested target rather than accumulate rounding overshoot.
+Source: Schneider et al., Technical Report 02/2012, Table 3, CPLEX column;
+[citation and rounding note](methodology.md#reference-validation-and-dynamicization).
+The configured tolerance is 0.011 distance units. This validation says nothing
+about optimality of larger heuristic references. Current reference/scenario
+versions are saved in every dependent artifact; old versions fail explicitly.
 
-## Smoke Results
+## Coordinated Smoke Results
 
-All seven requested coordinated MPC-MCTS smoke cases ran end-to-end, including the
-100-customer case with two iterations and H_p=1. Under the literal current objective,
-they served zero customers and were correctly recorded as infeasible. Their
-zero distance is not a routing success. Safe returns and physical invariants held.
+All rows use COORDINATED_MPC_MCTS, H_p=3, L=3, 64 iterations per replan,
+scenario seed 0 and algorithm seed 0. Timing is summed measured planning wall time.
+Distances on incomplete rows are raw diagnostics, NOT superior routing outcomes.
 
-Greedy smoke runs exercised actual routing and charging:
+| Instance | Target / realized DoD | Served | EVs | Distance | Planning seconds |
+| --- | --- | ---: | ---: | ---: | ---: |
+| c101C5 | 0.00 / 0.00 | 5/5 | 2 | 283.32 | 0.463 |
+| c101C5 | 0.50 / 0.60 | 4/5 | 2 | 198.34 | 0.293 |
+| r104C5 | 0.50 / 0.20 | 5/5 | 2 | 136.69 | 0.309 |
+| rc105C5 | 0.50 / 0.60 | 4/5 | 2 | 168.05 | 0.341 |
+| c101C10 | 0.50 / 0.50 | 9/10 | 3 | 489.83 | 1.577 |
+| c103C15 | 0.50 / 0.40 | 13/15 | 3 | 570.84 | 2.840 |
 
-| Instance | Target DoD | Served | Total distance | All served? |
-| --- | ---: | ---: | ---: | --- |
-| c101C5 | 0.00 | 4/5 | 253.011 | No |
-| c101C5 | 0.50 | 5/5 | 341.664 | Yes |
-| r104C5 | 0.50 | 5/5 | 195.416 | Yes |
-| rc105C5 | 0.50 | 4/5 | 183.222 | No |
-| c101C10 | 0.50 | 9/10 | 482.769 | No |
-| c103C15 | 0.50 | 13/15 | 447.706 | No |
-| c101_21 | 0.50 | 65/100 | 1716.532 | No |
+Every EV returned safely; battery, load, windows, unique service and information
+boundaries passed replay. All-Wait no longer dominates service. In the fixed
+representative's first epoch, the coordinator selects service to C64 for one EV
+and leaves the other idle, avoiding a duplicate activation for the same coverage.
+Unit tests also verify an already-active EV covering work while an unused EV waits.
 
-All seven greedy runs returned every EV safely, with zero battery/capacity/window
-violations, no duplicate service, and no trace-audit failures. Unserved requests
-remain in results. These low-budget/single-seed checks are not comparative evidence.
-Actual realized DoD is stored and can differ from the target because zero-bound
-customers cannot be dynamic and exact counts use half-up rounding.
+Greedy, H1 and independent MPC-MCTS were run on precisely these same six scenarios,
+not on additional main instances. Their full outcomes appear in `per_run.csv`.
+Different algorithms win different pilot service outcomes: for example Greedy
+serves 14/15 on c103C15 versus coordinated 13/15. This is not evidence of superiority
+of either method from one seed. Distances are compared only under the stated filters.
 
-Greedy verification records are under `results/verified_greedy/`; development
-coordinated records are under `results/smoke/`. Aggregation ran successfully and
-36 matplotlib figures were created under `results/figures_greedy/`; an SOC plot was
-visually inspected. Runtime values vary across machines/runs.
+## Results Layout and Artifacts
 
-## Commands
+```text
+results/
+  archive_preobjective_fix/
+  raw/{validation,pilot,main,ablations,realtime}/
+  traces/representative/
+  summaries/
+  tables/{csv,latex}/
+  figures/{main,ablations,diagnostics,representative}/
+```
+
+Summaries include per_run, main_by_family, main_overall, paired_comparisons,
+computation, failures, reference_validation, seven ablation tables, and audit CSV/MD.
+Thirteen CSV/LaTeX table pairs were exported (six core plus seven ablation layouts).
+The seven ablation tables are empty because those experiments were not run.
+
+Fourteen figure triplets (PDF, 300-dpi PNG, exact-data CSV) were generated:
+
+- Main: service/full-service versus DoD, vehicles versus DoD, complete-only distance,
+  and coordinated-versus-independent paired differences.
+- Diagnostics: mean/p95 latency versus size, separately for DoD 0 and 0.5.
+- Ablations: horizon, budget, L and charging export layouts, explicitly marked
+  "not run" with no observations. These are not scientific findings.
+- Fixed representative: routes, release/assignment/service timeline, SOC with
+  charging markers, and MPC first-action/release timeline.
+
+The representative proposal table is also exported as CSV/LaTeX. Route labels,
+SOC, unserved-customer visibility, timelines, and conditional-distance plots were
+visually inspected. Overlapping depot/S0 labels were corrected. The representative
+case was fixed before inspection and remains incomplete; C100 is visibly unserved.
+
+All 61 archived pre-fix files were verified against their committed Git contents.
+The final `git diff --check` passes, and the original benchmark has no changes.
+Table exports were tested through a CSV round trip, including empty ablation
+outcome columns and the actual maximum observed planning latency.
+
+## Remaining Methodological Limits
+
+The structural development gates pass; solution quality is not validated for the
+full paper study. Four of six coordinated smoke runs remain incomplete. Intent
+coverage is optimistic, and locally retained top-L charge alternatives can target
+the same customer, omitting other observed customers from coordinator choices.
+The representative first epoch demonstrates this limited proposal diversity.
+Increasing L or search budget is an ablation question, not a silent outcome-tuned fix.
+
+Finite service horizons, discrete charge targets, deterministic myopic information,
+and larger-reference heuristic quality remain limitations. No future-demand model
+or full-service guarantee has been added. Scenario repeats within an instance may
+be correlated; CIs are descriptive. Pilot DoD groups contain different instance
+mixes, so their plotted slopes are not controlled dynamicity effects. Latency
+depends on this machine; average run-p95 is not a pooled percentile.
+
+## Reproduction and Next Commands
 
 ```powershell
 python -m pytest -q
-python -m evrp.cli scenario --instance c101C5 --config configs/debug.yaml
-python -m evrp.cli run --instance c101C5 --config configs/debug.yaml --algorithm GREEDY
-python -m evrp.cli run --instance c101C5 --config configs/default.yaml --algorithm COORDINATED_MPC_MCTS
-python -m evrp.cli benchmark --config configs/benchmark.yaml
-python -m evrp.cli ablations --config configs/ablations.yaml
-python -m evrp.cli benchmark --config configs/realtime.yaml
-python -m evrp.cli aggregate --input results/verified_greedy --output results/aggregate_greedy
-python -m evrp.cli plot --input results/verified_greedy --output results/figures_greedy
+python -m evrp.cli validate --config configs/validation.yaml
+python -m evrp.cli smoke --config configs/pilot.yaml
+python -m evrp.cli smoke --config configs/pilot.yaml --algorithm GREEDY
+python -m evrp.cli smoke --config configs/pilot.yaml --algorithm MPC_MCTS_H1
+python -m evrp.cli smoke --config configs/pilot.yaml --algorithm INDEPENDENT_MPC_MCTS
+python -m evrp.cli aggregate
+python -m evrp.cli audit
+python -m evrp.cli tables
+python -m evrp.cli plot --study pilot
+python -m evrp.cli representative
 ```
 
-No commit or push was made. The active project goal remains open. Resolve the
-service requirement, update MPC/MCTS/coordination consistently, rerun all baselines
-and ablations needed for correctness, and refresh this audit before claiming the
-proposed method or the project is complete.
+For a deliberately expanded pilot use `python -m evrp.cli benchmark --config
+configs/pilot.yaml`. After reviewing the methodological limits and explicitly
+deciding to proceed, the unexecuted main command is `python -m evrp.cli benchmark
+--config configs/main.yaml`; ablations use `python -m evrp.cli ablations --config
+configs/ablations.yaml`; realtime uses `python -m evrp.cli realtime --config
+configs/realtime.yaml`. Main is never launched by default.

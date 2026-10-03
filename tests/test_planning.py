@@ -99,20 +99,20 @@ def proposal(*customers, cost=1):
 
 def test_coordinator_conflicts_and_tail_intentions():
     wait = MPCProposal((Action("wait", wait_duration=1),), 10)
-    selected = coordinate({0: (proposal("A", "B"), wait), 1: (proposal("A"), proposal("B", "A", cost=2), wait)})
+    selected = coordinate({0: (proposal("A", "B"), wait), 1: (proposal("A"), proposal("B", "A", cost=2), wait)}, available=frozenset({"A", "B"}))
     assert {p.first.destination for p in selected.values()} == {"A", "B"}
     assert selected[0].actions[1].destination == "B"
 
 
 def test_noncustomer_actions_do_not_conflict():
     charge = MPCProposal((Action("charge", "S", 10),), 1)
-    selected = coordinate({0: (charge,), 1: (charge,)})
+    selected = coordinate({0: (charge,), 1: (charge,)}, available=frozenset())
     assert len(selected) == 2
 
 
 def test_wait_fallback_and_existing_commitment():
     wait = MPCProposal((Action("wait", wait_duration=1),), 10)
-    selected = coordinate({0: (proposal("A"), wait), 1: (proposal("A"), wait)}, frozenset({"A"}))
+    selected = coordinate({0: (proposal("A"), wait), 1: (proposal("A"), wait)}, frozenset({"A"}), available=frozenset())
     assert all(p.first.kind == "wait" for p in selected.values())
 
 

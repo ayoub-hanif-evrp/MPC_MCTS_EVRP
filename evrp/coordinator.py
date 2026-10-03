@@ -1,80 +1,77 @@
-"""Exact minimum-cost compatible selection of FIRST actions only."""
+"""Three sequential MILPs: union coverage, new activations, predicted distance."""
 
 from math import isfinite
 
-from .mpc import CandidatePlan
+import numpy as np
+from scipy.optimize import Bounds, LinearConstraint, milp
+from scipy.sparse import lil_matrix
+
+from .mpc import MPCProposal, action_key
 
 
-def coordinate(candidates: dict[int, tuple[CandidatePlan, ...]],
-               committed: frozenset[str] = frozenset()) -> dict[int, CandidatePlan]:
-    """Solve rectangular assignment by min-cost flow with private fallback columns.
-
-    Customers are shared columns; charge/wait/return alternatives share one private
-    column per EV. Predicted second and later customer visits create no conflicts.
-    Successive shortest augmenting paths use Bellman-Ford (negative costs allowed).
-    """
+def coordinate(candidates: dict[int, tuple[MPCProposal, ...]],
+               committed: frozenset[str] = frozenset(), *,
+               available: frozenset[str]) -> dict[int, MPCProposal]:
     if not candidates:
         return {}
-    ids = sorted(candidates)
-    customers = sorted({p.first.destination for plans in candidates.values() for p in plans
-                        if p.first.kind == "serve" and p.first.destination not in committed})
-    columns = [("customer", c) for c in customers] + [("fallback", i) for i in ids]
-    source = 0
-    row_offset, col_offset = 1, 1 + len(ids)
-    sink = col_offset + len(columns)
-    graph: list[list[list]] = [[] for _ in range(sink + 1)]
-
-    def add_edge(a: int, b: int, cost: float) -> list:
-        forward = [b, len(graph[b]), 1, cost]
-        backward = [a, len(graph[a]), 0, -cost]
-        graph[a].append(forward)
-        graph[b].append(backward)
-        return forward
-
+    available = available - committed
     records = []
-    column_indices = {key: col_offset + j for j, key in enumerate(columns)}
-    for i, vehicle_id in enumerate(ids):
-        row = row_offset + i
-        add_edge(source, row, 0.0)
-        alternatives = {}
-        for plan in candidates[vehicle_id]:
-            if not plan.actions or not isfinite(plan.cost):
-                raise ValueError("Coordinator requires nonempty finite-cost candidates")
-            action = plan.first
-            if action.kind == "serve" and action.destination in committed:
+    for vehicle in sorted(candidates):
+        for proposal in sorted(candidates[vehicle], key=lambda p: tuple(action_key(a) for a in p.actions)):
+            if not proposal.actions or not isfinite(proposal.cost) or proposal.cost < 0:
+                raise ValueError("Coordinator requires nonempty, nonnegative finite-distance proposals")
+            if proposal.first.kind == "serve" and proposal.first.destination in committed:
                 continue
-            key = ("customer", action.destination) if action.kind == "serve" else ("fallback", vehicle_id)
-            if key not in alternatives or plan.cost < alternatives[key].cost:
-                alternatives[key] = plan
-        for key, plan in alternatives.items():
-            edge = add_edge(row, column_indices[key], plan.cost)
-            records.append((vehicle_id, plan, edge))
-    for column in column_indices.values():
-        add_edge(column, sink, 0.0)
-    for _ in ids:
-        distances = [float("inf")] * len(graph)
-        previous = [None] * len(graph)
-        distances[source] = 0.0
-        for _ in range(len(graph) - 1):
-            changed = False
-            for a, edges in enumerate(graph):
-                for j, (b, _, capacity, cost) in enumerate(edges):
-                    if capacity and distances[a] + cost < distances[b]:
-                        distances[b] = distances[a] + cost
-                        previous[b] = (a, j)
-                        changed = True
-            if not changed:
-                break
-        if previous[sink] is None:
-            raise ValueError("Candidate sets have no compatible first-action assignment")
-        node = sink
-        while node != source:
-            a, j = previous[node]
-            edge = graph[a][j]
-            edge[2] -= 1
-            graph[node][edge[1]][2] += 1
-            node = a
-    selected = {vehicle: plan for vehicle, plan, edge in records if edge[2] == 0}
-    if len(selected) != len(ids):
-        raise RuntimeError("Assignment did not select exactly one plan per vehicle")
+            if not set(proposal.unique_predicted_customer_set) <= available:
+                raise ValueError("Proposal contains unavailable or hidden customer information")
+            records.append((vehicle, proposal))
+    customer_ids = sorted(available)
+    m, size = len(records), len(records) + len(customer_ids)
+    if not records:
+        raise ValueError("No admissible proposals")
+    rows, lower, upper = [], [], []
+
+    def constraint(values, lo, hi):
+        rows.append(values)
+        lower.append(lo)
+        upper.append(hi)
+
+    for vehicle in sorted(candidates):
+        constraint({j: 1 for j, (k, _) in enumerate(records) if k == vehicle}, 1, 1)
+    for offset, customer in enumerate(customer_ids):
+        firsts = {j: 1 for j, (_, p) in enumerate(records) if p.first.kind == "serve" and p.first.destination == customer}
+        constraint(firsts, 0, 1)
+        covering = [j for j, (_, p) in enumerate(records) if customer in p.unique_predicted_customer_set]
+        z = m + offset
+        constraint({z: 1, **{j: -1 for j in covering}}, -np.inf, 0)
+        # Both directions make z the union indicator in every optimization stage.
+        for j in covering:
+            constraint({j: 1, z: -1}, -np.inf, 0)
+
+    def solve(objective):
+        matrix = lil_matrix((len(rows), size), dtype=float)
+        for i, row in enumerate(rows):
+            for j, value in row.items():
+                matrix[i, j] = value
+        result = milp(np.asarray(objective, dtype=float), integrality=np.ones(size), bounds=Bounds(0, 1),
+                      constraints=LinearConstraint(matrix.tocsc(), lower, upper), options={"mip_rel_gap": 0.0})
+        if not result.success or result.x is None:
+            raise RuntimeError(f"Lexicographic coordination failed: {result.message}")
+        solution = np.rint(result.x).astype(int)
+        actual = matrix.tocsr() @ solution
+        if np.any(actual < np.asarray(lower) - 1e-7) or np.any(actual > np.asarray(upper) + 1e-7):
+            raise RuntimeError("MILP returned a numerically infeasible assignment")
+        return solution
+
+    solution = solve([0] * m + [-1] * len(customer_ids))
+    coverage = int(solution[m:].sum())
+    constraint({m + j: 1 for j in range(len(customer_ids))}, coverage, coverage)
+    activation = [int(p.new_activation) for _, p in records] + [0] * len(customer_ids)
+    solution = solve(activation)
+    count = int(np.dot(activation, solution))
+    constraint({j: a for j, a in enumerate(activation) if a}, count, count)
+    solution = solve([p.total_predicted_distance for _, p in records] + [0] * len(customer_ids))
+    selected = {k: p for j, (k, p) in enumerate(records) if solution[j]}
+    if len(selected) != len(candidates):
+        raise RuntimeError("Exactly one proposal per ready EV was not selected")
     return selected

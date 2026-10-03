@@ -1,0 +1,13 @@
+study,ablation_factor,first,second,metric,difference,condition,matched_pairs,eligible_pairs,unmatched_records,ambiguous_records,n,mean,median,standard_deviation,ci95_low,ci95_high
+pilot,baseline,COORDINATED_MPC_MCTS,GREEDY,customers_unserved,first-minus-second,all matched service outcomes,6,6,0,0,6,-0.6666666666666666,0.0,2.2509257354845507,-3.0288683562432355,1.6955350229099024
+pilot,baseline,COORDINATED_MPC_MCTS,GREEDY,vehicles_activated,first-minus-second,equal service count,6,2,0,0,2,0.0,0.0,0.0,0.0,0.0
+pilot,baseline,COORDINATED_MPC_MCTS,GREEDY,total_distance,first-minus-second,equal service count and vehicle count,6,2,0,0,2,-41.799231304045705,-41.799231304045705,23.938349136804852,-256.87676504504145,173.27830243695007
+pilot,baseline,COORDINATED_MPC_MCTS,GREEDY,total_planning_time,first-minus-second,all matched service outcomes,6,6,0,0,6,0.9574495834337237,0.39565549994586036,1.0275900076714348,-0.12093999381766796,2.035839160685115
+pilot,baseline,COORDINATED_MPC_MCTS,MPC_MCTS_H1,customers_unserved,first-minus-second,all matched service outcomes,6,6,0,0,6,-1.1666666666666667,-0.5,1.4719601443879744,-2.7113941026938466,0.3780607693605129
+pilot,baseline,COORDINATED_MPC_MCTS,MPC_MCTS_H1,vehicles_activated,first-minus-second,equal service count,6,3,0,0,3,0.0,0.0,0.0,0.0,0.0
+pilot,baseline,COORDINATED_MPC_MCTS,MPC_MCTS_H1,total_distance,first-minus-second,equal service count and vehicle count,6,3,0,0,3,-8.283643786328318,-3.255425070416976,11.64275356417783,-37.20584698371803,20.6385594110614
+pilot,baseline,COORDINATED_MPC_MCTS,MPC_MCTS_H1,total_planning_time,first-minus-second,all matched service outcomes,6,6,0,0,6,0.6261947332726171,0.21178704994963482,0.8036965033522465,-0.21723302100501296,1.469622487550247
+pilot,baseline,COORDINATED_MPC_MCTS,INDEPENDENT_MPC_MCTS,customers_unserved,first-minus-second,all matched service outcomes,6,6,0,0,6,-0.5,-0.5,0.5477225575051661,-1.0747995726208992,0.07479957262089909
+pilot,baseline,COORDINATED_MPC_MCTS,INDEPENDENT_MPC_MCTS,vehicles_activated,first-minus-second,equal service count,6,3,0,0,3,0.0,0.0,0.0,0.0,0.0
+pilot,baseline,COORDINATED_MPC_MCTS,INDEPENDENT_MPC_MCTS,total_distance,first-minus-second,equal service count and vehicle count,6,3,0,0,3,-5.736387357453424,0.0,50.151760212739006,-130.32026621257813,118.8474914976713
+pilot,baseline,COORDINATED_MPC_MCTS,INDEPENDENT_MPC_MCTS,total_planning_time,first-minus-second,all matched service outcomes,6,6,0,0,6,0.035201616604657225,0.03493139985948801,0.12516201918186795,-0.09614786708613984,0.1665511002954543

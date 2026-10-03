@@ -1,100 +1,75 @@
 # Data Facts and Experimental Assumptions
 
-## Verified Data Facts
+## Data and Physics
 
-All 92 local instances parse without supplying missing parameters. Every station
-has zero demand/service and the same opening/closing interval as its depot.
-`c101C5` has 5 customers, 3 stations, Q=77.75, C=200, r=1, g=3.47, v=1.
-`c101C10` has 10 customers and 5 stations. `c103C15` has 15 and 5.
-`r104C5` has 5 and 3; `rc105C5` has 5 and 4.
-`c101_21` has 100 customers, 21 stations, Q=79.69, C=200, r=1, g=3.39, v=1.
-The original files include the station S0 at depot coordinates; it is kept distinct.
+- All 92 local Schneider instances parse with no defaulted missing parameters.
+  Original files are immutable; no alternate dataset was downloaded.
+- Stations have common depot hours, zero demand/service and uniform linear charge
+  rate. S0 is distinct from the depot even when coordinates coincide.
+- One depot-to-depot tour per EV, no reloading or later reactivation after Return.
+  Initial battery is Q; remaining delivery freight is C.
+- Hard time windows constrain service start. Travel, early waiting, service and
+  charging macro-actions are non-preemptive. Passive Wait is interruptible.
+- Euclidean distances retain full precision; feasibility tolerance is 1e-8.
+  Positive sub-tolerance waits are legal when they advance representable time.
+- Unlimited concurrent station capacity, no traffic/queues/heterogeneous EVs.
+  Planning wall time does not advance physical simulation time.
+- Every dispatched action preserves a feasible final return. This is not a
+  guarantee of serving all current or future requests.
 
-## Modeling Choices
+## Reference and Scenarios
 
-- One depot-to-depot tour per EV; return retires that EV. No reload or second tour.
-- Remaining freight is modeled as a delivery resource, initialized to C. No online
-  loading schedule is introduced.
-- Hard customer due times constrain service start. Departure may occur later,
-  provided final depot return remains feasible.
-- Macro-actions are non-preemptive, including customer-window waiting.
-- Passive idle time may be interrupted by release or another completion event.
-- No periodic global replanning. Idle deadlines come from safe-return slack.
-- Floating-point feasibility tolerance is 1e-8; coordinates/distances are unrounded.
-  Positive waits shorter than that tolerance remain valid when they advance time.
-- Planning computations do not consume modeled vehicle operating time.
-- Every accepted action preserves a feasible final return; that condition does
-  not guarantee future requests or even all current requests can be served.
-- Stations have unlimited concurrent capacity, uniform linear g, and no queues.
-- No station revisit is allowed between predicted customer services, preventing
-  search cycles; later revisits after service are permitted.
+Five-customer subset/permutation search with Pareto full-charge repair reproduces
+the four requested published counts and distances. Larger instances use multistart
+insertion, targeted route reduction and relocate, with at most 24 retained labels
+per customer position. This is heuristic and can overestimate minimum fleet size.
+K is never enlarged to rescue an online algorithm.
 
-## Scenario and Fleet Choices
+Uniform dynamic releases under reference predecessor-departure/ready-time bounds
+are an experimental choice, not the original Yang benchmark. Exact-count half-up
+rounding saturates at eligible requests; realized DoD can differ from the target.
+For five customers target 0.5 can mean 3/5 dynamic, not exactly one half. References
+and scenarios are versioned dependencies, never inputs to an online policy.
 
-The heuristic reference uses full charging, deterministic multi-start insertion,
-and feasible relocate improvement. Its route count fixes K, which is never enlarged
-to repair an online policy. This can overestimate the minimum feasible fleet.
-An inability to construct a reference is a failure, not permission to fabricate one.
+## MPC and Coordination
 
-Release bounds use our reference's predecessor departures, not best-known schedules.
-Uniform sampling on `(0, bound]` is our choice. Zero-bound customers cannot be
-dynamic. Exact-count uses half-up rounding and saturates at eligibility; realized
-DoD may differ substantially from the target. Bernoulli mode draws for all customers
-and then applies eligibility. Generated scenarios and references are separate JSON
-artifacts, tied to immutable benchmark SHA-256 values.
+The final objective is lexicographic unserved/activated/distance. MPC uses predicted
+service then predicted-plus-terminal distance, followed by time/canonical ties.
+UCT reward is `N - 0.5*D/[v*(depot_due-current_time)]`, with a checked feasibility
+bound. Explicit lexicographic comparisons govern retained proposals.
 
-## MPC and Search Choices
+H_p counts services, H_c=1 action. No station revisit between two predicted services;
+after service revisits are allowed. Partial-charge targets are a finite set of
+fractions and safe energy thresholds, not a continuous optimum. Candidate limits,
+heuristic rollouts and finite search budgets may miss better feasible trajectories.
 
-Distance stage cost plus feasible-return distance is the literal current objective.
-The free-Wait degeneracy remains unresolved; it is not hidden by a large reward or
-penalty. The framework is not a completed proposed-method implementation until a
-service requirement is selected and validated.
+Intent-union coverage is an optimistic surrogate. Overlapping tails are allowed
+and never reserved; their simultaneous future execution is not guaranteed. New
+activation minimization can leave unused vehicles idle and does not guarantee
+capacity for an unseen future request. The bounded reward fixes free-Wait dominance,
+not every possible form of online myopia or charging inefficiency.
 
-Prediction horizon counts customer services, not raw actions. Wait/return terminate
-the prediction. Partial charging branches over actual safe energy thresholds and
-fractions 0.5, 0.75, 1.0 of Q, not a continuous optimizer. This is a finite
-approximation to EVRPTW-PR; MCTS cannot claim continuous-charge or routing optimality.
-Full mode permits only Q targets and checks full-charge return feasibility.
+## Configurations
 
-Customer candidates interleave urgency and proximity after feasibility pruning.
-Charging actions are generated from all remaining observed customers, even if a
-customer was excluded by the direct-service candidate limit. Rollouts randomize
-among up to three promising customers. UCT operates on unnormalized negative
-distance, so exploration-coefficient sensitivity is a research assumption.
-Top-L counts distinct root actions; the fallback is additional and separately
-reported. Wall-clock budgets stop between simulations, with possible overshoot.
-
-## Default Parameters
-
-`configs/default.yaml` is the authoritative default configuration:
-
-| Parameter | Default |
-| --- | --- |
-| experiment/scenario/reference seed | 0 / 0 / 0 |
-| target DoD / selection | 0.5 / exact_count |
-| algorithm | COORDINATED_MPC_MCTS |
-| prediction/control horizons | 5 customer services / 1 action |
-| candidate limit / top-L | 12 / 3 plus fallback |
-| UCT c | 1.4 |
-| budget mode / iterations | iterations / 250 |
-| wall-clock limit (when selected) | 0.5 seconds |
-| charging mode / fractions | partial / 0.5, 0.75, 1.0 |
-| parallel agents / workers | false / 2 |
-| reference starts / relocate passes | 3 / 1 |
-| simulator event guard | 100000 |
-
-`debug.yaml` uses horizon 3, 8 iterations, a 0.1-second alternative limit, and one
-reference start. The `_21` smoke override uses horizon 1 and 2 iterations, solely
-to test scale and termination. The full benchmark and one-factor ablation YAMLs
-are not automatically executed. Suggested iteration budgets are 250, 500, 1000,
-2500; supported wall-clock examples are 0.1, 0.5, 1.0, 2.0 seconds.
+The CLI defaults to `configs/pilot.yaml`: H_p=3, L=3 plus fallback, 64 iterations,
+candidate limit 12, UCT c=1.4, partial charging, sequential agents, seeds 0.
+`debug.yaml` is an 8-iteration test config. `default.yaml` offers H_p=5/250 for a
+single run, not a full grid. Main/ablations/realtime require explicit config commands.
+Parallel processes preserve seeds/order but may be slower on small instances.
+Wall-clock budgets stop between full simulations and can overshoot by one simulation.
 
 ## Reporting Limits
 
-Heuristic references and best-found MCTS plans are not optimality claims. The
-offline reference is not an online competitor. Runtimes depend on the machine;
-process parallelism need not speed up small instances. Fixed-seed logical results
-exclude measured latency; wall-clock search is not strictly reproducible.
-Failed runs remain in aggregates. Missing numeric metrics are not imputed.
-Student-t intervals are descriptive and unavailable for n<2; no significance test
-is performed. Distance without service ratio can favor policies that neglect work.
+Pilot data are small, single-seed and unbalanced across DoD. They establish
+execution/integrity behavior, not statistical superiority or a controlled DoD effect.
+Incomplete runs remain visible. Distance comparisons are conditional on complete
+service or on equal-service/equal-vehicle paired outcomes. Vehicle marginal means
+are descriptive and must not override unequal service quality.
+
+Algorithm-seed repetitions are averaged within environment before CIs. Scenarios
+of the same instance may still be correlated; use the descriptive intervals with
+that limitation. No formal significance claim is automated. p95 latency means the
+mean within-run decision p95, not a pooled percentile. Runtime depends on hardware.
+
+The full 56-instance main benchmark, configured ablations, and realtime study have
+not been run. Empty ablation figures test export paths only and are not findings.

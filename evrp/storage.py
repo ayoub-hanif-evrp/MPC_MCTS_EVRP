@@ -4,6 +4,7 @@ from dataclasses import asdict, is_dataclass
 from hashlib import sha256
 from pathlib import Path
 import json
+import gzip
 
 ROOT = Path(__file__).resolve().parents[1]
 BENCHMARK = ROOT / "data" / "evrptw_instances"
@@ -31,8 +32,20 @@ def save_json(path: str | Path, data: object) -> None:
     encoded = json.dumps(asdict(data) if is_dataclass(data) else data,
                          indent=2, sort_keys=True, allow_nan=False) + "\n"
     temporary = path.with_suffix(path.suffix + ".tmp")
-    temporary.write_text(encoded, encoding="utf-8")
+    if path.suffix == ".gz":
+        with gzip.open(temporary, "wt", encoding="utf-8", compresslevel=3) as stream:
+            stream.write(encoded)
+    else:
+        temporary.write_text(encoded, encoding="utf-8")
     temporary.replace(path)
+
+
+def load_json(path: str | Path):
+    path = Path(path)
+    if path.suffix == ".gz":
+        with gzip.open(path, "rt", encoding="utf-8") as stream:
+            return json.load(stream)
+    return json.loads(path.read_text(encoding="utf-8"))
 
 
 def benchmark_hashes() -> dict[str, str]:

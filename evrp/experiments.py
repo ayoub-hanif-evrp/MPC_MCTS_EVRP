@@ -7,6 +7,8 @@ from pathlib import Path
 import json
 import platform
 import traceback
+import subprocess
+from datetime import datetime, timezone
 
 import yaml
 
@@ -15,7 +17,8 @@ from .mpc import MPCConfig
 from .reference import ReferenceConfig, ReferenceSchedule, solve_reference
 from .scenario import DynamicScenario, generate
 from .simulator import EventDrivenSimulator, ExperimentResult, SimulationConfig, SimulationEvent
-from .storage import BENCHMARK, ROOT, benchmark_hashes, identifier, save_json
+from .storage import BENCHMARK, ROOT, benchmark_hashes, identifier, save_json, load_json
+from .versions import OBJECTIVE_VERSION, REFERENCE_SOLVER_VERSION, RESULT_SCHEMA_VERSION, SCENARIO_GENERATOR_VERSION
 
 
 def load_config(path: str | Path) -> dict:
@@ -50,23 +53,37 @@ def prepare(instance_name: str, config: dict):
     instance = load_instance(path)
     ref_config = ReferenceConfig(config.get("reference_solver_multistarts", 3),
                                  config.get("reference_improvement_passes", 1),
-                                 config.get("reference_seed", 0))
-    key = identifier({"instance": instance.sha256, "config": asdict(ref_config), "generator_version": 1})[:16]
+                                 config.get("reference_seed", 0), config.get("reference_label_limit", 24))
+    key = identifier({"instance": instance.sha256, "config": asdict(ref_config),
+                      "reference_solver_version": REFERENCE_SOLVER_VERSION})[:16]
     ref_path = ROOT / "data" / "reference_schedules" / f"{instance.name}_{key}.json"
     if ref_path.exists():
         reference = ReferenceSchedule.load(ref_path, instance)
     else:
         reference = solve_reference(instance, ref_config)
         reference.save(ref_path)
+    scenario_key = identifier(dict(instance=instance.sha256, reference=reference.identifier,
+                                  seed=config.get("scenario_seed", 0), dynamicity=config.get("dynamicity", 0.5),
+                                  selection=config.get("dynamic_selection_mode", "exact_count"),
+                                  generator=SCENARIO_GENERATOR_VERSION, objective=OBJECTIVE_VERSION))[:20]
+    scenario_path = ROOT / "data" / "generated_scenarios" / f"{instance.name}_{scenario_key}.json"
     if config.get("scenario_path"):
         scenario = DynamicScenario.load(config["scenario_path"], instance)
         if scenario.reference_schedule_identifier != reference.identifier or scenario.fleet_size != reference.fleet_size:
             raise ValueError("Scenario must use the selected reference schedule and its fleet size")
+        if scenario.scenario_seed != config.get("scenario_seed", 0) or scenario.target_DoD != config.get("dynamicity", 0.5):
+            raise ValueError("Explicit scenario seed/DoD differs from requested configuration")
+        scenario_path = Path(config["scenario_path"])
+    elif scenario_path.exists():
+        scenario = DynamicScenario.load(scenario_path, instance)
+        if (scenario.reference_schedule_hash != reference.identifier or scenario.scenario_seed != config.get("scenario_seed", 0)
+                or scenario.target_DoD != config.get("dynamicity", 0.5)
+                or scenario.selection_mode != config.get("dynamic_selection_mode", "exact_count")):
+            raise ValueError("Stale or mismatched cached scenario")
     else:
         scenario = generate(instance, reference, config.get("scenario_seed", 0), config.get("dynamicity", 0.5),
                             config.get("dynamic_selection_mode", "exact_count"))
-    scenario_path = ROOT / "data" / "generated_scenarios" / f"{instance.name}_{scenario.identifier[:16]}.json"
-    scenario.save(scenario_path)
+        scenario.save(scenario_path)
     return instance, reference, scenario, scenario_path
 
 
@@ -83,6 +100,9 @@ def static_reference_result(instance, reference, scenario, config) -> Experiment
                "time_window_violations": 0, "battery_violations": 0, "capacity_violations": 0,
                "decision_epochs": 0, "duplicate_customer_proposal_conflicts": 0, "conflicts_resolved": 0,
                "wait_selected": 0, "agent_replans": 0, "mcts_iterations": 0, "nodes_expanded": 0,
+               "complete_service": True, "mean_unique_intention_coverage": 0,
+               "vehicle_activations_caused_by_coordinator": 0,
+               "duplicate_service_violations": 0, "hidden_information_violations": 0,
                **{name + "_planning_time": 0.0 for name in ("mean", "median", "p95", "maximum", "total")}}
     import re
     metadata = {"instance": instance.name, "instance_sha256": instance.sha256,
@@ -135,17 +155,80 @@ def audit_result(result: ExperimentResult, instance, scenario) -> dict:
     assert not active and not moving, "Unfinished commitments"
     for decision in result.decisions:
         assert all(releases[key] <= decision["time"] for key in decision["available"])
-        for plan in decision["plans"].values():
+        assert not set(decision["available"]) & set(decision.get("committed_before", {}))
+        plans = list(decision["plans"].values())
+        plans.extend(p for choices in decision.get("candidates", {}).values() for p in choices)
+        for plan in plans:
             for action in plan["actions"]:
                 if action["kind"] == "serve":
                     assert action["destination"] in decision["available"], "Hidden or committed customer in predicted tail"
+        firsts = [p["actions"][0]["destination"] for p in decision["plans"].values()
+                  if p["actions"][0]["kind"] == "serve"]
+        assert len(firsts) == len(set(firsts)), "Duplicate selected first action"
     assert all(s.location == instance.infrastructure.depot and s.finished and s.time <= instance.infrastructure.depot.due + EPS
                for s in states.values()), "Vehicle did not return safely"
     assert len(seen) == result.metrics["customers_served"]
+    import math
+    metrics = result.metrics
+    assert metrics["customers_unserved"] == len(instance.customers) - len(seen)
+    assert math.isclose(metrics["total_distance"], sum(s.distance for s in result.steps), abs_tol=1e-6)
+    assert metrics["vehicles_activated"] == sum(s.departed for s in states.values())
+    assert math.isclose(metrics["service_ratio"], len(seen) / len(instance.customers), abs_tol=1e-9)
+    assert sorted(result.unserved_customers) == sorted(c.id for c in instance.customers if c.id not in seen)
+    assert metrics["total_charging_visits"] == sum(s.action.kind == "charge" for s in result.steps)
+    for metric, field in (("total_energy_charged", "energy_charged"), ("total_charging_time", "charging_time"),
+                          ("total_waiting_time", "waiting_time")):
+        assert math.isclose(metrics[metric], sum(getattr(s, field) for s in result.steps), abs_tol=1e-6)
+    assert metrics["final_return_feasibility"] is True
     return {"trace_replay": True, "no_future_information": True, "unique_service": True, "safe_returns": True}
 
 
-def run_single(instance_name: str, config: dict, output_dir: str | Path = "results/runs", resume: bool = True) -> Path:
+def git_commit():
+    try:
+        return subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True,
+                                       stderr=subprocess.DEVNULL).strip()
+    except (OSError, subprocess.CalledProcessError):
+        return "unavailable"
+
+
+def run_identity(instance_name, instance_hash, scenario_hash, config, code_hash, commit):
+    inputs = dict(study=config.get("study", "pilot"), instance=instance_name,
+                  instance_sha256=instance_hash, scenario_hash=scenario_hash,
+                  scenario_seed=config.get("scenario_seed", 0),
+                  algorithm=config.get("algorithm", "COORDINATED_MPC_MCTS"),
+                  algorithm_seed=config.get("experiment_seed", 0), requested_config=config,
+                  objective_version=OBJECTIVE_VERSION, git_commit=commit, source_sha256=code_hash)
+    return {**inputs, "run_id": identifier(inputs)}
+
+
+def result_sections(payload, identity, scenario=None, instance=None):
+    metrics, meta = payload["metrics"], payload["metadata"]
+    identity.update(family=meta.get("instance_family"), customer_count=meta.get("number_of_customers"),
+                    station_count=meta.get("number_of_stations"))
+    payload.update(schema_version=RESULT_SCHEMA_VERSION, identity=identity,
+                   scenario=asdict(scenario) if scenario else {},
+                   algorithm=payload.get("effective_config", {}))
+    sections = {
+        "primary": ("complete_service", "customers_served", "customers_unserved", "service_ratio", "vehicles_activated", "total_distance"),
+        "secondary": ("total_charging_visits", "total_energy_charged", "total_charging_time", "total_waiting_time", "final_return_feasibility"),
+        "coordination": ("decision_epochs", "duplicate_customer_proposal_conflicts", "conflicts_resolved", "mean_unique_intention_coverage", "vehicle_activations_caused_by_coordinator", "wait_selected"),
+        "computation": ("mean_planning_time", "median_planning_time", "p95_planning_time", "maximum_planning_time", "total_planning_time", "mcts_iterations", "nodes_expanded"),
+        "integrity": ("battery_violations", "capacity_violations", "time_window_violations", "duplicate_service_violations", "hidden_information_violations"),
+    }
+    if payload["status"] == "completed":
+        metrics["complete_service"] = metrics["customers_unserved"] == 0
+    for name, keys in sections.items():
+        payload[name] = {key: metrics.get(key) for key in keys}
+    payload["integrity"]["trace_audit_passed"] = bool(payload.get("audit"))
+    payload["scenario"]["scenario_hash"] = identity["scenario_hash"]
+    payload["provenance"].update(git_commit=identity["git_commit"],
+        timestamp=datetime.now(timezone.utc).isoformat(), machine=platform.machine(),
+        processor=platform.processor(), platform=platform.platform(),
+        effective_configuration_hash=identifier(payload.get("effective_config", {})),
+        requested_configuration_hash=identifier(payload["requested_config"]))
+
+
+def run_single(instance_name: str, config: dict, output_dir: str | Path | None = None, resume: bool = True) -> Path:
     code_hash = source_fingerprint()
     benchmark_name = instance_name if instance_name.endswith(".txt") else instance_name + ".txt"
     benchmark = BENCHMARK / benchmark_name
@@ -153,16 +236,26 @@ def run_single(instance_name: str, config: dict, output_dir: str | Path = "resul
         raise ValueError("Only local Schneider instances are supported")
     from hashlib import sha256
     instance_hash = sha256(benchmark.read_bytes()).hexdigest() if benchmark.exists() else None
-    key = identifier({"instance": instance_name, "instance_sha256": instance_hash,
-                      "config": config, "source": code_hash})[:20]
-    path = Path(output_dir) / f"{instance_name}_{config.get('algorithm', 'COORDINATED_MPC_MCTS')}_{key}.json"
-    if resume and path.exists():
-        existing = json.loads(path.read_text(encoding="utf-8"))
-        if existing.get("status") == "completed":
-            return path
+    commit = git_commit()
+    identity = run_identity(instance_name, instance_hash, None, config, code_hash, commit)
+    output_dir = Path(output_dir or f"results/raw/{identity['study']}")
+    suffix = ".json.gz" if config.get("result_compression") == "gzip" else ".json"
+    instance = scenario = None
     original = benchmark_hashes()
     try:
         instance, reference, scenario, scenario_path = prepare(instance_name, config)
+        identity = run_identity(instance_name, instance_hash, scenario.identifier, config, code_hash, commit)
+        path = output_dir / f"{instance_name}_{identity['algorithm']}_{identity['run_id'][:20]}{suffix}"
+        if resume and path.exists():
+            existing = load_json(path)
+            if existing.get("identity", {}).get("run_id") != identity["run_id"]:
+                raise ValueError("Run filename collision with different configuration")
+            if existing.get("status") == "completed":
+                from .audit import audit_record
+                errors = audit_record(existing)
+                if errors:
+                    raise ValueError("Existing run failed audit: " + "; ".join(errors))
+                return path
         if config.get("algorithm") == "STATIC_REFERENCE":
             result = static_reference_result(instance, reference, scenario, config)
         else:
@@ -180,12 +273,19 @@ def run_single(instance_name: str, config: dict, output_dir: str | Path = "resul
                    "scenario_seed": config.get("scenario_seed", 0), "algorithm_seed": config.get("experiment_seed", 0),
                    "DoD_target": config.get("dynamicity", 0.5)}, "requested_config": config,
                    "metrics": {"feasible": False}, "error": str(error), "traceback": traceback.format_exc(),
-                   "provenance": {"source_sha256": code_hash}}
+                   "provenance": {"source_sha256": code_hash, "python": platform.python_version(),
+                                  "packages": {p: version(p) for p in ("numpy", "scipy", "pandas", "matplotlib", "PyYAML")}}}
+    result_sections(payload, identity, scenario, instance)
+    path = output_dir / f"{instance_name}_{identity['algorithm']}_{identity['run_id'][:20]}{suffix}"
+    if path.exists():
+        existing = load_json(path)
+        if existing.get("identity", {}).get("run_id") != identity["run_id"]:
+            raise ValueError("Refusing to overwrite a different run")
     save_json(path, payload)
     return path
 
 
-def run_grid(config: dict, output_dir="results/runs", ablations: bool = False):
+def grid_cases(config: dict, ablations: bool = False):
     instances = config.get("instances", sorted(p.stem for p in BENCHMARK.glob("*_21.txt")))
     base = {k: v for k, v in config.items() if k not in {"instances", "grid", "ablations"}}
     grid = dict(config.get("grid", {}))
@@ -194,7 +294,7 @@ def run_grid(config: dict, output_dir="results/runs", ablations: bool = False):
     if ablations:
         variants = [{}]
         for name, values in config.get("ablations", {}).items():
-            variants.extend({name: value} for value in values)
+            variants.extend({name: value, "ablation_factor": name} for value in values)
     seen = set()
     for instance, changes in product(instances, variants):
         effective = {**base, **changes}
@@ -202,4 +302,14 @@ def run_grid(config: dict, output_dir="results/runs", ablations: bool = False):
         if key in seen:
             continue
         seen.add(key)
+        yield instance, effective
+
+
+def run_grid(config: dict, output_dir=None, ablations: bool = False):
+    if config.get("study") == "main":
+        from .validation import require_reference_validation
+        require_reference_validation()
+        if "STATIC_REFERENCE" in config.get("grid", {}).get("algorithm", []):
+            raise ValueError("STATIC_REFERENCE is not an online main-study competitor")
+    for instance, effective in grid_cases(config, ablations):
         yield run_single(instance, effective, output_dir)

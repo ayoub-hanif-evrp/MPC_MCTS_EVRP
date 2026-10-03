@@ -1,0 +1,63 @@
+{
+  "base_instance": "r104C5",
+  "base_instance_sha": "e4e665255b473a872d956cd6d4fb222766298d4c4a5bb4710c92a7f8bf70aa3b",
+  "customer_release_times": [
+    [
+      "C1",
+      0.0
+    ],
+    [
+      "C5",
+      0.0
+    ],
+    [
+      "C71",
+      0.0
+    ],
+    [
+      "C87",
+      11.380657784754925
+    ],
+    [
+      "C99",
+      0.0
+    ]
+  ],
+  "eligible_count": 1,
+  "fleet_size": 2,
+  "instance_sha256": "e4e665255b473a872d956cd6d4fb222766298d4c4a5bb4710c92a7f8bf70aa3b",
+  "objective_version": "service-activation-distance-v2",
+  "realized_DoD": 0.2,
+  "reference_schedule_hash": "4b75af9ebb457497711e6900afc890337bc81f85303022e0db44102ae645cf50",
+  "reference_schedule_identifier": "4b75af9ebb457497711e6900afc890337bc81f85303022e0db44102ae645cf50",
+  "reference_solver_version": "pareto-repair-route-reduction-v2",
+  "release_upper_bounds": [
+    [
+      "C1",
+      0.0
+    ],
+    [
+      "C5",
+      0.0
+    ],
+    [
+      "C71",
+      0.0
+    ],
+    [
+      "C87",
+      47.01865236552115
+    ],
+    [
+      "C99",
+      0.0
+    ]
+  ],
+  "requested_dynamic_count": 3,
+  "scenario_generator_version": "reference-preserving-v2",
+  "scenario_method": "reference-schedule-preserving dynamicization inspired by Yang et al.",
+  "scenario_seed": 0,
+  "schema_version": 2,
+  "selection_mode": "exact_count",
+  "target_DoD": 0.5
+}

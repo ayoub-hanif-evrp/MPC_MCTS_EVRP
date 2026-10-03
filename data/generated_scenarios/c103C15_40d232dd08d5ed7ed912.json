@@ -1,0 +1,143 @@
+{
+  "base_instance": "c103C15",
+  "base_instance_sha": "91c41561f2f515139f4426bb9a1fdeec3ed8662a72770dee28b201cb0d207930",
+  "customer_release_times": [
+    [
+      "C10",
+      58.151523061884554
+    ],
+    [
+      "C13",
+      147.85782672033642
+    ],
+    [
+      "C18",
+      0.0
+    ],
+    [
+      "C19",
+      9.897998418010156
+    ],
+    [
+      "C30",
+      0.0
+    ],
+    [
+      "C33",
+      0.0
+    ],
+    [
+      "C35",
+      420.47765957478265
+    ],
+    [
+      "C40",
+      15.492525645642413
+    ],
+    [
+      "C44",
+      0.0
+    ],
+    [
+      "C50",
+      0.0
+    ],
+    [
+      "C59",
+      0.0
+    ],
+    [
+      "C61",
+      718.9857195689253
+    ],
+    [
+      "C85",
+      0.0
+    ],
+    [
+      "C95",
+      0.0
+    ],
+    [
+      "C98",
+      0.0
+    ]
+  ],
+  "eligible_count": 6,
+  "fleet_size": 3,
+  "instance_sha256": "91c41561f2f515139f4426bb9a1fdeec3ed8662a72770dee28b201cb0d207930",
+  "objective_version": "service-activation-distance-v2",
+  "realized_DoD": 0.4,
+  "reference_schedule_hash": "1a8ffea3f01227a7e204b9fd6dec180ad7a6f7fba469989b66fa83290521e0e3",
+  "reference_schedule_identifier": "1a8ffea3f01227a7e204b9fd6dec180ad7a6f7fba469989b66fa83290521e0e3",
+  "reference_solver_version": "pareto-repair-route-reduction-v2",
+  "release_upper_bounds": [
+    [
+      "C10",
+      711.1973072741346
+    ],
+    [
+      "C13",
+      869.0
+    ],
+    [
+      "C18",
+      0.0
+    ],
+    [
+      "C19",
+      307.39120672408455
+    ],
+    [
+      "C30",
+      0.0
+    ],
+    [
+      "C33",
+      0.0
+    ],
+    [
+      "C35",
+      655.0
+    ],
+    [
+      "C40",
+      143.0
+    ],
+    [
+      "C44",
+      0.0
+    ],
+    [
+      "C50",
+      0.0
+    ],
+    [
+      "C59",
+      0.0
+    ],
+    [
+      "C61",
+      919.9398999015439
+    ],
+    [
+      "C85",
+      0.0
+    ],
+    [
+      "C95",
+      0.0
+    ],
+    [
+      "C98",
+      0.0
+    ]
+  ],
+  "requested_dynamic_count": 8,
+  "scenario_generator_version": "reference-preserving-v2",
+  "scenario_method": "reference-schedule-preserving dynamicization inspired by Yang et al.",
+  "scenario_seed": 0,
+  "schema_version": 2,
+  "selection_mode": "exact_count",
+  "target_DoD": 0.5
+}

@@ -1,4 +1,5 @@
-# Omit instances to use every local *_21 instance (all six families).
+# Legacy main configuration; prefer configs/main.yaml.
+study: main
 prediction_horizon: 5
 control_horizon: 1
 candidate_limit: 12
@@ -18,4 +19,4 @@ grid:
   dynamicity: [0.0, 0.1, 0.25, 0.5, 0.75]
   scenario_seed: [0, 1, 2, 3, 4]
   experiment_seed: [0, 1, 2]
-  algorithm: [GREEDY, MPC_MCTS_H1, INDEPENDENT_MPC_MCTS, COORDINATED_MPC_MCTS, STATIC_REFERENCE]
+  algorithm: [GREEDY, MPC_MCTS_H1, INDEPENDENT_MPC_MCTS, COORDINATED_MPC_MCTS]

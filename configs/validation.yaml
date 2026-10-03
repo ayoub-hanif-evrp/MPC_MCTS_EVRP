@@ -1,0 +1,6 @@
+study: validation
+instances: [c101C5, c103C5, c206C5, c208C5]
+reference_solver_multistarts: 3
+reference_improvement_passes: 1
+reference_seed: 0
+reference_label_limit: 24

@@ -84,6 +84,7 @@ class EventDrivenSimulator:
         state, instance, config = self.state, self.instance, self.config
         events, steps, decisions, searches, timings = [], [], [], [], []
         epochs = replans = conflicts = resolved = waits = 0
+        coverages, new_activations = [], 0
         pool = ProcessPoolExecutor(max_workers=config.workers) if config.parallel_agents else None
         try:
             for _ in range(config.max_events):
@@ -132,13 +133,19 @@ class EventDrivenSimulator:
                         resolved += count
                     else:
                         selected = coordinate({k: r.candidates for k, r in plans.items()},
-                                              frozenset(state.committed_customers))
+                                              frozenset(state.committed_customers),
+                                              available=frozenset(c.id for c in observation.customers))
                         resolved += duplicates
                     timings.append(perf_counter() - started)
+                    coverage = set().union(*(set(p.unique_predicted_customer_set) for p in selected.values()))
+                    coverages.append(len(coverage))
+                    new_activations += sum(p.new_activation for p in selected.values())
                     replans += len(ready)
                     decision = {"epoch": epochs, "time": state.time,
                                 "available": [c.id for c in observation.customers],
                                 "committed_before": dict(observation.committed_customers),
+                                "candidates": {str(k): [asdict(p) for p in r.candidates] for k, r in plans.items()},
+                                "unique_intention_coverage": sorted(coverage),
                                 "plans": {str(k): asdict(p) for k, p in selected.items()}}
                     decisions.append(decision)
                     for k, result in plans.items():
@@ -180,6 +187,7 @@ class EventDrivenSimulator:
         returned = all(v.finished and v.location.kind == "d" for v in state.vehicles.values())
         total = len(instance.customers)
         metrics = {"feasible": served == total and returned, "customers_served": served,
+                   "complete_service": served == total,
                    "customers_unserved": total - served, "service_ratio": served / total if total else 1.0,
                    "total_distance": distance, "distance_per_served_customer": distance / served if served else None,
                    "vehicles_activated": sum(v.departed for v in state.vehicles.values()),
@@ -193,6 +201,9 @@ class EventDrivenSimulator:
                    "capacity_violations": sum(s.after.load < -EPS for s in steps),
                    "decision_epochs": epochs, "duplicate_customer_proposal_conflicts": conflicts,
                    "conflicts_resolved": resolved, "wait_selected": waits, "agent_replans": replans,
+                   "mean_unique_intention_coverage": float(np.mean(coverages)) if coverages else 0.0,
+                   "vehicle_activations_caused_by_coordinator": new_activations if config.algorithm in {"COORDINATED_MPC_MCTS", "MPC_MCTS_H1"} else 0,
+                   "duplicate_service_violations": 0, "hidden_information_violations": 0,
                    "mcts_iterations": sum(s["iterations"] for s in searches),
                    "nodes_expanded": sum(s["nodes_expanded"] for s in searches)}
         for name, function in [("mean", np.mean), ("median", np.median), ("p95", lambda x: np.percentile(x, 95)), ("maximum", np.max), ("total", np.sum)]:

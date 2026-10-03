@@ -1,0 +1,207 @@
+{
+  "configs": {
+    "ablations": {
+      "ablations": {
+        "algorithm": [
+          "INDEPENDENT_MPC_MCTS",
+          "COORDINATED_MPC_MCTS"
+        ],
+        "charging_mode": [
+          "full",
+          "partial"
+        ],
+        "dynamicity": [
+          0.0,
+          0.1,
+          0.25,
+          0.5,
+          0.75
+        ],
+        "mcts_iterations": [
+          250,
+          500,
+          1000,
+          2500
+        ],
+        "parallel_agents": [
+          false,
+          true
+        ],
+        "prediction_horizon": [
+          1,
+          3,
+          5,
+          8
+        ],
+        "top_L": [
+          1,
+          3,
+          5
+        ]
+      },
+      "algorithm": "COORDINATED_MPC_MCTS",
+      "budget_mode": "iterations",
+      "candidate_limit": 12,
+      "charging_mode": "partial",
+      "control_horizon": 1,
+      "dynamic_selection_mode": "exact_count",
+      "dynamicity": 0.5,
+      "experiment_seed": 0,
+      "instances": [
+        "c101_21",
+        "r101_21",
+        "rc101_21"
+      ],
+      "mcts_iterations": 250,
+      "mcts_time_limit": 0.5,
+      "parallel_agents": false,
+      "prediction_horizon": 5,
+      "reference_improvement_passes": 1,
+      "reference_seed": 0,
+      "reference_solver_multistarts": 3,
+      "scenario_seed": 0,
+      "study": "ablations",
+      "top_L": 3,
+      "uct_c": 1.4,
+      "workers": 2
+    },
+    "main": {
+      "budget_mode": "iterations",
+      "candidate_limit": 12,
+      "charging_mode": "partial",
+      "control_horizon": 1,
+      "dynamic_selection_mode": "exact_count",
+      "grid": {
+        "algorithm": [
+          "GREEDY",
+          "MPC_MCTS_H1",
+          "INDEPENDENT_MPC_MCTS",
+          "COORDINATED_MPC_MCTS"
+        ],
+        "dynamicity": [
+          0.0,
+          0.1,
+          0.25,
+          0.5,
+          0.75
+        ],
+        "experiment_seed": [
+          0,
+          1,
+          2
+        ],
+        "scenario_seed": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "mcts_iterations": 250,
+      "mcts_time_limit": 0.5,
+      "parallel_agents": false,
+      "prediction_horizon": 5,
+      "reference_improvement_passes": 1,
+      "reference_seed": 0,
+      "reference_solver_multistarts": 3,
+      "study": "main",
+      "top_L": 3,
+      "uct_c": 1.4,
+      "workers": 2
+    },
+    "pilot": {
+      "algorithm": "COORDINATED_MPC_MCTS",
+      "budget_mode": "iterations",
+      "candidate_limit": 12,
+      "charge_fractions": [
+        0.5,
+        0.75,
+        1.0
+      ],
+      "charging_mode": "partial",
+      "control_horizon": 1,
+      "dynamic_selection_mode": "exact_count",
+      "dynamicity": 0.5,
+      "experiment_seed": 0,
+      "grid": {
+        "algorithm": [
+          "GREEDY",
+          "MPC_MCTS_H1",
+          "INDEPENDENT_MPC_MCTS",
+          "COORDINATED_MPC_MCTS"
+        ],
+        "dynamicity": [
+          0.0,
+          0.5
+        ]
+      },
+      "instances": [
+        "c101C5",
+        "r104C5",
+        "rc105C5",
+        "c101C10",
+        "c103C15"
+      ],
+      "mcts_iterations": 64,
+      "mcts_time_limit": 0.1,
+      "parallel_agents": false,
+      "prediction_horizon": 3,
+      "reference_improvement_passes": 1,
+      "reference_seed": 0,
+      "reference_solver_multistarts": 3,
+      "scenario_seed": 0,
+      "study": "pilot",
+      "top_L": 3,
+      "uct_c": 1.4,
+      "workers": 2
+    },
+    "realtime": {
+      "algorithm": "COORDINATED_MPC_MCTS",
+      "budget_mode": "wall_clock",
+      "candidate_limit": 12,
+      "charging_mode": "partial",
+      "control_horizon": 1,
+      "dynamic_selection_mode": "exact_count",
+      "dynamicity": 0.5,
+      "grid": {
+        "experiment_seed": [
+          0,
+          1,
+          2
+        ],
+        "mcts_time_limit": [
+          0.1,
+          0.5,
+          1.0,
+          2.0
+        ],
+        "scenario_seed": [
+          0,
+          1,
+          2
+        ]
+      },
+      "instances": [
+        "c101C5",
+        "c101C10",
+        "c101_21"
+      ],
+      "mcts_iterations": 250,
+      "parallel_agents": false,
+      "prediction_horizon": 5,
+      "reference_improvement_passes": 1,
+      "reference_seed": 0,
+      "reference_solver_multistarts": 3,
+      "study": "realtime",
+      "top_L": 3,
+      "uct_c": 1.4
+    }
+  },
+  "executor_sha256": "b818dc25ed7643ac43b825a744875bf7f7d33b18ab28d400b72ded8c5853b183",
+  "max_workers": 4,
+  "signature": "eb534d1b6784f5c2843555dcf8ec8649992cf43877febc3cb314ce07d9a38c28",
+  "source_sha256": "4cb373d9112673d0b4ad531f556ec1cd64a842c2337f27388ebfad3acb8f2f4e",
+  "timing_policy": "Concurrent fixed-iteration studies; realtime and parallel-agent comparisons have one active experiment",
+  "total_runs": 17017
+}

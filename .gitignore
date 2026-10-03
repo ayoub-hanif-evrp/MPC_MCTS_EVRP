@@ -20,3 +20,14 @@ Thumbs.db
 # Local runtime outputs (research results are versioned)
 outputs/
 logs/
+
+# Large transient experiment records; summaries and selected figures are tracked.
+results/raw/**/*.json
+results/traces/**/*.json
+*.json.tmp
+results/campaigns/**/raw/**/*.json
+results/campaigns/**/raw/**/*.json.gz
+results/campaigns/**/*.log
+results/campaigns/**/runner.lock
+results/campaigns/**/dependency_locks/
+results/campaigns/**/execution.jsonl

@@ -1,6 +1,6 @@
-"""UCT: selection, expansion, heuristic rollout, backpropagation of negative cost."""
+"""UCT with bounded service-first reward and explicit lexicographic plan ranking."""
 
-from dataclasses import asdict, dataclass, field
+from dataclasses import asdict, dataclass, field, replace
 from math import log, sqrt
 import random
 from time import perf_counter
@@ -93,7 +93,7 @@ class MCTSOptimizer:
             if not path:
                 break
             proposal = problem.proposal(path)
-            reward = -proposal.cost
+            reward = problem.reward(proposal)
             for ancestor in lineage:
                 ancestor.visits += 1
                 ancestor.value_sum += reward
@@ -101,7 +101,9 @@ class MCTSOptimizer:
                 best[path[0]] = proposal
             iterations += 1
         visits = {child.path[0]: child.visits for child in root.children}
-        proposals = [problem.proposal(plan.actions, visits.get(plan.first, 0)) for plan in best.values()]
+        values = {child.path[0]: child.value_sum / child.visits for child in root.children if child.visits}
+        proposals = [replace(problem.proposal(plan.actions, visits.get(plan.first, 0)),
+                             mcts_value_estimate=values.get(plan.first)) for plan in best.values()]
         proposals.sort(key=proposal_key)
         fallback = problem.proposal((problem.fallback(problem.initial),))
         stats = SearchStatistics(iterations, expanded, perf_counter() - started,

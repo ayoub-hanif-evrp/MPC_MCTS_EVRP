@@ -9,6 +9,7 @@ import random
 from .instance import Instance
 from .reference import ReferenceSchedule, validate_reference
 from .storage import identifier, save_json
+from .versions import OBJECTIVE_VERSION, REFERENCE_SOLVER_VERSION, SCENARIO_GENERATOR_VERSION
 
 METHOD = "reference-schedule-preserving dynamicization inspired by Yang et al."
 
@@ -28,15 +29,31 @@ class DynamicScenario:
     release_upper_bounds: tuple[tuple[str, float], ...]
     eligible_count: int
     requested_dynamic_count: int
-    schema_version: int = 1
+    schema_version: int = 2
+    reference_solver_version: str = REFERENCE_SOLVER_VERSION
+    scenario_generator_version: str = SCENARIO_GENERATOR_VERSION
+    objective_version: str = OBJECTIVE_VERSION
+    base_instance_sha: str = ""
+    reference_schedule_hash: str = ""
+
+    def __post_init__(self):
+        if not self.base_instance_sha:
+            object.__setattr__(self, "base_instance_sha", self.instance_sha256)
+        if not self.reference_schedule_hash:
+            object.__setattr__(self, "reference_schedule_hash", self.reference_schedule_identifier)
 
     @property
     def identifier(self) -> str:
         return identifier(self)
 
     def validate(self, instance: Instance) -> None:
-        if self.schema_version != 1 or self.scenario_method != METHOD:
-            raise ValueError("Unsupported scenario schema or method")
+        if (self.schema_version != 2 or self.scenario_method != METHOD
+                or self.reference_solver_version != REFERENCE_SOLVER_VERSION
+                or self.scenario_generator_version != SCENARIO_GENERATOR_VERSION
+                or self.objective_version != OBJECTIVE_VERSION):
+            raise ValueError("Stale scenario dependencies; regenerate scenario")
+        if self.base_instance_sha != self.instance_sha256 or self.reference_schedule_hash != self.reference_schedule_identifier:
+            raise ValueError("Scenario dependency hash mismatch")
         if (self.base_instance, self.instance_sha256) != (instance.name, instance.sha256):
             raise ValueError("Scenario benchmark name/SHA-256 mismatch")
         if self.selection_mode not in {"bernoulli", "exact_count"} or not 0 <= self.target_DoD <= 1:
@@ -63,6 +80,12 @@ class DynamicScenario:
     @classmethod
     def load(cls, path: str | Path, instance: Instance) -> "DynamicScenario":
         data = json.loads(Path(path).read_text(encoding="utf-8"))
+        if data.get("schema_version") != 2:
+            raise ValueError("Stale scenario schema; regenerate scenario")
+        required = {"base_instance_sha", "reference_schedule_hash", "reference_solver_version",
+                    "scenario_generator_version", "objective_version"}
+        if not required.issubset(data):
+            raise ValueError("Stale scenario: missing dependency metadata")
         for key in ("customer_release_times", "release_upper_bounds"):
             data[key] = tuple((str(name), float(value)) for name, value in data[key])
         scenario = cls(**data)

@@ -12,6 +12,7 @@ from .instance import Instance, Location
 from .model import (Action, EPS, InfeasibleAction, InfeasibilityReason, Observation,
                     Transition, VehicleState, transition)
 from .storage import identifier, save_json
+from .versions import REFERENCE_SOLVER_VERSION
 
 
 @dataclass(frozen=True)
@@ -19,9 +20,10 @@ class ReferenceConfig:
     multistarts: int = 3
     improvement_passes: int = 1
     seed: int = 0
+    label_limit: int = 24
 
     def __post_init__(self):
-        if self.multistarts < 1 or self.improvement_passes < 0:
+        if self.multistarts < 1 or self.improvement_passes < 0 or self.label_limit < 1:
             raise ValueError("Invalid reference search budget")
 
 
@@ -41,6 +43,7 @@ class ReferenceSchedule:
     instance_sha256: str
     config: ReferenceConfig
     routes: tuple[RouteTrace, ...]
+    reference_solver_version: str = REFERENCE_SOLVER_VERSION
 
     @property
     def identifier(self) -> str:
@@ -65,6 +68,8 @@ class ReferenceSchedule:
     @classmethod
     def load(cls, path: str | Path, instance: Instance) -> "ReferenceSchedule":
         data = json.loads(Path(path).read_text(encoding="utf-8"))
+        if data.get("reference_solver_version") != REFERENCE_SOLVER_VERSION:
+            raise ReferenceFailure("Stale reference solver version; regenerate reference")
         def vehicle(raw):
             raw = dict(raw)
             raw["location"] = Location(**raw["location"])
@@ -148,23 +153,60 @@ def full_charge_connection(state: VehicleState, goal: Action,
     return best[2] if best else None
 
 
-def evaluate_route(instance: Instance, sequence: tuple[str, ...], vehicle_id: int = 0) -> RouteTrace | None:
+def evaluate_route(instance: Instance, sequence: tuple[str, ...], vehicle_id: int = 0,
+                   label_limit: int = 24) -> RouteTrace | None:
     if len(set(sequence)) != len(sequence):
         return None
     observation = Observation(instance.infrastructure.depot.ready, instance.infrastructure, instance.customers)
+    if sum(c.demand for c in instance.customers if c.id in sequence) > instance.infrastructure.parameters.capacity + EPS:
+        return None
     state = initial_vehicle(instance, vehicle_id)
-    trace = []
+    labels = [(state, ())]
     actions = tuple(Action("serve", c) for c in sequence) + (Action("return", state.location.id),)
+
+    def dominates(a, b):
+        return (a.time <= b.time + EPS and a.battery >= b.battery - EPS
+                and a.distance_travelled <= b.distance_travelled + EPS)
+
     for action in actions:
-        connection = full_charge_connection(state, action, observation)
-        if connection is None:
+        goal_labels, station_labels = [], {}
+        queue = list(labels)
+        while queue:
+            current, trace = queue.pop()
+            try:
+                step = transition(current, action, observation)
+                if not any(dominates(s, step.after) for s, _ in goal_labels):
+                    goal_labels = [(s, tr) for s, tr in goal_labels if not dominates(step.after, s)]
+                    goal_labels.append((step.after, trace + (step,)))
+            except InfeasibleAction as error:
+                if error.reason in {InfeasibilityReason.CAPACITY, InfeasibilityReason.TIME_WINDOW,
+                                    InfeasibilityReason.DEPOT_HORIZON, InfeasibilityReason.INVALID_ACTION}:
+                    continue
+            for station in instance.infrastructure.stations:
+                try:
+                    step = transition(current, Action("charge", station.id,
+                                      instance.infrastructure.parameters.battery), observation)
+                except InfeasibleAction:
+                    continue
+                previous = station_labels.setdefault(station.id, [])
+                if any(dominates(s, step.after) for s in previous):
+                    continue
+                previous[:] = [s for s in previous if not dominates(step.after, s)]
+                previous.append(step.after)
+                queue.append((step.after, trace + (step,)))
+        if not goal_labels:
             return None
-        trace.extend(connection)
-        state = connection[-1].after
-    return RouteTrace(sequence, tuple(trace))
+        # Exhaustive Pareto labels for C5 validation; bounded search for larger cases.
+        labels = sorted(goal_labels, key=lambda pair: (pair[0].distance_travelled, pair[0].time, -pair[0].battery))
+        if len(instance.customers) > 5:
+            labels = labels[:label_limit]
+    _, trace = min(labels, key=lambda pair: (pair[0].distance_travelled, pair[0].time))
+    return RouteTrace(sequence, trace)
 
 
 def validate_reference(instance: Instance, schedule: ReferenceSchedule) -> None:
+    if schedule.reference_solver_version != REFERENCE_SOLVER_VERSION:
+        raise ReferenceFailure("Stale reference solver version")
     if (schedule.base_instance, schedule.instance_sha256) != (instance.name, instance.sha256):
         raise ReferenceFailure("Reference schedule is bound to another instance")
     seen = []
@@ -185,10 +227,45 @@ def validate_reference(instance: Instance, schedule: ReferenceSchedule) -> None:
         raise ReferenceFailure("Reference must serve every customer exactly once")
 
 
+@lru_cache(maxsize=64)
 def solve_reference(instance: Instance, config: ReferenceConfig = ReferenceConfig()) -> ReferenceSchedule:
     @lru_cache(maxsize=40000)
     def evaluate(sequence: tuple[str, ...]) -> RouteTrace | None:
-        return evaluate_route(instance, sequence)
+        return evaluate_route(instance, sequence, label_limit=config.label_limit)
+
+    if len(instance.customers) <= 5:
+        ids = tuple(sorted(c.id for c in instance.customers))
+        routes_by_set = {}
+        for size in range(1, len(ids) + 1):
+            for sequence in itertools.permutations(ids, size):
+                route = evaluate(sequence)
+                key = frozenset(sequence)
+                if route and (key not in routes_by_set or route.distance < routes_by_set[key].distance):
+                    routes_by_set[key] = route
+
+        @lru_cache(None)
+        def partition(remaining):
+            if not remaining:
+                return (0, 0.0, ())
+            first = min(remaining)
+            best = None
+            for subset, route in routes_by_set.items():
+                if first not in subset or not subset <= remaining:
+                    continue
+                tail = partition(remaining - subset)
+                if tail is not None:
+                    candidate = (1 + tail[0], route.distance + tail[1], (route.customers,) + tail[2])
+                    if best is None or candidate < best:
+                        best = candidate
+            return best
+
+        best = partition(frozenset(ids))
+        if best is None:
+            raise ReferenceFailure(f"No feasible reference for {instance.name}")
+        result = ReferenceSchedule(instance.name, instance.sha256, config,
+                                   tuple(evaluate_route(instance, r, k) for k, r in enumerate(best[2])))
+        validate_reference(instance, result)
+        return result
 
     best, failures = None, set()
     for start in range(config.multistarts):
@@ -217,6 +294,27 @@ def solve_reference(instance: Instance, config: ReferenceConfig = ReferenceConfi
                 break
         if failed:
             continue
+        # Targeted route elimination: reinsert all customers of a short route.
+        for source in sorted(range(len(routes)), key=lambda k: len(routes[k]), reverse=True):
+            if source >= len(routes):
+                continue
+            trial = routes[:source] + routes[source + 1:]
+            eliminated = True
+            for customer in routes[source]:
+                options = []
+                for r, route in enumerate(trial):
+                    for pos in range(len(route) + 1):
+                        seq = route[:pos] + (customer,) + route[pos:]
+                        candidate = evaluate(seq)
+                        if candidate:
+                            options.append((candidate.distance - evaluate(route).distance, r, seq))
+                if not options:
+                    eliminated = False
+                    break
+                _, r, seq = min(options)
+                trial[r] = seq
+            if eliminated:
+                routes = trial
         for _ in range(config.improvement_passes):
             baseline = (len(routes), sum(evaluate(r).distance for r in routes))
             improvement = None
@@ -253,7 +351,7 @@ def solve_reference(instance: Instance, config: ReferenceConfig = ReferenceConfi
             best = (score, routes)
     if best is None:
         raise ReferenceFailure(f"No feasible reference for {instance.name}; failed customers: {sorted(failures)}")
-    traces = tuple(evaluate_route(instance, route, k) for k, route in enumerate(best[1]))
+    traces = tuple(evaluate_route(instance, route, k, config.label_limit) for k, route in enumerate(best[1]))
     result = ReferenceSchedule(instance.name, instance.sha256, config, traces)
     validate_reference(instance, result)
     return result

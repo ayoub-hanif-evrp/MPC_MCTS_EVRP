@@ -1,0 +1,63 @@
+{
+  "base_instance": "c101C5",
+  "base_instance_sha": "8612d6d9aad051776097a5e50c7408f39352b8107b0639d58e5eda713f9ff876",
+  "customer_release_times": [
+    [
+      "C100",
+      315.2002044818906
+    ],
+    [
+      "C12",
+      0.0
+    ],
+    [
+      "C30",
+      172.52002335688118
+    ],
+    [
+      "C64",
+      0.0
+    ],
+    [
+      "C85",
+      438.56354069904467
+    ]
+  ],
+  "eligible_count": 4,
+  "fleet_size": 2,
+  "instance_sha256": "8612d6d9aad051776097a5e50c7408f39352b8107b0639d58e5eda713f9ff876",
+  "objective_version": "service-activation-distance-v2",
+  "realized_DoD": 0.6,
+  "reference_schedule_hash": "a30b13b06e7d87feb6321859edfcf2e60f6eedbbc79b257ed447fb2e114bd020",
+  "reference_schedule_identifier": "a30b13b06e7d87feb6321859edfcf2e60f6eedbbc79b257ed447fb2e114bd020",
+  "reference_solver_version": "pareto-repair-route-reduction-v2",
+  "release_upper_bounds": [
+    [
+      "C100",
+      425.3236118971719
+    ],
+    [
+      "C12",
+      0.0
+    ],
+    [
+      "C30",
+      353.0
+    ],
+    [
+      "C64",
+      107.37308461621099
+    ],
+    [
+      "C85",
+      737.0
+    ]
+  ],
+  "requested_dynamic_count": 3,
+  "scenario_generator_version": "reference-preserving-v2",
+  "scenario_method": "reference-schedule-preserving dynamicization inspired by Yang et al.",
+  "scenario_seed": 0,
+  "schema_version": 2,
+  "selection_mode": "exact_count",
+  "target_DoD": 0.5
+}
