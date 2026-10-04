@@ -1,0 +1,5 @@
+study,DoD_target,algorithm,iterations,ablation_factor,full_service_rate,mean_service_ratio,median_unserved,mean_activated_vehicles,mean_distance_on_complete_runs,median_distance_on_complete_runs,mean_planning_time,p95_planning_time,number_of_runs
+ablations,0.5,COORDINATED_MPC_MCTS,8,mcts_iterations,0.0,0.547,45.0,11.33,,,0.027179,0.0517,6
+ablations,0.5,COORDINATED_MPC_MCTS,16,mcts_iterations,0.0,0.565,44.0,11.33,,,0.051387,0.100896,6
+ablations,0.5,COORDINATED_MPC_MCTS,32,mcts_iterations,0.0,0.527,46.0,11.33,,,0.093332,0.178362,6
+ablations,0.5,COORDINATED_MPC_MCTS,64,mcts_iterations,0.0,0.538,45.0,11.33,,,0.163012,0.300077,6

@@ -3,15 +3,26 @@
 Python 3.11+ research implementation using only the local Schneider E-VRPTW
 benchmark. Each EV has an explicit MPC controller; MCTS approximately solves its
 deterministic finite-horizon problem. An intent-aware coordinator selects compatible
-first actions. Predicted tails are intentions, never reservations.
+first actions. By default, predicted tails are intentions, never reservations.
+An experimental opt-in variant retains executable route reservations instead;
+it is a methodological change requiring review.
 
-**Status:** the distance-only all-Wait defect is corrected using the requested
-service/vehicle/distance hierarchy. Small reference validation and audited smoke
-tests are implemented. Full execution has now been authorized and launched through
-the campaign runner; `results/campaigns/final/status.json` reports live progress.
-Results are not final until the campaign completes. Pilot outcomes include
-incomplete service and make no superiority claim.
-See [the implementation report](docs/implementation_report.md) for actual results.
+**Status:** V1 completed all 704 conditions, but every run had incomplete service.
+It is preserved as [V1 diagnostic evidence](results/paper_v1_fixed_fleet/ARCHIVE_NOTICE.md),
+not final paper results. V2 completed only the bounded six-instance diagnostics:
+12 offline oracle controls and 66 online conditions. The oracle serves every
+customer; the online method still has fleet-efficiency, service and runtime
+weaknesses. The full paper executor is blocked pending scientific review.
+
+The [latest follow-up](results/development_route_continuity/README.md) adds two
+36-condition development grids with retained routes and optional active-route
+insertion. Static service and repeated idling improve, but dynamic losses and
+fleet-efficiency limitations remain. Both changes are opt-in; no new full
+campaign has been launched. See the [protocol](docs/route_continuity_followup.md).
+
+Read the [V2 master report](results/paper_v2/PAPER_RESULTS.md),
+[per-instance appendix](results/paper_v2/PER_INSTANCE_RESULTS.md), and
+[incomplete-service diagnosis](docs/incomplete_service_diagnosis.md).
 
 ## Objective and Architecture
 
@@ -52,13 +63,16 @@ travel time is `distance/v`, consumption is `r*distance`, and charging time is
 `g*charged_energy`. Windows constrain service start. Every accepted action must
 preserve battery, freight, time-window, and safe-depot-return feasibility.
 
-One tour per EV, fixed homogeneous fleet, uniform station hours/rate, unlimited
+One tour per EV, homogeneous fleet, uniform station hours/rate, unlimited
 simultaneous chargers, no reloads, queues, stochastic travel, or future information.
 Serve and recharge are non-preemptive travel-plus-service macro-actions. Passive
 Wait is interruptible. All co-timed releases/completions precede planning.
 
 The original dataset is never written. Generated artifacts are in separate folders.
-The static reference fixes fleet size K for all algorithms. For five-customer
+V1 fixed fleet size K to the static reference. V2 diagnostics instead use an
+exchangeable lazy reserve with K_max equal to the customer count; K_ref is a
+benchmark, not a hard online cap. No new full campaign is authorized.
+For five-customer
 instances, subset/permutation route search uses Pareto full-charge repair; larger
 instances use deterministic multistart insertion, targeted route elimination,
 and relocate. Larger-instance references remain heuristics.
@@ -143,10 +157,11 @@ vehicle counts. Repeated algorithm seeds are averaged within instance/scenario
 before descriptive means, medians, sample SDs, and Student-t 95% CIs. No significance
 is inferred; intervals for fewer than two environmental observations are undefined.
 
-CSV/LaTeX tables and PNG-only figures at 300 dpi are generated from audited
-summaries. Every figure has an exact-data CSV. The representative run is fixed in
-configuration, including when incomplete. Unrun ablations produce explicitly empty
-plots, never invented observations. Historical outputs are archived and excluded.
+V2 exports Markdown/CSV/LaTeX tables and meaningful study-specific diagnostic
+figures as PDF vector, PNG at 300 dpi and exact-data CSV. No empty figures or
+one-point dynamicity curves are generated. Missing V2 charging, Top-L, robustness
+and realtime studies are explicitly marked unmeasured, not filled using V1 data.
+Regenerate reports without running experiments: `python -m scripts.report_v2`.
 See [results policy](results/README.md) and [assumptions](docs/assumptions.md).
 
 ## Compact Paper Campaign
@@ -160,12 +175,11 @@ The compact design is specified by `configs/paper.yaml` and documented in
 python -m evrp.cli estimate --config configs/paper.yaml --workers 4 --output "$env:LOCALAPPDATA\EVRP\paper"
 ```
 
-After reviewing the calibration, passing the runtime/integrity gate, and explicitly
-deciding to launch:
-
-```powershell
-python -m evrp.cli paper --config configs/paper.yaml --workers 4 --output "$env:LOCALAPPDATA\EVRP\paper" --execute
-```
+That design completed as V1. Its performance-only gate is insufficient for V2.
+`evrp.cli paper --execute` is now explicitly blocked pending scientific review.
+The only new experiment entry point is the bounded `scripts.diagnose_v2`; its
+completed records are preserved by source/configuration identity, never silently
+replaced by a new revision.
 
 Raw computation outputs stay on the local SSD outside OneDrive. Audited summaries,
 publication tables, and PNG figures with exact-data CSVs are copied back to

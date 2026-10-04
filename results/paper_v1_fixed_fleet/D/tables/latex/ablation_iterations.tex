@@ -1,0 +1,16 @@
+\begin{sidewaystable}
+\centering
+\scriptsize
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrlrlrrrrrrllr}
+\toprule
+study & DoD\_target & algorithm & iterations & ablation\_factor & Full service & Service mean & Unserved median & EV mean & D mean (complete) & D median (complete) & Latency mean & Latency p95 mean & Runs \\
+\midrule
+ablations & 0.500 & COORDINATED\_MPC\_MCTS & 8 & mcts\_iterations & 0.000 & 0.547 & 45.000 & 11.330 & -- & -- & 27.2 ms & 51.7 ms & 6 \\
+ablations & 0.500 & COORDINATED\_MPC\_MCTS & 16 & mcts\_iterations & 0.000 & 0.565 & 44.000 & 11.330 & -- & -- & 51.4 ms & 100.9 ms & 6 \\
+ablations & 0.500 & COORDINATED\_MPC\_MCTS & 32 & mcts\_iterations & 0.000 & 0.527 & 46.000 & 11.330 & -- & -- & 93.3 ms & 178.4 ms & 6 \\
+ablations & 0.500 & COORDINATED\_MPC\_MCTS & 64 & mcts\_iterations & 0.000 & 0.538 & 45.000 & 11.330 & -- & -- & 163.0 ms & 300.1 ms & 6 \\
+\bottomrule
+\end{tabular}
+}
+\end{sidewaystable}

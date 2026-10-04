@@ -2,7 +2,7 @@
 
 ## Scope and Information Boundary
 
-The physical model uses a fixed homogeneous fleet, one depot-to-depot tour per EV,
+The V1 physical model used a fixed homogeneous fleet, one depot-to-depot tour per EV,
 delivery capacity, hard service-start windows, Euclidean travel, and linear charging.
 GlobalState privately partitions hidden/available/committed/served requests. Agents
 receive only measured vehicle state, observed available requests, committed IDs,

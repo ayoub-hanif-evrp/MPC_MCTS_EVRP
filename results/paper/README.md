@@ -1,5 +1,11 @@
 # Completed Paper Campaign
 
+**V1 diagnostic archive, not final paper results.** V1 used the static reference
+fleet size as a hard online fleet cap. All executions passed physical/information
+audits, but all paper runs were incomplete. A byte-verified snapshot is preserved
+under `results/paper_v1_fixed_fleet`. Current diagnostics and their limitations are
+in [the V2 report](../paper_v2/PAPER_RESULTS.md).
+
 All 704 unique conditions are complete: 680 newly executed runs and 24 reused
 calibration runs. Studies A-E contain 224, 384, 90, 84 and 24 table rows,
 respectively; shared conditions are not independent replications.

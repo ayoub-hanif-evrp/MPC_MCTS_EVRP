@@ -1,0 +1,25 @@
+# Review document only. This file does not authorize or launch a campaign.
+status: blocked_pending_scientific_review
+execution_authorized: false
+fleet_mode: lazy_reserve
+fleet_upper_bound: number_of_customers
+objective: [customers_unserved, activated_vehicles, total_distance]
+require_root_coverage: true
+diagnostic_budget_selected: 96
+diagnostic_budget_accepted_for_paper: false
+next_algorithm_debug_budget: 32
+prediction_horizon: 5
+top_L: 3
+candidate_limit: 12
+station_candidate_limit: 4
+charge_target_limit: 5
+charging_mode: partial
+max_idle_wait: 10
+scenario_seed: 0
+experiment_seed: 0
+blockers:
+  - Repeated short WAITs create long physical idle spells despite available work.
+  - Reserve admission uses far more vehicles than the static reference.
+  - Coordinated service is worse than Independent on some static and dynamic controls.
+  - Quality-only budget selection fails the practical runtime gate.
+unmeasured_v2_studies: [full_breadth, robustness, top_L, full_charging, realtime]

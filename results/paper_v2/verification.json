@@ -1,0 +1,18 @@
+{
+  "audited_records": 78,
+  "figures": [
+    "service_by_family",
+    "static_dynamic_service",
+    "coordination_differences",
+    "horizon_tradeoff",
+    "budget_tradeoff",
+    "representative_routes",
+    "representative_evolution"
+  ],
+  "full_campaign_started": false,
+  "online_runs": 66,
+  "oracle_complete": 12,
+  "root_coverage_min": 1.0,
+  "source_sha256": "cdbf02e800001ca3450599fe7cb9d5766689d509428a67449817fbe275eb3a22",
+  "status": "diagnostic_complete_not_paper_ready"
+}

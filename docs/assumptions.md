@@ -23,7 +23,9 @@ Five-customer subset/permutation search with Pareto full-charge repair reproduce
 the four requested published counts and distances. Larger instances use multistart
 insertion, targeted route reduction and relocate, with at most 24 retained labels
 per customer position. This is heuristic and can overestimate minimum fleet size.
-K is never enlarged to rescue an online algorithm.
+V1 used that reference fleet as a hard online cap. This is now an archived
+diagnostic assumption, not the proposed V2 fleet model. V2 uses a lazy reserve
+bounded by the number of customers; K_ref remains an offline benchmark.
 
 Uniform dynamic releases under reference predecessor-departure/ready-time bounds
 are an experimental choice, not the original Yang benchmark. Exact-count half-up
@@ -43,6 +45,10 @@ after service revisits are allowed. Partial-charge targets are a finite set of
 fractions and safe energy thresholds, not a continuous optimum. Candidate limits,
 heuristic rollouts and finite search budgets may miss better feasible trajectories.
 
+The following describes the default intent-only policy. The opt-in
+[route-continuity follow-up](route_continuity_followup.md) instead uses executable
+reservations and optional known-request insertion, requiring methodological review.
+
 Intent-union coverage is an optimistic surrogate. Overlapping tails are allowed
 and never reserved; their simultaneous future execution is not guaranteed. New
 activation minimization can leave unused vehicles idle and does not guarantee
@@ -59,7 +65,9 @@ selected by the predefined six-instance calibration rule, recorded in
 `configs/paper.yaml`. Main execution requires a current passing calibration and
 runtime gate plus `--execute`; old campaign entry points are cancelled.
 Parallel processes preserve seeds/order but may be slower on small instances.
-Wall-clock budgets stop between full simulations and can overshoot by one simulation.
+Legacy wall-clock budgets stop between full simulations. With mandatory V2 root
+coverage, the initial coverage pass may exceed the wall budget; every simulation
+is counted and this is not a hard realtime guarantee.
 
 ## Reporting Limits
 
@@ -74,8 +82,12 @@ of the same instance may still be correlated; use the descriptive intervals with
 that limitation. No formal significance claim is automated. p95 latency means the
 mean within-run decision p95, not a pooled percentile. Runtime depends on hardware.
 
-The full 56-instance main benchmark, configured ablations, and realtime study have
-not been run. Empty ablation figures test export paths only and are not findings.
+The V1 704-condition campaign, including the full 56-instance main benchmark,
+ablations and realtime study, completed. All runs passed structural audits but
+all had incomplete service. Its byte-verified archive is
+`results/paper_v1_fixed_fleet`; it is diagnostic, not final paper evidence.
+Only the six-instance V2 diagnostic campaign is authorized. See
+`results/paper_v2/PAPER_RESULTS.md`; no V2 full paper campaign has been launched.
 
 The six large calibration cases are explicitly development instances and are not
 held-out evidence of superiority. Candidate reduction is part of the method:

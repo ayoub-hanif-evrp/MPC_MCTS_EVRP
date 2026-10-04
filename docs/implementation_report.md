@@ -1,5 +1,11 @@
 # Implementation Report (2026-10-03)
 
+Historical implementation snapshot, not current experiment status. V1 later
+completed704 conditions with incomplete service throughout. V2 diagnostics and
+their failed scientific/runtime gate are documented in
+[the current report](../results/paper_v2/PAPER_RESULTS.md) and
+[incomplete-service diagnosis](incomplete_service_diagnosis.md).
+
 ## Outcome and Scope
 
 The requested service-first objective correction and research-output pipeline are

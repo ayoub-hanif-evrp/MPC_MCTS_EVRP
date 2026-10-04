@@ -1,0 +1,13 @@
+Instance,Family,DoD,Comparison,Delta_unserved,Delta_EV,Delta_distance,Distance_pct,equal_service,equal_EVs
+c101_21,C1,0.5,Coordinated - Independent,0,-42.0,,,True,False
+c201_21,C2,0.5,Coordinated - Independent,0,-45.0,,,True,False
+r101_21,R1,0.5,Coordinated - Independent,1,,,,False,False
+r201_21,R2,0.5,Coordinated - Independent,0,-56.0,,,True,False
+rc101_21,RC1,0.5,Coordinated - Independent,3,,,,False,False
+rc201_21,RC2,0.5,Coordinated - Independent,0,-55.0,,,True,False
+c101_21,C1,0.0,Coordinated - Independent,0,-24.0,,,True,False
+c201_21,C2,0.0,Coordinated - Independent,0,0.0,-151.2634199351196,-2.320020793989286,True,True
+r101_21,R1,0.0,Coordinated - Independent,8,,,,False,False
+r201_21,R2,0.0,Coordinated - Independent,0,-33.0,,,True,False
+rc101_21,RC1,0.0,Coordinated - Independent,3,,,,False,False
+rc201_21,RC2,0.0,Coordinated - Independent,0,-30.0,,,True,False

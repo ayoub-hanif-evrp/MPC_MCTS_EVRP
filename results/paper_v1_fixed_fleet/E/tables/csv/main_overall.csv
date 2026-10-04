@@ -1,0 +1,5 @@
+study,DoD_target,algorithm,full_service_rate,mean_service_ratio,median_unserved,mean_activated_vehicles,mean_distance_on_complete_runs,median_distance_on_complete_runs,mean_planning_time,p95_planning_time,number_of_runs
+realtime,0.5,COORDINATED_MPC_MCTS,0.0,0.725,35.0,12.0,,,0.12396,0.398446,6
+realtime,0.5,COORDINATED_MPC_MCTS,0.0,0.739,34.0,12.0,,,0.231692,0.752612,6
+realtime,0.5,COORDINATED_MPC_MCTS,0.0,0.757,26.5,12.0,,,0.553829,1.857788,6
+realtime,0.5,COORDINATED_MPC_MCTS,0.0,0.751,27.5,12.0,,,1.149481,3.839321,6

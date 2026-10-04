@@ -1,0 +1,11 @@
+{
+  "audited_records": 72,
+  "coordinated_insertion_complete": 11,
+  "full_campaign_started": false,
+  "root_coverage_min": 1.0,
+  "scientific_gate": "not_approved",
+  "sources": [
+    "aa2c0ee46bafd33ddeb23849951bf9580a351819dd6d27fdb329141ebb26048b",
+    "ad21ec568548c9fea42e5a4a890212625eaff9e7dfa03c887d679ed5263db1c3"
+  ]
+}

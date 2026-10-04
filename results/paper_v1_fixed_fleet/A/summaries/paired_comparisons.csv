@@ -1,0 +1,13 @@
+study,ablation_factor,first,second,metric,difference,condition,matched_pairs,eligible_pairs,unmatched_records,ambiguous_records,n,mean,median,standard_deviation,ci95_low,ci95_high
+A,baseline,COORDINATED_MPC_MCTS,GREEDY,customers_unserved,first-minus-second,all matched service outcomes,56,56,0,0,56,-9.732142857142858,-11.0,21.06051114930808,-15.372184573865077,-4.092101140420638
+A,baseline,COORDINATED_MPC_MCTS,GREEDY,vehicles_activated,first-minus-second,equal service count,56,2,0,0,2,0.0,0.0,0.0,0.0,0.0
+A,baseline,COORDINATED_MPC_MCTS,GREEDY,total_distance,first-minus-second,equal service count and vehicle count,56,2,0,0,2,-436.29675088656677,-436.29675088656677,74.6204674721356,-1106.7350513219021,234.1415495487687
+A,baseline,COORDINATED_MPC_MCTS,GREEDY,total_planning_time,first-minus-second,matched execution profile; concurrent timings are not isolated latency,56,50,0,0,50,7.755306215989403,7.435580300225411,2.665965485533813,6.997647208140547,8.51296522383826
+A,baseline,COORDINATED_MPC_MCTS,MPC_MCTS_H1,customers_unserved,first-minus-second,all matched service outcomes,56,56,0,0,56,-8.803571428571429,-11.0,10.51132660576138,-11.61852307595982,-5.988619781183038
+A,baseline,COORDINATED_MPC_MCTS,MPC_MCTS_H1,vehicles_activated,first-minus-second,equal service count,56,3,0,0,3,0.0,0.0,0.0,0.0,0.0
+A,baseline,COORDINATED_MPC_MCTS,MPC_MCTS_H1,total_distance,first-minus-second,equal service count and vehicle count,56,3,0,0,3,213.3600766318444,193.54787681585276,73.27647142532064,31.33123058020996,395.3889226834789
+A,baseline,COORDINATED_MPC_MCTS,MPC_MCTS_H1,total_planning_time,first-minus-second,matched execution profile; concurrent timings are not isolated latency,56,50,0,0,50,5.987280361985322,5.700986349664163,2.385654362292244,5.309284893922196,6.665275830048448
+A,baseline,COORDINATED_MPC_MCTS,INDEPENDENT_MPC_MCTS,customers_unserved,first-minus-second,all matched service outcomes,56,56,0,0,56,-1.3035714285714286,-1.0,5.864902209080551,-2.8742024967920763,0.26705963964921886
+A,baseline,COORDINATED_MPC_MCTS,INDEPENDENT_MPC_MCTS,vehicles_activated,first-minus-second,equal service count,56,7,0,0,7,0.0,0.0,0.0,0.0,0.0
+A,baseline,COORDINATED_MPC_MCTS,INDEPENDENT_MPC_MCTS,total_distance,first-minus-second,equal service count and vehicle count,56,7,0,0,7,-107.5094794814521,-79.06164716908205,122.75836377202398,-221.04203028648834,6.0230713235841336
+A,baseline,COORDINATED_MPC_MCTS,INDEPENDENT_MPC_MCTS,total_planning_time,first-minus-second,matched execution profile; concurrent timings are not isolated latency,56,50,0,0,50,1.2757622720231303,1.2701329003321007,1.4892090231182769,0.8525337504770484,1.6989907935692123

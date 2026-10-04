@@ -1,0 +1,1403 @@
+{
+  "completed": 78,
+  "memberships": [
+    {
+      "instance": "c101_21",
+      "key": "effae7aa41e4e70fad694a488db0e1a34865224bc8c954c3339436f947c6fa9b",
+      "phase": "oracle"
+    },
+    {
+      "instance": "c101_21",
+      "key": "e378964ab103eb5b16f8026f3650adf59a67c6f5905cb4ff89d50ee12401d45b",
+      "phase": "oracle"
+    },
+    {
+      "instance": "c201_21",
+      "key": "08a93b910f6c542c4494d9e4f7b8da0aaa41aaa0dbbaf8efda827885d7d4fa88",
+      "phase": "oracle"
+    },
+    {
+      "instance": "c201_21",
+      "key": "fec57510bfcf877961ef431a630d948143f6aef38e20e2ac49548f8f922ceb9b",
+      "phase": "oracle"
+    },
+    {
+      "instance": "r101_21",
+      "key": "71ad704e5a35cb910d731bd499cef22a536a90906bc85e821f3582f6b5d3281a",
+      "phase": "oracle"
+    },
+    {
+      "instance": "r101_21",
+      "key": "372992ef58ef5e0f185d867fa7c71ea80c9a09cb08f494f6579e44e00092c4c5",
+      "phase": "oracle"
+    },
+    {
+      "instance": "r201_21",
+      "key": "668f05b5f501f5fcebea8e0466c8b3bd4948577d96f398af4c43993ea567e5ac",
+      "phase": "oracle"
+    },
+    {
+      "instance": "r201_21",
+      "key": "95f61f9c66e0a78f19681c4122e07143a83f9cedead1602ec7f7091f6c995db6",
+      "phase": "oracle"
+    },
+    {
+      "instance": "rc101_21",
+      "key": "aa77e1017bddfa7940f6c5faaa4ce39ed736148ddf9023280c2a9a34ac203f39",
+      "phase": "oracle"
+    },
+    {
+      "instance": "rc101_21",
+      "key": "5ea76c2f09f9d2ddfd6d53e5d5593bdd9ac65b78574108be79d31dc0fdfb710e",
+      "phase": "oracle"
+    },
+    {
+      "instance": "rc201_21",
+      "key": "d0529c86fca933f3a22f1752e531a3af84f56ce843f1374cbac70e45b9b5f6ec",
+      "phase": "oracle"
+    },
+    {
+      "instance": "rc201_21",
+      "key": "2aa9e20d60cc8d07b4fa028587dc6a038c4da8c3841400212ac424df4bb3b7f9",
+      "phase": "oracle"
+    },
+    {
+      "instance": "c101_21",
+      "key": "5b2f45d13f6bb5a56215f696a9339aa7252913b776ff90706231ae8d55cc6cf9",
+      "phase": "calibration"
+    },
+    {
+      "instance": "c101_21",
+      "key": "035f13da8aeb305937d4e6d885d860ffba78dc260304eb55f1a616c07f652abc",
+      "phase": "calibration"
+    },
+    {
+      "instance": "c101_21",
+      "key": "b393b61da6f9499006d372f2c4ec539fe9b8924967cdc3c386e3e1a0357fc9a3",
+      "phase": "calibration"
+    },
+    {
+      "instance": "c201_21",
+      "key": "b5e49e740f57507c8b288e86720f4b99711a29bce234dcae316ecc654e0229af",
+      "phase": "calibration"
+    },
+    {
+      "instance": "c201_21",
+      "key": "47d6f69b055cd7286d2430e1905e7dd2841d732b67bebad4ed3f9d32ede6369c",
+      "phase": "calibration"
+    },
+    {
+      "instance": "c201_21",
+      "key": "00da7e3f02d8499b680af2e34011c7a500929a9cdf2090d8d1de1ba24956a121",
+      "phase": "calibration"
+    },
+    {
+      "instance": "r101_21",
+      "key": "b994ce30a16c5043084e6f4b99868ff0eac80424ecb855e43d0b9270e3507b55",
+      "phase": "calibration"
+    },
+    {
+      "instance": "r101_21",
+      "key": "9217c76888763b0db161d55717c6217513bff209b36d14d1cfa00133690b27a3",
+      "phase": "calibration"
+    },
+    {
+      "instance": "r101_21",
+      "key": "8942f8a0572799bd2c475a0296717229c9c2941031f2907bce523132d802ec84",
+      "phase": "calibration"
+    },
+    {
+      "instance": "r201_21",
+      "key": "207b4582dea5dfaefe88cb9b988fcdcbe9beae4b5d24b169241f7d61a960bd21",
+      "phase": "calibration"
+    },
+    {
+      "instance": "r201_21",
+      "key": "51bb087301edc4ec7eff489ce9280463bceaa226d2f4b7146c1339f8bdbc39a9",
+      "phase": "calibration"
+    },
+    {
+      "instance": "r201_21",
+      "key": "a208bede49ae63b995261106c2c354f0ed118fb202e033ceb6f2c7524575c69e",
+      "phase": "calibration"
+    },
+    {
+      "instance": "rc101_21",
+      "key": "8141b16b84e021f539d0177d06aad06663c7dd201562d0f8b2b71eebb09562a5",
+      "phase": "calibration"
+    },
+    {
+      "instance": "rc101_21",
+      "key": "18ffd9d5cc1f5684a41df9d421df830c8f69f648422a4173f7a00b93e7e65b07",
+      "phase": "calibration"
+    },
+    {
+      "instance": "rc101_21",
+      "key": "0ea74e839ff83f53fbd405452cc5f0985610b6ea1bdb344d5fd62a725f6a3099",
+      "phase": "calibration"
+    },
+    {
+      "instance": "rc201_21",
+      "key": "2f1acf20cdb223c95749860856c306fabac8a21b44e4cbe95dab332214da551d",
+      "phase": "calibration"
+    },
+    {
+      "instance": "rc201_21",
+      "key": "c141b3cd5a018dd477daf25f0e706b8995afb266b0db7d2a446423cac73369fc",
+      "phase": "calibration"
+    },
+    {
+      "instance": "rc201_21",
+      "key": "19ebdb7ac35175796666974db4825f0e841dc277e44664db4201a3901a3ed560",
+      "phase": "calibration"
+    },
+    {
+      "instance": "c101_21",
+      "key": "f6ca2cf163f39ae24379cfcb8d900a90459cb897f911ff5fd8f23248e1870934",
+      "phase": "main"
+    },
+    {
+      "instance": "c101_21",
+      "key": "2d09d51a9fb33e5c3870d1be9c67515279158799b0a2addcb3575ed8118c31b4",
+      "phase": "main"
+    },
+    {
+      "instance": "c101_21",
+      "key": "15098f0c23b235182bba3b698bcb7b3956bbd1d4ec97095914b175bfc5814109",
+      "phase": "main"
+    },
+    {
+      "instance": "c101_21",
+      "key": "4be00e0dc6ba85be8a9e2c14dfdf1757c54789a574e8619f1b37c400aaa5879f",
+      "phase": "main"
+    },
+    {
+      "instance": "c101_21",
+      "key": "16002495202acbbcb346ef3bff0988a294b7f61240745f5314e8d842d0b7170e",
+      "phase": "main"
+    },
+    {
+      "instance": "c101_21",
+      "key": "b393b61da6f9499006d372f2c4ec539fe9b8924967cdc3c386e3e1a0357fc9a3",
+      "phase": "main"
+    },
+    {
+      "instance": "c101_21",
+      "key": "8cd50b72de84f95ccd10a763c24c199dcf9012963b82f5cef09ac996b53f692a",
+      "phase": "fleet_control"
+    },
+    {
+      "instance": "c101_21",
+      "key": "70ca3ced52944a1997473b970b4bd797f43ce88113d104ea7fe1111443ea811b",
+      "phase": "horizon"
+    },
+    {
+      "instance": "c101_21",
+      "key": "288ee45d3cc459e314ac803d89f2bb6f24554bab483e79d18e0ac07fbe366ff0",
+      "phase": "horizon"
+    },
+    {
+      "instance": "c201_21",
+      "key": "3ae154b9a0a2d9f6d4b785cbedfd1d9902c2ede476724f90557917051da8a138",
+      "phase": "main"
+    },
+    {
+      "instance": "c201_21",
+      "key": "6506ff170ef37171f879cdef65a40b87ad6f40a53477ddef01f0fb770a2c290e",
+      "phase": "main"
+    },
+    {
+      "instance": "c201_21",
+      "key": "a4f810e22028b727bd63afef5b4f8104623f5a02d19a4a10fb720f63268d4b86",
+      "phase": "main"
+    },
+    {
+      "instance": "c201_21",
+      "key": "e4f7c5955f3f7af006f3f1dce2ce7343ff4d47b4aa500a82eded9ef769635233",
+      "phase": "main"
+    },
+    {
+      "instance": "c201_21",
+      "key": "c96707043e385ccb7d80384806fc07136a97bdd88071cf96f760b8d30ea41fc1",
+      "phase": "main"
+    },
+    {
+      "instance": "c201_21",
+      "key": "00da7e3f02d8499b680af2e34011c7a500929a9cdf2090d8d1de1ba24956a121",
+      "phase": "main"
+    },
+    {
+      "instance": "c201_21",
+      "key": "c8caee3f7e7116e498166ac8ef1e1715931d7ab83c6790efd1ce9a69cc551592",
+      "phase": "fleet_control"
+    },
+    {
+      "instance": "c201_21",
+      "key": "afd726e7351d4c104937114565844248579b69997c886f15b9fab7646f44cf67",
+      "phase": "horizon"
+    },
+    {
+      "instance": "c201_21",
+      "key": "bf88c67e5fdfedd49745da0179acfbe0dcbe069b87503e771471b77cc92f72c5",
+      "phase": "horizon"
+    },
+    {
+      "instance": "r101_21",
+      "key": "d80753106ea09a709ecc2355a782ace64fc2e510f465e22581c919ed1f2a8581",
+      "phase": "main"
+    },
+    {
+      "instance": "r101_21",
+      "key": "2ed9202c3e16d520c7807fda12cb8749ee53eed0d3a281104cb5bc0d7f406996",
+      "phase": "main"
+    },
+    {
+      "instance": "r101_21",
+      "key": "f3da20a5f7e61de32f61e68aec98ff68dea512ec7e8bef19c544f0689667a86b",
+      "phase": "main"
+    },
+    {
+      "instance": "r101_21",
+      "key": "0f166c2229f7e2096bd12c78a30e9b423026c2883edb02e90e4ddfe0a6dcddc0",
+      "phase": "main"
+    },
+    {
+      "instance": "r101_21",
+      "key": "3c518293938dc67bd60810dfa5de9207190a97924688191710d9d368fadfdbb6",
+      "phase": "main"
+    },
+    {
+      "instance": "r101_21",
+      "key": "8942f8a0572799bd2c475a0296717229c9c2941031f2907bce523132d802ec84",
+      "phase": "main"
+    },
+    {
+      "instance": "r101_21",
+      "key": "dd47b9d5bb12c2f1d92f41ffbf742ac907a0cd7f07f8de6cf7c86fbafbdc4e51",
+      "phase": "fleet_control"
+    },
+    {
+      "instance": "r101_21",
+      "key": "9ba38778babd1887731004e558e8c68db6fcf3e86ef96b228934ada43b15bb16",
+      "phase": "horizon"
+    },
+    {
+      "instance": "r101_21",
+      "key": "914b7a02e84ab845f3511ef50e64f65ece2f5335c0a1765973ca1fbdf55b24c0",
+      "phase": "horizon"
+    },
+    {
+      "instance": "r201_21",
+      "key": "7372fd89d0208ad59166cfc6fcb998377c852c0294faa433421b454abdb9b839",
+      "phase": "main"
+    },
+    {
+      "instance": "r201_21",
+      "key": "9fa143270e9db70e56681691f2c98897be134bee4c87b8f027e5c97a6904dc3c",
+      "phase": "main"
+    },
+    {
+      "instance": "r201_21",
+      "key": "12b341b5bc368fff4d1b883b05b9239fa8631721af9848c74fec8bb7e6c951bf",
+      "phase": "main"
+    },
+    {
+      "instance": "r201_21",
+      "key": "2d3787305b19fb4f7ba71e25f6b8bb2067026c542f1da02a6213864f23a5f463",
+      "phase": "main"
+    },
+    {
+      "instance": "r201_21",
+      "key": "78bcec2d56f6926469fdd4330129bd0915c3bcdeaf3f39349a9f389c15368698",
+      "phase": "main"
+    },
+    {
+      "instance": "r201_21",
+      "key": "a208bede49ae63b995261106c2c354f0ed118fb202e033ceb6f2c7524575c69e",
+      "phase": "main"
+    },
+    {
+      "instance": "r201_21",
+      "key": "8a5c5f610259e6c97b004dc147f489ba7add6a9b40427865cf4ccf4be8f2e477",
+      "phase": "fleet_control"
+    },
+    {
+      "instance": "r201_21",
+      "key": "bf99a9b35bf114f852dd645664291db3a95ad2274ffbc3206f80dc88940c2587",
+      "phase": "horizon"
+    },
+    {
+      "instance": "r201_21",
+      "key": "34fb10ebb89bf4c380d020bf617d2ac3469391353bdd3c015a08729a13cc8bca",
+      "phase": "horizon"
+    },
+    {
+      "instance": "rc101_21",
+      "key": "af0744c3f82fd3d51669c1c6082b169b5eb5fd3d318eff0cab130dd5121c6356",
+      "phase": "main"
+    },
+    {
+      "instance": "rc101_21",
+      "key": "937212cddb2cc4c75b81af8b696f801dca2434f3e9d343affc262c6e28f67779",
+      "phase": "main"
+    },
+    {
+      "instance": "rc101_21",
+      "key": "242ad6f00f814c0111da637b5e00a8e521069fe63cefa99075219dca15f57f05",
+      "phase": "main"
+    },
+    {
+      "instance": "rc101_21",
+      "key": "89dcf4b0e31d24d7051e194d27455c38326a0e978ba504b886c456a6580d4c4f",
+      "phase": "main"
+    },
+    {
+      "instance": "rc101_21",
+      "key": "6d7bfa21f848eb847fb1914ee71940a41311403dd7d558a6b2bb983c6b4a916a",
+      "phase": "main"
+    },
+    {
+      "instance": "rc101_21",
+      "key": "0ea74e839ff83f53fbd405452cc5f0985610b6ea1bdb344d5fd62a725f6a3099",
+      "phase": "main"
+    },
+    {
+      "instance": "rc101_21",
+      "key": "b2612a70835415d3468ba01a3b88ddc90ba11cea4ab1a7864e8388a36e347947",
+      "phase": "fleet_control"
+    },
+    {
+      "instance": "rc101_21",
+      "key": "5e2b8a014649f7ba7d3415c7b683cfb739c72c75b50c2717f8ab92212a943489",
+      "phase": "horizon"
+    },
+    {
+      "instance": "rc101_21",
+      "key": "6a1981d4768f0505e84697e9eab3d71cac4c0ba49eed5839bba785cc8911769f",
+      "phase": "horizon"
+    },
+    {
+      "instance": "rc201_21",
+      "key": "becfee0d9bfd05fd722e75a23fa163b66a5c30ca5468a741c41a0deef9c795eb",
+      "phase": "main"
+    },
+    {
+      "instance": "rc201_21",
+      "key": "400f778a31193ca16e688bdba9b16fdd998ce5d7d75f5c21ff240b25fb43fe1e",
+      "phase": "main"
+    },
+    {
+      "instance": "rc201_21",
+      "key": "54a284ca199000cfc0df73dee632fe9023f169e75757e37888509694baa38146",
+      "phase": "main"
+    },
+    {
+      "instance": "rc201_21",
+      "key": "2e753f3aa00cfda95a1b619e77b7960393c3a6c8fe476807a4287e91b7a58116",
+      "phase": "main"
+    },
+    {
+      "instance": "rc201_21",
+      "key": "d452cc32b1e62d858077bc3149bb50d6286a7dea530e1ab02d3f18562d952dba",
+      "phase": "main"
+    },
+    {
+      "instance": "rc201_21",
+      "key": "19ebdb7ac35175796666974db4825f0e841dc277e44664db4201a3901a3ed560",
+      "phase": "main"
+    },
+    {
+      "instance": "rc201_21",
+      "key": "d875de01f6e9f5351482db1331302de28e8654a38e521f228fc31f7cbcdad7e1",
+      "phase": "fleet_control"
+    },
+    {
+      "instance": "rc201_21",
+      "key": "dc597a376cfa057bb47c09f6410992cac990adbc6d8bcc84da1ebde506da1c66",
+      "phase": "horizon"
+    },
+    {
+      "instance": "rc201_21",
+      "key": "4cc1c09c8ebc94c23dabb68157cf06f8f571fe66e7147407784c3e229e322c42",
+      "phase": "horizon"
+    }
+  ],
+  "paper_campaign_authorized": false,
+  "records": [
+    {
+      "DoD": 0.0,
+      "algorithm": "ORACLE_REFERENCE",
+      "audit_errors": [],
+      "budget": 64,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "c101_21",
+      "key": "effae7aa41e4e70fad694a488db0e1a34865224bc8c954c3339436f947c6fa9b",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\oracle\\c101_21_ORACLE_REFERENCE_b87718c2c37d07d803fa.json.gz",
+      "seconds": 0.14524940005503595
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "ORACLE_REFERENCE",
+      "audit_errors": [],
+      "budget": 64,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "c101_21",
+      "key": "e378964ab103eb5b16f8026f3650adf59a67c6f5905cb4ff89d50ee12401d45b",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\oracle\\c101_21_ORACLE_REFERENCE_2458d369bcf927feabe8.json.gz",
+      "seconds": 0.10250169993378222
+    },
+    {
+      "DoD": 0.0,
+      "algorithm": "ORACLE_REFERENCE",
+      "audit_errors": [],
+      "budget": 64,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "c201_21",
+      "key": "08a93b910f6c542c4494d9e4f7b8da0aaa41aaa0dbbaf8efda827885d7d4fa88",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\oracle\\c201_21_ORACLE_REFERENCE_b6732011f81bd78ffdfb.json.gz",
+      "seconds": 0.11452359997201711
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "ORACLE_REFERENCE",
+      "audit_errors": [],
+      "budget": 64,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "c201_21",
+      "key": "fec57510bfcf877961ef431a630d948143f6aef38e20e2ac49548f8f922ceb9b",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\oracle\\c201_21_ORACLE_REFERENCE_9ec20a3a3d6ce670c8e8.json.gz",
+      "seconds": 0.10753399995155632
+    },
+    {
+      "DoD": 0.0,
+      "algorithm": "ORACLE_REFERENCE",
+      "audit_errors": [],
+      "budget": 64,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "r101_21",
+      "key": "71ad704e5a35cb910d731bd499cef22a536a90906bc85e821f3582f6b5d3281a",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\oracle\\r101_21_ORACLE_REFERENCE_d246624fd1d3abae9263.json.gz",
+      "seconds": 0.12865880003664643
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "ORACLE_REFERENCE",
+      "audit_errors": [],
+      "budget": 64,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "r101_21",
+      "key": "372992ef58ef5e0f185d867fa7c71ea80c9a09cb08f494f6579e44e00092c4c5",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\oracle\\r101_21_ORACLE_REFERENCE_171adb240e9c8acaf4a5.json.gz",
+      "seconds": 0.12250260007567704
+    },
+    {
+      "DoD": 0.0,
+      "algorithm": "ORACLE_REFERENCE",
+      "audit_errors": [],
+      "budget": 64,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "r201_21",
+      "key": "668f05b5f501f5fcebea8e0466c8b3bd4948577d96f398af4c43993ea567e5ac",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\oracle\\r201_21_ORACLE_REFERENCE_895879bfabeb89cc30c1.json.gz",
+      "seconds": 0.12566080002579838
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "ORACLE_REFERENCE",
+      "audit_errors": [],
+      "budget": 64,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "r201_21",
+      "key": "95f61f9c66e0a78f19681c4122e07143a83f9cedead1602ec7f7091f6c995db6",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\oracle\\r201_21_ORACLE_REFERENCE_91a54a76ded1023638fb.json.gz",
+      "seconds": 0.14281740004662424
+    },
+    {
+      "DoD": 0.0,
+      "algorithm": "ORACLE_REFERENCE",
+      "audit_errors": [],
+      "budget": 64,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "rc101_21",
+      "key": "aa77e1017bddfa7940f6c5faaa4ce39ed736148ddf9023280c2a9a34ac203f39",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\oracle\\rc101_21_ORACLE_REFERENCE_04e4e36f43deacefef4e.json.gz",
+      "seconds": 0.12996229995042086
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "ORACLE_REFERENCE",
+      "audit_errors": [],
+      "budget": 64,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "rc101_21",
+      "key": "5ea76c2f09f9d2ddfd6d53e5d5593bdd9ac65b78574108be79d31dc0fdfb710e",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\oracle\\rc101_21_ORACLE_REFERENCE_2787d1c10b0ce3cb8a43.json.gz",
+      "seconds": 0.11843249993398786
+    },
+    {
+      "DoD": 0.0,
+      "algorithm": "ORACLE_REFERENCE",
+      "audit_errors": [],
+      "budget": 64,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "rc201_21",
+      "key": "d0529c86fca933f3a22f1752e531a3af84f56ce843f1374cbac70e45b9b5f6ec",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\oracle\\rc201_21_ORACLE_REFERENCE_c67ac6ecd347fd6d0805.json.gz",
+      "seconds": 0.1053418000228703
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "ORACLE_REFERENCE",
+      "audit_errors": [],
+      "budget": 64,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "rc201_21",
+      "key": "2aa9e20d60cc8d07b4fa028587dc6a038c4da8c3841400212ac424df4bb3b7f9",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\oracle\\rc201_21_ORACLE_REFERENCE_902512060f96aa32322a.json.gz",
+      "seconds": 0.11078590003307909
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "COORDINATED_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 32,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "c101_21",
+      "key": "5b2f45d13f6bb5a56215f696a9339aa7252913b776ff90706231ae8d55cc6cf9",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\c101_21_COORDINATED_MPC_MCTS_e092a201c5d80fc8160c.json.gz",
+      "seconds": 114.90812070004176
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "COORDINATED_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 64,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "c101_21",
+      "key": "035f13da8aeb305937d4e6d885d860ffba78dc260304eb55f1a616c07f652abc",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\c101_21_COORDINATED_MPC_MCTS_8dc3fc180cdba46fec08.json.gz",
+      "seconds": 211.64342510001734
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "COORDINATED_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "c101_21",
+      "key": "b393b61da6f9499006d372f2c4ec539fe9b8924967cdc3c386e3e1a0357fc9a3",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\c101_21_COORDINATED_MPC_MCTS_d76123b7a7eec2eacdc5.json.gz",
+      "seconds": 571.6158292000182
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "COORDINATED_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 32,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "c201_21",
+      "key": "b5e49e740f57507c8b288e86720f4b99711a29bce234dcae316ecc654e0229af",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\c201_21_COORDINATED_MPC_MCTS_6d52785b0556e80587ca.json.gz",
+      "seconds": 866.5314126999583
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "COORDINATED_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 64,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "c201_21",
+      "key": "47d6f69b055cd7286d2430e1905e7dd2841d732b67bebad4ed3f9d32ede6369c",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\c201_21_COORDINATED_MPC_MCTS_70847e1ab70e803494d6.json.gz",
+      "seconds": 1727.3031346000498
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "COORDINATED_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "c201_21",
+      "key": "00da7e3f02d8499b680af2e34011c7a500929a9cdf2090d8d1de1ba24956a121",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\c201_21_COORDINATED_MPC_MCTS_508163aaa5e345648ef6.json.gz",
+      "seconds": 2524.517122499994
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "COORDINATED_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 32,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "r101_21",
+      "key": "b994ce30a16c5043084e6f4b99868ff0eac80424ecb855e43d0b9270e3507b55",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\r101_21_COORDINATED_MPC_MCTS_66e07f092abc762afd8f.json.gz",
+      "seconds": 49.22808390005957
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "COORDINATED_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 64,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "r101_21",
+      "key": "9217c76888763b0db161d55717c6217513bff209b36d14d1cfa00133690b27a3",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\r101_21_COORDINATED_MPC_MCTS_bbc0267c4d8c41e6d633.json.gz",
+      "seconds": 103.70197169994935
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "COORDINATED_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "r101_21",
+      "key": "8942f8a0572799bd2c475a0296717229c9c2941031f2907bce523132d802ec84",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\r101_21_COORDINATED_MPC_MCTS_8a8b7ef5432be6850fb6.json.gz",
+      "seconds": 161.36295979993884
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "COORDINATED_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 32,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "r201_21",
+      "key": "207b4582dea5dfaefe88cb9b988fcdcbe9beae4b5d24b169241f7d61a960bd21",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\r201_21_COORDINATED_MPC_MCTS_4b129d7d3f59050fa82f.json.gz",
+      "seconds": 126.80593300005421
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "COORDINATED_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 64,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "r201_21",
+      "key": "51bb087301edc4ec7eff489ce9280463bceaa226d2f4b7146c1339f8bdbc39a9",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\r201_21_COORDINATED_MPC_MCTS_d39e5a79e073434e52fa.json.gz",
+      "seconds": 260.2195340000326
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "COORDINATED_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "r201_21",
+      "key": "a208bede49ae63b995261106c2c354f0ed118fb202e033ceb6f2c7524575c69e",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\r201_21_COORDINATED_MPC_MCTS_b86725071003480aeca7.json.gz",
+      "seconds": 519.2598005000036
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "COORDINATED_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 32,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "rc101_21",
+      "key": "8141b16b84e021f539d0177d06aad06663c7dd201562d0f8b2b71eebb09562a5",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\rc101_21_COORDINATED_MPC_MCTS_788d852d556ad5edef94.json.gz",
+      "seconds": 39.62939679995179
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "COORDINATED_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 64,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "rc101_21",
+      "key": "18ffd9d5cc1f5684a41df9d421df830c8f69f648422a4173f7a00b93e7e65b07",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\rc101_21_COORDINATED_MPC_MCTS_f174ba1345f903cc5340.json.gz",
+      "seconds": 65.83691189996898
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "COORDINATED_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "rc101_21",
+      "key": "0ea74e839ff83f53fbd405452cc5f0985610b6ea1bdb344d5fd62a725f6a3099",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\rc101_21_COORDINATED_MPC_MCTS_6eaaef7329e40a7b3d0e.json.gz",
+      "seconds": 132.0217620000476
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "COORDINATED_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 32,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "rc201_21",
+      "key": "2f1acf20cdb223c95749860856c306fabac8a21b44e4cbe95dab332214da551d",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\rc201_21_COORDINATED_MPC_MCTS_faec2a25b86ee08f7f1a.json.gz",
+      "seconds": 167.03698969993275
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "COORDINATED_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 64,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "rc201_21",
+      "key": "c141b3cd5a018dd477daf25f0e706b8995afb266b0db7d2a446423cac73369fc",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\rc201_21_COORDINATED_MPC_MCTS_c1beb4f8e808b698b0b7.json.gz",
+      "seconds": 315.78549369995017
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "COORDINATED_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "rc201_21",
+      "key": "19ebdb7ac35175796666974db4825f0e841dc277e44664db4201a3901a3ed560",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\rc201_21_COORDINATED_MPC_MCTS_eae904c652b8e2c05fdb.json.gz",
+      "seconds": 599.3163656999823
+    },
+    {
+      "DoD": 0.0,
+      "algorithm": "GREEDY",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "c101_21",
+      "key": "f6ca2cf163f39ae24379cfcb8d900a90459cb897f911ff5fd8f23248e1870934",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\c101_21_GREEDY_2811853e3eebbf1b1a55.json.gz",
+      "seconds": 0.2644415999529883
+    },
+    {
+      "DoD": 0.0,
+      "algorithm": "INDEPENDENT_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "c101_21",
+      "key": "2d09d51a9fb33e5c3870d1be9c67515279158799b0a2addcb3575ed8118c31b4",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\c101_21_INDEPENDENT_MPC_MCTS_29fa846e6821581002be.json.gz",
+      "seconds": 23.31927909993101
+    },
+    {
+      "DoD": 0.0,
+      "algorithm": "COORDINATED_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "c101_21",
+      "key": "15098f0c23b235182bba3b698bcb7b3956bbd1d4ec97095914b175bfc5814109",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\c101_21_COORDINATED_MPC_MCTS_7709a1f45261ff27000b.json.gz",
+      "seconds": 716.6939304000698
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "GREEDY",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "c101_21",
+      "key": "4be00e0dc6ba85be8a9e2c14dfdf1757c54789a574e8619f1b37c400aaa5879f",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\c101_21_GREEDY_8cab98609bb5d2fd6ae3.json.gz",
+      "seconds": 0.3158251999411732
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "INDEPENDENT_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "c101_21",
+      "key": "16002495202acbbcb346ef3bff0988a294b7f61240745f5314e8d842d0b7170e",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\c101_21_INDEPENDENT_MPC_MCTS_490f0d6959bfa24df5a2.json.gz",
+      "seconds": 16.652681599953212
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "COORDINATED_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "fixed_reference",
+      "horizon": 5,
+      "instance": "c101_21",
+      "key": "8cd50b72de84f95ccd10a763c24c199dcf9012963b82f5cef09ac996b53f692a",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\c101_21_COORDINATED_MPC_MCTS_612f846b2438b17b261b.json.gz",
+      "seconds": 27.362361600040458
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "COORDINATED_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 1,
+      "instance": "c101_21",
+      "key": "70ca3ced52944a1997473b970b4bd797f43ce88113d104ea7fe1111443ea811b",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\c101_21_COORDINATED_MPC_MCTS_0bef7027666c5c1527f2.json.gz",
+      "seconds": 8.315168099943548
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "COORDINATED_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 3,
+      "instance": "c101_21",
+      "key": "288ee45d3cc459e314ac803d89f2bb6f24554bab483e79d18e0ac07fbe366ff0",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\c101_21_COORDINATED_MPC_MCTS_771435918aabe2e2fff4.json.gz",
+      "seconds": 386.3762803999707
+    },
+    {
+      "DoD": 0.0,
+      "algorithm": "GREEDY",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "c201_21",
+      "key": "3ae154b9a0a2d9f6d4b785cbedfd1d9902c2ede476724f90557917051da8a138",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\c201_21_GREEDY_9023b36ba5115921cdc6.json.gz",
+      "seconds": 0.2313744000857696
+    },
+    {
+      "DoD": 0.0,
+      "algorithm": "INDEPENDENT_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "c201_21",
+      "key": "6506ff170ef37171f879cdef65a40b87ad6f40a53477ddef01f0fb770a2c290e",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\c201_21_INDEPENDENT_MPC_MCTS_f9a529be0145add937c3.json.gz",
+      "seconds": 16.711761299986392
+    },
+    {
+      "DoD": 0.0,
+      "algorithm": "COORDINATED_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "c201_21",
+      "key": "a4f810e22028b727bd63afef5b4f8104623f5a02d19a4a10fb720f63268d4b86",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\c201_21_COORDINATED_MPC_MCTS_b39e5a118e42100fbb2d.json.gz",
+      "seconds": 6123.224870100035
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "GREEDY",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "c201_21",
+      "key": "e4f7c5955f3f7af006f3f1dce2ce7343ff4d47b4aa500a82eded9ef769635233",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\c201_21_GREEDY_bdd49aa765500614324b.json.gz",
+      "seconds": 0.28844219993334264
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "INDEPENDENT_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "c201_21",
+      "key": "c96707043e385ccb7d80384806fc07136a97bdd88071cf96f760b8d30ea41fc1",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\c201_21_INDEPENDENT_MPC_MCTS_c52cc835deb878e40f59.json.gz",
+      "seconds": 7.777358400053345
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "COORDINATED_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "fixed_reference",
+      "horizon": 5,
+      "instance": "c201_21",
+      "key": "c8caee3f7e7116e498166ac8ef1e1715931d7ab83c6790efd1ce9a69cc551592",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\c201_21_COORDINATED_MPC_MCTS_da9e7f2f6c852fdb5fd8.json.gz",
+      "seconds": 10.243673600023612
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "COORDINATED_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 1,
+      "instance": "c201_21",
+      "key": "afd726e7351d4c104937114565844248579b69997c886f15b9fab7646f44cf67",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\c201_21_COORDINATED_MPC_MCTS_ce240e0684c21693878a.json.gz",
+      "seconds": 4.407279500039294
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "COORDINATED_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 3,
+      "instance": "c201_21",
+      "key": "bf88c67e5fdfedd49745da0179acfbe0dcbe069b87503e771471b77cc92f72c5",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\c201_21_COORDINATED_MPC_MCTS_b395c91c573f562151c1.json.gz",
+      "seconds": 2541.0895191999152
+    },
+    {
+      "DoD": 0.0,
+      "algorithm": "GREEDY",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "r101_21",
+      "key": "d80753106ea09a709ecc2355a782ace64fc2e510f465e22581c919ed1f2a8581",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\r101_21_GREEDY_916fd1e083974d36816f.json.gz",
+      "seconds": 0.35086370003409684
+    },
+    {
+      "DoD": 0.0,
+      "algorithm": "INDEPENDENT_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "r101_21",
+      "key": "2ed9202c3e16d520c7807fda12cb8749ee53eed0d3a281104cb5bc0d7f406996",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\r101_21_INDEPENDENT_MPC_MCTS_668b9c57e65a8992f7eb.json.gz",
+      "seconds": 20.515737899928354
+    },
+    {
+      "DoD": 0.0,
+      "algorithm": "COORDINATED_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "r101_21",
+      "key": "f3da20a5f7e61de32f61e68aec98ff68dea512ec7e8bef19c544f0689667a86b",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\r101_21_COORDINATED_MPC_MCTS_4062943f23f14d48345c.json.gz",
+      "seconds": 146.87955339998007
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "GREEDY",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "r101_21",
+      "key": "0f166c2229f7e2096bd12c78a30e9b423026c2883edb02e90e4ddfe0a6dcddc0",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\r101_21_GREEDY_62f61ee463e9e4156e29.json.gz",
+      "seconds": 0.46944330004043877
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "INDEPENDENT_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "r101_21",
+      "key": "3c518293938dc67bd60810dfa5de9207190a97924688191710d9d368fadfdbb6",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\r101_21_INDEPENDENT_MPC_MCTS_4997126db7f34118e445.json.gz",
+      "seconds": 17.607880100025795
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "COORDINATED_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "fixed_reference",
+      "horizon": 5,
+      "instance": "r101_21",
+      "key": "dd47b9d5bb12c2f1d92f41ffbf742ac907a0cd7f07f8de6cf7c86fbafbdc4e51",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\r101_21_COORDINATED_MPC_MCTS_2cb4567284e8188b1fb6.json.gz",
+      "seconds": 22.973091799998656
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "COORDINATED_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 1,
+      "instance": "r101_21",
+      "key": "9ba38778babd1887731004e558e8c68db6fcf3e86ef96b228934ada43b15bb16",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\r101_21_COORDINATED_MPC_MCTS_5ddb64bfe1546bce8ac2.json.gz",
+      "seconds": 21.09038559999317
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "COORDINATED_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 3,
+      "instance": "r101_21",
+      "key": "914b7a02e84ab845f3511ef50e64f65ece2f5335c0a1765973ca1fbdf55b24c0",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\r101_21_COORDINATED_MPC_MCTS_206939280a4ef3e95784.json.gz",
+      "seconds": 139.89894179999828
+    },
+    {
+      "DoD": 0.0,
+      "algorithm": "GREEDY",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "r201_21",
+      "key": "7372fd89d0208ad59166cfc6fcb998377c852c0294faa433421b454abdb9b839",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\r201_21_GREEDY_8ff0e00029ff456e282b.json.gz",
+      "seconds": 0.24115339992567897
+    },
+    {
+      "DoD": 0.0,
+      "algorithm": "INDEPENDENT_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "r201_21",
+      "key": "9fa143270e9db70e56681691f2c98897be134bee4c87b8f027e5c97a6904dc3c",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\r201_21_INDEPENDENT_MPC_MCTS_c5d35518481043e630ec.json.gz",
+      "seconds": 18.5206817999715
+    },
+    {
+      "DoD": 0.0,
+      "algorithm": "COORDINATED_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "r201_21",
+      "key": "12b341b5bc368fff4d1b883b05b9239fa8631721af9848c74fec8bb7e6c951bf",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\r201_21_COORDINATED_MPC_MCTS_76a46ffff49f44d41eef.json.gz",
+      "seconds": 1086.636584599968
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "GREEDY",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "r201_21",
+      "key": "2d3787305b19fb4f7ba71e25f6b8bb2067026c542f1da02a6213864f23a5f463",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\r201_21_GREEDY_cf93910dadb14cd720ae.json.gz",
+      "seconds": 0.30680550006218255
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "INDEPENDENT_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "r201_21",
+      "key": "78bcec2d56f6926469fdd4330129bd0915c3bcdeaf3f39349a9f389c15368698",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\r201_21_INDEPENDENT_MPC_MCTS_36847ac05a3926cfc90b.json.gz",
+      "seconds": 6.817374300095253
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "COORDINATED_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "fixed_reference",
+      "horizon": 5,
+      "instance": "r201_21",
+      "key": "8a5c5f610259e6c97b004dc147f489ba7add6a9b40427865cf4ccf4be8f2e477",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\r201_21_COORDINATED_MPC_MCTS_6ef57cfb7529a513fd2d.json.gz",
+      "seconds": 21.02914229989983
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "COORDINATED_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 1,
+      "instance": "r201_21",
+      "key": "bf99a9b35bf114f852dd645664291db3a95ad2274ffbc3206f80dc88940c2587",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\r201_21_COORDINATED_MPC_MCTS_44745a1f48ef81de6997.json.gz",
+      "seconds": 3.7209537000162527
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "COORDINATED_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 3,
+      "instance": "r201_21",
+      "key": "34fb10ebb89bf4c380d020bf617d2ac3469391353bdd3c015a08729a13cc8bca",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\r201_21_COORDINATED_MPC_MCTS_7a9cece140ba0bbc8e96.json.gz",
+      "seconds": 264.17364299995825
+    },
+    {
+      "DoD": 0.0,
+      "algorithm": "GREEDY",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "rc101_21",
+      "key": "af0744c3f82fd3d51669c1c6082b169b5eb5fd3d318eff0cab130dd5121c6356",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\rc101_21_GREEDY_3dc141cfec1cdf7e297b.json.gz",
+      "seconds": 0.3082090000389144
+    },
+    {
+      "DoD": 0.0,
+      "algorithm": "INDEPENDENT_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "rc101_21",
+      "key": "937212cddb2cc4c75b81af8b696f801dca2434f3e9d343affc262c6e28f67779",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\rc101_21_INDEPENDENT_MPC_MCTS_5f8aad28ef7c56ca2a71.json.gz",
+      "seconds": 23.864582600072026
+    },
+    {
+      "DoD": 0.0,
+      "algorithm": "COORDINATED_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "rc101_21",
+      "key": "242ad6f00f814c0111da637b5e00a8e521069fe63cefa99075219dca15f57f05",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\rc101_21_COORDINATED_MPC_MCTS_91546469ea91a6268413.json.gz",
+      "seconds": 136.46655640006065
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "GREEDY",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "rc101_21",
+      "key": "89dcf4b0e31d24d7051e194d27455c38326a0e978ba504b886c456a6580d4c4f",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\rc101_21_GREEDY_a9b9c8eed7c7429e1cf3.json.gz",
+      "seconds": 0.3045682000229135
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "INDEPENDENT_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "rc101_21",
+      "key": "6d7bfa21f848eb847fb1914ee71940a41311403dd7d558a6b2bb983c6b4a916a",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\rc101_21_INDEPENDENT_MPC_MCTS_b456fccaa6a318845ef1.json.gz",
+      "seconds": 11.012018099892884
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "COORDINATED_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "fixed_reference",
+      "horizon": 5,
+      "instance": "rc101_21",
+      "key": "b2612a70835415d3468ba01a3b88ddc90ba11cea4ab1a7864e8388a36e347947",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\rc101_21_COORDINATED_MPC_MCTS_9dfc609551d7d368d79d.json.gz",
+      "seconds": 23.99493609997444
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "COORDINATED_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 1,
+      "instance": "rc101_21",
+      "key": "5e2b8a014649f7ba7d3415c7b683cfb739c72c75b50c2717f8ab92212a943489",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\rc101_21_COORDINATED_MPC_MCTS_af62d10a9a1bd3efc87b.json.gz",
+      "seconds": 8.200311699998565
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "COORDINATED_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 3,
+      "instance": "rc101_21",
+      "key": "6a1981d4768f0505e84697e9eab3d71cac4c0ba49eed5839bba785cc8911769f",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\rc101_21_COORDINATED_MPC_MCTS_6c58295e855517d35515.json.gz",
+      "seconds": 85.03768510010559
+    },
+    {
+      "DoD": 0.0,
+      "algorithm": "GREEDY",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "rc201_21",
+      "key": "becfee0d9bfd05fd722e75a23fa163b66a5c30ca5468a741c41a0deef9c795eb",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\rc201_21_GREEDY_b374b1d1a3a536510734.json.gz",
+      "seconds": 0.16386520001105964
+    },
+    {
+      "DoD": 0.0,
+      "algorithm": "INDEPENDENT_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "rc201_21",
+      "key": "400f778a31193ca16e688bdba9b16fdd998ce5d7d75f5c21ff240b25fb43fe1e",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\rc201_21_INDEPENDENT_MPC_MCTS_964db433a3f8900d13c4.json.gz",
+      "seconds": 6.78730500000529
+    },
+    {
+      "DoD": 0.0,
+      "algorithm": "COORDINATED_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "rc201_21",
+      "key": "54a284ca199000cfc0df73dee632fe9023f169e75757e37888509694baa38146",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\rc201_21_COORDINATED_MPC_MCTS_850796bdb787f58f4b9e.json.gz",
+      "seconds": 694.3434180000331
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "GREEDY",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "rc201_21",
+      "key": "2e753f3aa00cfda95a1b619e77b7960393c3a6c8fe476807a4287e91b7a58116",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\rc201_21_GREEDY_3c9874780657c8f01916.json.gz",
+      "seconds": 0.19234840001445264
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "INDEPENDENT_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 5,
+      "instance": "rc201_21",
+      "key": "d452cc32b1e62d858077bc3149bb50d6286a7dea530e1ab02d3f18562d952dba",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\rc201_21_INDEPENDENT_MPC_MCTS_14290500fc6399359158.json.gz",
+      "seconds": 5.025827299919911
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "COORDINATED_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "fixed_reference",
+      "horizon": 5,
+      "instance": "rc201_21",
+      "key": "d875de01f6e9f5351482db1331302de28e8654a38e521f228fc31f7cbcdad7e1",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\rc201_21_COORDINATED_MPC_MCTS_c23db3d42bea2f87011b.json.gz",
+      "seconds": 11.81226160004735
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "COORDINATED_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 1,
+      "instance": "rc201_21",
+      "key": "dc597a376cfa057bb47c09f6410992cac990adbc6d8bcc84da1ebde506da1c66",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\rc201_21_COORDINATED_MPC_MCTS_4c0f22ed17cbce692dc7.json.gz",
+      "seconds": 2.34004499996081
+    },
+    {
+      "DoD": 0.5,
+      "algorithm": "COORDINATED_MPC_MCTS",
+      "audit_errors": [],
+      "budget": 96,
+      "fleet": "lazy_reserve",
+      "horizon": 3,
+      "instance": "rc201_21",
+      "key": "4cc1c09c8ebc94c23dabb68157cf06f8f571fe66e7147407784c3e229e322c42",
+      "path": "C:\\Users\\AYOUB\\AppData\\Local\\EVRP\\diagnostic_v2\\cdbf02e80000\\raw\\rc201_21_COORDINATED_MPC_MCTS_8bf479801c9b79d5ae6b.json.gz",
+      "seconds": 165.35426070005633
+    }
+  ],
+  "resource": {
+    "available_memory_mib": 2734.93359375,
+    "measured_peak_mib": 512,
+    "numerical_threads": 1,
+    "per_worker_mib": 768.0,
+    "physical_cores": 16,
+    "reserved_mib": 512,
+    "workers": 2
+  },
+  "selection": {
+    "budget": 96,
+    "comparisons": [
+      {
+        "budget": 32,
+        "eligible": false,
+        "equal_outcome_pairs": 0,
+        "median_service": 100.0,
+        "worst_distance_ratio": null
+      },
+      {
+        "budget": 64,
+        "eligible": false,
+        "equal_outcome_pairs": 2,
+        "median_service": 100.0,
+        "worst_distance_ratio": 1.0804398337326049
+      },
+      {
+        "budget": 96,
+        "eligible": true,
+        "equal_outcome_pairs": 6,
+        "median_service": 100.0,
+        "worst_distance_ratio": 1.0
+      }
+    ],
+    "reference": 96,
+    "rule": "Smallest budget within one customer of best median service, with at least one equal-service/equal-EV pair and all paired distances within 5%; largest-budget median tie break; ambiguous fallback 64. Development calibration only."
+  },
+  "source_sha256": "cdbf02e800001ca3450599fe7cb9d5766689d509428a67449817fbe275eb3a22",
+  "status": "completed"
+}

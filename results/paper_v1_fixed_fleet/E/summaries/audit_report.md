@@ -1,0 +1,30 @@
+# Result Audit
+
+Records: 24; structural failures: 0.
+
+Incomplete service is a reported outcome, not a structural failure.
+
+- `02a99b5ba0fb4cb4642805d2ab00d4b3900d58c5b2b8ee89b416cfe41ecfe340`: incomplete_service; Not all customers served
+- `289157aead275195bbb13e3cbbf9975957fe13ee0885beb52bc48a78c0ce9d86`: incomplete_service; Not all customers served
+- `2b363eedb0871ad5aefd9db4951592a6cd15dc74ac1e09b2081f48b49b1e35d6`: incomplete_service; Not all customers served
+- `31e8c74367c01d046e20c94ff5d175ef6b831eef63445709a840bc5760cfef62`: incomplete_service; Not all customers served
+- `36125b000b16ad106cbc331107e83002a656351b73bf827a526b3f3ef3d38226`: incomplete_service; Not all customers served
+- `398615aabb791c4626111df5818a667e4cdecd6fe1c8537326e596ceb3bf1282`: incomplete_service; Not all customers served
+- `5181da8eb21be9738fbd265918532a6a1599f44a6ea6b1526875e3526401f034`: incomplete_service; Not all customers served
+- `56ef5882e350b4bb2d3199beb496a1a1f4c0ab84dcfe6eeb840b36a18a67dd36`: incomplete_service; Not all customers served
+- `5d184bd31dc37c2056f06483d14d4e5bc5af578e83d5b20f49504b8cd3743438`: incomplete_service; Not all customers served
+- `65706eede186522be1d539b063865c1165c595ddc13b75c369a216f653485730`: incomplete_service; Not all customers served
+- `6868f900143bd803d2ffc9be0c2ac26c664e2c54df61d04bc7775002ef793e92`: incomplete_service; Not all customers served
+- `6b9d1e184d5099ce0cdde0ade783d30f3dd3eea031e3c405e7fea0ccbe31c7b2`: incomplete_service; Not all customers served
+- `6e422f0e3cc9dd978fda890420d0db17ff92808019895ecde74fbf6f22fe18c2`: incomplete_service; Not all customers served
+- `86a3b1d51850445bd7748a3abc24a56cbbf85038fdb821ea56202d0bf778380e`: incomplete_service; Not all customers served
+- `87053a335520161c4e63e37cee6c968d771998b4839546b9040dcbd0b7ba269b`: incomplete_service; Not all customers served
+- `89c0bb5c3598b56405f292eaa3704246df24c2ea665c3647088387c9bc6e12b4`: incomplete_service; Not all customers served
+- `a309a1af001d0a404923480a55815add5c3b7f6b34e42e8995f9baf8e19ddecc`: incomplete_service; Not all customers served
+- `a572337ac57cf4a52b962774e3014df90b26e55d565a7e269dbb42b0710d01c6`: incomplete_service; Not all customers served
+- `c099446dbfeb88ff8cc8fcf077f9bf4b718b63a03c37369a81c6c4129b292753`: incomplete_service; Not all customers served
+- `ce3b04f0ba601f8a834cfb8f04b7f5573cdd1dc843a5ab55e2f5629084ca7b17`: incomplete_service; Not all customers served
+- `d668060b66ff7d34d317d63446266d11c5073ea573c01a8bcbd64d062555762e`: incomplete_service; Not all customers served
+- `d944b5ac3beee44b2d6e861d3b69846666201ae60e58d1331384b3c4fec76663`: incomplete_service; Not all customers served
+- `db1b182409600c9e3d7e068c6bc65750723330c5c214c00d8b7b56494e5f55a4`: incomplete_service; Not all customers served
+- `facdc034d66a212b3755e7f837a1c1ac08446c74a0d85224473a71d2b5b688ca`: incomplete_service; Not all customers served

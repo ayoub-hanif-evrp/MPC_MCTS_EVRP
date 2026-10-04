@@ -1,0 +1,5 @@
+study,ablation_factor,first,second,metric,difference,condition,matched_pairs,eligible_pairs,unmatched_records,ambiguous_records,n,mean,median,standard_deviation,ci95_low,ci95_high
+B,baseline,COORDINATED_MPC_MCTS,INDEPENDENT_MPC_MCTS,customers_unserved,first-minus-second,all matched service outcomes,96,96,0,0,96,-0.3333333333333333,0.0,6.71630642018547,-1.6941834960874005,1.0275168294207335
+B,baseline,COORDINATED_MPC_MCTS,INDEPENDENT_MPC_MCTS,vehicles_activated,first-minus-second,equal service count,96,14,0,0,14,0.0,0.0,0.0,0.0,0.0
+B,baseline,COORDINATED_MPC_MCTS,INDEPENDENT_MPC_MCTS,total_distance,first-minus-second,equal service count and vehicle count,96,14,0,0,14,3.8645814331422583,-17.296697108663807,81.10755489382348,-42.96552653300378,50.69468939928829
+B,baseline,COORDINATED_MPC_MCTS,INDEPENDENT_MPC_MCTS,total_planning_time,first-minus-second,matched execution profile; concurrent timings are not isolated latency,96,90,0,0,90,1.2522125956084993,1.187863300088793,1.2097447598291735,0.9988364610692444,1.5055887301477542
