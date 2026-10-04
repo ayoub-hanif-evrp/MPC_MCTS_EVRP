@@ -149,18 +149,36 @@ configuration, including when incomplete. Unrun ablations produce explicitly emp
 plots, never invented observations. Historical outputs are archived and excluded.
 See [results policy](results/README.md) and [assumptions](docs/assumptions.md).
 
-## Full Campaign
+## Compact Paper Campaign
 
-The full configured campaign now uses `python -m scripts.run_full_campaign --workers 4`. It runs
-17,017 jobs, checkpoints each completed run, and automatically audits/exports each
-study. Progress is in `results/campaigns/final/status.json`. Raw JSON is gzip
-compressed without dropping traces. Keep the computer awake and avoid editing
-solver source/configs while running. Restart the same command to resume after an
-interruption; different source/configs require a new `--output` directory. The
-memory-aware runner schedules up to four concurrent fixed-iteration experiments.
-Realtime and parallel-agent comparisons are isolated. Concurrent timings are
-identified in raw configuration and `summaries/timing_context.csv` and must not be
-interpreted as isolated single-experiment latency.
+The former 17,017-job design is **cancelled**. Its 58 completed records remain
+archived in place; do not restart `scripts.run_full_campaign` or `evrp.campaign`.
+The compact design is specified by `configs/paper.yaml` and documented in
+[performance analysis](docs/performance_analysis.md). Planning never starts runs:
+
+```powershell
+python -m evrp.cli estimate --config configs/paper.yaml --workers 4 --output "$env:LOCALAPPDATA\EVRP\paper"
+```
+
+After reviewing the calibration, passing the runtime/integrity gate, and explicitly
+deciding to launch:
+
+```powershell
+python -m evrp.cli paper --config configs/paper.yaml --workers 4 --output "$env:LOCALAPPDATA\EVRP\paper" --execute
+```
+
+Raw computation outputs stay on the local SSD outside OneDrive. Audited summaries,
+publication tables, and PNG figures with exact-data CSVs are copied back to
+`results/paper`. Shared conditions across studies are computed once and referenced
+by a study-membership manifest. Full traces are reserved for pilots and the fixed
+representative example. Paper summary traces retain replayable physical actions
+and information-integrity evidence, not every rejected candidate proposal.
+
+Outer parallelism is limited by physical cores and measured memory, with BLAS
+threads fixed to one. Realtime runs execute in isolation. Concurrent throughput
+timings must not be interpreted as isolated decision latency. Every launch prints
+its job count, reusable count, remaining count, and estimated duration. Unknown
+timings or a failed calibration gate block the paper campaign.
 
 ## References
 

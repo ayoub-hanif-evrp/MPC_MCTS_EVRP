@@ -35,14 +35,23 @@ def _panel(ax, data, x, metric, title):
     if subset.empty:
         ax.text(0.5, 0.5, "No eligible observations", ha="center", va="center", transform=ax.transAxes)
     else:
+        groups = []
+        profiles = sorted(subset.execution_profile.unique()) if "execution_profile" in subset else [None]
         for algorithm in ORDER:
-            group = subset[subset.algorithm == algorithm].sort_values(x)
+            for profile in profiles:
+                group = subset[subset.algorithm == algorithm]
+                if profile is not None:
+                    group = group[group.execution_profile == profile]
+                groups.append((algorithm, profile, group.sort_values(x)))
+        for algorithm, profile, group in groups:
             if group.empty:
                 continue
             if group.duplicated(x).any():
                 raise ValueError("Multiple configurations at one figure point; select a single study/configuration")
             values = group[x].astype(str) if group[x].dtype == object else group[x]
-            ax.plot(values, group["mean"], marker=MARKERS[algorithm], color=COLORS[algorithm], label=LABELS[algorithm])
+            label = LABELS[algorithm] + (f" ({profile})" if len(profiles) > 1 else "")
+            ax.plot(values, group["mean"], marker=MARKERS[algorithm], color=COLORS[algorithm], label=label,
+                    linestyle="--" if profile == "concurrent" else "-")
             for position, (_, row) in zip(values, group.iterrows()):
                 if pd.notna(row.ci95_low) and pd.notna(row.ci95_high):
                     low, high = row.ci95_low, row.ci95_high

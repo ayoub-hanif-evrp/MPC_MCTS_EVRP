@@ -36,6 +36,7 @@ def run_frame(runs):
         effective = run.get("effective_config", {})
         row.update(effective.get("mpc", {}))
         row["parallel_agents"] = effective.get("parallel_agents", False)
+        row["execution_profile"] = run.get("requested_config", {}).get("execution_profile", "unspecified")
         row["source_sha256"] = run.get("provenance", {}).get("source_sha256", "unknown")
         row["distance_complete"] = row.get("total_distance") if row.get("complete_service") else None
         rows.append(row)
@@ -124,6 +125,9 @@ def paired_differences(frame, first="COORDINATED_MPC_MCTS", second="GREEDY"):
                 continue
             eligible = matched
             condition = "all matched service outcomes"
+            if metric == "total_planning_time" and "execution_profile_a" in eligible:
+                eligible = eligible[eligible.execution_profile_a == eligible.execution_profile_b]
+                condition = "matched execution profile; concurrent timings are not isolated latency"
             if metric in {"vehicles_activated", "total_distance"}:
                 eligible = eligible[eligible.customers_unserved_a == eligible.customers_unserved_b]
                 condition = "equal service count"
@@ -152,7 +156,7 @@ def aggregate(directory="results/raw", output="results/summaries"):
     good = frame[frame.structural_valid & frame.status.eq("completed") & frame.algorithm.ne("STATIC_REFERENCE")]
     config_groups = [c for c in ("study", "ablation_factor", "algorithm", "DoD_target", "prediction_horizon",
                      "top_l", "candidate_limit", "charging_mode", "budget_mode", "iterations", "time_limit",
-                     "parallel_agents", "source_sha256") if c in good]
+                     "parallel_agents", "execution_profile", "source_sha256") if c in good]
     overall = hierarchical_summary(good, config_groups)
     family = hierarchical_summary(good, config_groups + (["instance_family"] if "instance_family" in good else []))
     overall.to_csv(writable_path(Path(output) / "summary.csv"), index=False)

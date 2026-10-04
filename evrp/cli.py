@@ -1,6 +1,9 @@
 """Command-line entry points for file-based reproducible research."""
 
 import argparse
+import os
+for _name in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS"):
+    os.environ[_name] = "1"
 import json
 from pathlib import Path
 
@@ -11,6 +14,12 @@ from .storage import load_json
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
+    for command in ("estimate", "paper"):
+        item = sub.add_parser(command)
+        item.add_argument("--config", default="configs/paper.yaml")
+        item.add_argument("--output", default=str(Path(os.environ.get("LOCALAPPDATA", Path.home())) / "EVRP/paper"))
+        item.add_argument("--workers", type=int, default=4)
+        item.add_argument("--execute", action="store_true")
     for command in ("reference", "scenario", "run", "benchmark", "ablations", "smoke", "validate", "realtime"):
         item = sub.add_parser(command)
         item.add_argument("--config", default=f"configs/{command if command in {'ablations', 'realtime'} else 'pilot'}.yaml")
@@ -21,12 +30,24 @@ def main(argv=None):
         item.add_argument("--dynamicity", type=float)
         item.add_argument("--scenario-seed", type=int)
         item.add_argument("--scenario")
+        item.add_argument("--execute", action="store_true")
     for command in ("aggregate", "plot", "tables", "audit", "representative"):
         item = sub.add_parser(command)
         item.add_argument("--input", default="results/raw" if command in {"aggregate", "audit"} else "results/raw/pilot" if command == "representative" else "results/summaries")
         item.add_argument("--output", default="results/summaries" if command in {"aggregate", "audit"} else "results/tables" if command == "tables" else "results/figures/representative" if command == "representative" else "results/figures")
         item.add_argument("--study", default="pilot")
     args = parser.parse_args(argv)
+    if args.command in {"estimate", "paper"}:
+        from .paper import estimate, execute_paper
+        config = load_config(args.config)
+        result = estimate(config, args.output, args.workers)
+        print(json.dumps(result, indent=2), flush=True)
+        if args.command == "paper":
+            if not args.execute:
+                print("Planning only: no experiments launched. Review the gate and use --execute explicitly.")
+                return
+            execute_paper(config, args.output, args.workers, execute=True)
+        return
     if args.command in {"aggregate", "plot", "tables", "audit", "representative"}:
         if args.command == "aggregate":
             from .analysis import aggregate
@@ -81,7 +102,7 @@ def main(argv=None):
                 yield run_single(instance, effective, args.output)
         paths = smoke_paths()
     else:
-        paths = run_grid(config, args.output, args.command == "ablations")
+        paths = run_grid(config, args.output, args.command == "ablations", execute=args.execute)
     failed = 0
     for path in paths:
         result = load_json(path)

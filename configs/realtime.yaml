@@ -1,6 +1,6 @@
 # Separate timing experiment: stop between complete MCTS simulations.
 study: realtime
-instances: [c101C5, c101C10, c101_21]
+instances: [c103C15, c101_21, r101_21]
 algorithm: COORDINATED_MPC_MCTS
 prediction_horizon: 5
 control_horizon: 1
@@ -8,7 +8,10 @@ candidate_limit: 12
 top_L: 3
 uct_c: 1.4
 budget_mode: wall_clock
-mcts_iterations: 250
+mcts_iterations: 32
+station_candidate_limit: 4
+charge_target_limit: 5
+trace_level: summary
 charging_mode: partial
 parallel_agents: false
 dynamicity: 0.5
@@ -17,6 +20,6 @@ reference_solver_multistarts: 3
 reference_improvement_passes: 1
 reference_seed: 0
 grid:
-  mcts_time_limit: [0.1, 0.5, 1.0, 2.0]
-  scenario_seed: [0, 1, 2]
-  experiment_seed: [0, 1, 2]
+  mcts_time_limit: [0.05, 0.1, 0.25, 0.5]
+  scenario_seed: [0]
+  experiment_seed: [0, 1]

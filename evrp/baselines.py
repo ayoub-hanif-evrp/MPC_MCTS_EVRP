@@ -20,7 +20,7 @@ def greedy_plan(state, observation, config: MPCConfig) -> PlanningResult:
             if action.kind != "charge":
                 continue
             following, _ = problem.predict(problem.initial, action)
-            for customer in observation.customers:
+            for customer in (problem.customer_pool(following) if config.action_space_reduction else observation.customers):
                 serve = Action("serve", customer.id)
                 try:
                     problem.predict(following, serve)

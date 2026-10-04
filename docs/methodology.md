@@ -86,13 +86,28 @@ trajectories per root action and select top-L. Charge-first trajectories receive
 credit for their downstream observed service. Top-L counts distinct first actions;
 a separately retained feasible fallback is always available.
 
-Customer expansion interleaves urgency and proximity after feasibility checks.
-Charge targets include fractions Q/2, 3Q/4, Q and observed energy thresholds for
-customer/safe-node continuations. Rollouts randomize among up to three promising
-services or charge to enable an observed service. No future requests are sampled.
+Customer expansion first applies cheap necessary capacity, energy and earliest
+arrival checks, then interleaves the 12 most urgent and 12 nearest customers.
+Only that union receives full transition/return checks, retaining at most 12 service
+actions. Charge lookahead uses a corresponding observed-customer shortlist without
+requiring current direct battery reachability. At most four reachable stations are
+retained, prioritizing the required safe-return station, nearest stations and low
+detour to urgent work. At most five targets per station include exact safe-return
+and shortlisted-service energy thresholds plus Q/2, 3Q/4 and Q. Zero increments
+and EPS-equivalent targets are removed. The required safe-return action survives
+the shortlist bounds. Distinct energy/time tradeoffs are not falsely dominated.
+This is explicit MCTS action-space reduction, not a completeness guarantee.
+Rollouts randomize among up to three promising services or charge to enable an
+observed shortlisted service. No future requests are sampled.
 Partial charge is discretized, not continuously optimized. Search budgets are fixed
 iterations or wall-clock checks between complete simulations (possible overshoot).
 MCTS plans are best-found feasible plans, never claimed optimal.
+
+Exact matrices, state/action transition caches and incremental proposal construction
+remove duplicate computation without changing feasible transitions. The 16-iteration
+paper budget was selected once using the predefined six-instance calibration rule,
+not tuned per test instance. Optional reuse for identical unused-depot states is
+disabled: sharing the first vehicle's stochastic search changes joint proposals.
 
 Proposals store vehicle, first action, full action sequence, customer sequence and
 unique set/count, predicted/terminal/total distance, charge/wait/completion times,
@@ -147,6 +162,9 @@ time/SOC/distance labels, exploring charging before later customers even when a
 direct leg is feasible. For larger instances, multistart insertion, targeted route
 elimination by reinsertion, and relocate use the same route evaluator, capped at
 24 inter-customer labels. This cap and the customer-order heuristic limit quality.
+An exact bounded prefix-frontier cache avoids evaluating identical customer prefixes
+again; cache eviction changes computation only, not labels or their order. Cold
+reference preparation remains offline and is included in campaign runtime estimates.
 
 External metadata come from Schneider, Stenger and Goeke, Technical Report 02/2012,
 Table 3, CPLEX column (precursor to Transportation Science 2014):

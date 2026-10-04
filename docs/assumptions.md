@@ -53,8 +53,11 @@ not every possible form of online myopia or charging inefficiency.
 
 The CLI defaults to `configs/pilot.yaml`: H_p=3, L=3 plus fallback, 64 iterations,
 candidate limit 12, UCT c=1.4, partial charging, sequential agents, seeds 0.
-`debug.yaml` is an 8-iteration test config. `default.yaml` offers H_p=5/250 for a
-single run, not a full grid. Main/ablations/realtime require explicit config commands.
+`debug.yaml` is an 8-iteration test config. `default.yaml` offers H_p=5/32 for a
+single run, not a full grid. The compact paper method uses the common budget
+selected by the predefined six-instance calibration rule, recorded in
+`configs/paper.yaml`. Main execution requires a current passing calibration and
+runtime gate plus `--execute`; old campaign entry points are cancelled.
 Parallel processes preserve seeds/order but may be slower on small instances.
 Wall-clock budgets stop between full simulations and can overshoot by one simulation.
 
@@ -73,3 +76,12 @@ mean within-run decision p95, not a pooled percentile. Runtime depends on hardwa
 
 The full 56-instance main benchmark, configured ablations, and realtime study have
 not been run. Empty ablation figures test export paths only and are not findings.
+
+The six large calibration cases are explicitly development instances and are not
+held-out evidence of superiority. Candidate reduction is part of the method:
+urgency/proximity shortlist 12 each before authoritative feasibility, 4 stations,
+5 charge targets per station. Safe-return actions retain priority. Exact caches
+do not relax physics. Optional unused-depot symmetry reuse is disabled because it
+changed the joint search distribution and worsened distance on a validation case.
+Cold offline-reference preparation is reported separately and included in campaign
+runtime estimates. Concurrent throughput timings are not isolated realtime latency.

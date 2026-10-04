@@ -75,6 +75,10 @@ def worker(directory, instance, config):
 
 
 def execute(directory="results/campaigns/final", workers=4):
+    raise RuntimeError("The old campaign is cancelled. Use python -m evrp.cli estimate --config configs/paper.yaml")
+
+
+def _archived_execute(directory="results/campaigns/final", workers=4):
     if workers < 1:
         raise ValueError("Worker count must be positive")
     directory = Path(directory).resolve()

@@ -32,14 +32,18 @@ def simulation_config(config: dict) -> SimulationConfig:
     mapping = {"prediction_horizon": "prediction_horizon", "control_horizon": "control_horizon",
                "top_L": "top_l", "candidate_limit": "candidate_limit", "mcts_iterations": "iterations",
                "uct_c": "uct_c", "budget_mode": "budget_mode", "mcts_time_limit": "time_limit",
-               "charging_mode": "charging_mode", "charge_fractions": "charge_fractions"}
+               "charging_mode": "charging_mode", "charge_fractions": "charge_fractions",
+               "station_candidate_limit": "station_candidate_limit", "charge_target_limit": "charge_target_limit",
+               "action_space_reduction": "action_space_reduction", "cache_transitions": "cache_transitions"}
     kwargs = {target: config[source] for source, target in mapping.items() if source in config}
     if "charge_fractions" in kwargs:
         kwargs["charge_fractions"] = tuple(kwargs["charge_fractions"])
     return SimulationConfig(algorithm=config.get("algorithm", "COORDINATED_MPC_MCTS"),
                             experiment_seed=config.get("experiment_seed", 0),
                             parallel_agents=config.get("parallel_agents", False),
-                            workers=config.get("workers", 2), mpc=MPCConfig(**kwargs))
+                            workers=config.get("workers", 2), mpc=MPCConfig(**kwargs),
+                            trace_level=config.get("trace_level", "full"),
+                            symmetry_reuse=config.get("symmetry_reuse", False))
 
 
 def source_fingerprint() -> str:
@@ -153,9 +157,16 @@ def audit_result(result: ExperimentResult, instance, scenario) -> dict:
         elif event.kind == "complete" and event.customer_id:
             assert active.pop(event.customer_id) == event.vehicle_id
     assert not active and not moving, "Unfinished commitments"
+    if result.metadata["algorithm"] != "STATIC_REFERENCE":
+        assert len(result.decisions) == result.metrics["decision_epochs"], "Missing decision integrity evidence"
     for decision in result.decisions:
         assert all(releases[key] <= decision["time"] for key in decision["available"])
         assert not set(decision["available"]) & set(decision.get("committed_before", {}))
+        assert set(decision.get("candidate_intents", ())) <= set(decision["available"]), "Hidden candidate intent"
+        selected_firsts = decision.get("selected_firsts", ())
+        assert len(selected_firsts) == len(set(selected_firsts)), "Duplicate selected first action"
+        if result.effective_config.get("trace_level") in {"summary", "none"}:
+            assert "candidate_intents" in decision and "selected_firsts" in decision, "Missing compact integrity evidence"
         plans = list(decision["plans"].values())
         plans.extend(p for choices in decision.get("candidates", {}).values() for p in choices)
         for plan in plans:
@@ -305,7 +316,15 @@ def grid_cases(config: dict, ablations: bool = False):
         yield instance, effective
 
 
-def run_grid(config: dict, output_dir=None, ablations: bool = False):
+def run_grid(config: dict, output_dir=None, ablations: bool = False, execute=False):
+    if config.get("study") == "main":
+        raise RuntimeError("Main grid execution is disabled. Use evrp.cli paper with its calibration/runtime gate")
+    from .paper import estimate
+    estimation = estimate(config, output_dir)
+    print(json.dumps(estimation, indent=2), flush=True)
+    duration = estimation["estimated_sequential_seconds"]
+    if not execute and (duration is None or duration > config.get("confirmation_hours", 6)*3600):
+        raise RuntimeError("Unknown or long campaign runtime; explicit --execute is required")
     if config.get("study") == "main":
         from .validation import require_reference_validation
         require_reference_validation()

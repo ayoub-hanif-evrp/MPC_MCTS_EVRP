@@ -1,4 +1,5 @@
 study: pilot
+trace_level: full
 instances: [c101C5, r104C5, rc105C5, c101C10, c103C15]
 experiment_seed: 0
 scenario_seed: 0

@@ -5,6 +5,7 @@ from hashlib import sha256
 from pathlib import Path
 import json
 import gzip
+from time import sleep
 
 ROOT = Path(__file__).resolve().parents[1]
 BENCHMARK = ROOT / "data" / "evrptw_instances"
@@ -37,7 +38,15 @@ def save_json(path: str | Path, data: object) -> None:
             stream.write(encoded)
     else:
         temporary.write_text(encoded, encoding="utf-8")
-    temporary.replace(path)
+    # Windows readers/sync agents can momentarily deny an atomic replacement.
+    for attempt in range(6):
+        try:
+            temporary.replace(path)
+            break
+        except PermissionError:
+            if attempt == 5:
+                raise
+            sleep(.02 * 2**attempt)
 
 
 def load_json(path: str | Path):

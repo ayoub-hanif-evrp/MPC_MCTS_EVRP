@@ -1,12 +1,12 @@
 """Shared deterministic plant model. Planning receives only Observation objects."""
 
 from dataclasses import dataclass, replace
-from functools import lru_cache
+from functools import lru_cache, cached_property
 from enum import StrEnum
 import heapq
 from math import inf, isfinite
 
-from .instance import Infrastructure, Location, distance
+from .instance import Infrastructure, Location, FrozenMap, distance, travel_time, energy
 
 EPS = 1e-8
 
@@ -43,6 +43,14 @@ class Observation:
     infrastructure: Infrastructure
     customers: tuple[Location, ...]
     committed_customers: tuple[tuple[str, int], ...] = ()
+
+    @cached_property
+    def customer_by_id(self):
+        return FrozenMap((c.id, c) for c in self.customers)
+
+    @cached_property
+    def committed_ids(self):
+        return frozenset(c for c, _ in self.committed_customers)
 
 
 @dataclass(frozen=True)
@@ -144,25 +152,35 @@ def station_paths(infra: Infrastructure) -> tuple[tuple[float, tuple[Location, .
     return tuple(zip(distances[1:], paths[1:]))
 
 
-def escape(state: VehicleState, infra: Infrastructure) -> Escape | None:
-    """Exact earliest return for common station hours and uniform linear charging.
-
-    With common rates, return duration is distance/v + g*max(0, r*distance-b).
-    Charging can be distributed along any path with feasible individual legs.
-    Consequently the shortest reachable station path also minimizes return time.
-    """
+@lru_cache(maxsize=32768)
+def _escape_geometry(location: Location, battery: float, infra: Infrastructure):
+    """Return geometry depends on exact location/SOC, not vehicle history or time."""
     p = infra.parameters
-    direct = distance(state.location, infra.depot)
+    direct = distance(location, infra.depot)
     best_distance = inf
     best_path: tuple[Location, ...] = ()
-    if direct * p.consumption <= state.battery + EPS:
+    if direct * p.consumption <= battery + EPS:
         best_distance, best_path = direct, (infra.depot,)
     for station, (tail, path) in zip(infra.stations, station_paths(infra)):
-        leg = distance(state.location, station)
-        if leg * p.consumption <= state.battery + EPS and leg + tail < best_distance:
+        leg = distance(location, station)
+        if leg * p.consumption <= battery + EPS and leg + tail < best_distance:
             best_distance, best_path = leg + tail, (station,) + path
     if not isfinite(best_distance):
         return None
+    return best_distance, best_path
+
+
+def escape(state: VehicleState, infra: Infrastructure) -> Escape | None:
+    """Exact earliest return for common hours and uniform linear charging.
+
+    No SOC rounding: completion time is evaluated for the actual state time.
+    The shortest reachable station path minimizes both distance and return time.
+    """
+    route = _escape_geometry(state.location, state.battery, infra)
+    if route is None:
+        return None
+    best_distance, best_path = route
+    p = infra.parameters
     completion = state.time + best_distance / p.speed + p.inverse_charge_rate * max(
         0.0, best_distance * p.consumption - state.battery)
     return Escape(best_distance, completion, best_path)
@@ -190,25 +208,26 @@ def transition(state: VehicleState, action: Action, observation: Observation,
                         status="idle", current_committed_action=None)
     else:
         if action.kind == "serve":
-            candidates = observation.customers
+            destination = observation.customer_by_id.get(action.destination)
         elif action.kind == "charge":
-            candidates = infra.stations
+            destination = infra.node_by_id.get(action.destination)
+            if destination is not None and destination.kind != "f":
+                destination = None
         elif action.kind == "return":
-            candidates = (infra.depot,)
+            destination = infra.depot if action.destination == infra.depot.id else None
         else:
             raise InfeasibleAction("Unknown action kind")
-        destination = next((c for c in candidates if c.id == action.destination), None)
         if destination is None:
             raise InfeasibleAction("Destination is unavailable in this observation")
         if action.kind == "serve" and (destination.id in state.served_customers or
-                destination.id in dict(observation.committed_customers)):
+                destination.id in observation.committed_ids):
             raise InfeasibleAction("Customer is already served or committed")
         traveled = distance(state.location, destination)
-        battery = state.battery - traveled * p.consumption
+        battery = state.battery - energy(state.location, destination, p)
         if battery < -EPS:
             raise InfeasibleAction("Insufficient battery", InfeasibilityReason.BATTERY)
         battery = max(0.0, battery)
-        arrival = state.time + traveled / p.speed
+        arrival = state.time + travel_time(state.location, destination, p)
         start = max(arrival, destination.ready)
         if start > destination.due + EPS:
             reason = InfeasibilityReason.DEPOT_HORIZON if destination.kind == "d" else InfeasibilityReason.TIME_WINDOW

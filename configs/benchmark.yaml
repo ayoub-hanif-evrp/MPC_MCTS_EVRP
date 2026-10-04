@@ -1,11 +1,14 @@
-# Legacy main configuration; prefer configs/main.yaml.
+# Compact Study A. Use configs/paper.yaml for the complete deduplicated design.
 study: main
 prediction_horizon: 5
 control_horizon: 1
 candidate_limit: 12
 top_L: 3
 uct_c: 1.4
-mcts_iterations: 250
+mcts_iterations: 16
+station_candidate_limit: 4
+charge_target_limit: 5
+trace_level: summary
 mcts_time_limit: 0.5
 budget_mode: iterations
 charging_mode: partial
@@ -16,7 +19,7 @@ reference_solver_multistarts: 3
 reference_improvement_passes: 1
 reference_seed: 0
 grid:
-  dynamicity: [0.0, 0.1, 0.25, 0.5, 0.75]
-  scenario_seed: [0, 1, 2, 3, 4]
-  experiment_seed: [0, 1, 2]
+  dynamicity: [0.5]
+  scenario_seed: [0]
+  experiment_seed: [0]
   algorithm: [GREEDY, MPC_MCTS_H1, INDEPENDENT_MPC_MCTS, COORDINATED_MPC_MCTS]

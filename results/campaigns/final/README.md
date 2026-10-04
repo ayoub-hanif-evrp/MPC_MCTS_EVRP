@@ -1,5 +1,10 @@
 # Full Research Campaign
 
+**CANCELLED on 2026-10-03.** The user stopped this design after 58 completed
+runs. Do not resume it. The following launch notes are historical only; the old
+entry points now reject execution. See `docs/performance_analysis.md` and
+`configs/paper.yaml` for the separately gated replacement design.
+
 Launched on 2026-10-03 at the user's request. This is the full configured
 experiment, not the earlier six-case smoke test. Check `status.json` for live
 state; do not treat partially populated summaries as final results.

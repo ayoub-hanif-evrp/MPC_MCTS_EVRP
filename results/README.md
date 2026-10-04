@@ -1,12 +1,17 @@
 # Research Outputs
 
-Only small pilot smoke runs have been executed after the objective correction.
-These are development checks, not paper performance evidence. The smoke sample
+The original smoke runs, the cancelled campaign's 58 completed runs, and the
+performance/calibration checks are development evidence, not a finished paper
+campaign. The compact replacement has not been launched. See `performance/` and
+`docs/performance_results.md` for measurements and the launch gate. The smoke sample
 is unbalanced across DoD: zero DoD has only c101C5; DoD 0.5 has five instances.
 Do not interpret its lines as controlled dynamicity effects.
 
 ```text
 results/
+  performance/               Profiles, calibration, exactness checks, runtime gate
+  campaigns/final/           Cancelled 17,017-job design; 58 completions preserved
+  paper/                     Future compact-study reports, after explicit launch
   archive_preobjective_fix/   Original development history, excluded by default
   raw/
     validation/              Validation run records

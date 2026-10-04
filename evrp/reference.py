@@ -2,6 +2,7 @@
 
 from dataclasses import asdict, dataclass
 from functools import lru_cache
+from collections import OrderedDict
 import heapq
 import itertools
 import json
@@ -154,7 +155,7 @@ def full_charge_connection(state: VehicleState, goal: Action,
 
 
 def evaluate_route(instance: Instance, sequence: tuple[str, ...], vehicle_id: int = 0,
-                   label_limit: int = 24) -> RouteTrace | None:
+                   label_limit: int = 24, prefix_cache=None) -> RouteTrace | None:
     if len(set(sequence)) != len(sequence):
         return None
     observation = Observation(instance.infrastructure.depot.ready, instance.infrastructure, instance.customers)
@@ -163,12 +164,23 @@ def evaluate_route(instance: Instance, sequence: tuple[str, ...], vehicle_id: in
     state = initial_vehicle(instance, vehicle_id)
     labels = [(state, ())]
     actions = tuple(Action("serve", c) for c in sequence) + (Action("return", state.location.id),)
+    offset = 0
+    if prefix_cache is not None:
+        for length in range(len(sequence), 0, -1):
+            key = (instance, vehicle_id, label_limit, sequence[:length])
+            if key in prefix_cache:
+                labels = list(prefix_cache[key])
+                prefix_cache.move_to_end(key)
+                if not labels:
+                    return None
+                offset = length
+                break
 
     def dominates(a, b):
         return (a.time <= b.time + EPS and a.battery >= b.battery - EPS
                 and a.distance_travelled <= b.distance_travelled + EPS)
 
-    for action in actions:
+    for index, action in enumerate(actions[offset:], start=offset):
         goal_labels, station_labels = [], {}
         queue = list(labels)
         while queue:
@@ -195,11 +207,21 @@ def evaluate_route(instance: Instance, sequence: tuple[str, ...], vehicle_id: in
                 previous.append(step.after)
                 queue.append((step.after, trace + (step,)))
         if not goal_labels:
+            if prefix_cache is not None and action.kind == "serve":
+                prefix_cache[(instance, vehicle_id, label_limit, sequence[:index+1])] = ()
+                while len(prefix_cache) > 512:
+                    prefix_cache.popitem(last=False)
             return None
         # Exhaustive Pareto labels for C5 validation; bounded search for larger cases.
         labels = sorted(goal_labels, key=lambda pair: (pair[0].distance_travelled, pair[0].time, -pair[0].battery))
         if len(instance.customers) > 5:
             labels = labels[:label_limit]
+        if prefix_cache is not None and action.kind == "serve":
+            key = (instance, vehicle_id, label_limit, sequence[:index+1])
+            prefix_cache[key] = tuple(labels)
+            prefix_cache.move_to_end(key)
+            while len(prefix_cache) > 512:
+                prefix_cache.popitem(last=False)
     _, trace = min(labels, key=lambda pair: (pair[0].distance_travelled, pair[0].time))
     return RouteTrace(sequence, trace)
 
@@ -229,9 +251,10 @@ def validate_reference(instance: Instance, schedule: ReferenceSchedule) -> None:
 
 @lru_cache(maxsize=64)
 def solve_reference(instance: Instance, config: ReferenceConfig = ReferenceConfig()) -> ReferenceSchedule:
+    prefixes = OrderedDict()
     @lru_cache(maxsize=40000)
     def evaluate(sequence: tuple[str, ...]) -> RouteTrace | None:
-        return evaluate_route(instance, sequence, label_limit=config.label_limit)
+        return evaluate_route(instance, sequence, label_limit=config.label_limit, prefix_cache=prefixes)
 
     if len(instance.customers) <= 5:
         ids = tuple(sorted(c.id for c in instance.customers))

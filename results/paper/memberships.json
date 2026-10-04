@@ -1,0 +1,4838 @@
+[
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "eeda496502e53119d6468957bb9be0234855ec4d16b6df1ee2c6a0e6c89cce8b",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "c740eb3bb684419f29d158149dc6d2ebf3b410eb347ffe4b2b0614f8cb376a9c",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "7366a3f153237073d09938c121bcac2b209c96abf39075b23b0b7cc172e82ed8",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "93f7cb4ab18b8ab719f3f651ea0e6f7f78452b00cccc36f568f92fab9bd384e2",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c102_21",
+    "key": "2d5b6d31c2ab883ea7a85b0ce0b0d4d95c8d57a39ef32c4ec51e6b54ca677835",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c102_21",
+    "key": "6d22100d3c146b537aed34ae08d3350d0e7dbf2215c2bd1b071d17051f7cf70d",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c102_21",
+    "key": "e7c5e44797dbd50b789c161e910ba25c3de8763370e888d582d02af3f14630ea",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c102_21",
+    "key": "5365416a5644141943ffa939ce764e85f23113eb6e7b9c7ce399aee2dfd0cdf8",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c103_21",
+    "key": "afba3f5428f96de0d7ae0a959cd4e8ddc6336455d1ec7fa57e88fe262a98102c",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c103_21",
+    "key": "5adec12206985d0cb886e3c283ea8781cd3884dcc975afd883b9ed45aa6f387e",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c103_21",
+    "key": "1ad16310acc42bba00cf949f995772fdbc776dfbd9dbff448ebb75a637d796d5",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c103_21",
+    "key": "367e95928ee751879875013c7be3538be7a5fe2c240298f1b910f5083f962181",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c104_21",
+    "key": "8619e343359c4c35ee40fe784f4fe7761b0e67049a5ff863bc0072c32e088b4a",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c104_21",
+    "key": "c017af02ffd05c63e8f307680c819e94b6f2bb0fd12601880a525164045313ce",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c104_21",
+    "key": "a08769872271ec2046aaf3227da5b676331e1bd0fe735fdceb2cfe745841cafe",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c104_21",
+    "key": "09d02eaa1e2e1c18d2d16831f73e98f305d01e64aaab1ad7223c9ffd3c233b24",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c105_21",
+    "key": "f4e43e5bebfa0d650d17533cf9b96f946ce9b7d656921ff6a3eb1c9387350f69",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c105_21",
+    "key": "1037673796d38bafe25192a2800836204b6843110557beb707ac0795012da705",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c105_21",
+    "key": "a79156a136b1cf12c898923dafd0c6f59465c9a4d5c388118b7a3855b712409e",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c105_21",
+    "key": "50eebc8d5bb377baae6c9b3bc5cc66a5966d8b5002092e2287133d23804d94c2",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c106_21",
+    "key": "3b94fab60a2f116d3888fc95980690047cccb8cf1356f68ac8562c93571d4753",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c106_21",
+    "key": "75ca019f2c8dccdd833dffdc963a2b2cbd2aafce7d7545e141a72e6e0b445366",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c106_21",
+    "key": "1a907459edcd2b8068d66dd7c8e672a88907bd13b74d7b5570203bf9349f7bf4",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c106_21",
+    "key": "d56589eb290b476d63b9ce4ef876259a5d0fadf8a6ea9488b4d2d7814fab1377",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c107_21",
+    "key": "b1efd023f5751fabc73ef642f35a8b5bffae4d7dacd20c33f64ad1685551c733",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c107_21",
+    "key": "dd7926aadc533fd5217007759b189690dccad8f79e6f1de9f29fa8259ce5af24",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c107_21",
+    "key": "2fdd41273da88f257b8942d7c03e27e48e184dbd1783079187f5093ed7f92448",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c107_21",
+    "key": "f6110cbe50b18e3e52a86c94cfc35f10edb8310d605fa571023ef7beac12332b",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c108_21",
+    "key": "73855f3d4da8d33ba57472f5f02b7a02da4e03a405571804153287f807d72fb6",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c108_21",
+    "key": "d1b0b3301a9ac8cda8b406dd07542db821ffd62dbe2f20b93408af17c59a680d",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c108_21",
+    "key": "e611f0f27545eeb2bfe71e901ba42bc1c9d3e7c8339c3a7b805abf3f62a0da54",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c108_21",
+    "key": "b665df2e42791bbd4784207ca7cba344f9f99db843a3ff88edb4b8414119940c",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c109_21",
+    "key": "6fd4620e3b0331ba0ba0ef20590ec748bbd300006901b23c64a8bec82474ba51",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c109_21",
+    "key": "b79452e67f4d46eca12ee5f31e1c11d64cbe854504fe78b32d53baf0785bbd98",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c109_21",
+    "key": "185a4509a52d59464645501f7c45263770631411a26230ca18fef3bd11855ebd",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c109_21",
+    "key": "7dc015640f37bf4b7c9130baff04520406226c3c24fe8c911143b69dc2728726",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "3d168735ddf2b2fd4557ff48672959fb9ab64df19666bd5e2ffc0b1338c3b328",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "033e9d5fd06a7e48d4573344741fa00da1422671fe1eb24795f85c95875c85d0",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "7810edebc61d748b0a5affaf8c3abaa0e5e96390d281342cc881b21e810b3557",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "173012f0cbb9c57119699c129806804ccaf3c104828f53385fbc545e2301e308",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c202_21",
+    "key": "75ee164726466d19999bc5dd0112bf443c4e5cff773c1fa589ab124a1e09b7b9",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c202_21",
+    "key": "af2fc129b29de25c223bc2f0fca247aca39236e2cfa354100fd08c9b6cd382a0",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c202_21",
+    "key": "d032fb4d9deee91ae78fca02f3907df10113c1738c8cabc0004d7c62cb0b09d9",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c202_21",
+    "key": "2260b5cef338a4ff7c99a17b2351f7a7a405389d8bee0cf3c8e913ce7542b0db",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c203_21",
+    "key": "a5c52ae7ae6171eda1a5fc691f3f3ba5ff4055b33a8a16dd44e808b0ba6b3f8c",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c203_21",
+    "key": "f6012f1b99926ccf56f9502e3ad3497a504259cd75f6fd364161b3ade30d4399",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c203_21",
+    "key": "e5730cb3539a3f7ed7efc701e6d7bab4b45da7c31d5020cd724eaa01c2ba8920",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c203_21",
+    "key": "952e5563c066e3ea5761e8065081853e70b486a7e064f762980caf9283f243c3",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c204_21",
+    "key": "7f305b8a237c71ee5722f46dc2157de8330e77db29df5bbb421e95f198ce6efb",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c204_21",
+    "key": "6f6ee6cb6ab72d1f40886bf4f45136b4ea9d530c17e26f3852def704900de326",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c204_21",
+    "key": "e78fb0240b8ada18c72833cd374a7e1e8e83f61d63ef37e9ede170f481a169c2",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c204_21",
+    "key": "2f098844b7d73973248f03680a85786b864b3eb5222f28fcba59d712f8c83764",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c205_21",
+    "key": "ed01ca6007a10fb01642f90d2bf0d00ffbf78809c5f63dbfeb6a539ea01cd943",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c205_21",
+    "key": "9bc39393016dd3ef40ccca88d1d3cb550f7025f60c33fec3980ac5c710bab4ce",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c205_21",
+    "key": "d1c369669a2cb1c724116027bab4c79ffcbb10bda2472ef291ef386b2a6133a0",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c205_21",
+    "key": "389dedbcf8952fb0af97ef03f7631ec620c86f642ea8e16fd47906518a481c3e",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c206_21",
+    "key": "1ed90b92690db89ef5e42cbf71b6983c28bd23e7d17cb84fef4a17231721f201",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c206_21",
+    "key": "0597d14d7b45360258a4d1476f4c71b02fac75110f0d17482110d32410b2a5e9",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c206_21",
+    "key": "924b920957392e93e5ecd6e60c94dc9c5b635ff1430f012124e6f514fa4e2334",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c206_21",
+    "key": "d15eea39b6e8ddc65e371228e56b417ba7ec63df63d96cd8888fdd084c3aabc7",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c207_21",
+    "key": "ded06bf6642cb68f1cb504e19c5ac29a6d3b9babdee8024ae744eed6c2b1a866",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c207_21",
+    "key": "af48a81632855c4d4730252110d5896d1158fa9dbb166400a4164273ad16a561",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c207_21",
+    "key": "27d130600184810bbc6e42b7ee54bca6e7679a67ff7f73daeb94eb0f39566185",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c207_21",
+    "key": "7372368211ec669ebfeb8bfcc5ee0283a7e40070f6e03d0a2977515ebb819807",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c208_21",
+    "key": "a1d558cd33eebd960fdd810fb9ff61c817d87e1c3d4c01e56e42618fc8190dfa",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c208_21",
+    "key": "5fd990f5f2668052760c2727d40655e2514ce26966475fefb16f8a43f28c4c81",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c208_21",
+    "key": "fef950a1b336a37ece11fbb7b99eabc0752f1c1c090fb948be9da02fef8ac149",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c208_21",
+    "key": "ad2a21668c602e0d89b6a8feda9e5b9a833182f7a774e11d63a33fcbce8667bd",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "c0e3958fe76908c23a4d53825806a40e2c91a65725c7a1908f74f36140a96c99",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "09e400c90bcc28df32777f2e917de75066d1bb804f371c6f1fc46ca39917703e",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "e73889bca485a9cf3d8ecc90cab2f3cc05469fb90b00fd9a213714306358724f",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "3f6b59d0afe0f52ea8724c997f333628e1e9b2894ddee8e17ea4279d313bc129",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r102_21",
+    "key": "8bb565d208c6db57e3fa6079e69318aed50d0b1ef86e130945f3e4d1958bbbf2",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r102_21",
+    "key": "00311d489b3a87bdff62710518e85e8c941d9c02f56008190d7256f4d5da98c8",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r102_21",
+    "key": "60110c5b3a9babe7a7888c265d5194806dbf116fc87e468d2e3373617f2789a0",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r102_21",
+    "key": "349b14e2fc68ce28fb78bf2a46034e475560c025dd5b5f1f6aea810dba5cf722",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r103_21",
+    "key": "610d7da33b37d25615d78e1e0cbae5025b8a9ed70619daa02788ff3fde373ca3",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r103_21",
+    "key": "b141e9f8376a5c925c7d37265e2d3327bb2998fc05e36cc9645f02acdb8f7264",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r103_21",
+    "key": "3e049f0209db3834d8ea5b36971c558294cece8122053e6b6e8fdb0ac642f1a0",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r103_21",
+    "key": "2da0035edf802d0088a1b443b7eba10ae6bc08b741894b0397333b9102778a15",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r104_21",
+    "key": "f7fd98f19770c835c619635b4ffaa0210ba333fa6adb0f1e3c9bddf391a98d5e",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r104_21",
+    "key": "7f72de5b591247f52f655d751959b1eb0921bcc7bcdf217255ae3e9de5795069",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r104_21",
+    "key": "21875322ce29c059d6d44b9e6cb19e81e0c8d83d29567c60eae522212b736719",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r104_21",
+    "key": "c51c3d67043f9ce52fdc0953a3e63aa49c7fa54f97bb2ba2bd81d34fa268b2b8",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r105_21",
+    "key": "11e89e4f8f6a447b5e8f10c0ae0c8db4d1f20b1837732f3ab0f4c91b6aee28ec",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r105_21",
+    "key": "73b07545a40394323be8d67b05e70dd338be0507db02b8a59aab4f9fa4d11181",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r105_21",
+    "key": "2300a23bd31fb9eced910e17e179928d0217436913d2fdfe8b21cb1d59aff0fe",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r105_21",
+    "key": "f2c92c2ad0ae9c9469cf027af71b9505386e43954e9d28bd8c656a80b4ebf889",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r106_21",
+    "key": "d93ec6c2de4e0deb7d9812116ec5e7bc82ac2227f7da40e363ee1a98c40f0704",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r106_21",
+    "key": "1f52e0b9a5cf4827dfa79d00dc3c1d3d6f86873ea925ef1de4a55a062ecab99b",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r106_21",
+    "key": "499708f57b427589c5c17ed0d0b69f8f4705043dc7cf97dcfd7a51e462684878",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r106_21",
+    "key": "b079995f0c5241c17658b9de79c0c13931b3ac3ef8284e19f04396e813d91320",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r107_21",
+    "key": "eaeab5b47e7b6217cdffb22e981872645ac8d5f81fc4f11affcc482bf00c73e4",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r107_21",
+    "key": "8802bca3928e712d34536b2fede925d2af565d7db71bd590f247dce53428adb1",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r107_21",
+    "key": "9195f50da3bd0aff369cd5031c5755d60dd86fabc6c60e2cebba7be9beadc3a1",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r107_21",
+    "key": "dbbb58789702900dfe3ec96e45c5e67fa68c0d793f8a29a72dc6cdfeeb07dd03",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r108_21",
+    "key": "8a6a91d92bca435e057c9442b7bbc26c1d671f6e0c9e9ae9b849fc7846cb48e5",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r108_21",
+    "key": "32e6f1c0bbee946e64b700ea3e206e98a6b7d5b54102abbf8445abd5fc0d4de3",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r108_21",
+    "key": "8cb98da7fd304844854d510f06227d7333e3f4aeb4f1b1bffe9d401cee57f8f7",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r108_21",
+    "key": "c8363bf0d79261416e78ae6217d539f4fe09e8f5aed9a7550b60eacc3a339050",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r109_21",
+    "key": "ab5545edf23f8608826a1946e3a961f49000a6ecff576875b25e47feaa26b017",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r109_21",
+    "key": "93c367da9ea25db8b19e6ac399e719b1ff6cdeb15722c48a5186b6cec33d48f3",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r109_21",
+    "key": "b89c1e04921ae016d737474d72293346a6b0b6266d5d2843a47c472253d78e3a",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r109_21",
+    "key": "846f02e4e10e1cafb350beca4dea4f7877a1a82db0109dedcc746e9d6ef0a3b6",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r110_21",
+    "key": "e62be2e83077d62621307e5d581837895a5ce97dc5382a6f542cc8d981afdc86",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r110_21",
+    "key": "e8b15f1e2ea70f3266ec7a6f9fd3519ae9cbf497d281cc25e394c5fb0c00c3e6",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r110_21",
+    "key": "5aa30274af52ae211af49a283ab1d355bb79d5ae64f3db0319227b103d898679",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r110_21",
+    "key": "d38c4f7ab0471218f2bff1e8e16c11ed01fe07562dd72fd62ec7a48a40899d4e",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r111_21",
+    "key": "422b89cae4112ba7190ab3e0ed348f781fb954adc9a9e4cffdbca62e172ea031",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r111_21",
+    "key": "1a3d135087685eb01de6af72fe71dd24f6b4e705265038c400b0a1ecb38ec7af",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r111_21",
+    "key": "47d32061921f04704f23eccc3b3c72c6d3a1d2006b4bf9c3d0445edf473be0ee",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r111_21",
+    "key": "9f7227e63b4494028d9406d68643cb0575ada51fb39d73633a1dffd0ec174eea",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r112_21",
+    "key": "fe320ac23a494379a753158feb02e6903cb9ec7dafea06b43d0cdffe66d3b527",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r112_21",
+    "key": "7f8a4cb30fd6dceaa46e1d44d270c678da47ae52728c62f75c6a9ec30c5326fd",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r112_21",
+    "key": "850aa41a2e85f9235a1ec1c218e676e296b18148909576e96153145772651e45",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r112_21",
+    "key": "1a4635d6a800d846793b697815589c817f6cde88450d34c6f6bfba0c26bbdd9e",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "20ae12a25854712f83b4c5af4dad22b914c90d2fcad5697b85da0256538bc128",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "5347594c81ab695c514d8ed24a1213ad59215c4c567edadbc99f445619f78f8c",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "4e802a931934337c94835e834bea1a2258679abedda5ab6e687eff48f5285159",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "d1b9f045b9c3a40b0c4398bee7898699851761c45bc56942da2d21a7a19361ec",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r202_21",
+    "key": "f311a5ae48d56111919d53273515910c2a529197c6362c6bff0e158eef5eba08",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r202_21",
+    "key": "cdd595d995c19f7b57c14ae44cf74378affff4c6ecaebb4eb67e82fe5831431d",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r202_21",
+    "key": "90dbf814c71ace5e9480cedd08705f74c77f25ab69e9cb87903af8d15b0fa899",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r202_21",
+    "key": "f2b3dbdbe0b46436cb1db3c31baa4e5c6802d2679c8e6afd137dd142e268a43e",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r203_21",
+    "key": "ff03bfce5135df2e45d55ae07d67013f6287b7c075289f0bb6df94a251fca85e",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r203_21",
+    "key": "72ecc5ac3bcb028c72b5c617530c3ce83ca4f8436152ee04f559f1fc6447787f",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r203_21",
+    "key": "c34da1783adddaa3902a7f29f0c1cd66cb2dd6ed0620244079aa852ba2ac8527",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r203_21",
+    "key": "10a904cfd51a36ef50205c83b43001c63ab48a3484931ddb5b1a03163d543323",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r204_21",
+    "key": "299b9e9eec8e8fb0c1533e6b465dd642a1ecfbd6daa8bf074c8f81a840bdfe3b",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r204_21",
+    "key": "86331c98947fbcbb016bb184f1b49f39efd1e100835745e4434d35e9f2c9090f",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r204_21",
+    "key": "61b309576ab204f076238ce1e77f4ec751f87d3f9eff7ff267e7a238da320c89",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r204_21",
+    "key": "11d53e2a355217775663df7cdfe71705d35e01be428ceeba2f2b1119027b9a69",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r205_21",
+    "key": "c34cc35db8a4f9999288c558208a847e91a23a7b1c3aa9d6e9e0de71c5dcf96e",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r205_21",
+    "key": "ea5250a17c5a64b912e1e75490d311384978aad9129f49fe55e7bab77fd64359",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r205_21",
+    "key": "c62542e176324ca38f331950a62d0baa0286ccb09f461713fd558e90538a4b6c",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r205_21",
+    "key": "b45acf463b6459119d528dcd32ce19e7a6b40ca368297fd8f99dca6c2f675a4d",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r206_21",
+    "key": "c328e578fbfc1c4ddcd8118420c619abfe6cdf76480b6c32c9e81a632b7605f4",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r206_21",
+    "key": "c5e5543dc1dca8febdff697c5d17139d2e031283997162201017eeaeac19d0f3",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r206_21",
+    "key": "0eef6b99e85d144ee56e7247e8fd2f5c6ea97936af651248322ed1b543a10b97",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r206_21",
+    "key": "fd9e084b8dd4f20651b19effa7036a8f1b6273d8448597dedfb98629a9c03669",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r207_21",
+    "key": "f13ec1755bd3eeaaccf93a0e190b75f44695a663d1ece1a51fc607a58ff6de14",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r207_21",
+    "key": "acbb4bcb5daab1cb79539ca907342d5e46233dbf2ba33a89d769954ac381aca8",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r207_21",
+    "key": "b023e682f20148a1db277a947833463e815846af263cfad7bd91b845d33647af",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r207_21",
+    "key": "42d9aac349e5544cff1ec4e8cc11ce9c551047cd888f87ec57b1774c66d41aa6",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r208_21",
+    "key": "3bd81fec2e1fedabed26c87fcbaad3384c720f0d31fbaf796239e195c0cec0bb",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r208_21",
+    "key": "73044c487e22f4ea8c8467cab2eea447735647b5e6259d80e4b14a0da1515c93",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r208_21",
+    "key": "d65f5724780962f0cba713c0c8901fc2875fbe1929c2935ab544783ab2a0e423",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r208_21",
+    "key": "00c6185f8db7c228f92669c41c10f8ea87d20d2d121c8f31be9f28a87e121cfc",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r209_21",
+    "key": "bdf4db5b5d5ee230799bb9fe777e0832608a7cf025e4884de0c692ac47a2bf97",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r209_21",
+    "key": "897f930c358ec41e1a6fedb979e879c610f2df064fd8d9e88c193fb9b753e52f",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r209_21",
+    "key": "74b6d09f49045c62b91c44e6d3cfa7bf5e1659991667208a1c9d599c6862e4f4",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r209_21",
+    "key": "87bfa4e9286e14ddbca2a63e81f65e34e025d42503fd8dfe40dafa09e35532c9",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r210_21",
+    "key": "ef02b0ccae78102cfe7c80f49da24e278aa65269a6888ec73c77bc06bff716c8",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r210_21",
+    "key": "47bf1a258480f0a5cb0f649c443d6587f4dc592141f5cd1bfb63f39620737c49",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r210_21",
+    "key": "4978b3a4c0a3abd347cb394b572da4f0d85478e09ad89ccb08b66bee88a2176b",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r210_21",
+    "key": "91d240a9f9805e7dfe846df5f5403114c1fb0a42b885f89872969ccdfc4f59b7",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r211_21",
+    "key": "aabd31e85581e90760fa51a7c55a9a6dbe015cd30aa7095a7026233aec5ab049",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r211_21",
+    "key": "07490ce749296b3c1f0fc694af2447cf0b0e30979e57889a0fd8d1ae1be53755",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r211_21",
+    "key": "73213573cc60e40160f343c1745dcbe0b0d60528fbbe8a4b641e32b9a319efc2",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r211_21",
+    "key": "b42b0b0c26937649d34659dd0f30e8257c544f9a8c9545efbd1b77276ab24572",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "cb224d33acac92dde24627ab1be13c74ad086c667085a6008f3a260c5f884ae6",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "6fbb1729869129f00ebc22e33d91d78cf9a8a936507c2a014550c96bc81724e4",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "0529613e49570248fe65a1a4618ec164cf11b918397c2a76042b2babb69787f3",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "b6cfb242311c4bdaaff7faf9bb03dac06afa737c321e0af7631f031f1a12949a",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc102_21",
+    "key": "b26413a155d2110da74aa72784576086335929d824ec7d6ecae5b48865d70b20",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc102_21",
+    "key": "d0c8dc659f87c61b980cef4c0598fed766a6e4952c23817efc92d592bbf39a26",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc102_21",
+    "key": "a46ecc6956e66962437cf8d592f36ffa029001c6c10afa947ceac240e412eb4c",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc102_21",
+    "key": "151a7f72700739448069a7655254de943fb9ec3a0c36be9defb6496517d17af8",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc103_21",
+    "key": "15dad212a3271ff7f01f77c0d535183a86bc1f5a20cdaf2e0f3c56470f4977f3",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc103_21",
+    "key": "09a33ddfcd961c798d584abe3a4dfd8ccf11961a30c6aba052909db4fd0ed849",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc103_21",
+    "key": "02ff3764f0dfae43c94feeb2e69bab8015865dc1d5bfc85da1b60dc86c6e2943",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc103_21",
+    "key": "aa78408a32bd479b9faee90036a4743433e33e2c7d1ccfd7e3fbbc87fea41ffc",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc104_21",
+    "key": "420077bb145dc59a55c5a6ccf777220154de1d25f1b7651b346aea18ececaf43",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc104_21",
+    "key": "f286f5fbe84e58d2d5bb5bb6ee90b7f4071845512db0b6056e264bb32a490db6",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc104_21",
+    "key": "996ea36257eb83113f01062eb034af57ed4fd631a1e8332ca593fdfcb3010577",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc104_21",
+    "key": "f51f0eea8a5df931ea5b4e257f4d302862699a0cee2799674523cfc4704e1429",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc105_21",
+    "key": "89c37d838df6a304e37a2ffe0548c4dc937e93eafe62a1bf730706e7cc1d65dc",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc105_21",
+    "key": "c5f5114485270d9a299458c7f68673019d9dce8c538d79b3620929ed10b846ba",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc105_21",
+    "key": "2feca8155ec4ba5e8479a511134f64eba1e6937bac8725f8f87c268f6ccc443c",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc105_21",
+    "key": "5584618f97af6a1c7206482a9f250caeb2d26390899202c4ded71804d27f6960",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc106_21",
+    "key": "9330ce74c3702c33eb1d8aea9fb1f30bd77cb4a64e0cdc47d7f4074f729f18b8",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc106_21",
+    "key": "bad5a3cf6b3f8ab5cc69bfaf01631df8713290b1590aae9da3fe4e01d551c5a6",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc106_21",
+    "key": "08c315fc2bb318ef4ea2e0874743695a6bcfcd7c9ce28b05286db618317a78c6",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc106_21",
+    "key": "96267b207fe119e423db1806b0cb042f20a44449f95eaa37e0881fff8c049d98",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc107_21",
+    "key": "cf3de5f92e5e860e5d4ecedb56081ebb671e8d303bf22244bc7d7b37aa95ef7d",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc107_21",
+    "key": "4129d9877fb5be4fa25f86bbcb1a544982175085e8c38e7eb88c9c98719a1c13",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc107_21",
+    "key": "f12e67cc95bea1f18af21ea9a667299b1695f9a817dbbda23c4bcfb5ba38558b",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc107_21",
+    "key": "d8ea1b24b63887cf70214f7ee593d566e09c7934012210bd21dcffbe76f1b398",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc108_21",
+    "key": "2b2336ef27ec78efd71e4ef858e3f34b6ad93afcb5c37f7355afaa10662ffc48",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc108_21",
+    "key": "5fea4d98484480ddc84be9a4a2ec353497cbdd512be0f580e49c63747d09e7ab",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc108_21",
+    "key": "65723e23c26d45674aa2638aa0ac6db425aa98c700cc8825c1062c3e8dc5dc51",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc108_21",
+    "key": "9a8ac3c6e4ea7c6707326f6e744b4e5c762b105cbb20b61adfdc627fefaf2d29",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "2cd1b2b45f64b86ca704f889f571691db71d9605b7de3626a9658cb01dd0f4a3",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "6ebd09445d84da58acaee6d7968f4134998a229e2457dbb5787ea1801b71f96c",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "9973f79809c6114dbe37486bb45dabe2cc6666da3666b7949d4ace6c31e5881e",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "e53b3fe50c911451544f8dcf85a0038627e2ce276852632fd811517694e9447f",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc202_21",
+    "key": "82b600830ad6fadce33de2d3fc366dca2e76674ee4029e4dc6e2e8ff277327e4",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc202_21",
+    "key": "b56abb8acdbdcecb6c6badb2d5b42cdfbf39661764328dc0be12e20578e5fa4e",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc202_21",
+    "key": "0cd348c10a1029e6863389f6bc2940a5821eb481ae6dff364457f79c24090865",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc202_21",
+    "key": "53b43d2f3786747523648c1642ddc729458efbdda8a7b959afd47e30cb1d1f3e",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc203_21",
+    "key": "13065295bc1504a02c9d975223c20c71ef21fd6512ac9a6831e434157fb4ff83",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc203_21",
+    "key": "12ba466f990ad1043e7ff00057266f5f2abb95c49357d2fcc1ea869270f6624f",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc203_21",
+    "key": "4858de78c79354ec50899a5d382fcb2444d0b5ffb8bd8bab1fd6c3b1c1c246be",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc203_21",
+    "key": "275144ef32d9cbd79cf89acf9f1967c686b9ccca32ef391c1ddd6065dc040b94",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc204_21",
+    "key": "e3e6e15c5dcdad9706c567086c09de24482d248e11056e72bf39f283e14b6ea7",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc204_21",
+    "key": "79cc4c17f90f3816d0ee9b13030b140307a59fdb931d879678a4d65dd60400e0",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc204_21",
+    "key": "432c75dc891e4b3a0380b626157d833cf06ee428a82e432e3adbcf386b3399b5",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc204_21",
+    "key": "82c9ba4f7385d82a5dc0780810520b5cf2440f4e9128a5078bdda10f3596f964",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc205_21",
+    "key": "5999786df27b094ca09e08538e9ea5196e33e9951e0e1c27b6725c3fa94e0f6a",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc205_21",
+    "key": "95b069a600aa9d81de740269e3b543e1b22ec32bf56b2f188e3b2a9d2d2a5a07",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc205_21",
+    "key": "0d9b254bced5929f9fbdd3e99f04b733c41ebb087fda8885a1ec0b8b8167cbc0",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc205_21",
+    "key": "63c346648705dc01021f79e7af4e67b253143e80a9f70e707e2b1a34433fb2fe",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc206_21",
+    "key": "efb442ebeb7426a30aa9603f39e1680eebc19ef9ee8dd7e79f295736fa809c33",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc206_21",
+    "key": "d75976b163ab10966fe26d7bf9245763ed581b0ff7696def504fdea462ba8204",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc206_21",
+    "key": "8395bdfa5a4a56bb67bf5c37d2c6e0805554fb803d67457b9fcec219fcb7fe47",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc206_21",
+    "key": "f5c7b404200d754ca6eacd99c562f9dd8f973ed506ec187d43490adb53e04d6e",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc207_21",
+    "key": "c588d8a905b8b8883d6eb9e80c321e22bf6e80e61698f5246e03860e88b34a27",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc207_21",
+    "key": "61dbcae6e0559194edc1d2deb4f8e232b5b9932c799897f0f3c1c2e3960ccf91",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc207_21",
+    "key": "cd13dffaa8a7383205445e10559c2b457c9a80527ead3f9e0a489a2cedca8c46",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc207_21",
+    "key": "9c0b22382cb4344e24976d8f7a0e47627176a1e47a359154c80b1b2f8735d5fd",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc208_21",
+    "key": "195e08fe882e089c59749c55c5a42e7337498fd5889b3765d86675058d09ab1d",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc208_21",
+    "key": "f521d6c9d1f154a55cbe700a11171becf1d21b2bfc9aaedefeea7e2b74c6d755",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc208_21",
+    "key": "e72813e25a8af828b169d8d09d5d2d92e6c4ce1f7767fba36361cb66374a7b2d",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc208_21",
+    "key": "05bf268d007cd34273b01bd6699d2e74dabe9a42870b8308d27694f9faa317da",
+    "study": "A"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "d85ee14588c78e187f28963db038f3cdc933dbaff9269af805dc8efa352cde47",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "7f024a5f29a32a6fccb5caafa49ca90496fc1ee5fdfa60d31d72cbb70011d4e4",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "d802e8d61539221fe3d7a5fb18e04bc404bbc00b0713dd9f308743216101df50",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "d0296adad4835c739b1ef503b6e86c6dfb3e8bcfe840cb1018b0b5c7b9bec0c7",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "c1e8c7dabdcdaf17590178af9c2c511c94855d66fe74e4b05730b416cf8f9e10",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "730fe6ca177bf283906742180e5dfdfc1d87dfae913d18c1e4a328c249deb060",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "0f59569cc7f289f716216c6b9fda286bc9ad556c4f0ac4fe471dd83878d5b6a0",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "26f9130b4b911ce6d06ba354f908bc4968f452111fc66e1a6964d4f7f7cd267f",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "3181ac700e4b2987e43a595003f21333151a70ea71ef94ba9407d8e3c11e44b9",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "24673d2cebd4ceb587b6012565a87fb83c32545ef6a8b520318907424820cc14",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "8d104dcc8e1bcd2f286581ba81e3fd6d289e85fd7e44e7d66d7c220da0736d27",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "fdd72b1da6d685c49f66635c8f6420f1248303b7dc9f844f255d7ea3ee0e1d6a",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "beaf92cdbd60c0db51a51fc315c019f431b8f96ce2a4781ab8e5f49d74b6b813",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "f63e482365b9a24a8963daa4237130b3584795731d483d683a2e564dc0f23811",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "b98f33f2deff1ff83f555308261c8b535ccf827e7a9a652af9a592e2be160664",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "4c07955fbc7babe55a2b957f38e61e8de2b50db53869b70867bf84cd6f211df4",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "eeda496502e53119d6468957bb9be0234855ec4d16b6df1ee2c6a0e6c89cce8b",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "c740eb3bb684419f29d158149dc6d2ebf3b410eb347ffe4b2b0614f8cb376a9c",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "7366a3f153237073d09938c121bcac2b209c96abf39075b23b0b7cc172e82ed8",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "93f7cb4ab18b8ab719f3f651ea0e6f7f78452b00cccc36f568f92fab9bd384e2",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "49849e915ec4c6a701377293895c48252d35de3c15241a3e0b93f06749c13f4b",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "f570d82710348bf389aef57cecb7c04c47167238e8109d9dc26d10147b8cb301",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "c6ef83a1e46389a0ea0787622c7e7750b95eb28ead7e94d3975597813753c051",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "c89b3990ec757b975a6cd1ae21c13389fa7e0c04d9dda346fd6484f8f5c69de9",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "48e4660cd48b3393bd56e8bd6720b7ddb6f06377cc4ac250cbe4f561d8f99ef5",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "105903d17c88567619bdff2a029ec993dcad26602fb5eef93715497bf46a0ce5",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "88e0c4584f5f1cb5ba2b4a3b66259e8c2fab34c6cd58af130a0ffda2a93b8ded",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "12abc524b770b5e59a8ef52cad3f5b455770900aa105d18fec27ae9f25aa6d69",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "f02e2371b096bcd67ba2356090a9f858eb4c082daee299ff62bfa005da5a5a83",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "47b3aae8eab6328588970bbc876667263a914d2d651de20cfbdddcd931d3c680",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "0ca421fe829a0379ec63c1be40b5aedb15c6fd15503697720b1c6f9fc6a3ce20",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "0f4832fd7dbaf6593baabccf66120fd4be8e3a3c4060c7ecbd8a27d792f4567d",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c109_21",
+    "key": "e85af1a204f255249bc1bfb019f21982b43c1bdc1757301a146579a09c9e1f42",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c109_21",
+    "key": "b72699f27cbb23abce048fbd068815f9c2d44b093dcfe0f5069a40ecb6443b87",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c109_21",
+    "key": "5a58ad3e411a0b029c071f7ab4267bd34ef73ff06bc875acd363ff01ee6a8d18",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c109_21",
+    "key": "6f6c8fc56fa27bde6f1356ed1502b51c5b14739ac9ef7e51a10b27cff1f8ff98",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c109_21",
+    "key": "078411ab3c2a8f0482c976e3d24fb2ae1cf1166925e0b2c33bf016c04c15c908",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c109_21",
+    "key": "02f56d291c31fdeda0674e19200f5f47d0d13903689049a3e255a7b68434b1c7",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c109_21",
+    "key": "62975cc585ef1eaeb4aea6e3f2d7b77604ba6e4dd222bbef3f39d52e323773e5",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c109_21",
+    "key": "4e499fb5e07265645cdeb0d2a3aec82eb7f50e47cd7aa6b9a5a08813f0f7698b",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c109_21",
+    "key": "77a521631a64b5ccd322c5fddb27884a543916cce90de35e862844d1425dac78",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c109_21",
+    "key": "9a6e16b189d924c3481bbfd835c41c5e38e1f4a0b973a5d46913c2acc93510fe",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c109_21",
+    "key": "26215b0367fd80b3a43e7e262a9454f51e930c4fbed885323a845303031fb88c",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c109_21",
+    "key": "26124f6b79546df23f0229c2c8c0be9d92daa46b89eb30c18c1488cac6649274",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c109_21",
+    "key": "220777ce96ae6b434c23cc19fc68c2459829d517dd1da493484850ee15e07c64",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c109_21",
+    "key": "021808dc3b29eb13cb2044776ee07dc6bc15b63052bf1fd97414161a532a2521",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c109_21",
+    "key": "c90056d4c8e951be252b0a1815f8e98fdbe11319dc74e38781d1829299c22c51",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c109_21",
+    "key": "c20a5af54b87c8a6414798fdea16ea26e875aaf75bd5cd9b166521e11de10e58",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c109_21",
+    "key": "6fd4620e3b0331ba0ba0ef20590ec748bbd300006901b23c64a8bec82474ba51",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c109_21",
+    "key": "b79452e67f4d46eca12ee5f31e1c11d64cbe854504fe78b32d53baf0785bbd98",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c109_21",
+    "key": "185a4509a52d59464645501f7c45263770631411a26230ca18fef3bd11855ebd",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c109_21",
+    "key": "7dc015640f37bf4b7c9130baff04520406226c3c24fe8c911143b69dc2728726",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c109_21",
+    "key": "8fbe912ceb9f5943069baebed2fbf997f34799ed6e5e56eff7383d64f76c198b",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c109_21",
+    "key": "aeecc6fe84190f23aa92854a39a83a3ea9dba8d8a4821f4d7e0f380dc7a4707a",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c109_21",
+    "key": "13aec03fe48bf9885404f6ca5da887c3418ad8159e114c5ebf33f1e475bcaed9",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c109_21",
+    "key": "ee6f9e4de45af3d90a06f8684bd791bf1d1bf6c9ccfcdb226f4ba9e993cd19ac",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c109_21",
+    "key": "6d94ac5962cea133e30be0c64fddf2d5b0c1deac5be43b852635e4726b3e7bcc",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c109_21",
+    "key": "35e5f7ed8f3db9b32ee77ec523c5f52311a97f5c0c06549aea77663b54c2e7dd",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c109_21",
+    "key": "752cfea4960130cd3929cd3a445921bd35d4860e74558cb25d7c0d3cada7d3f9",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c109_21",
+    "key": "926802e43c72adaa602492e447d7fc75cfeaa565144bdeeec612c5475f32753e",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c109_21",
+    "key": "a53a42c1d56dd4f1824d3fb426823fbb34c877abfacaea1bfbc110890467effd",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c109_21",
+    "key": "65abb68e4209252207e19d8133cf1f7ef770b871bf0cb4ed7ef3dda53e58f6fe",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c109_21",
+    "key": "27de325f034c589ec1ec41e4c87949a49584f4a2279565a6d1be4844f8005ac8",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c109_21",
+    "key": "18ad765e973f6578322aeb2b7304f2b3373c90263cfdb9e84fc365a4d512499b",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "ee7af2170427db4b44dfe12ea5cd09489fcb4acaabb3dafe7255bcba1fda053f",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "5e0f47b71cc66b919b1a3cdf816b69898f2b27574023d962e0e7c094caca72d3",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "c54ba300137ebe093ad0e5b77f098d179259b889feefda8aee0e24e39b210158",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "cbefef9bbe77bde34a06f464a590a0301ae702de1f9b3a9a37065ca1bab8fcca",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "10446dd6b391b7501395551ee72b81c10ecbe1a8de56d9e56db94b3b36ac63f4",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "57a36ea3f24912176b80c295bbbc1187a854a7f67cd05ffa75f1a065be475428",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "1c684d13353b151835a8671302c764a38b73575437246f7086dbadf91f6abb0d",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "6ba63ecf03b2135557578c3e368ea01d48bdf3f10a9e9430aeba28c5279fbf5c",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "20b6ed1e31b7912bc212a9ca03ffaafa4a9d5081f8933c638644c893c4cc80cb",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "71826fd66dc1e9b4eb853d2fdde9d9499b64bc59b701342d3de49ae9372dbd1e",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "5b609bf6aa7e33b1a84bc210b59c04f9502ccb913c6af9eac5853666e5d27593",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "62a6fdbf33de28fe4e12086993c985c41060bb73c85f05bafb6ca2dde8f5bd51",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "ed3584d9c3bc6c26d7663e15f31d9030396d199377cefc116cbef19a199b24f1",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "c742816c0a9d5db34cb3a65b7425ea6b3303ad02cd78d1aae0385f3df3fc3fe6",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "2a1e9260be27549d04e6d89937a4a101b343d86953710eb8717e5b84cbb12cae",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "2766d59341c293b239c08e790aa33bf907042899040cfcf0ffac4dd294c4cba2",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "3d168735ddf2b2fd4557ff48672959fb9ab64df19666bd5e2ffc0b1338c3b328",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "033e9d5fd06a7e48d4573344741fa00da1422671fe1eb24795f85c95875c85d0",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "7810edebc61d748b0a5affaf8c3abaa0e5e96390d281342cc881b21e810b3557",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "173012f0cbb9c57119699c129806804ccaf3c104828f53385fbc545e2301e308",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "2f3586d9fa131f899e8c44aee673adb0e0d58cd9e3b41a559f80e049ee573bb0",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "184be44840e438c6763ce19456ea3c3b43c403e71aab8dc0d565d03a2a0eb18e",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "d74320b07f8dbc0ed863af4cd7a1c2f3cedc225f04639ef20e5ba69974fc9400",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "5356bca575149317394c034fe489614c5237e1609025978bc3f07253dc9ed89d",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "46287af222ad7c76cd9dabbc9d6a493e282c092915c331037f19035e9dafa337",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "33e4c5b1fa6f308d3c280b30ff2774b63534f21f1ebfec8501fb6ec8fdef359d",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "a43ee52b8185f1e82a83ead487b1c928149da029d3996d732e329683c3c27c27",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "4c9d6ea77e6710fb7025c18ec67014c3bd34e90c3ad1f086c6cf2a821597b317",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "473f325c9dbe9531bdcd5c0cb9717c22ca272ad934f7ca48b83d66594bfd4135",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "02c962b0c6037743479304544d56e3657e62a7fd9d33ad1ac5f11494573ea1ed",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "3ecd5299e17c5b13b2a754cf5cc0999548912db7fa8a6a4d2dbdee1064526808",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "972d48faabda98d36e592f1a7ecbb61583e043c0638aafcb17044fe065b3162d",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c208_21",
+    "key": "a5d2368c266c31ca698addfe4db597e017801f0b4c5399f1a02ffa74ed787b92",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c208_21",
+    "key": "582ea7f0ef48ca1de41a5b55440bd8aead0917e2553bdfbf66a0f65bce002380",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c208_21",
+    "key": "fd3bb32aa6eeb477c74caaf5f7873c2ba94380aa665db084510fa459cf183122",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c208_21",
+    "key": "5d562b6b124d99414107211d0a170aef2e59bdf5ba26a40e0fbd385f26907e6a",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c208_21",
+    "key": "f48503a06d3a66160592b7bff48a265031fd95bb2303dbdda8fd0f9ec34cc215",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c208_21",
+    "key": "7dd048453bfc0c3e52b89471510cfddc910d34d04dc22d21de105dccec50fafb",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c208_21",
+    "key": "a675c929fb954ee66a88b5647cfe2926cc3dd4ee5c3533d7a567a0c9d97a9510",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c208_21",
+    "key": "0c561796bb0dae36897dd174fdd91bd3b6af13b7d8828d29bdbffe44f4482d50",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c208_21",
+    "key": "1bf68062ed8eb5b4f8cc1c79e31c90585f2a049327175c3121668f1dbe2c18d3",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c208_21",
+    "key": "2cc338ef443296aec3d1dd34cf418d16ac73438b45eafef49b29dc7dcd1da128",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c208_21",
+    "key": "b5ddc3d0b2bbfafc31a03c41586c7a66dfd8f02dab9faba909c42e312b1a4d7c",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c208_21",
+    "key": "3ec191356e5cfca0e3b81aa4a3b6b1c2d2e126434585db32714f4c86075d5e7d",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c208_21",
+    "key": "68b092ab7cb1bee34d16b4ea426f03a8a1f827244186a0687ee473789f005c1e",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c208_21",
+    "key": "28bd211c7f5b74280fa59aa65b788976091cc132c29765e389b4a1a8aeb6fc06",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c208_21",
+    "key": "060a4ed39fba018602c486f2876e9d86816772506ff494a771f70c8ea5789207",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c208_21",
+    "key": "29d3014334a977cc694d3fdc277d5722875b8a15fe3a6336b3a5ef8400dd6a0a",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c208_21",
+    "key": "a1d558cd33eebd960fdd810fb9ff61c817d87e1c3d4c01e56e42618fc8190dfa",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c208_21",
+    "key": "5fd990f5f2668052760c2727d40655e2514ce26966475fefb16f8a43f28c4c81",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c208_21",
+    "key": "fef950a1b336a37ece11fbb7b99eabc0752f1c1c090fb948be9da02fef8ac149",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c208_21",
+    "key": "ad2a21668c602e0d89b6a8feda9e5b9a833182f7a774e11d63a33fcbce8667bd",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c208_21",
+    "key": "6591a38904f08824576bf4f6c9ebe5656d41b8c7c6f40bf234318235a8e45478",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c208_21",
+    "key": "bbd8528cdea63dbe090aeeb38f77a02a55f4efaa8a66ead435897e8c083fedda",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c208_21",
+    "key": "43f9588cb001cfd4a5fc5f0a45fcdfd51687f1fbf915abb3c0032daa6513a4b0",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c208_21",
+    "key": "eac12327bc9e508a3d4f062a741bbfee7c5f5b6f776890addd723602fc57c5c5",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c208_21",
+    "key": "e58a5e568f9e852456c336d6fe4a3133b0fd2e239145695b0765a25b4028009f",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c208_21",
+    "key": "f6d939c06395490db4751ddfb77358a01c639d7cc49dcde43a3b88de8e8df7bc",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c208_21",
+    "key": "940b03eb2d4be3bb681ecc8f7829a2353f8c337eda7242f13eafd0741a9586e9",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c208_21",
+    "key": "a084a740a747db88976fb968746c1ca5d6fd15712086cb1d3f06f99fc8674cf0",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c208_21",
+    "key": "85cd84eb4e29408b0298858b4cec8fc4d3615152460f660a502d9252a73b904c",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c208_21",
+    "key": "2b084cc8ba065c79c89c2e4293cdbf88fa5e3c8420833c2b5d2cf8ef1a238cf9",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c208_21",
+    "key": "d6297808f1854c7077a0bbab29694a0555ac72217dd95073ae53aae0d981f4f6",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c208_21",
+    "key": "9cd457ae4cb30be98a26e4ba32a0fd73d6c5dc84bd98cb9770b1568c23f1c4fc",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "9ee8118ee1eeabd348d706e07a7790aad6565884c545e049f3ece669d580b36f",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "fc0861bbffd321c598b77b139e3d53c3536d497eaed22548d6de3b716a7c0a7e",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "2133ca0f5fb6cf86904336df570cf4ed03d0233b51f4a418c122794be5af1ee3",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "ed12e31ae27b877e5eac83a542172f1f208ef57065d04970dc26ae6238e54d09",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "556d114c1f06d6b62ad731822b314ba38b560f4d83fa0df901afa83a776013fa",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "ebdbf5200d2268ec510816a4d11db4aaea996468362c0e3cc354438041e46014",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "d3568d704569f7b31bf23b5dee662d98cb8f105aa4ce6d9ccb7949ddf0c2df2b",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "a382964e7347dbc6c8d521f5a9e32e16871c2d075726162b3a4b7e9f7f9ad8ee",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "307aa1511d81eea4b60fe66678333a3699ea1436c3ef30c0e783f39cc6133e77",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "383fd07c48e34614e1afd31bee56dbbad8b1de20eee0f765fcedd6681c1e735f",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "07d5b90e09ece78a6468888e26e13ddaf3a3ea21a9d5e205f5aa595b60240cbc",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "630480b039126ef776b57018e4f7109bedd9b9e489a42de7eba087d9a66dc79c",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "b2d0e2677561858c54f65daf8a993457913959b3e8142629f16a23b94f76f96e",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "fdd4464167993b8f291914e33c196d1bee4dcb8a770fe726a9a096dd73ed1817",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "b348253ed0ef9eaf2c28397c913e04f3b0bbce845113321037564dcef78e4834",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "47adc6a0f1abb83aa89840ef8f01a80160da683d348b9fee54ce8285f680665d",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "c0e3958fe76908c23a4d53825806a40e2c91a65725c7a1908f74f36140a96c99",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "09e400c90bcc28df32777f2e917de75066d1bb804f371c6f1fc46ca39917703e",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "e73889bca485a9cf3d8ecc90cab2f3cc05469fb90b00fd9a213714306358724f",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "3f6b59d0afe0f52ea8724c997f333628e1e9b2894ddee8e17ea4279d313bc129",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "53a3cd5641bbbaff5993c6075d2c526cbd3231b2bd5d0ec72ecbfaafbafb70eb",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "53ae9d95499a786a17093ab9fcd95eb114f20b5f71de874cf769f5129a8d9408",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "de9507aee4adff0ceba43310d3cdae59cd0167ece95543af63a3bafc9dcd8f46",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "fb71a794eec357f16a71f4d39ec5f2c7a3934712d4ecceaad8aa93a50edb3519",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "d006dce7f039250acf41f100bd3caf9480cbc61dc0cb0a4dd09dac3880c27f11",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "bf50021715b65fe84ce35e566fd1020a5e42d46fafd3175112abf806e21c592f",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "d3a814eccbeddfc77542074bcda912ede3c636fc5bfd2d0ad74028481af2b868",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "8f91b535938df420048e153e6dc63d01a256997f109f3eb2202aa6e56e3e9c65",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "88d12677f58ba6e4c4d83be711852f59c275798bc1d6445272f9f4b95e6e9952",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "88458612c19f18ed98b08957e0f9fcc37dff20613791025c73c19dee2a43a894",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "7b826cad2b21a5c4079fc7036fc45ab2ea3fd8bc784f4444be11c20895c16063",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "e77b37b31cab0de8cdd8d38d7752520fd6df896438ed89fcb19030b5c66c2eaa",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r112_21",
+    "key": "4c00bd272195a257d7655488a84a34e10f1c375f28c928005c8abd421401b218",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r112_21",
+    "key": "1d829867c81ae09960a49bc714b4f76303f28aa878b6d33dfc1a4d8c1868bf0d",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r112_21",
+    "key": "c5d70a7cf92bfccc57e75c8acea12014a9148dc46ec5ebfb500ea5e3378cc431",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r112_21",
+    "key": "f1ffac4fc95b59ef8b280ade8ef828d6b9c57825bb96e9644cf089f471168148",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r112_21",
+    "key": "9e633ac47594bed5c9661614a4fcf02221e2969d12c4873e30fc26fc59e89d38",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r112_21",
+    "key": "ac1d0b977ef5e7408ee18e422b2d993533a19427e8d6f3c01cf94489deaf53b9",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r112_21",
+    "key": "7646ff9c53b85b3d0fff7f79014c9c8c17d42d641e951bdd4049dfaac8df66d1",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r112_21",
+    "key": "ae58fb233583604030bc28ad6a8dc8e440623b2261f25b7f461153912028d679",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r112_21",
+    "key": "d7d53db442ec58d24943207c10d5529e619822b13ad8ff7b943f06aacc43d720",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r112_21",
+    "key": "3250df3d81dcd7d0a7bdbb8e62054838aab863cd51f73e206e7b2ecc42099927",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r112_21",
+    "key": "8da3e36f10e9027d9ee2f74e0bfe854e60adb9855956f977a10b16265ce01ec4",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r112_21",
+    "key": "316391206e718a6064d52af205de71b763c222fec2f8acae025b5d9ff1dd7e34",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r112_21",
+    "key": "aacda781a139f1edb57c91a22fc886d86dfc8464626692043dcbbb68b5baf380",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r112_21",
+    "key": "23dc84130341d9e1ced3ea10e1bb7ec2e94909a591c3d877a338e781adc0ffdd",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r112_21",
+    "key": "f85ef6247e712ab7ab5d0d390b08d7060207ad40df1e417b2ed4ceeea7e1eed0",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r112_21",
+    "key": "0625a3311a8da5ef3c102c14eb7919c397d4ba9d6a44ab9cb03bb32c65666515",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r112_21",
+    "key": "fe320ac23a494379a753158feb02e6903cb9ec7dafea06b43d0cdffe66d3b527",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r112_21",
+    "key": "7f8a4cb30fd6dceaa46e1d44d270c678da47ae52728c62f75c6a9ec30c5326fd",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r112_21",
+    "key": "850aa41a2e85f9235a1ec1c218e676e296b18148909576e96153145772651e45",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r112_21",
+    "key": "1a4635d6a800d846793b697815589c817f6cde88450d34c6f6bfba0c26bbdd9e",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r112_21",
+    "key": "72cccc3c27cc0fa78a71d9a6811e3cb8bfb4728e94536318abed1a89bafdb5a5",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r112_21",
+    "key": "1b9d34c991e3c9c3327d4d6e332202c75dba79f5b3cf066d1253ed3b12bdc2aa",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r112_21",
+    "key": "00ebc342f96aa0293209ade1189fe118033627ff0186aba272c89a78269e4d61",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r112_21",
+    "key": "ddfeb90d2fdd87f0b5ed9487683209248cda3710b2e296087103e4beed535d8c",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r112_21",
+    "key": "9b96ca5adb9e326d9fb8fa13aff98311e5a2df6973f5020f00261aa43208127c",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r112_21",
+    "key": "e165a142d70a234552d2651b8d6198f97b76a3fa6da81b6c60462aac66cfc8a7",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r112_21",
+    "key": "3244a6e20d523d1f2e591028dd7ba4cbcb2d67b308aef41b5b26337f1f8fdcd8",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r112_21",
+    "key": "ac9b0dc6c0b5e16350cad712af3dee44c990c6cdaed076675cc343c80b3bf800",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r112_21",
+    "key": "fea8e592de9bef844ea3700f270673b1b44e94bc9af2d18b7c29859887b04d48",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r112_21",
+    "key": "f0a7e2365decea002005c5d0fd9e7986a9263beb42681959b476f4c7222164b4",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r112_21",
+    "key": "cb5e8803e7672170a861d92a164c0b68eb4546cd1104f7552453e17c262e6a30",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r112_21",
+    "key": "4100ed9891976928b921869da926f109d57ad573f3a304764fc90b8e34bfacb9",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "9cdf94d013d60afe3d99621f93593b9d98ef026c49eb8a2b463288382092562a",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "aaaab4b2ca1249a99d36b3daebee1e49e9971aac7fdcdb49aafab2a2430577e6",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "13cb729cad38ced58dbea446fdace8cfab6d1e4e9d14df02c666502b1ad23f9d",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "cc9285239a8099bba512f9ff140dfc115a232b6324c2b11132123a99bb767b70",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "c1dc1991ff58b3d3432a646e64af97d38dc94e55bd2005cce14c02274add147f",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "1cdaaa401f1fab13c2ea1712839fe87712dd1af8d5d3bc0bd1fe565aa3ca22a4",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "9cae2d2bbabe3f0a6a688e2d40596ac3a23791d0682ed6ce9e0a17d90460acd7",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "8f7613c6a9daba4af61bd5c921de36917c5a6d334895b597b97eb3fd6ba30ee1",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "6d4f364b642aea30907ae54785c5e0b9288118d11431b0de6f51d0c9efb898cd",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "18179226d544bd11e70a9cf3f5984ff7b2028d3a510ee6a6cba5a0ce1bf35991",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "e71a01e1bdf081a165a16e996bf34c5d5d0e0a0e293aa9b98af8c9f88e21dddf",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "634eba39ea4f5d118932fb840cec6bb8f030669648dafa56cc58cda2684b306c",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "876281ef7db0f00a96906c203cf8bbeafbd3d5174db6e8d902d6cb5255a26256",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "20c35c3686c31e2d466429739bfd757e0b69671bb213f10f598d9ab95ca7d1c8",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "3efb4675a124485597500400ebd086e7611e1904225604698e5c18f0e521fb2b",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "26dab7df916ba1aa6f73692c8f2b719700fececb73f8930cbf5279c9876cfa6d",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "20ae12a25854712f83b4c5af4dad22b914c90d2fcad5697b85da0256538bc128",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "5347594c81ab695c514d8ed24a1213ad59215c4c567edadbc99f445619f78f8c",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "4e802a931934337c94835e834bea1a2258679abedda5ab6e687eff48f5285159",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "d1b9f045b9c3a40b0c4398bee7898699851761c45bc56942da2d21a7a19361ec",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "47780717db118547f279e4384b11e86284ee21284c0976657e7ea73cff922155",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "b1b8ed7d0ac657662bb054b3b33f6e1d746f99cf91e99b9582c6b567059dbcc7",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "239fea86806a3d9c1a4058606c08010595ad51a561241d1e2e247377776aa4ef",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "c6aafe4c45b95aee6ac9945ce598788f25cc0f3ba00dc289f9927321adfd7579",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "4d5bd15667b51a14b8671a1e5fc73bb53a9f232134ab251c513ef8e7d8c5c947",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "bfecaea48a988d4cb8af7ab9d4655c53fee3a619388a37dea622acacb92a3ef4",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "8bd82051d4c5195f9b34d3cbd0d0e958ec67e2038f74b651b5fe56f1b0fdff20",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "9e01ebf863b3cf41468cb4d78816d44d0ff711d960bcbe0331cc509c21dc186b",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "346707bd81eff5e7b2428898e2580787faa5cb3c6439220af4139a8631946c53",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "84e1216ca22b6c32878815736ea7d6f9304da3dfbcf5e5098bfc1388f6195c43",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "30f879a222cc09291dd3c200d35fb6a1de3351acfd73a143e865103d3ef02157",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "509978de6b4c4e011301205478d31f728fe944c0190286d056f6ff8724ff87cf",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r211_21",
+    "key": "4dc7113374c33656b55ee6137d4482f29645653450547281bfdd6c84029dbec5",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r211_21",
+    "key": "64daa75532e7ea816ff8f2fdec749bbe672b7a2c8a27d2695de7fda5f9f5d7c2",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r211_21",
+    "key": "99dd0905c29ac246bee8176e5f73d9a59e38839c660d5571194472f27761be64",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r211_21",
+    "key": "b3635077b941e5f13c94d916422ac2c1d920d1dac222fffef13855775c8e4d24",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r211_21",
+    "key": "320ee9f1232be371b7ffb17495bbdbe04dbad65acce0d5f92a79c873e823e1c1",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r211_21",
+    "key": "cd4fcbefbb3f88a3c7232373cdc4acc2f35af9a77528d5a0b6a9d34dbe6a58a8",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r211_21",
+    "key": "ad21a2a4e0f2e14d5e455048c2610974db71b09ab1a8eb8f130e5df822742013",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r211_21",
+    "key": "8f515858226563cb29a91c6c6756df373d2a95c4c6ed4dd9fda62460a47c7adc",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r211_21",
+    "key": "987618a0184836d03769c61ee6c3b59516d7fbab96b2cee8c748a8b111a1de1b",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r211_21",
+    "key": "313a3d91dc8ec8e3eb4903d66923cd68b5c5eb99dbe78ed8d2190db14698fa2f",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r211_21",
+    "key": "99cf9a99b200d2692d7b0ce249c1230050d67044a05a227d51b9a1a431242109",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r211_21",
+    "key": "e0a639b221c3354136bb92001d2bc196ab183c3f064652bcbc21b94d3ff61edb",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r211_21",
+    "key": "3c758e0d000996ab08fff98c535c711f53db4b0a5a78d2359205c854b6d3b368",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r211_21",
+    "key": "684270b8774288774adb48660dfebe40990e1cbf64a3faf43c113396ce80b7ad",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r211_21",
+    "key": "01ccca8c4ecfda9995c4eacd87e9fc807ad452ca21ba9b5954a4c86713c468bc",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r211_21",
+    "key": "8d83891ee5b34709f0462f3416237b3c6d744e17a5cdc2e01cbaaf3a403530a4",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r211_21",
+    "key": "aabd31e85581e90760fa51a7c55a9a6dbe015cd30aa7095a7026233aec5ab049",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r211_21",
+    "key": "07490ce749296b3c1f0fc694af2447cf0b0e30979e57889a0fd8d1ae1be53755",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r211_21",
+    "key": "73213573cc60e40160f343c1745dcbe0b0d60528fbbe8a4b641e32b9a319efc2",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r211_21",
+    "key": "b42b0b0c26937649d34659dd0f30e8257c544f9a8c9545efbd1b77276ab24572",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r211_21",
+    "key": "0240bd8d5a70b10d3f598b240efa3f029631f47f236adfa070d91763dae219fe",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r211_21",
+    "key": "6810bfc4a36279ee8ab164cb36fde112402c5757aca4cdf56e0aed1e8dc3c4bd",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r211_21",
+    "key": "8d8f98ac7f695d2c0f2b89782178e1405cf11cc9e97cd47b2d54ea93d313cae8",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r211_21",
+    "key": "d78f0bd5e3e43b1d31a256f85c93cb85aad30927be852f7f39bcce18fa65e819",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r211_21",
+    "key": "858f127231f6024a99ba0d23eec0925cfb92d15120474d5a7a082d3b14bea06a",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r211_21",
+    "key": "02a824bdbd75fc7616f0bb662b773a1dc09ce6f93f0991f5c8144b7d5a618c8b",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r211_21",
+    "key": "d1c823548fc9ed9c54d4c4c009119f4555f6ebcfa4d20edfdc9ada872b416b42",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r211_21",
+    "key": "3267a474aacc8045fe6cfb531bafb68c5a59361181a7f7dd1dfa8b075a87619f",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r211_21",
+    "key": "70c19f7619f13224ee943dbd19c28c868685e02ac45d00de2818a401146faa31",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r211_21",
+    "key": "65cb691d3aff945ee5fd8cc410a766e67adebaa2dc838daf0bb7f3aa3c2ad09e",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r211_21",
+    "key": "d5c333e4e83770ae4ce8e0e176332f022d0b735bc5224987230a0efa4c6a0942",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r211_21",
+    "key": "9c85cce3a5eb84d037e5dbb6b660f446a9862dd1ca80cd74032fe041d54a2eb9",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "8023a15a5fad1fe2f774122bb65969c7c61026a19024deee80e902e82b56f973",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "4ff6f4f53a6719b6b0b6b9d094b2f53f60517d6a44032a1bcb6edc134037d024",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "5efed9b60e361324d3dc7b9fba79ff3c0b83d8fddd8f400aac8278be3baef025",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "5087737a8142a4eadf6d12536d624e18e0302b6463a956e4a8b98f1deab6d859",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "db9d2834a0399a678db07a1bfb79b766c950f4e16459df75cb1b128a0b9dfafa",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "99a71269b4b45c54ff07c8eb705e1a97fabec07b2d740d8d7e556b524fca1be9",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "76e2bdbf77092f53d8761b273ab5600359f2d2099a42cd6dfdfb4af461f25a82",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "5c877168d5409a9f60e2501dbfae5b378074844c89f739c67d2ff95add10a27c",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "ae1a94e993a21784162b9d95b000ed636b86414d0d931f8789b04f1e1fdc431e",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "0b7525ad0a465555b65b58d14bd743cf29042a3f4fc04a34efd1a3c4d30cb655",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "7c1d9e71604da7b441b96aa2cc41b5f7bc78231e22ff8a1b21b58f0d406900c0",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "ced7a441e11e4a0f44b21b97c1b625a952211f68d2e3dd2d618895f55d7bf906",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "ca89976db89af4414a8cdd5cc10d949a0a54ea1178f5a53c9c5e18bee0ad1f66",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "5c49ae5be494608ba5c2a0627aec91910429bc5ffd0400d02accec9755a4205d",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "a5c9adfc384ec636aa42ca599d310fa1bf2190a5626fc409cf5e99ce78911994",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "c6018d0c9f0c7203a0231931ed0d846e7f72ce4cd1eac9eac392302e0138d43e",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "cb224d33acac92dde24627ab1be13c74ad086c667085a6008f3a260c5f884ae6",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "6fbb1729869129f00ebc22e33d91d78cf9a8a936507c2a014550c96bc81724e4",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "0529613e49570248fe65a1a4618ec164cf11b918397c2a76042b2babb69787f3",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "b6cfb242311c4bdaaff7faf9bb03dac06afa737c321e0af7631f031f1a12949a",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "0bf8a53f918553fc005d3ed743c97ebe6edcee4bc1ddc176c6ae8b2a31268651",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "6ab9fceb03e67ac904681be7265748d0e68354184b57b21947eb7975f7620f9c",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "d4747487b5a70a6e0aaf54b51dfde6f405e86be494e48b2d0e54759e11808e23",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "4d453bb48488fea91fb90bffcd489c13d9bc76741ea37cc5c06692a791121758",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "254c24bfc25e15cf89818d71041c6d9c05fccdedc140e2798cc35dad3c825cb8",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "b4653862c66e666f3f7a0e377f763394f3858c1bb9515e5aba8a29b7942bc9dd",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "d53e6953345bc8ac50f7448f8f58bcd6e7c9be6155cb0af526434bb9ea06441e",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "91f8a845d2c9a840cc3520ca774bb989a9d0a1070668ee082d9ebbcd459146b5",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "6ed22628920b1cc8fd482194c33a9fb8b0d485727f8c505b7c505526be700632",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "77674e45693277612bbdf2eb770bff785826008cc1a211558dacd4549522a9e0",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "bc73b1445e2b7efc5e4f2e2c040263968e9c6a7535a6fe2659eb51771f4667bd",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "9ec686ab830352c4a76e85d72c0ac50823303880411909600722b8698c1eed6f",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc108_21",
+    "key": "af125ceafeed6dea2af96ea39d0200f9a88e3dd5ec243c98fbb048d1c882bb59",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc108_21",
+    "key": "f6e36087a042b874275efd26fd7b6921afa0191bf36010606bb6094ec01a396f",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc108_21",
+    "key": "8d3243b9755102317404d2c251d5821faacaf8cb87a2e650ba619bba87c0018f",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc108_21",
+    "key": "8edb0558534f11fae94b7335acafa56896f8f35c245b0bc364b2bfda6680d513",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc108_21",
+    "key": "52276fbb5d81a40a2ab79d52add6b2765abf37f4ae370383da4babd96143b454",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc108_21",
+    "key": "8cd5faefe4975a53b70ccd382989276b7b66bf3a24408a4dc09b42496729fa84",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc108_21",
+    "key": "35e4eb1b918feddd83a5e66afa4877014d14dfef46cb3cb3ad9dce0f4e431e39",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc108_21",
+    "key": "14baf034f0ebc5fee3ff12f282cf7d2b95c65fbea4a76398d34c830da21a5289",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc108_21",
+    "key": "39334a50e7fc5fa2af0cc028dcb6b5d01b407158cef912e0482964a4667d0d78",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc108_21",
+    "key": "6355cb348fc70a16f40875a21a51ae8425881cec161d4f52342abaa095722f13",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc108_21",
+    "key": "d59fffdc67dbb1b563625a5d083f2f363de9c756b2e861f9ef46f1e0b8e449e0",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc108_21",
+    "key": "8f0a70b218af4cef9e3bdf998e886b06e88e088454e5d250c78ef771c3df7d90",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc108_21",
+    "key": "263f5866cbfd9ef6b7993359da96a466dc3a3ac2ebcfd53d7ac6e58681c6525a",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc108_21",
+    "key": "044a9083a9dd86a348a1078606661fb064a61826c373ebfe60b363500a881e94",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc108_21",
+    "key": "4fcb1818bc257143a55e31fc686984352e7559c2a1e9566785e9c9d66110bb68",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc108_21",
+    "key": "425ab247a094149c39bc2faf43c30b1fd81fba38b4d2d5370e5efc9278b2e0aa",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc108_21",
+    "key": "2b2336ef27ec78efd71e4ef858e3f34b6ad93afcb5c37f7355afaa10662ffc48",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc108_21",
+    "key": "5fea4d98484480ddc84be9a4a2ec353497cbdd512be0f580e49c63747d09e7ab",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc108_21",
+    "key": "65723e23c26d45674aa2638aa0ac6db425aa98c700cc8825c1062c3e8dc5dc51",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc108_21",
+    "key": "9a8ac3c6e4ea7c6707326f6e744b4e5c762b105cbb20b61adfdc627fefaf2d29",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc108_21",
+    "key": "0770f74c84e5e07e1c612fa839dd13932fcdf60edf24e0664c48027589b61e53",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc108_21",
+    "key": "0d3714e9c21cce18af9d1df67cbf0509b9d9cbfbd2c295f7d7af97b740c107da",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc108_21",
+    "key": "7584c3581a11b686120530c54f6276ecdbd616900d2fe60638d93ac9fe8ef685",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc108_21",
+    "key": "396c262f508dcd2afa9e23175359e963330e9cb596b064cb0d9e5dd08961d539",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc108_21",
+    "key": "43b8591ee087d8d8d6985a337e46adc29f64fb9d0e00187a4dda7110ec2a039a",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc108_21",
+    "key": "7873339e8f30f898bf07d051a342123f3031b78f9358fca47d9b60c11020194f",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc108_21",
+    "key": "4d348a98d463f003ad5fa228859f739beffb274c9971cea9a0eaee3b3f7f03e6",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc108_21",
+    "key": "df41ea5b3e80cce04eb8f53ae1ea8f65afa6db0bf2075f7357754492b5ba1f24",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc108_21",
+    "key": "e85fd6341a85ed06e89d8cf2aaa2a222fc48243da540cf11a14845e6a61b1ac0",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc108_21",
+    "key": "bc91bbd40132fb10560282d1526bae0e1be1d79cc4f4ca049c8eafeb8e5d2f68",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc108_21",
+    "key": "dd6083098631a5540682fa53559d384ca3052a10233b5fdfb7e71f09e93f8387",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc108_21",
+    "key": "f9df5875301d73426b5879c2a2b34f0342ac1148ad7f573ecb0fa71ee62e78a0",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "11ba77ff0f017d11c8364ddbb7c49f192e9e9bd9c098144061f76cc84e68cb14",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "ed89ed004b0aa770dbf71c13acfa015a61f9a16b748d74d51067fef6fbb2b51e",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "3d73a288c6ff12284ec7c792d1bf418d7ebd46ecf30e989a58074adb550464ee",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "311b3b76c7e99c1c29eed7651f46a73584a64efe28c7d631116ce0bdee86a2e3",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "1d1e3a7a19a696f6650b2b79c4b6ff4113218105dd91780ff87a45f0e55ed6d7",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "b2453ced00e439093e1595b882bfc2d450ea70c032553f07bdc2ec32080bd090",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "4dda0647328b5c0c7cd37bf7fc0411bcc3d761b44a9038097e50dbe80092a529",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "03f7a68858f027eeeff2279ae0d33266949013ee2f07870f81938078ed739b25",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "eecd5d3b47d0725aa4fb45fbffee9e11d2bbbeef440fcd4ad0b93c4b51c2ee05",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "59d2cbcf6f8674bb927ae29db31c6821127f69ca474cd0ec6aa24753ec7cf6a8",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "1264197a1d03229b54da9830417785160e25243f02846e17427ac916b5c0d239",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "afdc6e4639038aea219812a3f052c4f5ca6dd8900e53f4570d3f573a5c33966d",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "e8b7cb4678a8161fdde233a1be3df80bf511bcede4496b4d043b2c703a180303",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "6f18552dd4c76e3a3e60e93a5e5f8c1007644fa645617879d9e899bcb31ed764",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "dc5ae4751b2eb156a2b67d60b6ffa3d1eb480c99c710d69fa6b89b61e7b1f88c",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "843a9b2c4898fc3814ceb85ac909f1d79240d91bdc88e42ddde383592f11e422",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "2cd1b2b45f64b86ca704f889f571691db71d9605b7de3626a9658cb01dd0f4a3",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "6ebd09445d84da58acaee6d7968f4134998a229e2457dbb5787ea1801b71f96c",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "9973f79809c6114dbe37486bb45dabe2cc6666da3666b7949d4ace6c31e5881e",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "e53b3fe50c911451544f8dcf85a0038627e2ce276852632fd811517694e9447f",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "80cbeb38c962710cbba35221b090b58c740f464511391686db17442c8f615d4c",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "3c76bd54e980b31107bf70096446e1f85b0475a11bca149cb360df01f47982ec",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "bca0df7fb0261b6487a52d5ddf04ce2f7739f35b2af5a1e61170b545ee4d458e",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "0c41926234ede14196d63f0efa7a30b27f03d8b5cc65414daa0154df2c5ab586",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "2ef4b327ef497990bd310ff9d5dfe22fb4f72668869f66a918c5ca7394180b9b",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "0a6e498da838009960afd3bb06cc69a37e4c54ecf84cf6b0cd097adfffb23ec5",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "b0f76b089ed5e62bac9578a390bbb9e09b306cfd85875e5dec3539d80b665434",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "d9f41e1dee21bdb7ecf0e50db6e43b6cd582e77cca0d1d3e90ffde117292b6c3",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "f4a0dfc34f4889690c90433efe68624d04282e64fe670ede6675701726bfede6",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "dd9f25afa0b0468c2ef30d58c1ef8a72830dec79547596b54bde18372be5d0c0",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "66f14fc6a0355bdd764763d47a37adb12f233f553423c29111fa034dfd473d4a",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "753bbcf5b79d54e714a5900f17bb1976517fb8e54a5063cfa9980e94e9921627",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc208_21",
+    "key": "d5cdc3a64acc85790bb19d173cdf98a68d52d5f7dc3a95676019eb3cc46299db",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc208_21",
+    "key": "a41f91676b0d1cb0e800eef116bc98577cebe2161d81ac44e7eda30c4f4468e0",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc208_21",
+    "key": "23685e391ec4acc876824a170f3e8b3844557889c357e9152fa227880b011cde",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc208_21",
+    "key": "bceae2ca5f60cd1718476ed11b86d753ad914f8b030f8efcdc0f2f956857784f",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc208_21",
+    "key": "cce7d40bdb7777ee42d70ba10ce3370d0951ff71bdc1dd41db55e68b8e86f8d2",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc208_21",
+    "key": "fe1e9013e8bd60040e6f971b4d29c492d7feeee4212e3a95f596a8b1b1de04e0",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc208_21",
+    "key": "331e94754bc46dd51fef53f290d96f5d7731162ab93ca70a252834b49be624bc",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc208_21",
+    "key": "5e562fdd903ead253158b57c2833ad4214ea093e993e14559f11a28e45eec1cc",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc208_21",
+    "key": "94282ff949df442ca73f12f9ec81174349d12e1eb1826202ade1d5dc4742a4ad",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc208_21",
+    "key": "fceb6571f58dac0a5cb3f8ee7d06db9260086bb1ef94611d143ff0a569c8ec5e",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc208_21",
+    "key": "4d2c6d25833f1772086b8d26af218f755c97f1fec134a16e0148d4b2a3a3081f",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc208_21",
+    "key": "dc55d6c8439299b8ec0074d8698589d3f989efc2bd168035017aff2860a82354",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc208_21",
+    "key": "93711e4759d8b973e30f829a3e9c44f67a4e34f051b864283dabe7d1ccd483fb",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc208_21",
+    "key": "95a15e2955b00f4e14536bfba8e418194d6f6571b74f3b99678fefcfefb73762",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc208_21",
+    "key": "8941fb638e5b7ca20bd3789b0c7af893359bf3fac7d95d5d0bf4bc1714674203",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc208_21",
+    "key": "ce31d981221dfeea7f3c7d978748ba9744b9984f5847aeec77f5ec892bbe3ed2",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc208_21",
+    "key": "195e08fe882e089c59749c55c5a42e7337498fd5889b3765d86675058d09ab1d",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc208_21",
+    "key": "f521d6c9d1f154a55cbe700a11171becf1d21b2bfc9aaedefeea7e2b74c6d755",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc208_21",
+    "key": "e72813e25a8af828b169d8d09d5d2d92e6c4ce1f7767fba36361cb66374a7b2d",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc208_21",
+    "key": "05bf268d007cd34273b01bd6699d2e74dabe9a42870b8308d27694f9faa317da",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc208_21",
+    "key": "7ce368126275f7aac6682aa24352795eb6639d345324226e49e79a4617879579",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc208_21",
+    "key": "0fc0ac6eb6bd13bb09da985e7ab459ff67959e6e497d6cd133044a7997e05ab0",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc208_21",
+    "key": "607eca1c35b92f5779fcde1331bba070ad411de5dfc083f52b5b9c35c6cbf88d",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc208_21",
+    "key": "2aa4a361fef978ff41170bdf091de9cb53728bb528368287ae150834c6299368",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc208_21",
+    "key": "513e0e45419a82b415e420788f5aa0ca0144277cadb6305a76622598260a386b",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc208_21",
+    "key": "408e5a4d152b75975c66798df548db36038a9cbe9a722b10eeca6ea8d149e87a",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc208_21",
+    "key": "4e94c8988d31b521f5b25035fb6c903cce44b251974ef6e25ac8be3d8be295fb",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc208_21",
+    "key": "08951e1546324cc0bb1bcbf88e24f7810e25f382a48a6c2593b181c0341d4bb7",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc208_21",
+    "key": "fc5cc40e1f7f22d1df18fc3e189941073d9315526bff3b2ceed19a614782023e",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc208_21",
+    "key": "e18785ab8a3d4edcbc5bcad7f541db1dfe2f9de14a03f331e28b14c2bfe49ea5",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc208_21",
+    "key": "1d88ffa28ed1805c570f27523ed2ac73bb8e1a9bc3b1f38236308c2f8e7c47be",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc208_21",
+    "key": "74c17f87f78effd0ced19201246395b9d9003ec436d428a826ff248c042b749a",
+    "study": "B"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "c740eb3bb684419f29d158149dc6d2ebf3b410eb347ffe4b2b0614f8cb376a9c",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "7366a3f153237073d09938c121bcac2b209c96abf39075b23b0b7cc172e82ed8",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "93f7cb4ab18b8ab719f3f651ea0e6f7f78452b00cccc36f568f92fab9bd384e2",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "06d32faabcb6b37f6f9950f8e052c56591b46c1b8cdd4333c576b6c05aeb4cda",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "7ad2defb7b72266e262b62c6ea0610e2d86bcd736a6068c2a87bbbf7d7001864",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "0a7f71572a0075354af9bfef31d2b69510f0d750dfb47c02c2d33feda74952f7",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "a9cb31fe8b6decd93706c4a5690954903714d13d54f21516a38b0cc83486d304",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "51ae6c3cd8eb352920b6459ee6614dca8419066419c0f3732d0c2b6d7c82aa14",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "4dba6794729b41a8a9c3d77538e5b357dbcb082148fe64e13ca5c38f3891d768",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "d67ab60aa41bff7990e46ef9e8324a96b4ee1b05553daf73ed58b3094ff44ee4",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "cdf43a898c8d2310bfd3c58c2557c68984d93e5073f6d5a9e7b7f6fb09d0722e",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "4c63693c38426fe9ab6224ab07e6d4c8b0b6f48f2230b7de411e60e483471ba3",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "9db8c7f61500aebc91377d53cffa7c8803a221de92a4026c771b10b1c158c1f5",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "effcfed0e75c2e834d718a4550aadc9dde92817f17a415c0916e234c0d611633",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "6a9bff4ee8b77b358d828aac770dd4e4d93c615cc63c59035b37b4a6f557a652",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "033e9d5fd06a7e48d4573344741fa00da1422671fe1eb24795f85c95875c85d0",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "7810edebc61d748b0a5affaf8c3abaa0e5e96390d281342cc881b21e810b3557",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "173012f0cbb9c57119699c129806804ccaf3c104828f53385fbc545e2301e308",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "f602cd33d85d4df616d57e05d5e47e820b38d59ae29fcea9fc31f89ddf564488",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "995be2cf4ffce771ea5089a1743462bbf3fbce9a5fd24f5c0ac4084b9fc38526",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "50eb426fff9052abe07820d21f3da9f2cd0ba05bbd54e30450cc89809046aa3c",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "9f94ba42e09a4f01eb832230689bd5c69466a08825f907ea06ff8f7f50f86a24",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "83faa8fc2b9e0a35f4f20873d637c50be1e4c3c93165c586604e1617e0e4bbb7",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "7e35eb26010bca92ad6d384fa5f10ccc0429768ce7cc7dea0ed737ee98e145dd",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "915fc90eb8c6a1869b77361cdce5493d551957bb2d9960c7d5b91bfa1284e5ea",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "ac69a0169e72961d09dd7bdc113fd416546bb8ae2cbd9dba09c9c747a135d5ab",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "5995ce6df4dbacadbb0887d8a2a5b31383154693a80e0738264e385cf2026dff",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "a44c44acd938da82b77ebcdb711f46ced03794672a85dbca073c0a579251173b",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "ad5c671287d97e7e7befe34527769b0140607967c9e45f5c098971220b0bd9f4",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c201_21",
+    "key": "1de6b00f2633d9b721cb5e25a481c8361fe56b3cb5133d7478ec792565c76493",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "09e400c90bcc28df32777f2e917de75066d1bb804f371c6f1fc46ca39917703e",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "e73889bca485a9cf3d8ecc90cab2f3cc05469fb90b00fd9a213714306358724f",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "3f6b59d0afe0f52ea8724c997f333628e1e9b2894ddee8e17ea4279d313bc129",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "56d8b26039ade544220797247b57cb9b87b6d19b34eca4c11f690284025dc791",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "8df8738f246237a26fe788e06dedc05c71e625717602f15daf00e43eafef5add",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "e08b622cf62ebfd25d4ba1525c2fc2950c90ae5663097f7853a3ed2fe902dcae",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "fc59690a1b6d1389e5ef3dc6fa3117ce1b192b4e4ac45be00645732926c97711",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "b217fe00254ffadc5f95c5a2a70962c7d67c19fc14f7f2e07fb8a2cf9b3e2eff",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "a6cccfada02d6b4be3be6bce19ad1ebe253b776fbe5010f676bfb8ba572f2b39",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "348752126dc9b1abde794745d3700cf4698011e398bdc1ff27e939056ec01130",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "4d04d558afc5e90b801fe3e831d33732bf4c97694f7c32a56898079a18f98c0a",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "2faf5dc2b731efa19500db4c371d58cf07923bdb5969f084daf4da66e6c17b10",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "9a308ee253f92016813b440692d7d919fcc608e67b361e71f1c4da1a00b4ecb5",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "4e1d389f8ed4abbec2b712ad76372f0e15a4522dc4f46b54b5d83fd164f91083",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "b4d295703acf6a5fb4ed92dc40bbea8c7f4cc8496615bd1e883d6077d9ca8ce3",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "5347594c81ab695c514d8ed24a1213ad59215c4c567edadbc99f445619f78f8c",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "4e802a931934337c94835e834bea1a2258679abedda5ab6e687eff48f5285159",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "d1b9f045b9c3a40b0c4398bee7898699851761c45bc56942da2d21a7a19361ec",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "fb4d9d458a719f1707d3ba7fe2d09bf8f611ee96897f086d57bb2f0dc8bbc717",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "51b20d56d1d2715f946ef5d668ee211af2044be4a71c414c7521be3b927dd133",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "614dd57d6f92bc6d3308b88bb4aa7dd847ee165def164d962784fe051d1321a8",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "319273998e5d6d1aaf9b72d064b768f3b120b5e39c54eb7577a9ad3681474630",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "1e42b3f2e6cf6c1f457bd4878b9fe0b030304d2d95786538f4960ec7fd3a1ee2",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "6e8603b9a4fd31a031f0a99194f8f723645500b4f25bf851ccc1da9a8b51c455",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "7d2f9d4d7ecbd49ccaa18efa975de02893cba8b73cba9707862de547286715d8",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "87306a467ccce4a934b5deea67e1e94a3c88100baafa6d8bdc0d96876f5116ff",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "22dfc38f183bd84a02b186c3ec71eeb68f16a452509fa3f8c756f93927d51a00",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "f127ef65bd8d7db0a4fdb449f2e86e9c95f751e5bda5d626c25a4600f7f61eb5",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "536dba01fcd34f4090c4589a2ffb678eccc980225a5d090ea8c5dc8243548c1f",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r201_21",
+    "key": "5f2fffff1e4e56b392236bfe8220c5f75b69483ace9442333c4f89e44edb85a5",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "6fbb1729869129f00ebc22e33d91d78cf9a8a936507c2a014550c96bc81724e4",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "0529613e49570248fe65a1a4618ec164cf11b918397c2a76042b2babb69787f3",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "b6cfb242311c4bdaaff7faf9bb03dac06afa737c321e0af7631f031f1a12949a",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "fa190e381d85e99f700706b6e110ed82666cd546cd1ca8649d048a926994c3f3",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "7c9c7e40841146a2f3a015db9f4e536127f0a61022c334560c4d8e976fe58541",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "a38efe6a3719131df35addd384e4461912cf3fc5debf2b9736a40938cf8d3091",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "cda4d91179708376072b0473cbc32417ae5df18b7a62e924c619bfd247d106e8",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "2e2e59946409b5c6edebe99183e6de9fa3a871e6770617be593306d6d31ad2c8",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "6a529c497efa6ae40807f9b4ec0aae2db6e6d76cce0a4330845f71d61c9b5cd4",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "6202a67a6e1a3bc034558ebead9de1a86469fec1a95d2965a80515a75231bbe2",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "b0f549eb2815e89df06d0360ec2cc0a3cd72cb50ab6b26c8d5b9f21e71543ee2",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "b9e4bb81dc2217c709193a53eeaef17f5d15cdd956b13785fabf171d3f08b2f0",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "5b422935a1bda812b023c944d3c0c319b8f049985ada4d3fe5876828bda51f78",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "4badd97ac24f14145f8e13ad046ccbf76e30594845f464112f47d24ad992c606",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc101_21",
+    "key": "b5864f49dacf38bcd8a00b324832a7bfe319098f3aba256a0840bc8643cd016c",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "6ebd09445d84da58acaee6d7968f4134998a229e2457dbb5787ea1801b71f96c",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "9973f79809c6114dbe37486bb45dabe2cc6666da3666b7949d4ace6c31e5881e",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "e53b3fe50c911451544f8dcf85a0038627e2ce276852632fd811517694e9447f",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "dca56822cf9416f54bc4518d54770c51e484979f3ed3f8c6cb65dd5f68666866",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "3695f57eaa7e3275e34b2a20df1290f2a1166fdf57d1634cf5a0e8d4355fb034",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "53199b0d9d765381b55589d1b6b20a6fd57ba2eeba0163d11a4d0f29d37aca2c",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "c2243e1037014af0ab7cf537ccf3d81509342ede4755d6167213324e6dad6c74",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "82a91bd3810cd1fbe00dcc8c93aee121356bc366d500e09c68d15c90b0b258db",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "46d78f5f7d964595f559c08880d1571bc3eda1ec3765bd068c0ba6b40386aa22",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "983feaea67449c2fdd56133733728ea4825325eee83b2c8d56db4211ad0657be",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "8ad85085405ca91161d23632622c1713cb8553a61680661a3b2cc34564685894",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "23c0e8616e3776fb16ec00d66bd26db36a211470077c800d276a3ca8f8ae3ce8",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "fdd0a6bbe983a3af5e8ab1866b2779bbb8e6835c81a17baa5b6868d383d95ccb",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "3ce28c1549391a1d9c0ef30357d5841c620a76ea57a631c12d9de51296058af5",
+    "study": "C"
+  },
+  {
+    "factor": "baseline",
+    "instance": "rc201_21",
+    "key": "4b8b73bb8ef1ea169ce961199283089e8b5b45bc2636862cb81bdd2898b78b81",
+    "study": "C"
+  },
+  {
+    "factor": "prediction_horizon",
+    "instance": "c101_21",
+    "key": "f15919ee099cd574caf4c6f64d1fd4a6a43fa5295c7b8975aea7fe47d8809ba3",
+    "study": "D"
+  },
+  {
+    "factor": "prediction_horizon",
+    "instance": "c101_21",
+    "key": "3e89e32a7afa872e42d6ec25bf2f9e0f991efa51a9df2e8ea47ab496d48761d1",
+    "study": "D"
+  },
+  {
+    "factor": "prediction_horizon",
+    "instance": "c101_21",
+    "key": "93f7cb4ab18b8ab719f3f651ea0e6f7f78452b00cccc36f568f92fab9bd384e2",
+    "study": "D"
+  },
+  {
+    "factor": "top_L",
+    "instance": "c101_21",
+    "key": "824ee2a439b4c29f49b7bdfe2b591291a9fa70f1bb77dac9c2814329b5b4aac6",
+    "study": "D"
+  },
+  {
+    "factor": "top_L",
+    "instance": "c101_21",
+    "key": "93f7cb4ab18b8ab719f3f651ea0e6f7f78452b00cccc36f568f92fab9bd384e2",
+    "study": "D"
+  },
+  {
+    "factor": "top_L",
+    "instance": "c101_21",
+    "key": "123643214815707bb0426fa6e15a1deb94a8e257f2b99bb2159b90ebb3643c1f",
+    "study": "D"
+  },
+  {
+    "factor": "mcts_iterations",
+    "instance": "c101_21",
+    "key": "4d6cef9a91594c14546f7388cce11b4f3748d95b17b9f0a125fc369159d92d73",
+    "study": "D"
+  },
+  {
+    "factor": "mcts_iterations",
+    "instance": "c101_21",
+    "key": "93f7cb4ab18b8ab719f3f651ea0e6f7f78452b00cccc36f568f92fab9bd384e2",
+    "study": "D"
+  },
+  {
+    "factor": "mcts_iterations",
+    "instance": "c101_21",
+    "key": "865be127a21d22920d10b0bbdeef5f27181015ded43373baa5d1f20703f78c96",
+    "study": "D"
+  },
+  {
+    "factor": "mcts_iterations",
+    "instance": "c101_21",
+    "key": "0d5b23eca9c22048f79409f80c24d87c8e7a696c798ed04adca2797e90d0eac4",
+    "study": "D"
+  },
+  {
+    "factor": "charging_mode",
+    "instance": "c101_21",
+    "key": "c1e9a4d5600604ca28022fe1440087d55a9bd53be16e4ac1b6c0db8e40aab953",
+    "study": "D"
+  },
+  {
+    "factor": "charging_mode",
+    "instance": "c101_21",
+    "key": "93f7cb4ab18b8ab719f3f651ea0e6f7f78452b00cccc36f568f92fab9bd384e2",
+    "study": "D"
+  },
+  {
+    "factor": "algorithm",
+    "instance": "c101_21",
+    "key": "7366a3f153237073d09938c121bcac2b209c96abf39075b23b0b7cc172e82ed8",
+    "study": "D"
+  },
+  {
+    "factor": "algorithm",
+    "instance": "c101_21",
+    "key": "93f7cb4ab18b8ab719f3f651ea0e6f7f78452b00cccc36f568f92fab9bd384e2",
+    "study": "D"
+  },
+  {
+    "factor": "prediction_horizon",
+    "instance": "c201_21",
+    "key": "826a652637319857157b6c4b80ffe8fab9b348930d1a307e370523d7636e95d6",
+    "study": "D"
+  },
+  {
+    "factor": "prediction_horizon",
+    "instance": "c201_21",
+    "key": "dee4fa7d287de58c856e34307c3040370636c23d230bb622ca76f7a5a2734f6c",
+    "study": "D"
+  },
+  {
+    "factor": "prediction_horizon",
+    "instance": "c201_21",
+    "key": "173012f0cbb9c57119699c129806804ccaf3c104828f53385fbc545e2301e308",
+    "study": "D"
+  },
+  {
+    "factor": "top_L",
+    "instance": "c201_21",
+    "key": "71001e2ae552e84f2c9dfdacdbde7f710226937f823b2bdaf607b1ec53030cc8",
+    "study": "D"
+  },
+  {
+    "factor": "top_L",
+    "instance": "c201_21",
+    "key": "173012f0cbb9c57119699c129806804ccaf3c104828f53385fbc545e2301e308",
+    "study": "D"
+  },
+  {
+    "factor": "top_L",
+    "instance": "c201_21",
+    "key": "5d9602590fa672b4c3d49913b0aaf3e2211578f9300c7bb0b44954ea12471dfc",
+    "study": "D"
+  },
+  {
+    "factor": "mcts_iterations",
+    "instance": "c201_21",
+    "key": "c1506cc1ae8fc527b47cfe34f133bb358d94198b3f37ce8a54342ae446a59f1b",
+    "study": "D"
+  },
+  {
+    "factor": "mcts_iterations",
+    "instance": "c201_21",
+    "key": "173012f0cbb9c57119699c129806804ccaf3c104828f53385fbc545e2301e308",
+    "study": "D"
+  },
+  {
+    "factor": "mcts_iterations",
+    "instance": "c201_21",
+    "key": "41bd5a3eca30acfeb4c732a5f0b2d973e91137ad4b4db126e99650e2f00bb7e3",
+    "study": "D"
+  },
+  {
+    "factor": "mcts_iterations",
+    "instance": "c201_21",
+    "key": "f90016e9d691f99dc0b7c1f0d50b62b261e34fc7f53031dfe5cbc7d3ad7f0d8e",
+    "study": "D"
+  },
+  {
+    "factor": "charging_mode",
+    "instance": "c201_21",
+    "key": "e2e3942f2dbd922705a6546a5fa77ce37bacb7711b83aa60b71e9a2ae047d9bd",
+    "study": "D"
+  },
+  {
+    "factor": "charging_mode",
+    "instance": "c201_21",
+    "key": "173012f0cbb9c57119699c129806804ccaf3c104828f53385fbc545e2301e308",
+    "study": "D"
+  },
+  {
+    "factor": "algorithm",
+    "instance": "c201_21",
+    "key": "7810edebc61d748b0a5affaf8c3abaa0e5e96390d281342cc881b21e810b3557",
+    "study": "D"
+  },
+  {
+    "factor": "algorithm",
+    "instance": "c201_21",
+    "key": "173012f0cbb9c57119699c129806804ccaf3c104828f53385fbc545e2301e308",
+    "study": "D"
+  },
+  {
+    "factor": "prediction_horizon",
+    "instance": "r101_21",
+    "key": "76aa715c993b0b68e61b03859dac079b95e9a8a58e559684ec94ce4ca56f2a99",
+    "study": "D"
+  },
+  {
+    "factor": "prediction_horizon",
+    "instance": "r101_21",
+    "key": "1ac2820154ef83f2168b8bdb238bd8d2b98f56d7d517ec65eb83590947bc2087",
+    "study": "D"
+  },
+  {
+    "factor": "prediction_horizon",
+    "instance": "r101_21",
+    "key": "3f6b59d0afe0f52ea8724c997f333628e1e9b2894ddee8e17ea4279d313bc129",
+    "study": "D"
+  },
+  {
+    "factor": "top_L",
+    "instance": "r101_21",
+    "key": "005f82bc6c5d2abe7d770fbdb89df9194bb08ebeacc3ac0d1645a053300c4bfc",
+    "study": "D"
+  },
+  {
+    "factor": "top_L",
+    "instance": "r101_21",
+    "key": "3f6b59d0afe0f52ea8724c997f333628e1e9b2894ddee8e17ea4279d313bc129",
+    "study": "D"
+  },
+  {
+    "factor": "top_L",
+    "instance": "r101_21",
+    "key": "fa21d624e0a76402cb8cada0cdbe1fdcd9377e0bdb95ed60ac3145889e5c0d4c",
+    "study": "D"
+  },
+  {
+    "factor": "mcts_iterations",
+    "instance": "r101_21",
+    "key": "8a71d62013460e2c74f1e5b363757a519ae9968fb65922ad15e4d6ef6841d304",
+    "study": "D"
+  },
+  {
+    "factor": "mcts_iterations",
+    "instance": "r101_21",
+    "key": "3f6b59d0afe0f52ea8724c997f333628e1e9b2894ddee8e17ea4279d313bc129",
+    "study": "D"
+  },
+  {
+    "factor": "mcts_iterations",
+    "instance": "r101_21",
+    "key": "a57cce216dc51d82664efc3235bb5f652a8a47b6a2f34b5ef2b4639f603d9796",
+    "study": "D"
+  },
+  {
+    "factor": "mcts_iterations",
+    "instance": "r101_21",
+    "key": "a57e00735eaf23bda3f8b0fcf6a6bde58b75fa9339300137eeb0b2ad71f434ec",
+    "study": "D"
+  },
+  {
+    "factor": "charging_mode",
+    "instance": "r101_21",
+    "key": "98db05b81387a7c549392d62ffd0db8b38e6abc1bc6ee293f780565289234634",
+    "study": "D"
+  },
+  {
+    "factor": "charging_mode",
+    "instance": "r101_21",
+    "key": "3f6b59d0afe0f52ea8724c997f333628e1e9b2894ddee8e17ea4279d313bc129",
+    "study": "D"
+  },
+  {
+    "factor": "algorithm",
+    "instance": "r101_21",
+    "key": "e73889bca485a9cf3d8ecc90cab2f3cc05469fb90b00fd9a213714306358724f",
+    "study": "D"
+  },
+  {
+    "factor": "algorithm",
+    "instance": "r101_21",
+    "key": "3f6b59d0afe0f52ea8724c997f333628e1e9b2894ddee8e17ea4279d313bc129",
+    "study": "D"
+  },
+  {
+    "factor": "prediction_horizon",
+    "instance": "r201_21",
+    "key": "fb085b46bebd35ef3f11f0271c441fbb3f9ee74b687cdee9eefa4c860ab70754",
+    "study": "D"
+  },
+  {
+    "factor": "prediction_horizon",
+    "instance": "r201_21",
+    "key": "4d069094e72bd064ae2c74be90198b314f347f45b3a0e2ddcbd21bdfa26aea02",
+    "study": "D"
+  },
+  {
+    "factor": "prediction_horizon",
+    "instance": "r201_21",
+    "key": "d1b9f045b9c3a40b0c4398bee7898699851761c45bc56942da2d21a7a19361ec",
+    "study": "D"
+  },
+  {
+    "factor": "top_L",
+    "instance": "r201_21",
+    "key": "587b9492346bc80e27829d247b09bfa6a233fe145f586f3c0593a3ee8ca6111c",
+    "study": "D"
+  },
+  {
+    "factor": "top_L",
+    "instance": "r201_21",
+    "key": "d1b9f045b9c3a40b0c4398bee7898699851761c45bc56942da2d21a7a19361ec",
+    "study": "D"
+  },
+  {
+    "factor": "top_L",
+    "instance": "r201_21",
+    "key": "13a65383ceb5c1e118b590c329244b40014cd71aee7d499ab31fc8def861ce10",
+    "study": "D"
+  },
+  {
+    "factor": "mcts_iterations",
+    "instance": "r201_21",
+    "key": "2cb781eea33ae7a3ae57bf9d978293ff0665abfb12f1db0cfd451f9bf569bf63",
+    "study": "D"
+  },
+  {
+    "factor": "mcts_iterations",
+    "instance": "r201_21",
+    "key": "d1b9f045b9c3a40b0c4398bee7898699851761c45bc56942da2d21a7a19361ec",
+    "study": "D"
+  },
+  {
+    "factor": "mcts_iterations",
+    "instance": "r201_21",
+    "key": "ba0d090d0b6c279a890436477a5f4f8cb70fc85e052c3bb9067ce6f9d9fe3b31",
+    "study": "D"
+  },
+  {
+    "factor": "mcts_iterations",
+    "instance": "r201_21",
+    "key": "0d8373a206de0254f12df719ac2f40e921a50de0ca8dc3d13107aa93902c27c8",
+    "study": "D"
+  },
+  {
+    "factor": "charging_mode",
+    "instance": "r201_21",
+    "key": "59e60d14106037ba95864076fbfb16d0cad5768507b13b89dac8f3780a48a0ed",
+    "study": "D"
+  },
+  {
+    "factor": "charging_mode",
+    "instance": "r201_21",
+    "key": "d1b9f045b9c3a40b0c4398bee7898699851761c45bc56942da2d21a7a19361ec",
+    "study": "D"
+  },
+  {
+    "factor": "algorithm",
+    "instance": "r201_21",
+    "key": "4e802a931934337c94835e834bea1a2258679abedda5ab6e687eff48f5285159",
+    "study": "D"
+  },
+  {
+    "factor": "algorithm",
+    "instance": "r201_21",
+    "key": "d1b9f045b9c3a40b0c4398bee7898699851761c45bc56942da2d21a7a19361ec",
+    "study": "D"
+  },
+  {
+    "factor": "prediction_horizon",
+    "instance": "rc101_21",
+    "key": "d4ced845d496333c24ebe5f680ad7bd573ad12a09c1fc640ce1f0984c0e0a3cb",
+    "study": "D"
+  },
+  {
+    "factor": "prediction_horizon",
+    "instance": "rc101_21",
+    "key": "0bd10caadc9c7ae57515d131e4016ee7d20282e88fb833c8527ad31ce62dd6df",
+    "study": "D"
+  },
+  {
+    "factor": "prediction_horizon",
+    "instance": "rc101_21",
+    "key": "b6cfb242311c4bdaaff7faf9bb03dac06afa737c321e0af7631f031f1a12949a",
+    "study": "D"
+  },
+  {
+    "factor": "top_L",
+    "instance": "rc101_21",
+    "key": "ccab7402de0a5a1e73e2d1df27519f44942e2f3a11fed8b275f75ae2782b9cc2",
+    "study": "D"
+  },
+  {
+    "factor": "top_L",
+    "instance": "rc101_21",
+    "key": "b6cfb242311c4bdaaff7faf9bb03dac06afa737c321e0af7631f031f1a12949a",
+    "study": "D"
+  },
+  {
+    "factor": "top_L",
+    "instance": "rc101_21",
+    "key": "1dff49c057e5930e704c9dee04a41b841894c54e1dfc4c383eba699b19bebfff",
+    "study": "D"
+  },
+  {
+    "factor": "mcts_iterations",
+    "instance": "rc101_21",
+    "key": "abaa7f9a724a019692630bee4127fd84a4cd7a435e4c39d0cbbb92e64b3c36f0",
+    "study": "D"
+  },
+  {
+    "factor": "mcts_iterations",
+    "instance": "rc101_21",
+    "key": "b6cfb242311c4bdaaff7faf9bb03dac06afa737c321e0af7631f031f1a12949a",
+    "study": "D"
+  },
+  {
+    "factor": "mcts_iterations",
+    "instance": "rc101_21",
+    "key": "a2b2ddf08abed78c91df3fdf02c73ac09c7a167c987882baf4d61bd7b8026907",
+    "study": "D"
+  },
+  {
+    "factor": "mcts_iterations",
+    "instance": "rc101_21",
+    "key": "670c876e8ee0e6dee408570400c22508f460adced2d2fcdadb317e93d071e2be",
+    "study": "D"
+  },
+  {
+    "factor": "charging_mode",
+    "instance": "rc101_21",
+    "key": "75a3388ec9b3873bedcb904aec77858e0c204c731c376305fee65b5e92f294c6",
+    "study": "D"
+  },
+  {
+    "factor": "charging_mode",
+    "instance": "rc101_21",
+    "key": "b6cfb242311c4bdaaff7faf9bb03dac06afa737c321e0af7631f031f1a12949a",
+    "study": "D"
+  },
+  {
+    "factor": "algorithm",
+    "instance": "rc101_21",
+    "key": "0529613e49570248fe65a1a4618ec164cf11b918397c2a76042b2babb69787f3",
+    "study": "D"
+  },
+  {
+    "factor": "algorithm",
+    "instance": "rc101_21",
+    "key": "b6cfb242311c4bdaaff7faf9bb03dac06afa737c321e0af7631f031f1a12949a",
+    "study": "D"
+  },
+  {
+    "factor": "prediction_horizon",
+    "instance": "rc201_21",
+    "key": "c09d2700b159471e2d4a0e861287b28831f5acc990d8d8acb35342715f0a8463",
+    "study": "D"
+  },
+  {
+    "factor": "prediction_horizon",
+    "instance": "rc201_21",
+    "key": "4c4cd00d99fd2375b0abb9ab860f100d67c27c46a58d58be565a753129db34fa",
+    "study": "D"
+  },
+  {
+    "factor": "prediction_horizon",
+    "instance": "rc201_21",
+    "key": "e53b3fe50c911451544f8dcf85a0038627e2ce276852632fd811517694e9447f",
+    "study": "D"
+  },
+  {
+    "factor": "top_L",
+    "instance": "rc201_21",
+    "key": "4367124061b05af04f517b89e9ddb502c4fcd8a63b6979d443cdf5b887f5b4e3",
+    "study": "D"
+  },
+  {
+    "factor": "top_L",
+    "instance": "rc201_21",
+    "key": "e53b3fe50c911451544f8dcf85a0038627e2ce276852632fd811517694e9447f",
+    "study": "D"
+  },
+  {
+    "factor": "top_L",
+    "instance": "rc201_21",
+    "key": "a5e123208e6a12ae04a15b9d7f1dda0ba876e9b85b649fb87ca5b3f1bf1bf839",
+    "study": "D"
+  },
+  {
+    "factor": "mcts_iterations",
+    "instance": "rc201_21",
+    "key": "b4e8bcad6f15fb9b8b12f784613a14cf17f907792bd24e064f2639f7b631f632",
+    "study": "D"
+  },
+  {
+    "factor": "mcts_iterations",
+    "instance": "rc201_21",
+    "key": "e53b3fe50c911451544f8dcf85a0038627e2ce276852632fd811517694e9447f",
+    "study": "D"
+  },
+  {
+    "factor": "mcts_iterations",
+    "instance": "rc201_21",
+    "key": "6aaa425323371500ec441f7e09cf1f86dbe03c84ee3a6799202bcfca81a7b81e",
+    "study": "D"
+  },
+  {
+    "factor": "mcts_iterations",
+    "instance": "rc201_21",
+    "key": "9e1a4fd85e643f64c2652eff33b2e0688679708b91737bb136b36de111a7d826",
+    "study": "D"
+  },
+  {
+    "factor": "charging_mode",
+    "instance": "rc201_21",
+    "key": "dcd2809ff829103a13aa467c09af3b799459c9519a1273ff5f198b3fb2c6da85",
+    "study": "D"
+  },
+  {
+    "factor": "charging_mode",
+    "instance": "rc201_21",
+    "key": "e53b3fe50c911451544f8dcf85a0038627e2ce276852632fd811517694e9447f",
+    "study": "D"
+  },
+  {
+    "factor": "algorithm",
+    "instance": "rc201_21",
+    "key": "9973f79809c6114dbe37486bb45dabe2cc6666da3666b7949d4ace6c31e5881e",
+    "study": "D"
+  },
+  {
+    "factor": "algorithm",
+    "instance": "rc201_21",
+    "key": "e53b3fe50c911451544f8dcf85a0038627e2ce276852632fd811517694e9447f",
+    "study": "D"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c103C15",
+    "key": "1dedc4a5bae9aa0987afbc0a449cc35c1d502acdfb47450e7cda7211e127b8b7",
+    "study": "E"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c103C15",
+    "key": "b359f2e61fe10a6da2ff5616e1209f591a17c432900d63a983bf4e419b75a3af",
+    "study": "E"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c103C15",
+    "key": "feda7e09195eb6551be3b2c7853c61e6d6d6a8ca9abd741efe1676a8ade0829a",
+    "study": "E"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c103C15",
+    "key": "da0e96388813a0c4674ee200ae7fdfeeedbc3c8b569932b2f32b5b61feebe57b",
+    "study": "E"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c103C15",
+    "key": "266c8bb5c823ab002a648a1efbec51b1abd4fb2b10ee35fd97d52978ea59455d",
+    "study": "E"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c103C15",
+    "key": "5ded3524e5ce5eedc2f2e0dbb208e80452977752ede26a092df973c5a0e02cca",
+    "study": "E"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c103C15",
+    "key": "a56ee1733b5216c23c39b670f2588f17c76d931fa9afc7da297984d2d5f1aa19",
+    "study": "E"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c103C15",
+    "key": "23a90f8685ad4ece838f63796fb2ecb527cf3abea67a922ea814ddb4935def0d",
+    "study": "E"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "0d7f4f90c3a976679ade219d1350871c74edef9b4adcba80fb756dbe00fc9ae8",
+    "study": "E"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "b463b3073ee798d3cc44b6df7352279837282d8dc50fd1a6a52e8b5edc6e77f0",
+    "study": "E"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "edaf669bfe792461b27311dbdc6a9d903fe4bbe1f158918c4b5e1619dfe2c89e",
+    "study": "E"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "aa69036c5b0af1454f8d438e939bbdf550e00e69b25683485b794f2b5e68c040",
+    "study": "E"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "629b801336937df2e77a03ddf15e56037d930f2f1929f32cc57237298fc895dd",
+    "study": "E"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "ebddc2e8cf0a01736c8540edf4cce1011addfb46305f47222308ef30d6f87a75",
+    "study": "E"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "f3b3d69d51f2d66eebdc210cb3b90814e91320af8a9d4fdc12a5ecae7de0c345",
+    "study": "E"
+  },
+  {
+    "factor": "baseline",
+    "instance": "c101_21",
+    "key": "4bebfa80fac9123c4a385f59ee1163baeaeda6fc3c650232275931f3edee315f",
+    "study": "E"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "2b570d926dc2d2ce52ba6c775500c552cc80899e496b06e373cf57195135fba1",
+    "study": "E"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "56218aa1dd41bdf81911eb312c0a2ae35c803bcd253d7f0230e3bed6a910df73",
+    "study": "E"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "44e9a7f60a66b988fc140a6f75620dcb97592f5a3a5de716d6555cda6a491351",
+    "study": "E"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "103bf2e8f380899c775ad5863ec9653bd15bb51a219ef900b4140b5bbcf83413",
+    "study": "E"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "b78dac468bcc38f37cc6425c3cb40827e276343c4d73607d53ed1e3e734d7086",
+    "study": "E"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "173781d0fa06519b629c4e052cfb1839184534aa61763874a921cab1f920d984",
+    "study": "E"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "6213e057ac25ac5f8c4efb0afba41765c0ce96b99c1364006af1a4b3e673aca1",
+    "study": "E"
+  },
+  {
+    "factor": "baseline",
+    "instance": "r101_21",
+    "key": "535c6fe2476fa382ea1728de352aab07540f945f1d2f62d2b71ed62a22d70f5a",
+    "study": "E"
+  }
+]

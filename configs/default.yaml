@@ -9,7 +9,10 @@ control_horizon: 1
 candidate_limit: 12
 top_L: 3
 uct_c: 1.4
-mcts_iterations: 250
+mcts_iterations: 32
+station_candidate_limit: 4
+charge_target_limit: 5
+trace_level: full
 mcts_time_limit: 0.5
 budget_mode: iterations
 charging_mode: partial

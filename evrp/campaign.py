@@ -62,6 +62,8 @@ def render_reports(directory, completed_studies):
 
 
 def execute(directory="results/campaigns/final", studies=STUDIES):
+    if any(study != "pilot" for study in studies):
+        raise RuntimeError("The old campaign is cancelled. Use python -m evrp.cli estimate --config configs/paper.yaml")
     directory = Path(directory).resolve()
     configs, jobs = plan(studies)
     source = source_fingerprint()

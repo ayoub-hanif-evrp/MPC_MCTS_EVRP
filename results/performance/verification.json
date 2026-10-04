@@ -1,0 +1,13 @@
+{
+  "source_sha256": "06d868f693a728ac1102e913d6ba675227fc8ef9ccd5c18031507f8350390552",
+  "pytest": {"passed": 147, "seconds": 7.69},
+  "external_reference_checks": 4,
+  "exact_optimization_golden_traces": 3,
+  "calibration_exact_cache_trace_pairs": 24,
+  "calibration_audited_runs": 24,
+  "full_reference_hash_matches": 3,
+  "reference_prefix_trace_matches": 7,
+  "original_benchmark_files_unchanged": true,
+  "git_diff_check_passed": true,
+  "paper_campaign_launched": false
+}

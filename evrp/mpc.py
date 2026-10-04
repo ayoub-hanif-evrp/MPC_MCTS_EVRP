@@ -3,10 +3,11 @@
 from dataclasses import dataclass, field
 from math import isfinite
 
-from .instance import distance
+from .instance import distance, energy, travel_time
 from .model import (EPS, Action, InfeasibleAction, Observation, Transition, VehicleState,
                     escape, escape_action, transition)
 from .reference import full_charge_connection
+from . import performance as perf
 
 
 @dataclass(frozen=True)
@@ -15,7 +16,11 @@ class MPCConfig:
     control_horizon: int = 1
     top_l: int = 3
     candidate_limit: int = 12
-    iterations: int = 250
+    iterations: int = 32
+    station_candidate_limit: int = 4
+    charge_target_limit: int = 5
+    action_space_reduction: bool = True
+    cache_transitions: bool = True
     uct_c: float = 1.4
     budget_mode: str = "iterations"
     time_limit: float = 0.5
@@ -25,7 +30,8 @@ class MPCConfig:
     def __post_init__(self):
         if self.control_horizon != 1:
             raise ValueError("Control horizon must equal one")
-        for value in (self.prediction_horizon, self.top_l, self.candidate_limit, self.iterations):
+        for value in (self.prediction_horizon, self.top_l, self.candidate_limit, self.iterations,
+                      self.station_candidate_limit, self.charge_target_limit):
             if type(value) is not int or value < 1:
                 raise ValueError("MPC integer budgets must be positive")
         if self.budget_mode not in {"iterations", "wall_clock"} or self.charging_mode not in {"full", "partial"}:
@@ -128,12 +134,32 @@ class MPCPlanningProblem:
     observation: Observation
     current_state: VehicleState
     config: MPCConfig
+    _transitions: dict = field(default_factory=dict, init=False, compare=False, repr=False, hash=False)
+    _returns: dict = field(default_factory=dict, init=False, compare=False, repr=False, hash=False)
 
     @property
     def initial(self) -> MPCState:
         return MPCState(self.current_state, frozenset(c.id for c in self.observation.customers))
 
     def predict(self, state: MPCState, action: Action) -> tuple[MPCState, Transition]:
+        key = (state, action)
+        if self.config.cache_transitions and key in self._transitions:
+            perf.count("transition_cache_hits")
+            result = self._transitions[key]
+            if isinstance(result[0], str):
+                raise InfeasibleAction(*result)
+            return result
+        try:
+            result = self._predict(state, action)
+        except InfeasibleAction as error:
+            if self.config.cache_transitions:
+                self._transitions[key] = (str(error), error.reason)
+            raise
+        if self.config.cache_transitions:
+            self._transitions[key] = result
+        return result
+
+    def _predict(self, state: MPCState, action: Action) -> tuple[MPCState, Transition]:
         if action.kind == "serve" and action.destination not in state.remaining:
             raise InfeasibleAction("Customer unavailable or already served in prediction")
         if action.kind == "charge" and self.config.charging_mode == "full":
@@ -155,7 +181,9 @@ class MPCPlanningProblem:
     def return_connection(self, state: VehicleState) -> tuple[Transition, ...] | None:
         if state.finished:
             return ()
-        return full_charge_connection(state, Action("return", self.observation.infrastructure.depot.id), self.observation)
+        if state not in self._returns:
+            self._returns[state] = full_charge_connection(state, Action("return", self.observation.infrastructure.depot.id), self.observation)
+        return self._returns[state]
 
     def stage_cost(self, step: Transition) -> float:
         return step.distance
@@ -198,25 +226,154 @@ class MPCPlanningProblem:
         return state.stopped or state.vehicle.finished or state.service_depth >= self.config.prediction_horizon
 
     def customer_rank(self, state: MPCState, action: Action) -> tuple:
-        customer = next(c for c in self.observation.customers if c.id == action.destination)
-        step = transition(state.vehicle, action, self.observation)
+        customer = self.observation.customer_by_id[action.destination]
+        _, step = self.predict(state, action)
         slack = customer.due - step.service_start
         return (slack, step.distance, step.waiting_time, customer.id)
 
     def actions(self, state: MPCState) -> tuple[Action, ...]:
+        if not self.config.action_space_reduction:
+            return self._exhaustive_actions(state)
+        if self.done(state):
+            return ()
+        measured = perf.stamp()
+        pool = self.customer_pool(state)
+        perf.elapsed("customer_ranking", measured)
+        measured = perf.stamp()
+        feasible = []
+        for customer in pool:
+            perf.count("customer_actions_considered")
+            action = Action("serve", customer.id)
+            try:
+                self.predict(state, action)
+                feasible.append(action)
+            except InfeasibleAction:
+                pass
+        perf.elapsed("customer_feasibility", measured)
+        proposed = feasible[:self.config.candidate_limit]
+        proposed.append(self.fallback(state))
+        infra, vehicle = self.observation.infrastructure, state.vehicle
+        returning = None
+        if vehicle.departed:
+            if self.config.charging_mode == "full":
+                route = self.return_connection(vehicle)
+                returning = route[0].action if route else None
+            else:
+                returning = escape_action(vehicle, infra)
+        measured = perf.stamp()
+        proposed.extend(self.charge_actions(state, returning))
+        perf.elapsed("charging_generation", measured)
+        if returning is not None:
+            proposed.append(returning)
+        valid = []
+        for action in dict.fromkeys(proposed):
+            try:
+                self.predict(state, action)
+                valid.append(action)
+            except InfeasibleAction:
+                pass
+        perf.count("charge_actions_retained", sum(a.kind == "charge" for a in valid))
+        perf.branching(valid)
+        return tuple(valid)
+
+    def customer_pool(self, state: MPCState, require_energy=True):
+        """Cheap urgency/proximity union, at most twice the service candidate limit."""
+        vehicle, p = state.vehicle, self.observation.infrastructure.parameters
+        candidates = []
+        for customer in self.observation.customers:
+            if customer.id not in state.remaining or customer.demand > vehicle.load + EPS:
+                continue
+            leg = distance(vehicle.location, customer)
+            start = max(vehicle.time + leg / p.speed, customer.ready)
+            if start > customer.due + EPS:
+                continue
+            if require_energy and leg * p.consumption > vehicle.battery + EPS:
+                continue
+            candidates.append((customer.due-start, leg, customer.id, customer))
+        limit = self.config.candidate_limit
+        urgent = sorted(candidates)[:limit]
+        nearest = sorted(candidates, key=lambda row: (row[1], row[2]))[:limit]
+        result = {}
+        for a, b in zip(urgent, nearest):
+            result.setdefault(a[2], a[3])
+            result.setdefault(b[2], b[3])
+        return tuple(result.values())
+
+    def charge_actions(self, state, returning=None):
+        infra, vehicle = self.observation.infrastructure, state.vehicle
+        p = infra.parameters
+        customers = self.customer_pool(state, require_energy=False)
+        safe = (infra.depot,) + infra.stations
+        reserves = {c.id: min(energy(c, n, p) for n in safe) for c in customers}
+        stations = [s for s in infra.stations if s.id != vehicle.location.id
+                    and s.id not in state.station_visits_since_service
+                    and energy(vehicle.location, s, p) <= vehicle.battery + EPS]
+        selected = {}
+        mandatory = returning if returning and returning.kind == "charge" else None
+        if mandatory:
+            selected[mandatory.destination] = infra.node_by_id[mandatory.destination]
+        # Safe return first, then nearest and low-detour stations toward urgent work.
+        nearest = sorted(stations, key=lambda s: (distance(vehicle.location, s), s.id))
+        urgent = sorted(customers, key=lambda c: (c.due-max(c.ready, vehicle.time + travel_time(vehicle.location, c, p)), c.id))[:3]
+        def detour(s):
+            return min((distance(vehicle.location, s) + distance(s, c) - distance(vehicle.location, c)
+                        for c in urgent if energy(s, c, p) + reserves[c.id] <= p.battery + EPS), default=float("inf"))
+        toward = sorted(stations, key=lambda s: (detour(s), distance(vehicle.location, s), s.id))
+        for a, b in zip(nearest, toward):
+            for station in (a, b):
+                if len(selected) < self.config.station_candidate_limit:
+                    selected.setdefault(station.id, station)
+        actions = []
+        for station in selected.values():
+            arrival = vehicle.battery - energy(vehicle.location, station, p)
+            priorities = []
+            if mandatory and mandatory.destination == station.id:
+                priorities.append(mandatory.target_battery)
+            if self.config.charging_mode == "partial":
+                # Minimum safe-return energy, not a rounded SOC bin.
+                tail = escape(VehicleState(vehicle.id, station, 0, p.battery, vehicle.load), infra)
+                if tail is not None:
+                    priorities.append(min(p.battery, tail.distance * p.consumption))
+                needs = [energy(station, c, p) + reserves[c.id] for c in customers]
+                viable = [n for n in needs if arrival + EPS < n <= p.battery + EPS]
+                if viable:
+                    priorities.append(min(viable))
+                priorities.extend(p.battery * f for f in self.config.charge_fractions)
+                priorities.extend(viable)
+            priorities.append(p.battery)
+            targets = []
+            for target in priorities:
+                if not arrival + EPS < target <= p.battery + EPS:
+                    continue
+                if all(abs(target-t) > EPS for t in targets):
+                    targets.append(target)
+                if len(targets) == self.config.charge_target_limit:
+                    break
+            # Different SOC/time tradeoffs are not falsely declared dominated.
+            # Zero-increment and EPS-equivalent targets have already been removed.
+            actions.extend(Action("charge", station.id, t) for t in sorted(targets))
+        perf.count("charge_actions_generated", len(actions))
+        return actions
+
+    def _exhaustive_actions(self, state: MPCState) -> tuple[Action, ...]:
+        """Legacy action set retained only for exact-computation regression tests."""
         if self.done(state):
             return ()
         vehicle, infra = state.vehicle, self.observation.infrastructure
         p = infra.parameters
         customers = [c for c in self.observation.customers if c.id in state.remaining]
         feasible = []
+        measured = perf.stamp()
         for customer in customers:
+            perf.count("customer_actions_considered")
             action = Action("serve", customer.id)
             try:
                 self.predict(state, action)
                 feasible.append(action)
             except InfeasibleAction:
                 continue
+        perf.elapsed("customer_feasibility", measured)
+        measured = perf.stamp()
         urgent = sorted(feasible, key=lambda a: self.customer_rank(state, a))
         nearest = sorted(feasible, key=lambda a: (distance(vehicle.location, next(c for c in customers if c.id == a.destination)), a.destination))
         proposed = []
@@ -225,6 +382,7 @@ class MPCPlanningProblem:
             for action in pair:
                 if action not in proposed and len(proposed) < self.config.candidate_limit:
                     proposed.append(action)
+        perf.elapsed("customer_ranking", measured)
         proposed.append(self.fallback(state))
         if vehicle.departed:
             if self.config.charging_mode == "full":
@@ -234,6 +392,7 @@ class MPCPlanningProblem:
             else:
                 proposed.append(escape_action(vehicle, infra))
         safe_nodes = (infra.depot,) + infra.stations
+        measured = perf.stamp()
         for station in infra.stations:
             if station.id in state.station_visits_since_service or station.id == vehicle.location.id:
                 continue
@@ -253,6 +412,8 @@ class MPCPlanningProblem:
                 if arrival + EPS < target <= p.battery + EPS and (not unique or target - unique[-1] > EPS):
                     unique.append(target)
             proposed.extend(Action("charge", station.id, target) for target in unique)
+            perf.count("charge_actions_generated", len(unique))
+        perf.elapsed("charging_generation", measured)
         valid = []
         for action in dict.fromkeys(proposed):
             try:
@@ -260,6 +421,8 @@ class MPCPlanningProblem:
                 valid.append(action)
             except InfeasibleAction:
                 continue
+        perf.count("charge_actions_retained", sum(a.kind == "charge" for a in valid))
+        perf.branching(valid)
         return tuple(valid)
 
     def proposal(self, actions: tuple[Action, ...], visits: int = 0) -> MPCProposal:
@@ -274,12 +437,21 @@ class MPCPlanningProblem:
                 activation = not self.current_state.departed and step.after.departed and action.kind in {"serve", "charge"}
             cost += self.stage_cost(step)
             charged += int(action.kind == "charge")
+        return self.proposal_from_state(actions, state, cost, charged, activation, visits)
+
+    def proposal_from_state(self, actions, state, cost, charged=None, activation=None, visits=0):
         vehicle = state.vehicle
-        return MPCProposal(actions, cost + self.terminal_cost(state), visits, vehicle.id, vehicle, cost,
+        if charged is None:
+            charged = sum(a.kind == "charge" for a in actions)
+        if activation is None:
+            _, first = self.predict(self.initial, actions[0])
+            activation = not self.current_state.departed and first.after.departed and actions[0].kind in {"serve", "charge"}
+        terminal = self.terminal_cost(state)
+        return MPCProposal(actions, cost + terminal, visits, vehicle.id, vehicle, cost,
                            charged, tuple(a.destination for a in actions if a.kind == "serve"),
                            vehicle.charging_time - self.current_state.charging_time,
                            vehicle.waiting_time - self.current_state.waiting_time, vehicle.time,
-                           self.terminal_cost(state), activation)
+                           terminal, activation)
 
 
 class MPCController:

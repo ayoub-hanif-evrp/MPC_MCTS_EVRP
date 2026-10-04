@@ -54,3 +54,5 @@
 {"index": 56, "completed": 54, "total": 17017, "study": "ablations", "instance": "c101_21", "algorithm": "COORDINATED_MPC_MCTS", "seconds": 1510.0560990000376, "status": "completed", "error": null}
 {"index": 51, "completed": 55, "total": 17017, "study": "ablations", "instance": "c101_21", "algorithm": "COORDINATED_MPC_MCTS", "seconds": 7017.319063600036, "status": "completed", "error": null}
 {"index": 52, "completed": 56, "total": 17017, "study": "ablations", "instance": "c101_21", "algorithm": "COORDINATED_MPC_MCTS", "seconds": 10716.508699600003, "status": "completed", "error": null}
+{"index": 57, "completed": 57, "total": 17017, "study": "ablations", "instance": "c101_21", "algorithm": "COORDINATED_MPC_MCTS", "seconds": 1622.282893500058, "status": "completed", "error": null}
+{"index": 58, "completed": 58, "total": 17017, "study": "ablations", "instance": "c101_21", "algorithm": "COORDINATED_MPC_MCTS", "seconds": 1525.5150825999444, "status": "completed", "error": null}

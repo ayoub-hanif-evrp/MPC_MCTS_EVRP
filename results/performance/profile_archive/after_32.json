@@ -1,0 +1,1536 @@
+{
+  "audit": {
+    "no_future_information": true,
+    "safe_returns": true,
+    "trace_replay": true,
+    "unique_service": true
+  },
+  "audit_seconds": 0.008172699948772788,
+  "functions": [
+    {
+      "calls": 11468,
+      "cumulative_seconds": 5.5625115,
+      "file": "mpc.py",
+      "line": 302,
+      "name": "charge_actions",
+      "own_seconds": 0.74543
+    },
+    {
+      "calls": 250625,
+      "cumulative_seconds": 10.293788300000001,
+      "file": "model.py",
+      "line": 179,
+      "name": "transition",
+      "own_seconds": 1.5256064
+    },
+    {
+      "calls": 7458,
+      "cumulative_seconds": 0.1848592,
+      "file": "mpc.py",
+      "line": 200,
+      "name": "terminal_cost",
+      "own_seconds": 0.0056784
+    },
+    {
+      "calls": 45851,
+      "cumulative_seconds": 2.4819279,
+      "file": "mpc.py",
+      "line": 279,
+      "name": "customer_pool",
+      "own_seconds": 1.238129
+    },
+    {
+      "calls": 307165,
+      "cumulative_seconds": 7.649082900000001,
+      "file": "model.py",
+      "line": 155,
+      "name": "escape",
+      "own_seconds": 2.5103761
+    },
+    {
+      "calls": 365693,
+      "cumulative_seconds": 13.6796085,
+      "file": "mpc.py",
+      "line": 144,
+      "name": "predict",
+      "own_seconds": 0.750776
+    },
+    {
+      "calls": 226,
+      "cumulative_seconds": 0.013646700000000001,
+      "file": "mpc.py",
+      "line": 428,
+      "name": "proposal",
+      "own_seconds": 0.0008739
+    },
+    {
+      "calls": 7458,
+      "cumulative_seconds": 0.4542067,
+      "file": "mpc.py",
+      "line": 442,
+      "name": "proposal_from_state",
+      "own_seconds": 0.037713500000000004
+    },
+    {
+      "calls": 11468,
+      "cumulative_seconds": 20.1017799,
+      "file": "mpc.py",
+      "line": 234,
+      "name": "actions",
+      "own_seconds": 0.38670010000000005
+    },
+    {
+      "calls": 9937278,
+      "cumulative_seconds": 2.7324023,
+      "file": "instance.py",
+      "line": 102,
+      "name": "distance",
+      "own_seconds": 2.7324023
+    },
+    {
+      "calls": 32613,
+      "cumulative_seconds": 0.2661912,
+      "file": "mpc.py",
+      "line": 228,
+      "name": "customer_rank",
+      "own_seconds": 0.0328157
+    },
+    {
+      "calls": 11531,
+      "cumulative_seconds": 2.7517668,
+      "file": "mcts.py",
+      "line": 43,
+      "name": "rollout_action",
+      "own_seconds": 0.079989
+    },
+    {
+      "calls": 226,
+      "cumulative_seconds": 23.9311942,
+      "file": "mcts.py",
+      "line": 32,
+      "name": "solve",
+      "own_seconds": 0.11536510000000001
+    }
+  ],
+  "iterations": 32,
+  "label": "after",
+  "measurements": {
+    "counts": {
+      "charge_actions_generated": 162038,
+      "charge_actions_retained": 124140,
+      "coordinator_epochs": 112,
+      "customer_actions_considered": 55413,
+      "transition_cache_hits": 115404
+    },
+    "identical_unused": {},
+    "max_branching": 34,
+    "mean_branching": 15.32996163236833,
+    "seconds": {
+      "charging_generation": 5.6026908059138805,
+      "coordinator_milps": 1.0948608993785456,
+      "customer_feasibility": 3.231802799506113,
+      "customer_ranking": 0.6947845986578614,
+      "mcts_backpropagation": 0.011038801516406238,
+      "mcts_expansion": 0.06581739522516727,
+      "mcts_rollout": 22.6734375001397,
+      "mcts_selection_expansion": 0.5831254976801574
+    }
+  },
+  "metrics": {
+    "agent_replans": 226,
+    "battery_violations": 0,
+    "capacity_violations": 0,
+    "complete_service": false,
+    "conflicts_resolved": 8,
+    "customers_served": 66,
+    "customers_unserved": 34,
+    "decision_epochs": 112,
+    "distance_per_served_customer": 25.56279770574505,
+    "duplicate_customer_proposal_conflicts": 8,
+    "duplicate_service_violations": 0,
+    "feasible": false,
+    "final_return_feasibility": true,
+    "hidden_information_violations": 0,
+    "maximum_planning_time": 4.411774100037292,
+    "mcts_iterations": 7232,
+    "mean_planning_time": 0.2244040339199793,
+    "mean_unique_intention_coverage": 3.3660714285714284,
+    "median_planning_time": 0.17526489996816963,
+    "nodes_expanded": 4968,
+    "p95_planning_time": 0.36300812496338025,
+    "service_ratio": 0.66,
+    "symmetry_reused_replans": 0,
+    "time_window_violations": 0,
+    "total_charging_time": 2803.781426585846,
+    "total_charging_visits": 37,
+    "total_distance": 1687.1446485791735,
+    "total_energy_charged": 827.0741671344679,
+    "total_planning_time": 25.13325179903768,
+    "total_waiting_time": 5156.946027132556,
+    "vehicle_activations_caused_by_coordinator": 13,
+    "vehicles_activated": 13,
+    "wait_selected": 110
+  },
+  "scenario_hash": "36effcf880a9fa96164abaa2767519ebec30a23ad53c3bff371f65280f13c403",
+  "serialization_seconds": 0.19760940002743155,
+  "simulations_per_agent": [
+    {
+      "elapsed": 0.3788130999309942,
+      "epoch": 0,
+      "iterations": 32,
+      "vehicle_id": 0
+    },
+    {
+      "elapsed": 0.30244060000404716,
+      "epoch": 0,
+      "iterations": 32,
+      "vehicle_id": 1
+    },
+    {
+      "elapsed": 0.36031609994824976,
+      "epoch": 0,
+      "iterations": 32,
+      "vehicle_id": 2
+    },
+    {
+      "elapsed": 0.35251979995518923,
+      "epoch": 0,
+      "iterations": 32,
+      "vehicle_id": 3
+    },
+    {
+      "elapsed": 0.3439661000156775,
+      "epoch": 0,
+      "iterations": 32,
+      "vehicle_id": 4
+    },
+    {
+      "elapsed": 0.2929127999814227,
+      "epoch": 0,
+      "iterations": 32,
+      "vehicle_id": 5
+    },
+    {
+      "elapsed": 0.3064509000396356,
+      "epoch": 0,
+      "iterations": 32,
+      "vehicle_id": 6
+    },
+    {
+      "elapsed": 0.3504184000194073,
+      "epoch": 0,
+      "iterations": 32,
+      "vehicle_id": 7
+    },
+    {
+      "elapsed": 0.28688429994508624,
+      "epoch": 0,
+      "iterations": 32,
+      "vehicle_id": 8
+    },
+    {
+      "elapsed": 0.33204240002669394,
+      "epoch": 0,
+      "iterations": 32,
+      "vehicle_id": 9
+    },
+    {
+      "elapsed": 0.3638836999889463,
+      "epoch": 0,
+      "iterations": 32,
+      "vehicle_id": 10
+    },
+    {
+      "elapsed": 0.34802869998384267,
+      "epoch": 0,
+      "iterations": 32,
+      "vehicle_id": 11
+    },
+    {
+      "elapsed": 0.32375709991902113,
+      "epoch": 0,
+      "iterations": 32,
+      "vehicle_id": 12
+    },
+    {
+      "elapsed": 0.27960030001122504,
+      "epoch": 1,
+      "iterations": 32,
+      "vehicle_id": 0
+    },
+    {
+      "elapsed": 0.29980029992293566,
+      "epoch": 1,
+      "iterations": 32,
+      "vehicle_id": 3
+    },
+    {
+      "elapsed": 0.3154660000000149,
+      "epoch": 1,
+      "iterations": 32,
+      "vehicle_id": 9
+    },
+    {
+      "elapsed": 0.38025559997186065,
+      "epoch": 2,
+      "iterations": 32,
+      "vehicle_id": 8
+    },
+    {
+      "elapsed": 0.31088769994676113,
+      "epoch": 3,
+      "iterations": 32,
+      "vehicle_id": 10
+    },
+    {
+      "elapsed": 0.3549594000214711,
+      "epoch": 4,
+      "iterations": 32,
+      "vehicle_id": 11
+    },
+    {
+      "elapsed": 0.2744065000442788,
+      "epoch": 5,
+      "iterations": 32,
+      "vehicle_id": 2
+    },
+    {
+      "elapsed": 0.3271720999618992,
+      "epoch": 5,
+      "iterations": 32,
+      "vehicle_id": 7
+    },
+    {
+      "elapsed": 0.3452751999720931,
+      "epoch": 6,
+      "iterations": 32,
+      "vehicle_id": 3
+    },
+    {
+      "elapsed": 0.2800784999271855,
+      "epoch": 7,
+      "iterations": 32,
+      "vehicle_id": 6
+    },
+    {
+      "elapsed": 0.33621059998404235,
+      "epoch": 8,
+      "iterations": 32,
+      "vehicle_id": 12
+    },
+    {
+      "elapsed": 0.3089658999815583,
+      "epoch": 9,
+      "iterations": 32,
+      "vehicle_id": 5
+    },
+    {
+      "elapsed": 0.3450474999845028,
+      "epoch": 10,
+      "iterations": 32,
+      "vehicle_id": 1
+    },
+    {
+      "elapsed": 0.2919772999593988,
+      "epoch": 11,
+      "iterations": 32,
+      "vehicle_id": 9
+    },
+    {
+      "elapsed": 0.27175160008482635,
+      "epoch": 12,
+      "iterations": 32,
+      "vehicle_id": 2
+    },
+    {
+      "elapsed": 0.24366240005474538,
+      "epoch": 13,
+      "iterations": 32,
+      "vehicle_id": 10
+    },
+    {
+      "elapsed": 0.29392560000997037,
+      "epoch": 14,
+      "iterations": 32,
+      "vehicle_id": 4
+    },
+    {
+      "elapsed": 0.2834281000541523,
+      "epoch": 15,
+      "iterations": 32,
+      "vehicle_id": 5
+    },
+    {
+      "elapsed": 0.2612217999994755,
+      "epoch": 16,
+      "iterations": 32,
+      "vehicle_id": 6
+    },
+    {
+      "elapsed": 0.2535372000420466,
+      "epoch": 17,
+      "iterations": 32,
+      "vehicle_id": 7
+    },
+    {
+      "elapsed": 0.2807060000486672,
+      "epoch": 18,
+      "iterations": 32,
+      "vehicle_id": 9
+    },
+    {
+      "elapsed": 0.2873521000146866,
+      "epoch": 19,
+      "iterations": 32,
+      "vehicle_id": 1
+    },
+    {
+      "elapsed": 0.2907905000029132,
+      "epoch": 20,
+      "iterations": 32,
+      "vehicle_id": 2
+    },
+    {
+      "elapsed": 0.2709430999821052,
+      "epoch": 21,
+      "iterations": 32,
+      "vehicle_id": 0
+    },
+    {
+      "elapsed": 0.36404780007433146,
+      "epoch": 22,
+      "iterations": 32,
+      "vehicle_id": 9
+    },
+    {
+      "elapsed": 0.24481720000039786,
+      "epoch": 23,
+      "iterations": 32,
+      "vehicle_id": 8
+    },
+    {
+      "elapsed": 0.2352627000072971,
+      "epoch": 24,
+      "iterations": 32,
+      "vehicle_id": 2
+    },
+    {
+      "elapsed": 0.3025051000295207,
+      "epoch": 25,
+      "iterations": 32,
+      "vehicle_id": 5
+    },
+    {
+      "elapsed": 0.27388480002991855,
+      "epoch": 26,
+      "iterations": 32,
+      "vehicle_id": 7
+    },
+    {
+      "elapsed": 0.2626923000207171,
+      "epoch": 27,
+      "iterations": 32,
+      "vehicle_id": 6
+    },
+    {
+      "elapsed": 0.27155489998403937,
+      "epoch": 28,
+      "iterations": 32,
+      "vehicle_id": 4
+    },
+    {
+      "elapsed": 0.27814279997255653,
+      "epoch": 29,
+      "iterations": 32,
+      "vehicle_id": 5
+    },
+    {
+      "elapsed": 0.21662339998874813,
+      "epoch": 30,
+      "iterations": 32,
+      "vehicle_id": 9
+    },
+    {
+      "elapsed": 0.2419161000289023,
+      "epoch": 31,
+      "iterations": 32,
+      "vehicle_id": 8
+    },
+    {
+      "elapsed": 0.2323282000143081,
+      "epoch": 32,
+      "iterations": 32,
+      "vehicle_id": 6
+    },
+    {
+      "elapsed": 0.2003753000171855,
+      "epoch": 33,
+      "iterations": 32,
+      "vehicle_id": 9
+    },
+    {
+      "elapsed": 0.13083879998885095,
+      "epoch": 34,
+      "iterations": 32,
+      "vehicle_id": 2
+    },
+    {
+      "elapsed": 0.24277799995616078,
+      "epoch": 35,
+      "iterations": 32,
+      "vehicle_id": 9
+    },
+    {
+      "elapsed": 0.27817020006477833,
+      "epoch": 36,
+      "iterations": 32,
+      "vehicle_id": 9
+    },
+    {
+      "elapsed": 0.3196612000465393,
+      "epoch": 37,
+      "iterations": 32,
+      "vehicle_id": 4
+    },
+    {
+      "elapsed": 0.2614923999644816,
+      "epoch": 38,
+      "iterations": 32,
+      "vehicle_id": 3
+    },
+    {
+      "elapsed": 0.19641859992407262,
+      "epoch": 39,
+      "iterations": 32,
+      "vehicle_id": 0
+    },
+    {
+      "elapsed": 0.1848194000776857,
+      "epoch": 40,
+      "iterations": 32,
+      "vehicle_id": 1
+    },
+    {
+      "elapsed": 0.2608061000937596,
+      "epoch": 41,
+      "iterations": 32,
+      "vehicle_id": 5
+    },
+    {
+      "elapsed": 0.19988880003802478,
+      "epoch": 42,
+      "iterations": 32,
+      "vehicle_id": 8
+    },
+    {
+      "elapsed": 0.18049569998402148,
+      "epoch": 43,
+      "iterations": 32,
+      "vehicle_id": 6
+    },
+    {
+      "elapsed": 0.2566449000732973,
+      "epoch": 44,
+      "iterations": 32,
+      "vehicle_id": 12
+    },
+    {
+      "elapsed": 0.2236806999426335,
+      "epoch": 45,
+      "iterations": 32,
+      "vehicle_id": 5
+    },
+    {
+      "elapsed": 0.17096309992484748,
+      "epoch": 46,
+      "iterations": 32,
+      "vehicle_id": 7
+    },
+    {
+      "elapsed": 0.15854590001981705,
+      "epoch": 47,
+      "iterations": 32,
+      "vehicle_id": 9
+    },
+    {
+      "elapsed": 0.1902690000133589,
+      "epoch": 48,
+      "iterations": 32,
+      "vehicle_id": 3
+    },
+    {
+      "elapsed": 0.18620630004443228,
+      "epoch": 49,
+      "iterations": 32,
+      "vehicle_id": 2
+    },
+    {
+      "elapsed": 0.1931899000192061,
+      "epoch": 50,
+      "iterations": 32,
+      "vehicle_id": 1
+    },
+    {
+      "elapsed": 0.24219509994145483,
+      "epoch": 51,
+      "iterations": 32,
+      "vehicle_id": 11
+    },
+    {
+      "elapsed": 0.18583380000200123,
+      "epoch": 52,
+      "iterations": 32,
+      "vehicle_id": 8
+    },
+    {
+      "elapsed": 0.11768960009794682,
+      "epoch": 53,
+      "iterations": 32,
+      "vehicle_id": 6
+    },
+    {
+      "elapsed": 0.22432050004135817,
+      "epoch": 54,
+      "iterations": 32,
+      "vehicle_id": 12
+    },
+    {
+      "elapsed": 0.13885049999225885,
+      "epoch": 55,
+      "iterations": 32,
+      "vehicle_id": 1
+    },
+    {
+      "elapsed": 0.16718109999783337,
+      "epoch": 56,
+      "iterations": 32,
+      "vehicle_id": 4
+    },
+    {
+      "elapsed": 0.13300979998894036,
+      "epoch": 57,
+      "iterations": 32,
+      "vehicle_id": 7
+    },
+    {
+      "elapsed": 0.23732620000373572,
+      "epoch": 58,
+      "iterations": 32,
+      "vehicle_id": 0
+    },
+    {
+      "elapsed": 0.09386409993749112,
+      "epoch": 59,
+      "iterations": 32,
+      "vehicle_id": 8
+    },
+    {
+      "elapsed": 0.17406109999865294,
+      "epoch": 60,
+      "iterations": 32,
+      "vehicle_id": 12
+    },
+    {
+      "elapsed": 0.1672382999677211,
+      "epoch": 61,
+      "iterations": 32,
+      "vehicle_id": 2
+    },
+    {
+      "elapsed": 0.16489809995982796,
+      "epoch": 62,
+      "iterations": 32,
+      "vehicle_id": 5
+    },
+    {
+      "elapsed": 0.15846730000339448,
+      "epoch": 63,
+      "iterations": 32,
+      "vehicle_id": 10
+    },
+    {
+      "elapsed": 0.13748489995487034,
+      "epoch": 64,
+      "iterations": 32,
+      "vehicle_id": 9
+    },
+    {
+      "elapsed": 0.11137980001512915,
+      "epoch": 65,
+      "iterations": 32,
+      "vehicle_id": 7
+    },
+    {
+      "elapsed": 0.12544219999108464,
+      "epoch": 66,
+      "iterations": 32,
+      "vehicle_id": 11
+    },
+    {
+      "elapsed": 0.07275359996128827,
+      "epoch": 67,
+      "iterations": 32,
+      "vehicle_id": 8
+    },
+    {
+      "elapsed": 0.15634059999138117,
+      "epoch": 68,
+      "iterations": 32,
+      "vehicle_id": 12
+    },
+    {
+      "elapsed": 0.10411369998473674,
+      "epoch": 69,
+      "iterations": 32,
+      "vehicle_id": 1
+    },
+    {
+      "elapsed": 0.1489914000267163,
+      "epoch": 70,
+      "iterations": 32,
+      "vehicle_id": 3
+    },
+    {
+      "elapsed": 0.10037830006331205,
+      "epoch": 71,
+      "iterations": 32,
+      "vehicle_id": 3
+    },
+    {
+      "elapsed": 0.06255789997521788,
+      "epoch": 72,
+      "iterations": 32,
+      "vehicle_id": 9
+    },
+    {
+      "elapsed": 0.08148520009126514,
+      "epoch": 73,
+      "iterations": 32,
+      "vehicle_id": 7
+    },
+    {
+      "elapsed": 0.11021489999257028,
+      "epoch": 74,
+      "iterations": 32,
+      "vehicle_id": 1
+    },
+    {
+      "elapsed": 0.10456030000932515,
+      "epoch": 75,
+      "iterations": 32,
+      "vehicle_id": 0
+    },
+    {
+      "elapsed": 0.09794739994686097,
+      "epoch": 76,
+      "iterations": 32,
+      "vehicle_id": 11
+    },
+    {
+      "elapsed": 0.09948530001565814,
+      "epoch": 77,
+      "iterations": 32,
+      "vehicle_id": 12
+    },
+    {
+      "elapsed": 0.06524220004212111,
+      "epoch": 78,
+      "iterations": 32,
+      "vehicle_id": 6
+    },
+    {
+      "elapsed": 0.0835776999592781,
+      "epoch": 79,
+      "iterations": 32,
+      "vehicle_id": 4
+    },
+    {
+      "elapsed": 0.07539050001651049,
+      "epoch": 80,
+      "iterations": 32,
+      "vehicle_id": 8
+    },
+    {
+      "elapsed": 0.091616400051862,
+      "epoch": 81,
+      "iterations": 32,
+      "vehicle_id": 10
+    },
+    {
+      "elapsed": 0.08416979992762208,
+      "epoch": 82,
+      "iterations": 32,
+      "vehicle_id": 2
+    },
+    {
+      "elapsed": 0.039778699981980026,
+      "epoch": 83,
+      "iterations": 32,
+      "vehicle_id": 7
+    },
+    {
+      "elapsed": 0.04165859997738153,
+      "epoch": 84,
+      "iterations": 32,
+      "vehicle_id": 5
+    },
+    {
+      "elapsed": 0.02783909998834133,
+      "epoch": 85,
+      "iterations": 32,
+      "vehicle_id": 1
+    },
+    {
+      "elapsed": 0.04689130000770092,
+      "epoch": 86,
+      "iterations": 32,
+      "vehicle_id": 3
+    },
+    {
+      "elapsed": 0.07746140006929636,
+      "epoch": 87,
+      "iterations": 32,
+      "vehicle_id": 8
+    },
+    {
+      "elapsed": 0.04819860006682575,
+      "epoch": 88,
+      "iterations": 32,
+      "vehicle_id": 6
+    },
+    {
+      "elapsed": 0.028492200071923435,
+      "epoch": 89,
+      "iterations": 32,
+      "vehicle_id": 10
+    },
+    {
+      "elapsed": 0.027829099912196398,
+      "epoch": 90,
+      "iterations": 32,
+      "vehicle_id": 9
+    },
+    {
+      "elapsed": 0.028369200066663325,
+      "epoch": 91,
+      "iterations": 32,
+      "vehicle_id": 11
+    },
+    {
+      "elapsed": 0.0426438000285998,
+      "epoch": 92,
+      "iterations": 32,
+      "vehicle_id": 11
+    },
+    {
+      "elapsed": 0.015771099948324263,
+      "epoch": 92,
+      "iterations": 32,
+      "vehicle_id": 12
+    },
+    {
+      "elapsed": 0.03089259995613247,
+      "epoch": 93,
+      "iterations": 32,
+      "vehicle_id": 1
+    },
+    {
+      "elapsed": 0.031846199999563396,
+      "epoch": 93,
+      "iterations": 32,
+      "vehicle_id": 11
+    },
+    {
+      "elapsed": 0.014891300001181662,
+      "epoch": 93,
+      "iterations": 32,
+      "vehicle_id": 12
+    },
+    {
+      "elapsed": 0.014464200008660555,
+      "epoch": 94,
+      "iterations": 32,
+      "vehicle_id": 1
+    },
+    {
+      "elapsed": 0.022729899967089295,
+      "epoch": 94,
+      "iterations": 32,
+      "vehicle_id": 4
+    },
+    {
+      "elapsed": 0.020229400019161403,
+      "epoch": 94,
+      "iterations": 32,
+      "vehicle_id": 11
+    },
+    {
+      "elapsed": 0.011918000061996281,
+      "epoch": 94,
+      "iterations": 32,
+      "vehicle_id": 12
+    },
+    {
+      "elapsed": 0.015944399987347424,
+      "epoch": 95,
+      "iterations": 32,
+      "vehicle_id": 0
+    },
+    {
+      "elapsed": 0.01714669994544238,
+      "epoch": 95,
+      "iterations": 32,
+      "vehicle_id": 1
+    },
+    {
+      "elapsed": 0.020736899925395846,
+      "epoch": 95,
+      "iterations": 32,
+      "vehicle_id": 4
+    },
+    {
+      "elapsed": 0.01858679996803403,
+      "epoch": 95,
+      "iterations": 32,
+      "vehicle_id": 11
+    },
+    {
+      "elapsed": 0.00810300000011921,
+      "epoch": 95,
+      "iterations": 32,
+      "vehicle_id": 12
+    },
+    {
+      "elapsed": 0.014215199975296855,
+      "epoch": 96,
+      "iterations": 32,
+      "vehicle_id": 0
+    },
+    {
+      "elapsed": 0.005853699985891581,
+      "epoch": 96,
+      "iterations": 32,
+      "vehicle_id": 1
+    },
+    {
+      "elapsed": 0.014649600023403764,
+      "epoch": 96,
+      "iterations": 32,
+      "vehicle_id": 4
+    },
+    {
+      "elapsed": 0.007807100075297058,
+      "epoch": 96,
+      "iterations": 32,
+      "vehicle_id": 5
+    },
+    {
+      "elapsed": 0.011447899974882603,
+      "epoch": 96,
+      "iterations": 32,
+      "vehicle_id": 11
+    },
+    {
+      "elapsed": 0.005885199992917478,
+      "epoch": 96,
+      "iterations": 32,
+      "vehicle_id": 12
+    },
+    {
+      "elapsed": 0.019313200027681887,
+      "epoch": 97,
+      "iterations": 32,
+      "vehicle_id": 0
+    },
+    {
+      "elapsed": 0.005066700046882033,
+      "epoch": 97,
+      "iterations": 32,
+      "vehicle_id": 1
+    },
+    {
+      "elapsed": 0.027310999925248325,
+      "epoch": 97,
+      "iterations": 32,
+      "vehicle_id": 4
+    },
+    {
+      "elapsed": 0.009875499992631376,
+      "epoch": 97,
+      "iterations": 32,
+      "vehicle_id": 5
+    },
+    {
+      "elapsed": 0.03722249995917082,
+      "epoch": 97,
+      "iterations": 32,
+      "vehicle_id": 10
+    },
+    {
+      "elapsed": 0.014092599973082542,
+      "epoch": 97,
+      "iterations": 32,
+      "vehicle_id": 11
+    },
+    {
+      "elapsed": 0.005636800080537796,
+      "epoch": 97,
+      "iterations": 32,
+      "vehicle_id": 12
+    },
+    {
+      "elapsed": 0.018574499990791082,
+      "epoch": 98,
+      "iterations": 32,
+      "vehicle_id": 0
+    },
+    {
+      "elapsed": 0.006224299897439778,
+      "epoch": 98,
+      "iterations": 32,
+      "vehicle_id": 1
+    },
+    {
+      "elapsed": 0.015473300009034574,
+      "epoch": 98,
+      "iterations": 32,
+      "vehicle_id": 4
+    },
+    {
+      "elapsed": 0.006686100037768483,
+      "epoch": 98,
+      "iterations": 32,
+      "vehicle_id": 5
+    },
+    {
+      "elapsed": 0.0034574999008327723,
+      "epoch": 98,
+      "iterations": 32,
+      "vehicle_id": 7
+    },
+    {
+      "elapsed": 0.013444800046272576,
+      "epoch": 98,
+      "iterations": 32,
+      "vehicle_id": 10
+    },
+    {
+      "elapsed": 0.00829979998525232,
+      "epoch": 98,
+      "iterations": 32,
+      "vehicle_id": 11
+    },
+    {
+      "elapsed": 0.010091500007547438,
+      "epoch": 98,
+      "iterations": 32,
+      "vehicle_id": 12
+    },
+    {
+      "elapsed": 0.028315499890595675,
+      "epoch": 99,
+      "iterations": 32,
+      "vehicle_id": 0
+    },
+    {
+      "elapsed": 0.0055151000851765275,
+      "epoch": 99,
+      "iterations": 32,
+      "vehicle_id": 1
+    },
+    {
+      "elapsed": 0.0161699999589473,
+      "epoch": 99,
+      "iterations": 32,
+      "vehicle_id": 2
+    },
+    {
+      "elapsed": 0.017423299956135452,
+      "epoch": 99,
+      "iterations": 32,
+      "vehicle_id": 4
+    },
+    {
+      "elapsed": 0.004764599958434701,
+      "epoch": 99,
+      "iterations": 32,
+      "vehicle_id": 5
+    },
+    {
+      "elapsed": 0.020767999929375947,
+      "epoch": 99,
+      "iterations": 32,
+      "vehicle_id": 10
+    },
+    {
+      "elapsed": 0.008926199981942773,
+      "epoch": 99,
+      "iterations": 32,
+      "vehicle_id": 11
+    },
+    {
+      "elapsed": 0.005511999945156276,
+      "epoch": 99,
+      "iterations": 32,
+      "vehicle_id": 12
+    },
+    {
+      "elapsed": 0.011272800038568676,
+      "epoch": 100,
+      "iterations": 32,
+      "vehicle_id": 0
+    },
+    {
+      "elapsed": 0.006150000030174851,
+      "epoch": 100,
+      "iterations": 32,
+      "vehicle_id": 1
+    },
+    {
+      "elapsed": 0.014054100029170513,
+      "epoch": 100,
+      "iterations": 32,
+      "vehicle_id": 2
+    },
+    {
+      "elapsed": 0.009094699984416366,
+      "epoch": 100,
+      "iterations": 32,
+      "vehicle_id": 4
+    },
+    {
+      "elapsed": 0.004961600061506033,
+      "epoch": 100,
+      "iterations": 32,
+      "vehicle_id": 5
+    },
+    {
+      "elapsed": 0.01433579996228218,
+      "epoch": 100,
+      "iterations": 32,
+      "vehicle_id": 10
+    },
+    {
+      "elapsed": 0.007687399978749454,
+      "epoch": 100,
+      "iterations": 32,
+      "vehicle_id": 11
+    },
+    {
+      "elapsed": 0.004179299925453961,
+      "epoch": 100,
+      "iterations": 32,
+      "vehicle_id": 12
+    },
+    {
+      "elapsed": 0.009483200032263994,
+      "epoch": 101,
+      "iterations": 32,
+      "vehicle_id": 0
+    },
+    {
+      "elapsed": 0.0033300999784842134,
+      "epoch": 101,
+      "iterations": 32,
+      "vehicle_id": 1
+    },
+    {
+      "elapsed": 0.009752099984325469,
+      "epoch": 101,
+      "iterations": 32,
+      "vehicle_id": 2
+    },
+    {
+      "elapsed": 0.015632999944500625,
+      "epoch": 101,
+      "iterations": 32,
+      "vehicle_id": 4
+    },
+    {
+      "elapsed": 0.007480900036171079,
+      "epoch": 101,
+      "iterations": 32,
+      "vehicle_id": 5
+    },
+    {
+      "elapsed": 0.013349700020626187,
+      "epoch": 101,
+      "iterations": 32,
+      "vehicle_id": 8
+    },
+    {
+      "elapsed": 0.00944669998716563,
+      "epoch": 101,
+      "iterations": 32,
+      "vehicle_id": 9
+    },
+    {
+      "elapsed": 0.015898699988611042,
+      "epoch": 101,
+      "iterations": 32,
+      "vehicle_id": 10
+    },
+    {
+      "elapsed": 0.010638299980200827,
+      "epoch": 101,
+      "iterations": 32,
+      "vehicle_id": 11
+    },
+    {
+      "elapsed": 0.0075885000405833125,
+      "epoch": 101,
+      "iterations": 32,
+      "vehicle_id": 12
+    },
+    {
+      "elapsed": 0.005829700035974383,
+      "epoch": 102,
+      "iterations": 32,
+      "vehicle_id": 0
+    },
+    {
+      "elapsed": 0.005147499963641167,
+      "epoch": 102,
+      "iterations": 32,
+      "vehicle_id": 1
+    },
+    {
+      "elapsed": 0.012206500046886504,
+      "epoch": 102,
+      "iterations": 32,
+      "vehicle_id": 2
+    },
+    {
+      "elapsed": 0.0028707999736070633,
+      "epoch": 102,
+      "iterations": 32,
+      "vehicle_id": 3
+    },
+    {
+      "elapsed": 0.007477800012566149,
+      "epoch": 102,
+      "iterations": 32,
+      "vehicle_id": 4
+    },
+    {
+      "elapsed": 0.004331899923272431,
+      "epoch": 102,
+      "iterations": 32,
+      "vehicle_id": 5
+    },
+    {
+      "elapsed": 0.007544899941422045,
+      "epoch": 102,
+      "iterations": 32,
+      "vehicle_id": 8
+    },
+    {
+      "elapsed": 0.008031899924390018,
+      "epoch": 102,
+      "iterations": 32,
+      "vehicle_id": 9
+    },
+    {
+      "elapsed": 0.014524900005199015,
+      "epoch": 102,
+      "iterations": 32,
+      "vehicle_id": 10
+    },
+    {
+      "elapsed": 0.006332900025881827,
+      "epoch": 102,
+      "iterations": 32,
+      "vehicle_id": 11
+    },
+    {
+      "elapsed": 0.0035091000609099865,
+      "epoch": 102,
+      "iterations": 32,
+      "vehicle_id": 12
+    },
+    {
+      "elapsed": 0.005324099911376834,
+      "epoch": 103,
+      "iterations": 32,
+      "vehicle_id": 0
+    },
+    {
+      "elapsed": 0.012524600024335086,
+      "epoch": 103,
+      "iterations": 32,
+      "vehicle_id": 2
+    },
+    {
+      "elapsed": 0.006534599931910634,
+      "epoch": 103,
+      "iterations": 32,
+      "vehicle_id": 4
+    },
+    {
+      "elapsed": 0.005197699996642768,
+      "epoch": 103,
+      "iterations": 32,
+      "vehicle_id": 5
+    },
+    {
+      "elapsed": 0.004018499981611967,
+      "epoch": 103,
+      "iterations": 32,
+      "vehicle_id": 6
+    },
+    {
+      "elapsed": 0.0057197000132873654,
+      "epoch": 103,
+      "iterations": 32,
+      "vehicle_id": 8
+    },
+    {
+      "elapsed": 0.004795700078830123,
+      "epoch": 103,
+      "iterations": 32,
+      "vehicle_id": 9
+    },
+    {
+      "elapsed": 0.007533499971032143,
+      "epoch": 103,
+      "iterations": 32,
+      "vehicle_id": 10
+    },
+    {
+      "elapsed": 0.003978300024755299,
+      "epoch": 103,
+      "iterations": 32,
+      "vehicle_id": 11
+    },
+    {
+      "elapsed": 0.0028584999963641167,
+      "epoch": 103,
+      "iterations": 32,
+      "vehicle_id": 12
+    },
+    {
+      "elapsed": 0.0032976000802591443,
+      "epoch": 104,
+      "iterations": 32,
+      "vehicle_id": 0
+    },
+    {
+      "elapsed": 0.005253100069239736,
+      "epoch": 104,
+      "iterations": 32,
+      "vehicle_id": 2
+    },
+    {
+      "elapsed": 0.005046699894592166,
+      "epoch": 104,
+      "iterations": 32,
+      "vehicle_id": 4
+    },
+    {
+      "elapsed": 0.0030236999737098813,
+      "epoch": 104,
+      "iterations": 32,
+      "vehicle_id": 5
+    },
+    {
+      "elapsed": 0.0029545000288635492,
+      "epoch": 104,
+      "iterations": 32,
+      "vehicle_id": 6
+    },
+    {
+      "elapsed": 0.0056767999194562435,
+      "epoch": 104,
+      "iterations": 32,
+      "vehicle_id": 8
+    },
+    {
+      "elapsed": 0.0034139000345021486,
+      "epoch": 104,
+      "iterations": 32,
+      "vehicle_id": 9
+    },
+    {
+      "elapsed": 0.006143599981442094,
+      "epoch": 104,
+      "iterations": 32,
+      "vehicle_id": 10
+    },
+    {
+      "elapsed": 0.0036793999606743455,
+      "epoch": 104,
+      "iterations": 32,
+      "vehicle_id": 11
+    },
+    {
+      "elapsed": 0.003271099994890392,
+      "epoch": 105,
+      "iterations": 32,
+      "vehicle_id": 0
+    },
+    {
+      "elapsed": 0.005261400016024709,
+      "epoch": 105,
+      "iterations": 32,
+      "vehicle_id": 2
+    },
+    {
+      "elapsed": 0.0031331999925896525,
+      "epoch": 105,
+      "iterations": 32,
+      "vehicle_id": 4
+    },
+    {
+      "elapsed": 0.0029531000182032585,
+      "epoch": 105,
+      "iterations": 32,
+      "vehicle_id": 5
+    },
+    {
+      "elapsed": 0.0021650000708177686,
+      "epoch": 105,
+      "iterations": 32,
+      "vehicle_id": 6
+    },
+    {
+      "elapsed": 0.00320759997703135,
+      "epoch": 105,
+      "iterations": 32,
+      "vehicle_id": 8
+    },
+    {
+      "elapsed": 0.005012699984945357,
+      "epoch": 105,
+      "iterations": 32,
+      "vehicle_id": 9
+    },
+    {
+      "elapsed": 0.004874999984167516,
+      "epoch": 105,
+      "iterations": 32,
+      "vehicle_id": 10
+    },
+    {
+      "elapsed": 0.0025149999419227242,
+      "epoch": 105,
+      "iterations": 32,
+      "vehicle_id": 11
+    },
+    {
+      "elapsed": 0.0024756999919191003,
+      "epoch": 106,
+      "iterations": 32,
+      "vehicle_id": 0
+    },
+    {
+      "elapsed": 0.0059917999897152185,
+      "epoch": 106,
+      "iterations": 32,
+      "vehicle_id": 2
+    },
+    {
+      "elapsed": 0.0040623999666422606,
+      "epoch": 106,
+      "iterations": 32,
+      "vehicle_id": 5
+    },
+    {
+      "elapsed": 0.0034953999565914273,
+      "epoch": 106,
+      "iterations": 32,
+      "vehicle_id": 8
+    },
+    {
+      "elapsed": 0.004001099965535104,
+      "epoch": 106,
+      "iterations": 32,
+      "vehicle_id": 9
+    },
+    {
+      "elapsed": 0.004502999945543706,
+      "epoch": 106,
+      "iterations": 32,
+      "vehicle_id": 10
+    },
+    {
+      "elapsed": 0.003368200035765767,
+      "epoch": 107,
+      "iterations": 32,
+      "vehicle_id": 2
+    },
+    {
+      "elapsed": 0.0023412000155076385,
+      "epoch": 107,
+      "iterations": 32,
+      "vehicle_id": 5
+    },
+    {
+      "elapsed": 0.003632300067692995,
+      "epoch": 107,
+      "iterations": 32,
+      "vehicle_id": 8
+    },
+    {
+      "elapsed": 0.006547400029376149,
+      "epoch": 107,
+      "iterations": 32,
+      "vehicle_id": 9
+    },
+    {
+      "elapsed": 0.004358999896794558,
+      "epoch": 107,
+      "iterations": 32,
+      "vehicle_id": 10
+    },
+    {
+      "elapsed": 0.003790199989452958,
+      "epoch": 108,
+      "iterations": 32,
+      "vehicle_id": 2
+    },
+    {
+      "elapsed": 0.009221400017850101,
+      "epoch": 108,
+      "iterations": 32,
+      "vehicle_id": 8
+    },
+    {
+      "elapsed": 0.009282900020480156,
+      "epoch": 109,
+      "iterations": 32,
+      "vehicle_id": 2
+    },
+    {
+      "elapsed": 0.0062701000133529305,
+      "epoch": 109,
+      "iterations": 32,
+      "vehicle_id": 8
+    },
+    {
+      "elapsed": 0.005137800006195903,
+      "epoch": 110,
+      "iterations": 32,
+      "vehicle_id": 2
+    },
+    {
+      "elapsed": 0.005091200000606477,
+      "epoch": 110,
+      "iterations": 32,
+      "vehicle_id": 8
+    },
+    {
+      "elapsed": 0.004916899953968823,
+      "epoch": 111,
+      "iterations": 32,
+      "vehicle_id": 2
+    },
+    {
+      "elapsed": 0.0036850000033155084,
+      "epoch": 111,
+      "iterations": 32,
+      "vehicle_id": 8
+    }
+  ],
+  "source_sha256": "2b6454e03d0b233c15b43688aad6aaa081467e3a76e615c7b3e3c0dcd44a2594",
+  "wall_seconds": 25.3096402999945
+}

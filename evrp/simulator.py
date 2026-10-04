@@ -27,10 +27,14 @@ class SimulationConfig:
     workers: int = 2
     max_events: int = 100000
     mpc: MPCConfig = field(default_factory=MPCConfig)
+    trace_level: str = "full"
+    symmetry_reuse: bool = False
 
     def __post_init__(self):
         if self.algorithm not in ALGORITHMS or self.workers < 1 or self.max_events < 1:
             raise ValueError("Invalid simulation configuration")
+        if self.trace_level not in {"none", "summary", "full"}:
+            raise ValueError("Unknown trace level")
 
 
 @dataclass(frozen=True)
@@ -71,6 +75,20 @@ def _plan_job(agent, state, observation, seed, algorithm):
     return agent.plan(state, observation, seed)
 
 
+def unused_symmetry_key(state, observation, config):
+    if state.departed or state.finished or state.location.kind != "d" or state.current_committed_action is not None:
+        return None
+    return replace(state, id=0), observation, config
+
+
+def rebind_plan(result, vehicle_id):
+    def rebind(proposal):
+        end = replace(proposal.predicted_end_state, id=vehicle_id) if proposal.predicted_end_state else None
+        return replace(proposal, vehicle_id=vehicle_id, predicted_end_state=end)
+    return PlanningResult(tuple(rebind(p) for p in result.proposals), rebind(result.fallback),
+                          replace(result.statistics, iterations=0, nodes_expanded=0, elapsed=0))
+
+
 class EventDrivenSimulator:
     def __init__(self, instance: Instance, scenario: DynamicScenario,
                  config: SimulationConfig = SimulationConfig()):
@@ -84,6 +102,7 @@ class EventDrivenSimulator:
         state, instance, config = self.state, self.instance, self.config
         events, steps, decisions, searches, timings = [], [], [], [], []
         epochs = replans = conflicts = resolved = waits = 0
+        simulations = expanded = reused = 0
         coverages, new_activations = [], 0
         pool = ProcessPoolExecutor(max_workers=config.workers) if config.parallel_agents else None
         try:
@@ -118,7 +137,20 @@ class EventDrivenSimulator:
                     jobs = [(self.agents[k], state.vehicles[k], observation,
                              agent_seed(config.experiment_seed, self.scenario.scenario_seed, epochs, k),
                              config.algorithm) for k in ready]
-                    if pool:
+                    if config.symmetry_reuse:
+                        cache, results = {}, []
+                        for job in jobs:
+                            agent, vehicle, obs, seed, algorithm = job
+                            key = unused_symmetry_key(vehicle, obs, agent.controller.config)
+                            if key is not None and key in cache:
+                                result = rebind_plan(cache[key], vehicle.id)
+                                reused += 1
+                            else:
+                                result = pool.submit(_plan_job, *job).result() if pool else _plan_job(*job)
+                                if key is not None:
+                                    cache[key] = result
+                            results.append(result)
+                    elif pool:
                         futures = [pool.submit(_plan_job, *job) for job in jobs]
                         results = [future.result() for future in futures]
                     else:
@@ -141,15 +173,29 @@ class EventDrivenSimulator:
                     coverages.append(len(coverage))
                     new_activations += sum(p.new_activation for p in selected.values())
                     replans += len(ready)
+                    candidate_intents = sorted(set().union(*(set(p.unique_predicted_customer_set)
+                                               for result in plans.values() for p in result.candidates)))
+                    available_ids = {c.id for c in observation.customers}
+                    if not set(candidate_intents) <= available_ids:
+                        raise RuntimeError("Hidden or committed information in candidate proposals")
                     decision = {"epoch": epochs, "time": state.time,
                                 "available": [c.id for c in observation.customers],
                                 "committed_before": dict(observation.committed_customers),
-                                "candidates": {str(k): [asdict(p) for p in r.candidates] for k, r in plans.items()},
+                                "candidate_intents": candidate_intents,
                                 "unique_intention_coverage": sorted(coverage),
-                                "plans": {str(k): asdict(p) for k, p in selected.items()}}
+                                "selected_firsts": [p.first.destination for p in selected.values() if p.first.kind == "serve"],
+                                "plans": {str(k): asdict(p) for k, p in selected.items()} if config.trace_level != "none" else {}}
+                    if config.trace_level == "full":
+                        decision["candidates"] = {str(k): [asdict(p) for p in r.candidates] for k, r in plans.items()}
                     decisions.append(decision)
                     for k, result in plans.items():
-                        searches.append({"epoch": epochs, "vehicle_id": k, **asdict(result.statistics)})
+                        simulations += result.statistics.iterations
+                        expanded += result.statistics.nodes_expanded
+                        if config.trace_level != "none":
+                            details = asdict(result.statistics)
+                            if config.trace_level == "summary":
+                                details.pop("root_actions", None)
+                            searches.append({"epoch": epochs, "vehicle_id": k, **details})
                     for k, proposal in selected.items():
                         action = proposal.first
                         step = transition(state.vehicles[k], action, observation)
@@ -204,8 +250,8 @@ class EventDrivenSimulator:
                    "mean_unique_intention_coverage": float(np.mean(coverages)) if coverages else 0.0,
                    "vehicle_activations_caused_by_coordinator": new_activations if config.algorithm in {"COORDINATED_MPC_MCTS", "MPC_MCTS_H1"} else 0,
                    "duplicate_service_violations": 0, "hidden_information_violations": 0,
-                   "mcts_iterations": sum(s["iterations"] for s in searches),
-                   "nodes_expanded": sum(s["nodes_expanded"] for s in searches)}
+                   "symmetry_reused_replans": reused,
+                   "mcts_iterations": simulations, "nodes_expanded": expanded}
         for name, function in [("mean", np.mean), ("median", np.median), ("p95", lambda x: np.percentile(x, 95)), ("maximum", np.max), ("total", np.sum)]:
             metrics[f"{name}_planning_time"] = float(function(timings)) if timings else 0.0
         import re
