@@ -11,9 +11,9 @@ from .audit import audited_records, audit_directory, result_files
 from .storage import save_json, writable_path, load_json
 
 ENVIRONMENT = ["instance", "scenario_identifier", "scenario_seed"]
-FACTORS = ["prediction_horizon", "top_l", "iterations", "charging_mode", "algorithm", "parallel_agents", "DoD_target"]
+FACTORS = ["algorithm", "route_continuity", "regret_repair", "prediction_horizon", "top_l", "proposal_selection"]
 METRICS = ["complete_service", "service_ratio", "customers_unserved", "vehicles_activated",
-           "distance_complete", "mean_planning_time", "p95_planning_time", "maximum_planning_time",
+           "distance_complete", "mean_planning_time", "median_planning_time", "p95_planning_time", "maximum_planning_time", "deadline_overrun_rate",
            "total_planning_time", "nodes_expanded", "mcts_iterations", "total_charging_time", "total_charging_visits"]
 
 
@@ -36,6 +36,8 @@ def run_frame(runs):
         effective = run.get("effective_config", {})
         row.update(effective.get("mpc", {}))
         row["parallel_agents"] = effective.get("parallel_agents", False)
+        for key in ("route_continuity", "regret_repair", "fleet_mode"):
+            row[key] = effective.get(key)
         row["execution_profile"] = run.get("requested_config", {}).get("execution_profile", "unspecified")
         row["source_sha256"] = run.get("provenance", {}).get("source_sha256", "unknown")
         row["distance_complete"] = row.get("total_distance") if row.get("complete_service") else None
@@ -87,6 +89,8 @@ def wide_summary(long):
                  "customers_unserved": ("median_unserved", "median"), "vehicles_activated": ("mean_activated_vehicles", "mean"),
                  "distance_complete": ("mean_distance_on_complete_runs", "mean"),
                  "mean_planning_time": ("mean_planning_time", "mean"), "p95_planning_time": ("p95_planning_time", "mean"),
+                 "median_planning_time": ("mean_run_median_planning_time", "mean"),
+                 "deadline_overrun_rate": ("mean_deadline_overrun_rate", "mean"),
                  "maximum_planning_time": ("mean_run_max_planning_time", "mean"),
                  "total_planning_time": ("mean_total_planning_time", "mean"),
                  "nodes_expanded": ("mean_nodes_expanded", "mean"), "mcts_iterations": ("mean_iterations", "mean"),
@@ -156,6 +160,7 @@ def aggregate(directory="results/raw", output="results/summaries"):
     good = frame[frame.structural_valid & frame.status.eq("completed") & ~frame.algorithm.isin(["STATIC_REFERENCE", "ORACLE_REFERENCE"])]
     config_groups = [c for c in ("study", "ablation_factor", "algorithm", "DoD_target", "prediction_horizon",
                      "top_l", "candidate_limit", "charging_mode", "budget_mode", "iterations", "time_limit",
+                     "route_continuity", "regret_repair", "fleet_mode", "proposal_selection",
                      "parallel_agents", "execution_profile", "source_sha256") if c in good]
     overall = hierarchical_summary(good, config_groups)
     family = hierarchical_summary(good, config_groups + (["instance_family"] if "instance_family" in good else []))
@@ -164,13 +169,15 @@ def aggregate(directory="results/raw", output="results/summaries"):
     wide_summary(family).to_csv(writable_path(Path(output) / "main_by_family.csv"), index=False)
     computation = hierarchical_summary(good, config_groups + (["number_of_customers"] if "number_of_customers" in good else []))
     computation.to_csv(writable_path(Path(output) / "computation.csv"), index=False)
-    pairs = [row for other in ("GREEDY", "MPC_MCTS_H1", "INDEPENDENT_MPC_MCTS")
+    pairs = [row for other in ("GREEDY", "RH_REGRET", "MPC_MCTS_H1", "INDEPENDENT_MPC_MCTS")
              for row in paired_differences(frame, second=other)]
     pd.DataFrame(pairs, columns=list(pairs[0]) if pairs else ["first", "second", "metric", "mean", "n"]).to_csv(
         writable_path(Path(output) / "paired_comparisons.csv"), index=False)
     for factor in FACTORS:
-        source_factor = {"top_l": "top_L", "iterations": "mcts_iterations", "DoD_target": "dynamicity"}.get(factor, factor)
-        subset = good[(good.study == "ablations") & good.ablation_factor.isin(["baseline", source_factor])]
+        variants = {"algorithm": ["independent"], "route_continuity": ["continuity_off"],
+                    "regret_repair": ["regret_off"], "prediction_horizon": ["horizon_1", "horizon_3"],
+                    "top_l": ["top_L_1", "top_L_5"], "proposal_selection": ["coverage_diverse"]}
+        subset = good[(good.study == "ablations") & good.ablation_factor.isin(["baseline", *variants[factor]])]
         hierarchical_summary(subset, config_groups).to_csv(writable_path(Path(output) / f"ablation_{factor}.csv"), index=False)
     audit_directory(directory, output)
     note = dict(runs=len(frame), failed_runs=int(frame.status.eq("failed").sum()),
@@ -208,7 +215,8 @@ def export_tables(directory="results/summaries", output="results/tables"):
         elif name == "computation":
             frame = wide_summary(frame)
             columns = ["study", "DoD_target", "number_of_customers", "algorithm", "mean_planning_time",
-                       "p95_planning_time", "maximum_planning_time", "mean_nodes_expanded", "mean_iterations", "number_of_runs"]
+                       "mean_run_median_planning_time", "p95_planning_time", "maximum_planning_time",
+                       "mean_deadline_overrun_rate", "mean_nodes_expanded", "mean_iterations", "number_of_runs"]
         else:
             if name.startswith("ablation_"):
                 frame = wide_summary(frame)

@@ -103,7 +103,7 @@ def test_no_hidden_customer_geometry_in_observation():
 def test_trace_levels_preserve_physical_decisions():
     from evrp.experiments import prepare, simulation_config, audit_result
     from evrp.simulator import EventDrivenSimulator
-    config = dict(mcts_iterations=8, scenario_seed=0, dynamicity=.5)
+    config = dict(mcts_iterations=8, scenario_seed=0, dynamicity=.5, route_continuity=False, regret_repair=False)
     instance, _, scenario, _ = prepare("c101C5", config)
     results = []
     for level in ("full", "summary", "none"):
@@ -171,16 +171,13 @@ def test_escape_geometry_cache_keeps_exact_time_and_battery():
 
 
 @pytest.mark.parametrize("name", ["c101C5", "r104C5", "rc105C5"])
-def test_saved_preoptimization_physical_trace_is_identical(name):
-    from pathlib import Path
-    from dataclasses import asdict
-    from evrp.storage import load_json, canonical
+def test_caching_preserves_final_method_physical_trace(name):
     from evrp.experiments import prepare, simulation_config, audit_result
     from evrp.simulator import EventDrivenSimulator
-    saved = load_json(Path(__file__).parent / "fixtures/performance" / f"golden_{name}.json.gz")
-    config = {**saved["config"], "action_space_reduction": False}
+    config = dict(mcts_iterations=8, scenario_seed=0, dynamicity=.5, action_space_reduction=False)
     instance, _, scenario, _ = prepare(name, config)
     result = EventDrivenSimulator(instance, scenario, simulation_config(config)).run()
-    assert canonical(asdict(result)["steps"]) == canonical(saved["result"]["steps"])
-    assert canonical(asdict(result)["events"]) == canonical(saved["result"]["events"])
+    uncached = EventDrivenSimulator(instance, scenario, simulation_config({**config, "cache_transitions": False})).run()
+    assert result.steps == uncached.steps
+    assert result.events == uncached.events
     assert all(audit_result(result, instance, scenario).values())

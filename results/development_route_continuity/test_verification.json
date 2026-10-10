@@ -1,8 +1,0 @@
-{
-  "command": "python -m pytest -q",
-  "passed": 185,
-  "failed": 0,
-  "elapsed_seconds": 10.75,
-  "scientific_source_sha256": "aa2c0ee46bafd33ddeb23849951bf9580a351819dd6d27fdb329141ebb26048b",
-  "note": "Windows temporary-directory and multiprocessing access required execution outside the restricted sandbox. Test success is not scientific acceptance."
-}

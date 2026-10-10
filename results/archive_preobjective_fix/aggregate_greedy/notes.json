@@ -1,8 +1,0 @@
-{
-  "failed_numeric_values": "Missing metrics are not imputed; n and failed_run counts are retained.",
-  "failed_runs": 0,
-  "interpretation": "Distance includes incomplete-service runs; inspect feasibility and service ratio together. No significance claims.",
-  "interval": "Student-t 95% descriptive CI; undefined for fewer than two observations",
-  "pairing": "Same instance, full scenario identifier, and algorithm seed. Ambiguous duplicate configurations are reported, not cross-joined.",
-  "runs": 7
-}

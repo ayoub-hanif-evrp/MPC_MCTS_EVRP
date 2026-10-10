@@ -1,226 +1,153 @@
 # Methodology
 
-## Scope and Information Boundary
+Status: implementation and screening. This describes the implementation, not a
+claim of experimental superiority. Current measurements live under `results/`.
 
-The V1 physical model used a fixed homogeneous fleet, one depot-to-depot tour per EV,
-delivery capacity, hard service-start windows, Euclidean travel, and linear charging.
-GlobalState privately partitions hidden/available/committed/served requests. Agents
-receive only measured vehicle state, observed available requests, committed IDs,
-and public infrastructure. Reference routes and future release times are unavailable
-to MPC, MCTS, rollouts, terminal costs, workers, and the coordinator.
+## Fleet and Information
 
-At each event, process all releases and completions at the timestamp, form a common
-observation for ready vehicles, run their controllers, coordinate proposals, and
-dispatch only first actions. A Serve includes travel, early waiting, and service;
-Recharge includes travel and positive-energy charging. Both are non-preemptive.
-Busy vehicles cannot replan. Passive Wait can be interrupted by another event.
-Its public deadline is latest safe return, not the next hidden release.
+Every matched online method receives exactly `K_ref` physical EVs from a validated
+offline reference (`fleet_mode: fixed_reference`). Reference routes support offline
+scenario construction only. Online policies receive the fleet size, measured
+states, public infrastructure, and released requests, never hidden requests,
+reference schedules, or the future release calendar. Unused depot EVs activate only
+after departure. There is no dynamic fleet expansion.
+
+## Persistent Ownership and Event Cycle
+
+Maintain `vehicle_id -> executable future action/customer suffix`. A committed
+customer has at most one owner, including customers on busy vehicles' routes.
+
+1. Process all releases and action completions at the event timestamp.
+2. Update physical states and replay retained routes. Keep feasible commitments;
+   an invalidated commitment is an explicit run failure, never silently dropped.
+3. Expose released unassigned customers and each EV's own commitments to its local
+   planner. Hide other EVs' commitments. Busy actions remain non-preemptive.
+4. Solve finite-horizon local MPC problems approximately with MCTS and collect
+   feasible top-L proposals consistent with retained commitments.
+5. Select compatible executable routes using fleet coordination.
+6. Apply regret-2 repair to uncovered released requests.
+7. Perform at most one final validation/reconciliation pass, dispatch first actions,
+   and retain the remaining executable suffixes.
+
+Selected future tails are commitments, not overlapping intentions. Trim terminal
+WAIT/RETURN actions after the final service from retained commitments; safe return
+must remain feasible.
+
+An idle active EV may wait while positive latest-safe-return slack remains. Waiting
+is interruptible by observed events and must not use the next hidden release.
+Temporary lack of work alone must not force immediate return. Return is required
+when further waiting would violate safe return and retires the EV.
 
 ## Physical Feasibility
 
 ```text
-d(i,j) = hypot(x_i-x_j, y_i-y_j)
-arrival = t + d(i,j)/v
-SOC_arrival = b - r*d(i,j)
-service_start = max(arrival, ReadyTime_j) <= DueDate_j
-service_departure = service_start + ServiceTime_j
-charging_departure = arrival + g*(target_SOC - SOC_arrival)
+d(i,j) = hypot(x_i - x_j, y_i - y_j)
+arrival = current_time + d(i,j) / v
+battery_at_arrival = battery - r * d(i,j)
+service_start = max(arrival, ready_j) <= due_j
+service_departure = service_start + service_time_j
+charge_duration = g * energy_added
 ```
 
-Battery and freight capacities are hard constraints; invalid branches are pruned,
-not retained with a penalty. Windows constrain service start, not completion. Every
-accepted action must leave a safe return before depot closing. Return retires an EV.
-Charging is only at station nodes, including S0 coincident with the depot.
+Battery, freight capacity, service-start windows, station feasibility, and depot
+closing are hard constraints. Service and recharge actions include travel and are
+non-preemptive; passive waiting is interruptible. Every accepted transition must
+leave a feasible depot return, possibly through charging stations. Planning,
+retained-route replay, insertion, execution, and audit must use the same physics.
 
-For uniform station hours and charging rate, a feasible station-network return of
-total distance D has earliest completion `t + D/v + g*max(0,r*D-b)`. This is monotone
-in D. A shortest reachable path with each later leg requiring at most Q supplies a
-partial-charge return witness; charging is allocated along the path. The parser
-checks the uniform-hours assumptions. Full-charge mode checks a separate full-charge
-return construction. Neither oracle is generalized to heterogeneous rates/queues.
+## MPC and MCTS
 
-## Hierarchical Objective
+MPC defines the state, constraints, finite prediction horizon, terminal safe return,
+objective, and first-action execution. MCTS approximately solves this local problem.
+The prediction horizon counts customer services; charging does not consume a
+service slot. The control horizon is one macro-action.
 
-For final fleet execution minimize lexicographically:
+The local horizon bounds newly searched MCTS trajectories. Retained executable
+suffixes and routes extended by regret repair may contain more services. Replay
+such commitments for feasibility without silently extending the MCTS search
+horizon or discarding existing commitments solely because they exceed it.
+
+Keep UCT, transition/return caches, urgency/proximity customer pruning, station and
+charge-target limits, partial charging, and safe-return checks. Rank local proposals
+lexicographically: more predicted services, then lower predicted distance including
+safe return, followed by charging/waiting/completion time and deterministic ties.
+Finite budgets and pruning do not establish local or global optimality.
+
+Initial settings are 32 simulations, prediction horizon 5, top-L 3, customer limit
+12, station limit 4, and charge-target limit 5. Maintain a valid incumbent.
+Iteration mode covers the root even if its branching exceeds the nominal budget;
+actual simulations and root coverage are recorded. Wall-clock deadlines take
+priority over root coverage; report measured overruns without claiming hard
+realtime guarantees. A single non-preemptible evaluation may overrun a deadline.
+
+Quality-based top-L is the default. Optional `coverage_diverse` selects the normal
+best proposal first, then maximizes newly covered customers relative to proposals
+already selected, breaking ties by the existing quality key. No diversity
+coefficient is introduced.
+
+## Sequential MILP Coordination
+
+For ready EV `k`, choose one candidate `p` with binary `y[k,p]`. Let `C[k,p]`
+be its executable customer set:
 
 ```text
-(number of unserved customers, number of activated EVs, total travel distance).
+sum_p y[k,p] = 1                              for each ready vehicle k
+sum_(k,p: i in C[k,p]) y[k,p] <= 1             for each customer i
 ```
 
-At an MPC epoch, H_p counts predicted customer services. Charging does not consume
-this horizon. H_c is exactly one macro-action. Wait and Return end a prediction;
-station revisits are prohibited between services, but allowed after service. The
-local deterministic MPC problem ranks feasible trajectories by:
+Candidate feasibility and ownership restrictions protect busy-EV commitments too.
+Solve three successive MILPs:
+
+1. Maximize covered released customers.
+2. Fix that optimum and minimize newly activated vehicles.
+3. Fix both optima and minimize predicted route distance.
+
+Selected executable tails must be customer-disjoint. Online coverage is a surrogate
+for final service, not a guarantee of serving future requests. Verify the MILP
+against exhaustive enumeration on small artificial cases; do not replace this
+hierarchy with weighted penalties.
+
+## Regret-2 Repair
+
+After coordination, enumerate feasible insertion positions for each released
+unassigned customer across existing routes and unused depot EVs within `K_ref`.
+Evaluate insertions using the same physical model and incremental route cost.
+For the cheapest two costs `c1 <= c2`, regret is `c2 - c1`.
+
+Prioritize a unique feasible insertion, then largest regret, smallest remaining
+time-window slack, earliest due date, and customer ID. Insert into the cheapest
+feasible location with deterministic ties. Update routes and repeat until no more
+customers can be inserted. Perform at most one final validation/reconciliation
+pass before dispatch. Do not iterate coordination and repair indefinitely.
+
+Route construction tries direct travel, bounded single-station partial-charge
+bridges, then full-charge multi-station connections. It does not backtrack earlier
+charging choices. Failure to construct an insertion is not a certificate that no
+physically feasible insertion exists. Insertion cost is incremental predicted
+distance including safe return; activation only breaks exact distance ties.
+
+## Comparators
+
+`RH_REGRET` retains feasible routes and applies the same regret insertion at each
+event. No optional relocate pass is implemented. It uses no MCTS or
+MILP and shares the fixed fleet, physics, and information boundary.
+
+Independent MPC-MCTS preserves ownership with deterministic conflict handling
+without fleet MILP optimization. Coordinated MPC-MCTS adds joint selection before
+repair. Record continuity and repair settings so this comparison isolates
+coordination. GREEDY is a sanity baseline; `MPC_MCTS_H1` is an ablation only.
+
+## Scenario Generation
+
+Keep the existing Yang-inspired, reference-schedule-preserving dynamicization:
 
 ```text
-(-N_k, D_k + D_safe_return(x_end), charging_time, waiting_time,
- completion_time, canonical_action_sequence).
+upper_i = min(customer_ready_time, reference_predecessor_departure_time)
+release_i in (0, upper_i] for selected eligible dynamic customers
 ```
 
-N_k counts distinct observed customers in the trajectory. The old distance-only
-formulation admitted unused-depot Wait at zero cost, so all-Wait minimized cost
-while ignoring the routing task. Service-first ranking explicitly repairs that
-mathematical omission. Local service progress and joint intent coverage are online
-surrogates, not a proof of minimizing final unserved customers.
-
-## MCTS as Numerical Optimizer
-
-Each EVAgent owns an MPCController that builds MPCPlanningProblem. MCTSOptimizer
-only searches this supplied problem. UCT maximizes mean reward plus
-`c*sqrt(log(parent_visits)/child_visits)`; unvisited children have infinite priority.
-The backed-up rollout reward is:
-
-```text
-B_k = v * max(0, depot_due - current_time)
-d_normalized = (D_k + D_safe_return) / B_k   [0 if B_k=0]
-R_k = N_k - 0.5*d_normalized.
-```
-
-Hard terminal feasibility bounds distance by B_k because travel consumes at least
-D/v time; charging and waiting consume additional nonnegative time. The code checks
-the bound, tolerates floating-point error, and clips only that tiny upper overshoot.
-Thus normalized distance is in [0,1], and one additional service improves reward by
-at least 0.5. The coefficient is bounded, not an arbitrary large service penalty.
-UCT averages guide exploration, but explicit lexicographic keys retain best-found
-trajectories per root action and select top-L. Charge-first trajectories receive
-credit for their downstream observed service. Top-L counts distinct first actions;
-a separately retained feasible fallback is always available.
-
-Customer expansion first applies cheap necessary capacity, energy and earliest
-arrival checks, then interleaves the 12 most urgent and 12 nearest customers.
-Only that union receives full transition/return checks, retaining at most 12 service
-actions. Charge lookahead uses a corresponding observed-customer shortlist without
-requiring current direct battery reachability. At most four reachable stations are
-retained, prioritizing the required safe-return station, nearest stations and low
-detour to urgent work. At most five targets per station include exact safe-return
-and shortlisted-service energy thresholds plus Q/2, 3Q/4 and Q. Zero increments
-and EPS-equivalent targets are removed. The required safe-return action survives
-the shortlist bounds. Distinct energy/time tradeoffs are not falsely dominated.
-This is explicit MCTS action-space reduction, not a completeness guarantee.
-Rollouts randomize among up to three promising services or charge to enable an
-observed shortlisted service. No future requests are sampled.
-Partial charge is discretized, not continuously optimized. Search budgets are fixed
-iterations or wall-clock checks between complete simulations (possible overshoot).
-MCTS plans are best-found feasible plans, never claimed optimal.
-
-Exact matrices, state/action transition caches and incremental proposal construction
-remove duplicate computation without changing feasible transitions. The 16-iteration
-paper budget was selected once using the predefined six-instance calibration rule,
-not tuned per test instance. Optional reuse for identical unused-depot states is
-disabled: sharing the first vehicle's stochastic search changes joint proposals.
-
-Proposals store vehicle, first action, full action sequence, customer sequence and
-unique set/count, predicted/terminal/total distance, charge/wait/completion times,
-new activation flag, root visits, value estimate, and predicted end state.
-
-## Intent-Aware Coordination
-
-Let P_k be ready EV k's proposals, C_kp their observed customer sets, a_kp indicate
-a first service/charging departure by a previously unused EV, and J_kp total
-predicted distance including terminal return. Choose binary y_kp and customer z_i:
-
-```text
-sum_p y_kp = 1                              for each ready EV
-sum_(k,p:first=Serve(i)) y_kp <= 1           immediate commitments
-z_i <= sum_(k,p:i in C_kp) y_kp
-y_kp <= z_i                                for every i in C_kp
-y_kp, z_i in {0,1}
-```
-
-Committed customers cannot be first actions and are excluded from available intent
-sets. Hidden or otherwise unavailable tail customers cause rejection. Linking
-constraints make z exactly the union of selected intentions; overlap is legal and
-counts once. Recharge/Wait/Return have no customer-conflict constraint. Station
-capacity is unlimited. New activation is measured by actual first-action departure,
-not by hypothetical tail actions or merely selecting an idle depot vehicle.
-
-Three sequential [SciPy MILPs](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.milp.html)
-are solved with integer variables and zero relative MIP gap:
-
-1. Maximize sum_i z_i; fix optimum coverage with an equality.
-2. Minimize sum a_kp*y_kp; fix optimum activations with an equality.
-3. Minimize sum J_kp*y_kp.
-
-No arbitrary weighted combination or production exhaustive enumeration is used.
-Sorted vehicle/proposal order and deterministic solver behavior make ties stable;
-this does not assert identical alternate optima across solver versions. Small
-random exhaustive tests independently check the three-stage objective.
-Only the first action is dispatched; tails are recomputed after feedback and never
-reserve customers. Shared intentions can be optimistic about future joint service.
-
-Independent MPC selects local alternatives in vehicle-ID order to avoid duplicate
-first commitments, without joint optimization. Greedy uses the same conflict rule
-and physical engine with myopic urgency/proximity and charging repair. H1 keeps
-coordination but truncates predicted service horizon to one.
-
-## Reference Validation and Dynamicization
-
-References must serve all customers, minimizing route count before distance. For
-up to five customers, all subset/permutation customer orders are evaluated and a
-subset partition DP chooses routes. Charging repair propagates nondominated
-time/SOC/distance labels, exploring charging before later customers even when a
-direct leg is feasible. For larger instances, multistart insertion, targeted route
-elimination by reinsertion, and relocate use the same route evaluator, capped at
-24 inter-customer labels. This cap and the customer-order heuristic limit quality.
-An exact bounded prefix-frontier cache avoids evaluating identical customer prefixes
-again; cache eviction changes computation only, not labels or their order. Cold
-reference preparation remains offline and is included in campaign runtime estimates.
-
-External metadata come from Schneider, Stenger and Goeke, Technical Report 02/2012,
-Table 3, CPLEX column (precursor to Transportation Science 2014):
-[author report](https://web4.ensiie.fr/~faye/mpro/MPRO_reseau/Projet_2020/The%20electric%20vehicle%20routing%20problem%20with%20time%20windows%20and%20recharging%20stations.pdf).
-
-| Instance | Published EVs | Published distance | Reproduced distance |
-| --- | ---: | ---: | ---: |
-| c101C5 | 2 | 257.75 | 257.7474518642 |
-| c103C5 | 1 | 176.05 | 176.0544331488 |
-| c206C5 | 1 | 242.56 | 242.5556517150 |
-| c208C5 | 1 | 158.48 | 158.4806595843 |
-
-Validation requires matching route count and distance within 0.011 published units.
-For c206C5 the report's heuristic column is 242.55 while CPLEX is 242.56; the local
-full-precision value rounds to 242.56. The reference checks do not establish
-large-instance optimality. Failure blocks the main CLI gate.
-
-K is the constructed reference route count, fixed across online algorithms. A
-customer's release bound is `min(ready_i, predecessor_departure_i)`. Seeded uniform
-releases in `(0,bound]` preserve that reference's feasibility. Exact-count uses
-half-up rounding with saturation; Bernoulli draws all customers then applies
-eligibility. Both target and realized dynamicity are reported. The method is
-reference-schedule-preserving dynamicization inspired by Yang, not the original
-Yang dataset or a claim that Yang used this sampling distribution.
-
-Base SHA, reference hash, reference-solver version, generator version, and objective
-version bind scenarios. Old schemas/dependencies are rejected; current scenarios
-are generated once and read for each algorithm. No original dataset is altered.
-
-## Measurement and Reporting
-
-Planning latency includes local proposals and coordination but does not advance
-simulation time. Fixed-iteration seeds derive from experiment seed, scenario seed,
-epoch and vehicle. Process workers receive only filtered observations; results are
-collected in vehicle order. Wall-clock experiments are a separate study.
-
-Disk audits replay transitions, continuity, releases, commitments, selected and
-candidate tails, uniqueness, safe returns, primary/secondary totals, schemas and
-dependency/configuration hashes. Duplicate IDs, NaNs and structural errors are
-reported and excluded from scientific aggregates. Failed/incomplete runs remain in
-failure tables; incomplete but physically valid runs enter service statistics.
-
-Report service first, then vehicle usage, then conditional distance. Distance
-figures use complete-service runs only. Paired vehicles require equal unserved
-counts; paired distance requires equal unserved and activated-vehicle counts.
-Pair on instance, scenario hash/seed, algorithm seed, source revision and study;
-ambiguous duplicate configurations are reported rather than cross-joined.
-
-Average algorithm seeds within instance/scenario before means, medians, sample SD,
-and Student-t 95% CIs over environmental observations. This prevents treating seed
-repeats as independent environments; scenarios within an instance may still be
-correlated, so intervals are descriptive, not formal inferential evidence. Report
-eligible-pair and environment counts. No automatic significance tests are used.
-Runtime p95 summaries are averages of within-run p95, not pooled percentiles.
-
-Raw precision is retained. Publication tables round only on export. Figures are
-CSV-driven 300-dpi PNG only, with exact data; the representative configuration is
-fixed before outcomes are inspected. Unrun ablations are marked empty, not filled
-from unrelated pilot variations. The main benchmark has not been executed.
+Use seeded releases and generate scenarios once for all matched algorithms. Record
+target and realized DoD. Exact-count selection follows its declared rounding rule;
+insufficient eligible customers make the requested condition ineligible. Do not
+silently substitute a lower DoD in main experiments. Offline reference-based
+construction does not permit online access to reference schedules.

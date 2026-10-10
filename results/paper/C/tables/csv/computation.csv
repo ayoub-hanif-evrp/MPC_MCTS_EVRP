@@ -1,5 +1,0 @@
-study,DoD_target,number_of_customers,algorithm,mean_planning_time,p95_planning_time,maximum_planning_time,mean_nodes_expanded,mean_iterations,number_of_runs
-C,0.5,100,COORDINATED_MPC_MCTS,0.077801,0.137842,1.67963,2409.25,3139.333,24
-C,0.5,100,COORDINATED_MPC_MCTS,0.051387,0.100896,1.108651,2385.833,3146.667,6
-C,0.5,100,INDEPENDENT_MPC_MCTS,0.061757,0.123643,1.616851,1706.333,2042.667,30
-C,0.5,100,MPC_MCTS_H1,0.025993,0.064246,0.202423,2241.7,3004.8,30

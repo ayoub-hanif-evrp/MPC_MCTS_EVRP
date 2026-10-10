@@ -37,42 +37,18 @@ def greedy_plan(state, observation, config: MPCConfig) -> PlanningResult:
     return PlanningResult(tuple(proposals), fallback, SearchStatistics(elapsed=perf_counter() - start), all_proposals)
 
 
-def independent_selection(plans: dict[int, PlanningResult], reserve_ids=frozenset(), reserve_count=0,
-                          exclusive_routes=False) -> tuple[dict, int]:
-    selected, committed, conflicts = {}, set(), 0
-    for vehicle_id, result in sorted(plans.items(), key=lambda item: (item[0] in reserve_ids, abs(item[0]))):
-        if exclusive_routes:
-            choices = result.candidates
-            admissible = [p for p in choices if not committed.intersection(p.unique_predicted_customer_set)
-                          and not (vehicle_id in reserve_ids and reserve_count <= 0
-                                   and p.first.kind in {"serve", "charge"})]
-            if not admissible:
-                raise RuntimeError("No conflict-free continuation for an existing route")
-            proposal = admissible[0]
-            conflicts += int(proposal != choices[0])
-            committed.update(proposal.unique_predicted_customer_set)
-            if vehicle_id in reserve_ids and proposal.first.kind in {"serve", "charge"}:
-                reserve_count -= 1
-            selected[vehicle_id] = proposal
-            continue
-        proposal = result.proposals[0] if result.proposals else result.fallback
-        if vehicle_id in reserve_ids and proposal.predicted_customer_sequence:
-            if proposal.predicted_customer_sequence[0] in committed:
-                proposal = result.fallback
-        if proposal.first.kind == "serve":
-            if proposal.first.destination in committed:
-                conflicts += 1
-                proposal = next((p for p in result.proposals
-                                 if p.first.kind != "serve" or p.first.destination not in committed), result.fallback)
-            if vehicle_id in reserve_ids and reserve_count <= 0:
-                proposal = result.fallback
-            if proposal.first.kind == "serve":
-                committed.add(proposal.first.destination)
-        if vehicle_id in reserve_ids and proposal.first.kind in {"serve", "charge"}:
-            if reserve_count <= 0:
-                proposal = result.fallback
-            else:
-                reserve_count -= 1
-                committed.add(proposal.predicted_customer_sequence[0])
+def independent_selection(plans: dict[int, PlanningResult], exclusive_routes=True) -> tuple[dict, int]:
+    selected, claimed, conflicts = {}, set(), 0
+    for vehicle_id, result in sorted(plans.items()):
+        choices = result.candidates
+        def claims(p):
+            return (set(p.unique_predicted_customer_set) if exclusive_routes else
+                    {p.first.destination} if p.first.kind == "serve" else set())
+        admissible = [p for p in choices if not claimed.intersection(claims(p))]
+        if not admissible:
+            raise RuntimeError("No conflict-free continuation for an existing route")
+        proposal = admissible[0]
+        conflicts += int(proposal != choices[0])
+        claimed.update(claims(proposal))
         selected[vehicle_id] = proposal
     return selected, conflicts

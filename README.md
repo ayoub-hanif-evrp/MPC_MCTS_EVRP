@@ -1,206 +1,104 @@
-# Event-Triggered Coordinated Multi-Agent MPC for D-EVRPTW-PR
+# Persistent-Route Coordinated Multi-Agent MPC-MCTS for Dynamic EVRPTW
 
-Python 3.11+ research implementation using only the local Schneider E-VRPTW
-benchmark. Each EV has an explicit MPC controller; MCTS approximately solves its
-deterministic finite-horizon problem. An intent-aware coordinator selects compatible
-first actions. By default, predicted tails are intentions, never reservations.
-An experimental opt-in variant retains executable route reservations instead;
-it is a methodological change requiring review.
+**Status: implementation and screening stage. No final paper-performance claim yet.**
 
-**Status:** V1 completed all 704 conditions, but every run had incomplete service.
-It is preserved as [V1 diagnostic evidence](results/paper_v1_fixed_fleet/ARCHIVE_NOTICE.md),
-not final paper results. V2 completed only the bounded six-instance diagnostics:
-12 offline oracle controls and 66 online conditions. The oracle serves every
-customer; the online method still has fleet-efficiency, service and runtime
-weaknesses. The full paper executor is blocked pending scientific review.
+This training-free research implementation asks whether persistent route coordination
+between independently planned EVs improves dynamic EVRPTW performance over independent
+MPC-MCTS and rolling-horizon regret insertion. Local Schneider benchmark files are
+immutable. Historical V1/V2 outputs are preserved at Git commit `38d0d01`; they are
+not evidence for the current method.
 
-The [latest follow-up](results/development_route_continuity/README.md) adds two
-36-condition development grids with retained routes and optional active-route
-insertion. Static service and repeated idling improve, but dynamic losses and
-fleet-efficiency limitations remain. Both changes are opt-in; no new full
-campaign has been launched. See the [protocol](docs/route_continuity_followup.md).
-
-Read the [V2 master report](results/paper_v2/PAPER_RESULTS.md),
-[per-instance appendix](results/paper_v2/PER_INSTANCE_RESULTS.md), and
-[incomplete-service diagnosis](docs/incomplete_service_diagnosis.md).
-
-## Objective and Architecture
+## Method
 
 ```text
-EVAgent -> MPCController -> MPCPlanningProblem -> MCTSOptimizer
-        -> top-L proposals -> sequential-MILP Coordinator
-        -> execute FIRST action -> event-driven observation -> replan
-
-Final fleet objective: lexicographically minimize
-    (customers unserved, activated vehicles, total travel distance).
-
-Local proposal ordering:
-    (-predicted services, predicted distance + safe return distance,
-     charging time, waiting time, completion time, canonical actions).
-
-UCT reward: services - 0.5 * total_predicted_distance / distance_bound
-    distance_bound = speed * (depot_due - current_time).
+Released requests and measured EV states
+  -> replay retained executable routes and preserve feasible ownership
+  -> finite-horizon MPC subproblems solved approximately by MCTS
+  -> top-L feasible route candidates
+  -> sequential MILP fleet coordination
+  -> regret-2 repair of uncovered released requests
+  -> one final validation/reconciliation pass
+  -> execute first actions, retain executable suffixes, replan after feedback
 ```
 
-Feasible return bounds normalized distance in [0,1], so one additional service
-always dominates the distance term. Explicit lexicographic keys still select the
-best trajectory per first action and top-L. MCTS is an approximate numerical
-optimizer, not the controller or a stochastic future-request predictor.
+Every matched algorithm has exactly `K_ref` physical EVs (`fleet_mode:
+fixed_reference`). Only the reference fleet size reaches online policies; reference
+routes and unreleased requests do not. Unused depot EVs count as activated only
+after departure. No vehicles are created beyond `K_ref`.
 
-The coordinator solves three successive binary MILPs: maximize unique observed
-customer coverage in selected intentions; fix that optimum and minimize new
-first-action activations; fix both optima and minimize summed predicted distances.
-There is one proposal per ready EV and at most one immediate commitment per customer.
-Tail overlap is allowed. Busy EVs are not interrupted. Unused EVs may wait without
-activation. Local progress and intent coverage do not guarantee global full service.
+Each committed customer has at most one owner. An EV sees released unassigned
+customers and its own commitments, excluding customers owned by others. The finite
+prediction horizon bounds new MCTS search. Retained executable suffixes, including
+repaired commitments, may be longer and must remain feasible under replay.
+Terminal WAIT/RETURN after the last service are not retained as commitments.
+Temporary idleness must not force premature return: an active EV can wait while
+latest-safe-return slack remains.
 
-## Data and Model
+The fleet objective is lexicographic: minimize unserved customers, then activated
+vehicles, then distance. Coordination selects customer-disjoint executable routes;
+regret-2 repair follows coordination and precedes dispatch.
 
-All 92 files under `data/evrptw_instances/` are immutable. No other dataset is used.
-The parser reads `StringID Type x y demand ReadyTime DueDate ServiceTime` and
-`Q C r g v`. Missing parameters are errors. Euclidean distance is unrounded;
-travel time is `distance/v`, consumption is `r*distance`, and charging time is
-`g*charged_energy`. Windows constrain service start. Every accepted action must
-preserve battery, freight, time-window, and safe-depot-return feasibility.
+Main algorithms are `GREEDY`, `RH_REGRET`, `INDEPENDENT_MPC_MCTS`, and
+`COORDINATED_MPC_MCTS`. `MPC_MCTS_H1` is an ablation. Coverage-diverse top-L selection
+is optional and enters the main study only if screening supports it.
 
-One tour per EV, homogeneous fleet, uniform station hours/rate, unlimited
-simultaneous chargers, no reloads, queues, stochastic travel, or future information.
-Serve and recharge are non-preemptive travel-plus-service macro-actions. Passive
-Wait is interruptible. All co-timed releases/completions precede planning.
+## Setup and CLI
 
-The original dataset is never written. Generated artifacts are in separate folders.
-V1 fixed fleet size K to the static reference. V2 diagnostics instead use an
-exchangeable lazy reserve with K_max equal to the customer count; K_ref is a
-benchmark, not a hard online cap. No new full campaign is authorized.
-For five-customer
-instances, subset/permutation route search uses Pareto full-charge repair; larger
-instances use deterministic multistart insertion, targeted route elimination,
-and relocate. Larger-instance references remain heuristics.
-
-Four external validation checks match Table 3 of Schneider's technical report:
-`c101C5: 2 / 257.75`, `c103C5: 1 / 176.05`, `c206C5: 1 / 242.56`,
-`c208C5: 1 / 158.48` (vehicles / rounded distance). These are validation metadata,
-not another benchmark. Details and citation are in [methodology](docs/methodology.md).
-
-## Scenarios and Fair Comparisons
-
-Dynamicization is **reference-schedule-preserving, inspired by Yang et al.**:
-`upper_i = min(ReadyTime_i, reference_predecessor_departure_i)`. Selected eligible
-requests receive seeded uniform releases in `(0, upper_i]`; others are initially
-known. Exact-count selection uses half-up rounding and saturates at eligibility;
-Bernoulli selection is also supported. Target and realized DoD are both recorded.
-Uniform sampling is our assumption, not a claim about Yang's original distribution.
-
-Scenario files are generated once and reused across online algorithms. Their base
-SHA, reference hash, reference solver, scenario generator, and objective versions
-are checked. Stale files fail explicitly; new dependencies produce new paths.
-Policies never receive hidden customers, the future calendar, or reference routes.
-
-Online algorithms: `GREEDY`, `MPC_MCTS_H1`, `INDEPENDENT_MPC_MCTS`,
-`COORDINATED_MPC_MCTS`. `STATIC_REFERENCE` is offline validation only and is
-rejected from the main online grid. Scenario and algorithm seeds are independent.
-
-## Commands
-
-From the repository root:
+Python 3.11+ is required. From the repository root:
 
 ```powershell
 python -m pip install -r requirements.txt
 python -m pytest -q
-python -m evrp.cli validate --config configs/validation.yaml
-python -m evrp.cli scenario --instance c101C5 --config configs/pilot.yaml
-python -m evrp.cli smoke --config configs/pilot.yaml
-python -m evrp.cli smoke --config configs/pilot.yaml --algorithm GREEDY
-python -m evrp.cli smoke --config configs/pilot.yaml --algorithm MPC_MCTS_H1
-python -m evrp.cli smoke --config configs/pilot.yaml --algorithm INDEPENDENT_MPC_MCTS
+python -m evrp.cli --help
+```
+
+The implemented CLI is:
+
+```powershell
+python -m evrp.cli validate
+python -m evrp.cli smoke
+python -m evrp.cli run --instance c101C5
+python -m evrp.cli screening
 python -m evrp.cli aggregate
-python -m evrp.cli audit
 python -m evrp.cli tables
-python -m evrp.cli plot --study pilot
-python -m evrp.cli representative
+python -m evrp.cli plot
+python -m evrp.cli audit
 ```
 
-`smoke` runs exactly six small cases: c101C5 at DoD 0/.5, r104C5, rc105C5,
-c101C10 and c103C15 at .5. It never runs a 100-customer instance. The default CLI
-uses the pilot config. `--dynamicity`, `--scenario-seed`, and `--scenario` are
-available for individual runs; explicit scenario settings must match the config.
-
-Individual larger studies can also be executed explicitly:
+Later studies require explicit execution and the applicable gates:
 
 ```powershell
-python -m evrp.cli benchmark --config configs/pilot.yaml
-python -m evrp.cli benchmark --config configs/main.yaml
-python -m evrp.cli ablations --config configs/ablations.yaml
-python -m evrp.cli realtime --config configs/realtime.yaml
-python -m evrp.cli aggregate
-python -m evrp.cli plot --study main
+python -m evrp.cli main --execute
+python -m evrp.cli ablations --execute
+python -m evrp.cli realtime --execute
 ```
 
-Main performs the reference-validation gate first. Passing small checks does not
-establish large-instance solution quality or justify a performance claim.
+Never launch the main study automatically. All generated research artifacts,
+including scenarios, belong under repository-local `results/`. Output overrides
+must not escape that directory.
 
-## Results and Statistics
+## Screening Before Claims
 
-Separate validation/pilot/main/ablations/realtime directories prevent study mixing.
-Run IDs hash configuration, scenario/base hashes, objective version, git commit,
-and actual source content. Runtime records include machine, packages, UTC timestamp,
-effective-config hash, physical traces, proposals, search statistics, and failures.
-Different configurations never overwrite each other. Fixed-iteration seeded logical
-behavior is reproducible; measured latency and wall-clock searches are not bitwise
-reproducible. Parallel workers preserve logical seed/collection order.
+Stage 1 uses `c101_21`, `c201_21`, `r101_21`, `r201_21`, `rc101_21`, and `rc201_21`,
+at DoD `0.0/0.5`, scenario/algorithm seeds `0`, and 32 MCTS simulations. Use horizon
+5, control horizon 1, top-L 3, partial charging, fixed `K_ref`, continuity, and
+regret repair. Compare RH_REGRET, independent MPC-MCTS, and coordinated MPC-MCTS.
+Stop and diagnose poor static service before launching further experiments.
 
-Aggregation independently audits disk records. Structural-invalid runs are excluded
-from scientific tables but retained in the failures report. Incomplete runs remain
-in service statistics. Distance summaries use **complete-service runs only**.
-Paired vehicles require equal service counts; paired distance also requires equal
-vehicle counts. Repeated algorithm seeds are averaged within instance/scenario
-before descriptive means, medians, sample SDs, and Student-t 95% CIs. No significance
-is inferred; intervals for fewer than two environmental observations are undefined.
+Stage 2 is conditional on Stage 1 passing: the same six instances, DoD
+`0.25/0.50/0.75`, scenario seeds `0/1`, and the same three methods (108 runs).
+Write evidence and the gate decision to `results/screening/GATE.md`. Compare service
+first, vehicles only at equal service, and distance only at equal service and
+vehicle count. Failed screening blocks the main campaign.
 
-V2 exports Markdown/CSV/LaTeX tables and meaningful study-specific diagnostic
-figures as PDF vector, PNG at 300 dpi and exact-data CSV. No empty figures or
-one-point dynamicity curves are generated. Missing V2 charging, Top-L, robustness
-and realtime studies are explicitly marked unmeasured, not filled using V1 data.
-Regenerate reports without running experiments: `python -m scripts.report_v2`.
-See [results policy](results/README.md) and [assumptions](docs/assumptions.md).
+## Documentation
 
-## Compact Paper Campaign
+- [Methodology](docs/methodology.md): ownership, search, coordination, and repair.
+- [Assumptions](docs/assumptions.md): physics, information, and limitations.
+- [Experiment protocol](docs/experiment_protocol.md): study design and gates.
+- [Reproducibility](docs/reproducibility.md): provenance, validation, and execution.
+- [Output policy](results/README.md): generated artifacts and Git exclusions.
 
-The former 17,017-job design is **cancelled**. Its 58 completed records remain
-archived in place; do not restart `scripts.run_full_campaign` or `evrp.campaign`.
-The compact design is specified by `configs/paper.yaml` and documented in
-[performance analysis](docs/performance_analysis.md). Planning never starts runs:
-
-```powershell
-python -m evrp.cli estimate --config configs/paper.yaml --workers 4 --output "$env:LOCALAPPDATA\EVRP\paper"
-```
-
-That design completed as V1. Its performance-only gate is insufficient for V2.
-`evrp.cli paper --execute` is now explicitly blocked pending scientific review.
-The only new experiment entry point is the bounded `scripts.diagnose_v2`; its
-completed records are preserved by source/configuration identity, never silently
-replaced by a new revision.
-
-Raw computation outputs stay on the local SSD outside OneDrive. Audited summaries,
-publication tables, and PNG figures with exact-data CSVs are copied back to
-`results/paper`. Shared conditions across studies are computed once and referenced
-by a study-membership manifest. Full traces are reserved for pilots and the fixed
-representative example. Paper summary traces retain replayable physical actions
-and information-integrity evidence, not every rejected candidate proposal.
-
-Outer parallelism is limited by physical cores and measured memory, with BLAS
-threads fixed to one. Realtime runs execute in isolation. Concurrent throughput
-timings must not be interpreted as isolated decision latency. Every launch prints
-its job count, reusable count, remaining count, and estimated duration. Unknown
-timings or a failed calibration gate block the paper campaign.
-
-## References
-
-- Schneider, Stenger, Goeke (2014), *The Electric Vehicle-Routing Problem with Time
-  Windows and Recharging Stations*. [DOI](https://doi.org/10.1287/trsc.2013.0490).
-- Keskin and Catay (2016), *Partial recharge strategies for the electric vehicle
-  routing problem with time windows*. [DOI](https://doi.org/10.1016/j.trc.2016.01.013).
-- Yang et al. (2017), *Dynamic vehicle routing with time windows in theory and
-  practice*. [DOI](https://link.springer.com/article/10.1007/s11047-016-9550-9).
-- Kocsis and Szepesvari (2006), *Bandit based Monte-Carlo Planning*.
-  [Paper](https://aima.cs.berkeley.edu/~russell/classes/cs294/s11/readings/Kocsis%2BSzepesvari%3A2006.pdf).
+No new validation, screening, or superiority result is asserted by this README.
+Current local evidence is recorded in `results/IMPLEMENTATION_REPORT.md` and
+`results/screening/GATE.md`; generated evidence is intentionally not committed.

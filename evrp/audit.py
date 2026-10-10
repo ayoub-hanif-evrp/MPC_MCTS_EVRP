@@ -88,7 +88,10 @@ def audit_record(record):
                                      config.get("reference_label_limit", 24))
         key = identifier({"instance": instance.sha256, "config": asdict(ref_config),
                           "reference_solver_version": REFERENCE_SOLVER_VERSION})[:16]
-        reference = ReferenceSchedule.load(ROOT / "data/reference_schedules" / f"{instance.name}_{key}.json", instance)
+        ref_path = ROOT / "data/reference_schedules" / f"{instance.name}_{key}.json"
+        if not ref_path.exists():
+            ref_path = ROOT / "results/reference_schedules" / ref_path.name
+        reference = ReferenceSchedule.load(ref_path, instance)
         check(scenario.reference_schedule_hash == reference.identifier, "stale reference hash")
         check(scenario.fleet_size == reference.fleet_size, "scenario/reference fleet mismatch")
         bounds = dict(scenario.release_upper_bounds)
@@ -99,13 +102,6 @@ def audit_record(record):
             if expected_config.algorithm == "MPC_MCTS_H1":
                 expected_config = replace(expected_config, mpc=replace(expected_config.mpc, prediction_horizon=1))
             expected_data = asdict(expected_config)
-            # V1 records predate opt-in fleet/root-coverage diagnostics.
-            for field in ("fleet_mode", "diagnostics", "route_continuity", "route_insertion"):
-                if field not in record["effective_config"] and field not in config:
-                    expected_data.pop(field)
-            for field in ("require_root_coverage", "max_idle_wait"):
-                if field not in record["effective_config"]["mpc"] and field not in config:
-                    expected_data["mpc"].pop(field)
             check(identifier(expected_data) == identifier(record["effective_config"]),
                   "unexpected effective configuration mismatch")
         check(record["algorithm"] == record["effective_config"], "algorithm section mismatch")

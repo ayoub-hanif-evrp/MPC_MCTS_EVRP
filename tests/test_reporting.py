@@ -54,7 +54,7 @@ def test_stale_scenario_dependencies_rejected(tmp_path, field):
 
 
 def test_prepare_reuses_scenario_without_redrawing(monkeypatch):
-    config = load_config("configs/pilot.yaml")
+    config = load_config("configs/debug.yaml")
     first = prepare("c101C5", config)
     def forbidden(*args, **kwargs):
         raise AssertionError("Scenario was generated twice")
@@ -169,18 +169,29 @@ def test_figure_csv_and_complete_only_distance(valid_record, tmp_path):
     note = aggregate(tmp_path / "raw", tmp_path / "summary")
     assert note["structural_failures"] == 0
     tables = export_tables(tmp_path / "summary", tmp_path / "tables")
-    assert len(tables) == 12  # Reference validation is a separate command.
+    assert len(tables) == 11  # Reference validation is a separate command.
     computation = pd.read_csv(tmp_path / "tables/csv/computation.csv")
     assert computation.maximum_planning_time.iloc[0] == pytest.approx(valid_record["metrics"]["maximum_planning_time"], abs=1e-6)
-    paths = make_figures(tmp_path / "summary", tmp_path / "figures")
-    assert len(paths) >= 9
+    paths = make_figures(tmp_path / "summary", tmp_path / "figures", study=valid_record["identity"]["study"])
+    assert paths
     for path in paths:
         from pathlib import Path
         stem = Path(path)
         assert stem.exists() and stem.with_suffix(".png").exists()
         assert stem.suffix == ".png" and not stem.with_suffix(".pdf").exists()
         assert stem.with_name(stem.stem + "_data.csv").exists()
-    data = pd.read_csv(tmp_path / "figures/main/distance_vs_dod_data.csv")
-    assert set(data.metric) <= {"distance_complete"}
-    if not valid_record["primary"]["complete_service"]:
-        assert data.n.sum() == 0
+    distance = tmp_path / "figures/main/distance_vs_dod_data.csv"
+    if valid_record["primary"]["complete_service"]:
+        assert set(pd.read_csv(distance).metric) == {"distance_complete"}
+    else:
+        assert not distance.exists()
+    with pytest.raises(ValueError, match="No audited observations"):
+        make_figures(tmp_path / "summary", tmp_path / "figures", study="not_run")
+
+
+def test_analysis_retains_route_ablation_settings():
+    run = dict(status="completed", effective_config=dict(route_continuity=False,
+               regret_repair=True, fleet_mode="fixed_reference", mpc=dict(proposal_selection="coverage_diverse")))
+    row = run_frame([run]).iloc[0]
+    assert not row.route_continuity and row.regret_repair
+    assert row.proposal_selection == "coverage_diverse"

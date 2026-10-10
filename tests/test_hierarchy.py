@@ -37,13 +37,12 @@ def test_extra_service_dominates_activation_and_distance():
     assert chosen[1] == b
 
 
-def test_tail_union_is_counted_once_and_overlap_legal():
+def test_overlapping_future_tail_is_rejected_even_when_cheaper():
     a = plan(Action("serve", "A"), "C")
     b = plan(Action("serve", "B"), "C")
     d = plan(Action("serve", "D"), distance=50)
     chosen = coordinate({0: (a,), 1: (b, d)}, available=frozenset("ABCD"))
-    # Both cover three unique customers, so cheaper b wins; tails may overlap C.
-    assert chosen[1] == b
+    assert chosen[1] == d
 
 
 def test_hidden_intent_rejected():
@@ -77,8 +76,8 @@ def test_milp_matches_exhaustive_tail_coverage(seed):
                 sum(p.new_activation for p in joint), sum(p.cost for p in joint))
     valid = []
     for joint in itertools.product(*options.values()):
-        roots = [p.first.destination for p in joint if p.first.kind == "serve"]
-        if len(roots) == len(set(roots)):
+        customers = [c for p in joint for c in p.unique_predicted_customer_set]
+        if len(customers) == len(set(customers)):
             valid.append(score(joint))
     selected = coordinate(options, available=frozenset("ABCDE"))
     assert score(selected.values()) == pytest.approx(min(valid))

@@ -1,4 +1,4 @@
-study: realtime
+study: smoke
 fleet_mode: fixed_reference
 prediction_horizon: 5
 control_horizon: 1
@@ -16,7 +16,7 @@ parallel_agents: false
 workers: 1
 trace_level: summary
 max_idle_wait: 0
-require_root_coverage: false
+require_root_coverage: true
 experiment_seed: 0
 scenario_seed: 0
 dynamicity: 0.5
@@ -25,11 +25,8 @@ reference_solver_multistarts: 3
 reference_improvement_passes: 1
 reference_seed: 0
 reference_label_limit: 24
-budget_mode: wall_clock
-outer_workers: 1
-execution_profile: isolated_sequential
-instances: [c101_21, c201_21, r101_21, r201_21, rc101_21, rc201_21]
+budget_mode: iterations
+instances: [c101C5, r104C5, rc105C5]
 grid:
-  dynamicity: [0.5]
-  scenario_seed: [0]
-  mcts_time_limit: [0.05, 0.10, 0.25, 0.50]
+  dynamicity: [0.0, 0.5]
+  algorithm: [RH_REGRET, INDEPENDENT_MPC_MCTS, COORDINATED_MPC_MCTS]

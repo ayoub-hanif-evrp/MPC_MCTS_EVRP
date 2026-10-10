@@ -1,4 +1,4 @@
-study: realtime
+study: screening
 fleet_mode: fixed_reference
 prediction_horizon: 5
 control_horizon: 1
@@ -16,7 +16,7 @@ parallel_agents: false
 workers: 1
 trace_level: summary
 max_idle_wait: 0
-require_root_coverage: false
+require_root_coverage: true
 experiment_seed: 0
 scenario_seed: 0
 dynamicity: 0.5
@@ -25,11 +25,15 @@ reference_solver_multistarts: 3
 reference_improvement_passes: 1
 reference_seed: 0
 reference_label_limit: 24
-budget_mode: wall_clock
-outer_workers: 1
-execution_profile: isolated_sequential
+budget_mode: iterations
 instances: [c101_21, c201_21, r101_21, r201_21, rc101_21, rc201_21]
-grid:
-  dynamicity: [0.5]
-  scenario_seed: [0]
-  mcts_time_limit: [0.05, 0.10, 0.25, 0.50]
+# Stage 1: 6 instances x DoD [0,.5] x 3 algorithms, both seeds 0.
+# Stage 2: 6 instances x DoD [.25,.5,.75] x scenario seeds [0,1] x 3 algorithms.
+# Stage 1 coordinated gate: all 6 static complete, dynamic mean >=.98 and >=5 complete.
+# Stage 2 excludes unrealized DoD; all exclusions remain in the manifest.
+gate:
+  bootstrap_samples: 2000
+  bootstrap_seed: 0
+  min_improving_pairs: 2
+  min_improving_families: 2
+  max_p95_planning_seconds: 5.0

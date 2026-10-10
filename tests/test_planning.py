@@ -97,10 +97,10 @@ def proposal(*customers, cost=1):
     return MPCProposal(tuple(Action("serve", c) for c in customers), cost)
 
 
-def test_coordinator_conflicts_and_tail_intentions():
+def test_coordinator_protects_entire_executable_tail():
     wait = MPCProposal((Action("wait", wait_duration=1),), 10)
     selected = coordinate({0: (proposal("A", "B"), wait), 1: (proposal("A"), proposal("B", "A", cost=2), wait)}, available=frozenset({"A", "B"}))
-    assert {p.first.destination for p in selected.values()} == {"A", "B"}
+    assert {p.first.destination for p in selected.values()} == {"A", ""}
     assert selected[0].actions[1].destination == "B"
 
 

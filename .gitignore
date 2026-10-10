@@ -17,17 +17,19 @@ env/
 .DS_Store
 Thumbs.db
 
-# Local runtime outputs (research results are versioned)
+# Local runtime outputs
 outputs/
 logs/
 
-# Large transient experiment records; summaries and selected figures are tracked.
-results/raw/**/*.json
-results/traces/**/*.json
+# Generated research artifacts: retain only policy and directory placeholders.
+/results/**
+!/results/**/
+!/results/README.md
+!/results/**/.gitkeep
+
+# Retired scenario cache; new scenarios belong under results/.
+/data/generated_scenarios/**
+!/data/generated_scenarios/README.md
+
+# Interrupted writes
 *.json.tmp
-results/campaigns/**/raw/**/*.json
-results/campaigns/**/raw/**/*.json.gz
-results/campaigns/**/*.log
-results/campaigns/**/runner.lock
-results/campaigns/**/dependency_locks/
-results/campaigns/**/execution.jsonl

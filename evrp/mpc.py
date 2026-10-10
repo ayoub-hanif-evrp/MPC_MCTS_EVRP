@@ -28,6 +28,7 @@ class MPCConfig:
     time_limit: float = 0.5
     charging_mode: str = "partial"
     charge_fractions: tuple[float, ...] = (0.5, 0.75, 1.0)
+    proposal_selection: str = "quality"
 
     def __post_init__(self):
         if self.control_horizon != 1:
@@ -38,6 +39,8 @@ class MPCConfig:
                 raise ValueError("MPC integer budgets must be positive")
         if self.budget_mode not in {"iterations", "wall_clock"} or self.charging_mode not in {"full", "partial"}:
             raise ValueError("Unknown computation budget or charging mode")
+        if self.proposal_selection not in {"quality", "coverage_diverse"}:
+            raise ValueError("Unknown proposal selection mode")
         if not isfinite(self.uct_c) or self.uct_c < 0 or not isfinite(self.time_limit) or self.time_limit <= 0:
             raise ValueError("Invalid UCT coefficient or wall-clock budget")
         if not self.charge_fractions or any(not isfinite(v) or not 0 < v <= 1 for v in self.charge_fractions):
@@ -115,6 +118,9 @@ class SearchStatistics:
     root_actions_evaluated: int = 0
     minimum_root_visits: int = 0
     fraction_root_actions_evaluated: float = 1.0
+    deadline_policy: str = "none"
+    deadline_exceeded: bool = False
+    deadline_overrun_seconds: float = 0.0
 
 
 @dataclass(frozen=True)

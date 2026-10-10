@@ -15,6 +15,7 @@ test = ["pytest>=8"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["."]
+addopts = "--basetemp=results/.pytest_work"
 
 [project.scripts]
 evrp = "evrp.cli:main"

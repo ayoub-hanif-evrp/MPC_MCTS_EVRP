@@ -4,7 +4,6 @@ from collections import Counter
 from statistics import mean
 
 from .model import Action, InfeasibleAction, transition
-from .reserve import depot_template
 
 
 class ServiceDiagnostics:
@@ -23,8 +22,6 @@ class ServiceDiagnostics:
         direct_by_vehicle = {}
         vehicles = [v for k, v in state.vehicles.items() if k not in state.busy and not v.finished
                     and v.time >= state.time-1e-8]
-        if reserve_count:
-            vehicles.append(depot_template(observation))
         for vehicle in vehicles:
             direct = set()
             for customer in observation.customers:

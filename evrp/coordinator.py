@@ -11,8 +11,8 @@ from .mpc import MPCProposal, action_key
 
 def coordinate(candidates: dict[int, tuple[MPCProposal, ...]],
                committed: frozenset[str] = frozenset(), *,
-               available: frozenset[str], reserve_ids=frozenset(), reserve_count=0,
-               background_intents=frozenset(), exclusive_routes=False) -> dict[int, MPCProposal]:
+               available: frozenset[str], background_intents=frozenset(),
+               exclusive_routes=True) -> dict[int, MPCProposal]:
     if not candidates:
         return {}
     available = available - committed
@@ -41,17 +41,9 @@ def coordinate(candidates: dict[int, tuple[MPCProposal, ...]],
 
     for vehicle in sorted(candidates):
         constraint({j: 1 for j, (k, _) in enumerate(records) if k == vehicle}, 1, 1)
-    if reserve_ids:
-        constraint({j: 1 for j, (k, p) in enumerate(records)
-                    if k in reserve_ids and p.first.kind in {"serve", "charge"}}, 0, reserve_count)
     for offset, customer in enumerate(customer_ids):
         firsts = {j: 1 for j, (_, p) in enumerate(records) if p.first.kind == "serve" and p.first.destination == customer}
         constraint(firsts, 0, 1)
-        if reserve_ids:
-            anchors = {j: 1 for j, (k, p) in enumerate(records)
-                       if (k in reserve_ids and p.predicted_customer_sequence and p.predicted_customer_sequence[0] == customer)
-                       or (p.first.kind == "serve" and p.first.destination == customer)}
-            constraint(anchors, 0, 1)
         covering = [j for j, (_, p) in enumerate(records) if customer in p.unique_predicted_customer_set]
         if exclusive_routes:
             constraint({j: 1 for j in covering}, 0, int(customer not in background_intents))

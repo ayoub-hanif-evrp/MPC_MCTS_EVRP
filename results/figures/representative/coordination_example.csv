@@ -1,9 +1,0 @@
-epoch,time,vehicle,first_action,predicted_tail,service_coverage,distance,new_activation,selected
-0,0.0,0,"{'destination': 'C64', 'kind': 'serve', 'target_battery': 0.0, 'wait_duration': 0.0}",C64,1,43.08131845707603,True,False
-0,0.0,0,"{'destination': 'S15', 'kind': 'charge', 'target_battery': 58.3125, 'wait_duration': 0.0}",C64,1,55.41034132926275,True,False
-0,0.0,0,"{'destination': 'S15', 'kind': 'charge', 'target_battery': 58.54912467321779, 'wait_duration': 0.0}",C64,1,55.41034132926275,True,False
-0,0.0,0,"{'destination': '', 'kind': 'wait', 'target_battery': 0.0, 'wait_duration': 1236.0}",,0,0.0,False,True
-0,0.0,1,"{'destination': 'C64', 'kind': 'serve', 'target_battery': 0.0, 'wait_duration': 0.0}",C64,1,43.08131845707603,True,True
-0,0.0,1,"{'destination': 'S15', 'kind': 'charge', 'target_battery': 58.3125, 'wait_duration': 0.0}",C64,1,55.41034132926275,True,False
-0,0.0,1,"{'destination': 'S15', 'kind': 'charge', 'target_battery': 58.54912467321779, 'wait_duration': 0.0}",C64,1,55.41034132926275,True,False
-0,0.0,1,"{'destination': '', 'kind': 'wait', 'target_battery': 0.0, 'wait_duration': 1236.0}",,0,0.0,False,False

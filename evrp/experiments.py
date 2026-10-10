@@ -35,8 +35,10 @@ def simulation_config(config: dict) -> SimulationConfig:
                "charging_mode": "charging_mode", "charge_fractions": "charge_fractions",
                "station_candidate_limit": "station_candidate_limit", "charge_target_limit": "charge_target_limit",
                "action_space_reduction": "action_space_reduction", "cache_transitions": "cache_transitions",
-               "require_root_coverage": "require_root_coverage", "max_idle_wait": "max_idle_wait"}
+               "require_root_coverage": "require_root_coverage", "max_idle_wait": "max_idle_wait",
+               "proposal_selection": "proposal_selection"}
     kwargs = {target: config[source] for source, target in mapping.items() if source in config}
+    kwargs.setdefault("require_root_coverage", True)
     if "charge_fractions" in kwargs:
         kwargs["charge_fractions"] = tuple(kwargs["charge_fractions"])
     return SimulationConfig(algorithm=config.get("algorithm", "COORDINATED_MPC_MCTS"),
@@ -47,8 +49,16 @@ def simulation_config(config: dict) -> SimulationConfig:
                             symmetry_reuse=config.get("symmetry_reuse", False),
                             fleet_mode=config.get("fleet_mode", "fixed_reference"),
                             diagnostics=config.get("diagnostics", False),
-                            route_continuity=config.get("route_continuity", False),
-                            route_insertion=config.get("route_insertion", False))
+                            route_continuity=config.get("route_continuity", True),
+                            regret_repair=config.get("regret_repair", True))
+
+
+def results_path(path):
+    path = Path(path)
+    resolved = (path if path.is_absolute() else ROOT / path).resolve()
+    if not resolved.is_relative_to((ROOT / "results").resolve()):
+        raise ValueError("Research outputs must stay inside repository results/")
+    return resolved
 
 
 def source_fingerprint() -> str:
@@ -69,13 +79,19 @@ def prepare(instance_name: str, config: dict):
     if ref_path.exists():
         reference = ReferenceSchedule.load(ref_path, instance)
     else:
-        reference = solve_reference(instance, ref_config)
-        reference.save(ref_path)
+        ref_path = ROOT / "results" / "reference_schedules" / ref_path.name
+        if ref_path.exists():
+            reference = ReferenceSchedule.load(ref_path, instance)
+        else:
+            reference = solve_reference(instance, ref_config)
+            reference.save(ref_path)
+    if reference.config != ref_config:
+        raise ValueError("Cached reference configuration differs from requested solver settings")
     scenario_key = identifier(dict(instance=instance.sha256, reference=reference.identifier,
                                   seed=config.get("scenario_seed", 0), dynamicity=config.get("dynamicity", 0.5),
                                   selection=config.get("dynamic_selection_mode", "exact_count"),
                                   generator=SCENARIO_GENERATOR_VERSION, objective=OBJECTIVE_VERSION))[:20]
-    scenario_path = ROOT / "data" / "generated_scenarios" / f"{instance.name}_{scenario_key}.json"
+    scenario_path = ROOT / "results" / "scenarios" / f"{instance.name}_{scenario_key}.json"
     if config.get("scenario_path"):
         scenario = DynamicScenario.load(config["scenario_path"], instance)
         if scenario.reference_schedule_identifier != reference.identifier or scenario.fleet_size != reference.fleet_size:
@@ -137,13 +153,10 @@ def audit_result(result: ExperimentResult, instance, scenario) -> dict:
     from .reference import initial_vehicle
 
     releases = dict(scenario.customer_release_times)
-    lazy = result.effective_config.get("fleet_mode") == "lazy_reserve"
-    states = {} if lazy else {k: initial_vehicle(instance, k) for k in range(scenario.fleet_size)}
+    states = {k: initial_vehicle(instance, k) for k in range(scenario.fleet_size)}
     seen = set()
     for step in sorted(result.steps, key=lambda s: (s.before.time, s.before.id)):
-        if lazy and step.before.id not in states:
-            assert 0 <= step.before.id < len(instance.customers), "Reserve fleet bound exceeded"
-            states[step.before.id] = initial_vehicle(instance, step.before.id)
+        assert step.before.id in states, "Vehicle beyond fixed K_ref fleet"
         assert step.before == states[step.before.id], "Discontinuous vehicle trace"
         legal = tuple(c for c in instance.customers if releases[c.id] <= step.before.time and c.id not in seen)
         actual = transition(step.before, step.action, Observation(step.before.time, instance.infrastructure, legal))
@@ -209,8 +222,7 @@ def audit_result(result: ExperimentResult, instance, scenario) -> dict:
     assert metrics["customers_unserved"] == len(instance.customers) - len(seen)
     assert math.isclose(metrics["total_distance"], sum(s.distance for s in result.steps), abs_tol=1e-6)
     assert metrics["vehicles_activated"] == sum(s.departed for s in states.values())
-    if lazy:
-        assert all(s.departed for s in states.values()), "Unused reserve instantiated as physical EV"
+    assert metrics["vehicles_activated"] <= scenario.fleet_size, "Fixed fleet exceeded"
     assert math.isclose(metrics["service_ratio"], len(seen) / len(instance.customers), abs_tol=1e-9)
     assert sorted(result.unserved_customers) == sorted(c.id for c in instance.customers if c.id not in seen)
     assert metrics["total_charging_visits"] == sum(s.action.kind == "charge" for s in result.steps)
@@ -276,7 +288,7 @@ def run_single(instance_name: str, config: dict, output_dir: str | Path | None =
     instance_hash = sha256(benchmark.read_bytes()).hexdigest() if benchmark.exists() else None
     commit = git_commit()
     identity = run_identity(instance_name, instance_hash, None, config, code_hash, commit)
-    output_dir = Path(output_dir or f"results/raw/{identity['study']}")
+    output_dir = results_path(output_dir or f"results/raw/{identity['study']}")
     suffix = ".json.gz" if config.get("result_compression") == "gzip" else ".json"
     instance = scenario = None
     original = benchmark_hashes()
@@ -346,19 +358,3 @@ def grid_cases(config: dict, ablations: bool = False):
         yield instance, effective
 
 
-def run_grid(config: dict, output_dir=None, ablations: bool = False, execute=False):
-    if config.get("study") == "main":
-        raise RuntimeError("Main grid execution is disabled. Use evrp.cli paper with its calibration/runtime gate")
-    from .paper import estimate
-    estimation = estimate(config, output_dir)
-    print(json.dumps(estimation, indent=2), flush=True)
-    duration = estimation["estimated_sequential_seconds"]
-    if not execute and (duration is None or duration > config.get("confirmation_hours", 6)*3600):
-        raise RuntimeError("Unknown or long campaign runtime; explicit --execute is required")
-    if config.get("study") == "main":
-        from .validation import require_reference_validation
-        require_reference_validation()
-        if "STATIC_REFERENCE" in config.get("grid", {}).get("algorithm", []):
-            raise ValueError("STATIC_REFERENCE is not an online main-study competitor")
-    for instance, effective in grid_cases(config, ablations):
-        yield run_single(instance, effective, output_dir)

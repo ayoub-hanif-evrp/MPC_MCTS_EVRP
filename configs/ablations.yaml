@@ -1,32 +1,51 @@
-# One factor at a time; main benchmark handles repeated scenarios/seeds.
 study: ablations
-instances: [c101_21, c201_21, r101_21, r201_21, rc101_21, rc201_21]
+fleet_mode: fixed_reference
+prediction_horizon: 5
+control_horizon: 1
+mcts_iterations: 32
+top_L: 3
+candidate_limit: 12
+station_candidate_limit: 4
+charge_target_limit: 5
+charging_mode: partial
+route_continuity: true
+regret_repair: true
+proposal_selection: quality
+dynamic_selection_mode: exact_count
+parallel_agents: false
+workers: 1
+trace_level: summary
+max_idle_wait: 0
+require_root_coverage: true
 experiment_seed: 0
 scenario_seed: 0
 dynamicity: 0.5
-dynamic_selection_mode: exact_count
 algorithm: COORDINATED_MPC_MCTS
-prediction_horizon: 5
-control_horizon: 1
-candidate_limit: 12
-top_L: 3
-uct_c: 1.4
-mcts_iterations: 16
-station_candidate_limit: 4
-charge_target_limit: 5
-trace_level: summary
-symmetry_reuse: false
-mcts_time_limit: 0.5
-budget_mode: iterations
-charging_mode: partial
-parallel_agents: false
-workers: 2
 reference_solver_multistarts: 3
 reference_improvement_passes: 1
 reference_seed: 0
-ablations:
-  prediction_horizon: [1, 3, 5]
-  top_L: [1, 3, 5]
-  mcts_iterations: [8, 16, 32, 64]
-  charging_mode: [full, partial]
-  algorithm: [INDEPENDENT_MPC_MCTS, COORDINATED_MPC_MCTS]
+reference_label_limit: 24
+budget_mode: iterations
+instances: [c101_21, c201_21, r101_21, r201_21, rc101_21, rc201_21]
+grid:
+  dynamicity: [0.5]
+  scenario_seed: [0, 1]
+# One factor at a time, sharing the same baseline and matched scenarios.
+variants:
+  - name: baseline
+  - name: independent
+    algorithm: INDEPENDENT_MPC_MCTS
+  - name: continuity_off
+    route_continuity: false
+  - name: regret_off
+    regret_repair: false
+  - name: horizon_1
+    prediction_horizon: 1
+  - name: horizon_3
+    prediction_horizon: 3
+  - name: top_L_1
+    top_L: 1
+  - name: top_L_5
+    top_L: 5
+  - name: coverage_diverse
+    proposal_selection: coverage_diverse

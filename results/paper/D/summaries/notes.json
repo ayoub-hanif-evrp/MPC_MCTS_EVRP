@@ -1,9 +1,0 @@
-{
-  "failed_runs": 0,
-  "incomplete_runs": 84,
-  "interpretation": "Service first. Distance conditional on complete service; paired distance requires equal service and vehicle counts. Vehicle marginals are descriptive, not rankings. No significance claims.",
-  "latency": "p95_planning_time summaries average within-run decision-latency p95; not a pooled percentile.",
-  "replication": "Algorithm seeds averaged within instance/scenario; descriptive Student-t 95% CI across scenarios. CI undefined for n<2. Scenarios of the same instance may still be correlated.",
-  "runs": 84,
-  "structural_failures": 0
-}

@@ -1,4 +1,0 @@
-first,second,metric,difference,matched_pairs,unmatched_records,ambiguous_records,n,mean,median,standard_deviation,ci95_low,ci95_high
-COORDINATED_MPC_MCTS,GREEDY,total_distance,first-minus-second,0,7,0,0,,,,,
-COORDINATED_MPC_MCTS,GREEDY,service_ratio,first-minus-second,0,7,0,0,,,,,
-COORDINATED_MPC_MCTS,GREEDY,total_planning_time,first-minus-second,0,7,0,0,,,,,

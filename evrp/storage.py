@@ -15,6 +15,11 @@ def writable_path(path: str | Path) -> Path:
     path = Path(path)
     if path.resolve().is_relative_to(BENCHMARK.resolve()):
         raise ValueError("Original benchmark files are read-only")
+    resolved = (path if path.is_absolute() else ROOT / path).resolve()
+    allowed = (ROOT / "results").resolve()
+    if not allowed.is_relative_to(ROOT.resolve()) or not resolved.is_relative_to(allowed):
+        raise ValueError("Generated research files must stay inside repository results/")
+    path = resolved
     path.parent.mkdir(parents=True, exist_ok=True)
     return path
 
