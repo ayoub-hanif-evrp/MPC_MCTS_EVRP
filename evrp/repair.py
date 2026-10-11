@@ -237,3 +237,53 @@ def regret_repair(origins: dict[int, VehicleState], routes: dict[int, tuple[Acti
                             feasible_options=count, remaining_tw_slack=best.slack,
                             new_activation=best.new_activation))
     return updated, records
+
+
+def compact_unused_routes(origins: dict[int, VehicleState], routes: dict[int, tuple[Action, ...]],
+                          observation: Observation, config: MPCConfig
+                          ) -> tuple[dict[int, tuple[Action, ...]], list[dict]]:
+    """One deterministic service-preserving pass moving unused-EV routes to active EVs."""
+    updated = {k: tuple(routes.get(k, ())) for k in sorted(origins)}
+    transfers = []
+    for source in sorted(updated):
+        if origins[source].departed or not updated[source]:
+            continue
+        customers = tuple(a.destination for a in updated[source] if a.kind == "serve")
+        trial = updated.copy()
+        moved = []
+        for customer in customers:
+            options = []
+            for target in sorted(trial):
+                if target == source or not origins[target].departed:
+                    continue
+                sequence = tuple(a.destination for a in trial[target] if a.kind == "serve")
+                if trial[target]:
+                    current = route_proposal(origins[target], trial[target], observation, config)
+                    if current is None:
+                        continue
+                    baseline = current.cost
+                else:
+                    problem = MPCPlanningProblem(observation, origins[target], config)
+                    baseline = problem.terminal_cost(problem.initial)
+                if not isfinite(baseline):
+                    continue
+                for position in range(len(sequence) + 1):
+                    actions = build_route(origins[target], sequence[:position] + (customer,) + sequence[position:],
+                                          observation, config)
+                    if actions is None:
+                        continue
+                    proposal = route_proposal(origins[target], actions, observation, config)
+                    if proposal is not None:
+                        options.append((proposal.cost - baseline, target, position, actions))
+            if not options:
+                break
+            _, target, position, actions = min(options, key=lambda row: (row[0], row[1], row[2],
+                                                                         tuple(action_key(a) for a in row[3])))
+            trial[target] = actions
+            moved.append((customer, target))
+        if len(moved) == len(customers):
+            trial[source] = ()
+            updated = trial
+            transfers.append(dict(from_vehicle=source, customers=list(customers),
+                                  to_vehicles={customer: target for customer, target in moved}))
+    return updated, transfers

@@ -1,0 +1,2 @@
+study,ablation_factor,first,second,metric,difference,condition,matched_pairs,eligible_pairs,unmatched_records,ambiguous_records,n,mean,median,standard_deviation,ci95_low,ci95_high
+screening_stage1,baseline,COORDINATED_MPC_MCTS,INDEPENDENT_MPC_MCTS,total_distance,first-minus-second,equal service count and vehicle count,12,2,0,0,2,32.90092319450264,32.90092319450264,159.25450404952034,-1397.9440265708186,1463.7458729598238

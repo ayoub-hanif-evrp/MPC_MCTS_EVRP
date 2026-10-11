@@ -1,0 +1,2 @@
+study,ablation_factor,first,second,metric,difference,condition,matched_pairs,eligible_pairs,unmatched_records,ambiguous_records,n,mean,median,standard_deviation,ci95_low,ci95_high
+screening_stage1,baseline,COORDINATED_MPC_MCTS,INDEPENDENT_MPC_MCTS,customers_unserved,first-minus-second,all matched service outcomes,12,12,0,0,12,2.25,0.5,9.166391180433402,-3.5740470982623043,8.074047098262305

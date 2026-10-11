@@ -1,0 +1,87 @@
+{
+  "binding": {
+    "benchmarks": {
+      "c101_21": "c5cda6ca63a7d518902cf4b02d98b4aa0f373aaa0658d5c666d1c46d38871cb9",
+      "c201_21": "cc755a6ec3edab8c320bf901f0c3bd34cea80123cf831b0059ea01c13c96bf1d",
+      "r101_21": "0e5a3dffffbd3c516b528ef32ba1a488b817d2f151fc3e8c81023814de1c103a",
+      "r201_21": "777cdc28fef020cd4df5ada1700f1a95d97eee53d26f5b26958b67cfd8cc51f2",
+      "rc101_21": "272a3e58d53d4ba9516f01506164cf8a9b98bfeeb8dbd1fd62f6557e4c98e3a1",
+      "rc201_21": "05de9a222789707ffcce07b31776e71b0ca87b7f72f5c0d115af11e39f2a2841"
+    },
+    "config": {
+      "algorithm": "COORDINATED_MPC_MCTS",
+      "budget_mode": "iterations",
+      "candidate_limit": 12,
+      "charge_target_limit": 5,
+      "charging_mode": "partial",
+      "control_horizon": 1,
+      "dynamic_selection_mode": "exact_count",
+      "dynamicity": 0.5,
+      "experiment_seed": 0,
+      "fleet_mode": "fixed_reference",
+      "gate": {
+        "bootstrap_samples": 2000,
+        "bootstrap_seed": 0,
+        "max_p95_planning_seconds": 5.0,
+        "min_improving_families": 2,
+        "min_improving_pairs": 2
+      },
+      "instances": [
+        "c101_21",
+        "c201_21",
+        "r101_21",
+        "r201_21",
+        "rc101_21",
+        "rc201_21"
+      ],
+      "max_idle_wait": 0,
+      "mcts_iterations": 32,
+      "parallel_agents": false,
+      "prediction_horizon": 5,
+      "proposal_selection": "quality",
+      "reference_improvement_passes": 1,
+      "reference_label_limit": 24,
+      "reference_seed": 0,
+      "reference_solver_multistarts": 3,
+      "regret_repair": true,
+      "require_root_coverage": true,
+      "route_continuity": true,
+      "scenario_seed": 0,
+      "station_candidate_limit": 4,
+      "study": "screening",
+      "top_L": 3,
+      "trace_level": "summary",
+      "workers": 1
+    },
+    "config_sha256": "62a7cb859703d4b292887dbb4950214ddd59165af274d8a246e323f975c784d2",
+    "source_sha256": "90c957c01fac4d8ab091f5a7f83e22cd7eadeca87611f577944010b885ae07d1"
+  },
+  "ineligible": [],
+  "stage1": {
+    "algorithms": {
+      "COORDINATED_MPC_MCTS": {
+        "dynamic_complete": 0,
+        "dynamic_mean_service": 0.8283333333333334,
+        "static_complete": 1
+      },
+      "INDEPENDENT_MPC_MCTS": {
+        "dynamic_complete": 0,
+        "dynamic_mean_service": 0.8566666666666667,
+        "static_complete": 1
+      },
+      "RH_REGRET": {
+        "dynamic_complete": 0,
+        "dynamic_mean_service": 0.85,
+        "static_complete": 2
+      }
+    },
+    "reasons": [
+      "Coordinated dynamic mean service is below 98%",
+      "Coordinated dynamic service must be complete on at least five instances",
+      "Coordinated static service must be complete on all six instances"
+    ],
+    "status": "FAIL"
+  },
+  "stage1_manifest_sha256": "41567273e850a8a27fedeead48135dd1cece79307dc6c223ad71221f2d3145af",
+  "status": "FAIL"
+}

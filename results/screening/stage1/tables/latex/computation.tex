@@ -1,0 +1,18 @@
+\begin{sidewaystable}
+\centering
+\scriptsize
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrlllllrrrr}
+\toprule
+study & DoD\_target & Customers & algorithm & Latency mean & mean\_run\_median\_planning\_time & Latency p95 mean & Latency max & mean\_deadline\_overrun\_rate & Nodes mean & Iterations mean & Runs \\
+\midrule
+screening\_stage1 & 0.000 & 100 & COORDINATED\_MPC\_MCTS & 2.24 s & 1.65 s & 4.04 s & 126.10 s & -- & 4925.833 & 8269.500 & 6 \\
+screening\_stage1 & 0.500 & 100 & COORDINATED\_MPC\_MCTS & 965.6 ms & 909.5 ms & 1.82 s & 24.06 s & -- & 5810.333 & 9731.833 & 6 \\
+screening\_stage1 & 0.000 & 100 & INDEPENDENT\_MPC\_MCTS & 1.85 s & 1.11 s & 3.38 s & 130.52 s & -- & 5384.667 & 9406.500 & 6 \\
+screening\_stage1 & 0.500 & 100 & INDEPENDENT\_MPC\_MCTS & 758.0 ms & 579.7 ms & 1.64 s & 18.95 s & -- & 5699.333 & 9779.167 & 6 \\
+screening\_stage1 & 0.000 & 100 & RH\_REGRET & 1.03 s & 469.6 ms & 1.38 s & 134.57 s & -- & 0.000 & 0.000 & 6 \\
+screening\_stage1 & 0.500 & 100 & RH\_REGRET & 771.1 ms & 604.3 ms & 1.52 s & 37.12 s & -- & 0.000 & 0.000 & 6 \\
+\bottomrule
+\end{tabular}
+}
+\end{sidewaystable}

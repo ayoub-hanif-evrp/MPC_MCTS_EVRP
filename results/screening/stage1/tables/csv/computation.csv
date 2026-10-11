@@ -1,0 +1,7 @@
+study,DoD_target,number_of_customers,algorithm,mean_planning_time,mean_run_median_planning_time,p95_planning_time,maximum_planning_time,mean_deadline_overrun_rate,mean_nodes_expanded,mean_iterations,number_of_runs
+screening_stage1,0.0,100,COORDINATED_MPC_MCTS,2.241607,1.646164,4.040132,126.099573,,4925.833,8269.5,6
+screening_stage1,0.5,100,COORDINATED_MPC_MCTS,0.965565,0.909486,1.821308,24.062107,,5810.333,9731.833,6
+screening_stage1,0.0,100,INDEPENDENT_MPC_MCTS,1.848959,1.108369,3.378669,130.520938,,5384.667,9406.5,6
+screening_stage1,0.5,100,INDEPENDENT_MPC_MCTS,0.758018,0.579721,1.640328,18.945373,,5699.333,9779.167,6
+screening_stage1,0.0,100,RH_REGRET,1.030396,0.469551,1.37899,134.573458,,0.0,0.0,6
+screening_stage1,0.5,100,RH_REGRET,0.771103,0.604257,1.51779,37.115193,,0.0,0.0,6

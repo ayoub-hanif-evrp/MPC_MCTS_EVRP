@@ -1,0 +1,18 @@
+\begin{sidewaystable}
+\centering
+\scriptsize
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrlrrrrrrllr}
+\toprule
+study & DoD\_target & algorithm & Full service & Service mean & Unserved median & EV mean & D mean (complete) & D median (complete) & Latency mean & Latency p95 mean & Runs \\
+\midrule
+screening\_stage1 & 0.000 & COORDINATED\_MPC\_MCTS & 0.167 & 0.828 & 16.000 & 11.330 & 2595.880 & 2595.880 & 2.24 s & 4.04 s & 6 \\
+screening\_stage1 & 0.500 & COORDINATED\_MPC\_MCTS & 0.000 & 0.828 & 20.000 & 11.330 & -- & -- & 965.6 ms & 1.82 s & 6 \\
+screening\_stage1 & 0.000 & INDEPENDENT\_MPC\_MCTS & 0.167 & 0.845 & 15.000 & 11.330 & 2450.370 & 2450.370 & 1.85 s & 3.38 s & 6 \\
+screening\_stage1 & 0.500 & INDEPENDENT\_MPC\_MCTS & 0.000 & 0.857 & 16.500 & 11.330 & -- & -- & 758.0 ms & 1.64 s & 6 \\
+screening\_stage1 & 0.000 & RH\_REGRET & 0.333 & 0.910 & 7.500 & 11.170 & 1757.620 & 1757.620 & 1.03 s & 1.38 s & 6 \\
+screening\_stage1 & 0.500 & RH\_REGRET & 0.000 & 0.850 & 15.000 & 11.330 & -- & -- & 771.1 ms & 1.52 s & 6 \\
+\bottomrule
+\end{tabular}
+}
+\end{sidewaystable}

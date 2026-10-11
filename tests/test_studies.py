@@ -87,13 +87,13 @@ def screen_config():
 
 def test_exact_configs_and_defaults():
     assert {p.stem for p in (REPO / "configs").glob("*.yaml")} == {
-        "debug", "validation", "smoke", "screening", "main", "ablations", "realtime"}
+        "debug", "validation", "smoke", "screening", "final", "main", "ablations", "realtime"}
     for path in (REPO / "configs").glob("*.yaml"):
         config = load_config(path)
         assert config["fleet_mode"] == "fixed_reference"
         assert config["route_continuity"] is True
         assert config["regret_repair"] is True
-        assert config["proposal_selection"] == "quality"
+        assert config["proposal_selection"] == ("coverage_diverse" if path.stem == "final" else "quality")
         assert config["max_idle_wait"] == 0
 
 
@@ -107,6 +107,18 @@ def test_prescribed_plans_have_36_and_108_runs():
             assert (effective["mcts_iterations"], effective["prediction_horizon"], effective["top_L"]) == (32, 5, 3)
             assert effective["experiment_seed"] == 0
     assert {c["scenario_seed"] for _, c in studies.plan_study("stage2", config)} == {0, 1}
+
+
+def test_final_track_uses_disjoint_frozen_development_and_holdout_grids():
+    config = load_config(REPO / "configs/final.yaml")
+    counts = {study: len(studies.plan_study(study, config))
+              for study in ("development", "holdout", "holdout_static")}
+    assert counts == {"development": 36, "holdout": 162, "holdout_static": 18}
+    assert set(config["instances"]).isdisjoint(config["holdout_instances"])
+    assert {c["mcts_iterations"] for study in counts for _, c in studies.plan_study(study, config)} == {48}
+    assert {c["proposal_selection"] for study in counts for _, c in studies.plan_study(study, config)} == {"coverage_diverse"}
+    with pytest.raises(ValueError, match="fresh development PASS"):
+        studies.run_final_holdout(config, execute=True)
 
 
 @pytest.mark.parametrize("changes", [{"mcts_iterations": 64}, {"fleet_mode": "lazy_reserve"},

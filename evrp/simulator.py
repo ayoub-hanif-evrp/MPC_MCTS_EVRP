@@ -8,7 +8,7 @@ import numpy as np
 
 from .agent import EVAgent, agent_seed
 from .baselines import greedy_plan, independent_selection
-from .continuity import (assert_unique_routes, preserve_continuation, reserved_customers,
+from .continuity import (assert_unique_routes, with_soft_incumbent, reserved_customers,
                          route_observation, service_prefix, service_tail)
 from .coordinator import coordinate
 from .instance import Instance
@@ -122,13 +122,13 @@ class EventDrivenSimulator:
         self.agents = {k: EVAgent(k, self.config.mpc) for k in self.state.vehicles}
 
     def run(self):
-        from .repair import regret_repair, route_proposal
+        from .repair import compact_unused_routes, regret_repair, route_proposal
         from .diagnostics import ServiceDiagnostics
         state, instance, config = self.state, self.instance, self.config
         events, steps, decisions, searches, timings = [], [], [], [], []
         tails, coverages, local_times = {}, [], []
         epochs = replans = conflicts = resolved = waits = simulations = expanded = reused = 0
-        new_activations = inserted_requests = 0
+        new_activations = inserted_requests = compacted_vehicles = 0
         repair_seconds = 0.
         diagnostic = ServiceDiagnostics(instance, self.scenario) if config.diagnostics else None
         pool = ProcessPoolExecutor(max_workers=config.workers) if config.parallel_agents else None
@@ -164,12 +164,12 @@ class EventDrivenSimulator:
                                if not (state.busy[k].after if k in state.busy else v).finished}
                     if config.route_continuity:
                         assert_unique_routes(tails)
-                        for k, actions in tails.items():
-                            if actions:
-                                if route_proposal(origins[k], actions, observation, config.mpc) is None:
-                                    raise RuntimeError("Retained route became infeasible")
-                    background = reserved_customers({k: a for k, a in tails.items() if k not in ready})
-                    jobs = [(self.agents[k], state.vehicles[k], route_observation(observation, tails, k),
+                    frozen = {k: a for k, a in tails.items() if k not in ready and a}
+                    for k, actions in frozen.items():
+                        if route_proposal(origins[k], actions, observation, config.mpc) is None:
+                            raise RuntimeError("Busy route became infeasible")
+                    background = reserved_customers(frozen)
+                    jobs = [(self.agents[k], state.vehicles[k], route_observation(observation, frozen, k),
                              agent_seed(config.experiment_seed, self.scenario.scenario_seed, epochs, k),
                              config.algorithm) for k in ready]
                     results, cache = [], {}
@@ -187,8 +187,11 @@ class EventDrivenSimulator:
                                 if key is not None:
                                     cache[key] = result
                         results.append(result)
-                    plans = {k: preserve_continuation(r, state.vehicles[k], job[2], config.mpc, tails.get(k, ()))
+                    plans = {k: with_soft_incumbent(r, state.vehicles[k], job[2], config.mpc,
+                                                    tails.get(k, ()) if config.route_continuity else ())
                              for k, r, job in zip(ready, results, jobs)}
+                    candidate_coverage = background | set().union(*(set(p.unique_predicted_customer_set)
+                                         for r in plans.values() for p in r.candidates))
                     firsts = [p.proposals[0].first.destination for p in plans.values()
                               if p.proposals and p.proposals[0].first.kind == "serve"]
                     duplicates = len(firsts)-len(set(firsts))
@@ -202,21 +205,32 @@ class EventDrivenSimulator:
                                               available=frozenset(c.id for c in observation.customers),
                                               background_intents=background, exclusive_routes=True)
                         resolved += duplicates
-                    routes = {k: a for k, a in tails.items() if k not in ready and a}
+                    routes = dict(frozen)
                     routes.update({k: service_prefix(p.actions) for k, p in selected.items()})
+                    coordinated_coverage = reserved_customers(routes)
+                    vehicles_before_repair = sum(origins[k].departed or bool(routes.get(k)) for k in origins)
+                    distance_before_repair = sum(p.total_predicted_distance for k, a in routes.items() if a
+                                                 for p in (route_proposal(origins[k], a, observation, config.mpc),)
+                                                 if p is not None)
                     insertions = []
+                    compactions = []
                     if config.regret_repair:
                         repair_start = perf_counter()
                         eligible = origins if config.route_continuity else {k: origins[k] for k in ready}
                         routes, insertions = regret_repair(eligible, routes, observation, config.mpc)
+                        routes, compactions = compact_unused_routes(eligible, routes, observation, config.mpc)
                         repair_seconds += perf_counter()-repair_start
                         inserted_requests += len(insertions)
+                        compacted_vehicles += len(compactions)
                     # One final reconciliation; never cycle repair and coordination.
                     assert_unique_routes(routes)
                     validated = {k: route_proposal(origins[k], a, observation, config.mpc)
                                  for k, a in routes.items() if a}
                     if any(p is None for p in validated.values()):
                         raise RuntimeError("Repair failed final route reconciliation")
+                    final_coverage = reserved_customers(routes)
+                    distance_after_repair = sum(p.total_predicted_distance for p in validated.values())
+                    vehicles_after_compaction = sum(origins[k].departed or bool(routes.get(k)) for k in origins)
                     selected = {k: validated.get(k) or idle_proposal(state.vehicles[k], observation, config.mpc)
                                 for k in ready}
                     tails = {k: a for k, a in routes.items() if k not in ready and a} if config.route_continuity else {}
@@ -235,6 +249,18 @@ class EventDrivenSimulator:
                                     committed_before=dict(observation.committed_customers),
                                     candidate_intents=candidate_intents, background_intents=sorted(background),
                                     unique_intention_coverage=sorted(coverage), route_insertions=insertions,
+                                    route_compactions=compactions,
+                                    route_owners_after_repair={a.destination: k for k, actions in routes.items()
+                                                               for a in actions if a.kind == "serve"},
+                                    customers_available=len(observation.customers),
+                                    coverage_before_coordination=len(candidate_coverage),
+                                    coverage_after_coordination=len(coordinated_coverage),
+                                    uncovered_before_repair=len(set(c.id for c in observation.customers) - coordinated_coverage),
+                                    repair_insertions=len(insertions), coverage_after_repair=len(final_coverage),
+                                    vehicles_before_repair=vehicles_before_repair,
+                                    vehicles_after_compaction=vehicles_after_compaction,
+                                    distance_before_repair=distance_before_repair,
+                                    distance_after_repair=distance_after_repair,
                                     selected_firsts=[p.first.destination for p in selected.values() if p.first.kind == "serve"],
                                     plans={str(k): asdict(p) for k, p in selected.items()} if config.trace_level != "none" else {})
                     if config.trace_level == "full":
@@ -305,7 +331,8 @@ class EventDrivenSimulator:
                        vehicle_activations_caused_by_coordinator=new_activations if config.algorithm in {"COORDINATED_MPC_MCTS", "MPC_MCTS_H1"} else 0,
                        duplicate_service_violations=0, hidden_information_violations=0,
                        symmetry_reused_replans=reused, mcts_iterations=simulations, nodes_expanded=expanded,
-                       route_insertions=inserted_requests, repair_seconds=repair_seconds,
+                       route_insertions=inserted_requests, route_compactions=compacted_vehicles,
+                       repair_seconds=repair_seconds,
                        deadline_overrun_rate=float(np.mean(np.array(local_times) > config.mpc.time_limit))
                        if local_times and config.mpc.budget_mode == "wall_clock" else None)
         for name, fn in [("mean", np.mean), ("median", np.median), ("p95", lambda x: np.percentile(x, 95)), ("maximum", np.max), ("total", np.sum)]:

@@ -15,9 +15,9 @@ from .storage import ROOT, load_json
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
-    for command in ("validate", "smoke", "run", "screening", "main", "ablations", "realtime"):
+    for command in ("validate", "smoke", "run", "screening", "development", "final", "main", "ablations", "realtime"):
         item = sub.add_parser(command)
-        item.add_argument("--config", default=str(ROOT / "configs" / f"{'debug' if command == 'run' else 'validation' if command == 'validate' else command}.yaml"))
+        item.add_argument("--config", default=str(ROOT / "configs" / f"{'debug' if command == 'run' else 'validation' if command == 'validate' else 'final' if command in {'development', 'final'} else command}.yaml"))
         item.add_argument("--output", default=f"results/{command}")
         if command == "run":
             item.add_argument("--instance", required=True)
@@ -28,6 +28,9 @@ def main(argv=None):
             item.add_argument("--scenario")
         if command == "screening":
             item.add_argument("--stage", choices=("1", "2", "all"), default="all")
+        if command == "final":
+            item.add_argument("--execute", action="store_true")
+            item.add_argument("--development", default="results/development")
         if command in studies.GATED_STUDIES:
             item.add_argument("--execute", action="store_true")
             item.add_argument("--screening", default="results/screening")
@@ -83,6 +86,10 @@ def main(argv=None):
                           "metrics": record["metrics"], "error": record.get("error")}
             elif args.command == "screening":
                 result = studies.run_screening(config, output, stage=args.stage)
+            elif args.command == "development":
+                result = studies.run_final_development(config, output)
+            elif args.command == "final":
+                result = studies.run_final_holdout(config, output, execute=args.execute, development=args.development)
             else:
                 result = studies.run_study(args.command, config, output,
                     execute=args.command == "smoke" or args.execute,

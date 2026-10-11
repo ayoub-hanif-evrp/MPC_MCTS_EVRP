@@ -1,0 +1,28 @@
+\begin{sidewaystable}
+\centering
+\scriptsize
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lllllrrrrrrrrrr}
+\toprule
+study & first & second & metric & condition & matched\_pairs & eligible\_pairs & n & mean & median & standard\_deviation & ci95\_low & ci95\_high & ambiguous\_records & unmatched\_records \\
+\midrule
+screening\_stage1 & COORDINATED\_MPC\_MCTS & GREEDY & customers\_unserved & all matched service outcomes & 0 & 0 & 0 & -- & -- & -- & -- & -- & 0 & 12 \\
+screening\_stage1 & COORDINATED\_MPC\_MCTS & GREEDY & vehicles\_activated & equal service count & 0 & 0 & 0 & -- & -- & -- & -- & -- & 0 & 12 \\
+screening\_stage1 & COORDINATED\_MPC\_MCTS & GREEDY & total\_distance & equal service count and vehicle count & 0 & 0 & 0 & -- & -- & -- & -- & -- & 0 & 12 \\
+screening\_stage1 & COORDINATED\_MPC\_MCTS & GREEDY & total\_planning\_time & matched execution profile; concurrent timings are not isolated latency & 0 & 0 & 0 & -- & -- & -- & -- & -- & 0 & 12 \\
+screening\_stage1 & COORDINATED\_MPC\_MCTS & RH\_REGRET & customers\_unserved & all matched service outcomes & 12 & 12 & 12 & 5.167 & 2.500 & 13.354 & -3.318 & 13.651 & 0 & 0 \\
+screening\_stage1 & COORDINATED\_MPC\_MCTS & RH\_REGRET & vehicles\_activated & equal service count & 12 & 1 & 1 & 1.000 & 1.000 & -- & -- & -- & 0 & 0 \\
+screening\_stage1 & COORDINATED\_MPC\_MCTS & RH\_REGRET & total\_distance & equal service count and vehicle count & 12 & 0 & 0 & -- & -- & -- & -- & -- & 0 & 0 \\
+screening\_stage1 & COORDINATED\_MPC\_MCTS & RH\_REGRET & total\_planning\_time & matched execution profile; concurrent timings are not isolated latency & 12 & 12 & 12 & 65.057 & 26.693 & 157.458 & -34.988 & 165.101 & 0 & 0 \\
+screening\_stage1 & COORDINATED\_MPC\_MCTS & MPC\_MCTS\_H1 & customers\_unserved & all matched service outcomes & 0 & 0 & 0 & -- & -- & -- & -- & -- & 0 & 12 \\
+screening\_stage1 & COORDINATED\_MPC\_MCTS & MPC\_MCTS\_H1 & vehicles\_activated & equal service count & 0 & 0 & 0 & -- & -- & -- & -- & -- & 0 & 12 \\
+screening\_stage1 & COORDINATED\_MPC\_MCTS & MPC\_MCTS\_H1 & total\_distance & equal service count and vehicle count & 0 & 0 & 0 & -- & -- & -- & -- & -- & 0 & 12 \\
+screening\_stage1 & COORDINATED\_MPC\_MCTS & MPC\_MCTS\_H1 & total\_planning\_time & matched execution profile; concurrent timings are not isolated latency & 0 & 0 & 0 & -- & -- & -- & -- & -- & 0 & 12 \\
+screening\_stage1 & COORDINATED\_MPC\_MCTS & INDEPENDENT\_MPC\_MCTS & customers\_unserved & all matched service outcomes & 12 & 12 & 12 & 2.250 & 0.500 & 9.166 & -3.574 & 8.074 & 0 & 0 \\
+screening\_stage1 & COORDINATED\_MPC\_MCTS & INDEPENDENT\_MPC\_MCTS & vehicles\_activated & equal service count & 12 & 2 & 2 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0 & 0 \\
+screening\_stage1 & COORDINATED\_MPC\_MCTS & INDEPENDENT\_MPC\_MCTS & total\_distance & equal service count and vehicle count & 12 & 2 & 2 & 32.901 & 32.901 & 159.255 & -1397.944 & 1463.746 & 0 & 0 \\
+screening\_stage1 & COORDINATED\_MPC\_MCTS & INDEPENDENT\_MPC\_MCTS & total\_planning\_time & matched execution profile; concurrent timings are not isolated latency & 12 & 12 & 12 & 23.317 & -4.117 & 110.185 & -46.691 & 93.326 & 0 & 0 \\
+\bottomrule
+\end{tabular}
+}
+\end{sidewaystable}

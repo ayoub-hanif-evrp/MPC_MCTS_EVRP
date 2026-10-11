@@ -1,135 +1,72 @@
 # Experiment Protocol
 
-Status: implementation and screening. These are intended studies, not assertions
-that they have run. Freeze configurations and seeds before inspecting outcomes.
-Do not enlarge fleets/budgets, remove difficult cases, select favorable seeds, or
-change objectives to favor a method.
+Status: final-track development. The earlier 32-iteration screen failed and is
+preserved under `results/screening/`. It is not final-paper evidence.
 
-## Common Configuration
+## Frozen Development Configuration
 
-```yaml
-fleet_mode: fixed_reference
-prediction_horizon: 5
-control_horizon: 1
-mcts_iterations: 32
-top_L: 3
-candidate_limit: 12
-station_candidate_limit: 4
-charge_target_limit: 5
-charging_mode: partial
-route_continuity: true
-regret_repair: true
-proposal_selection: quality
-dynamic_selection_mode: exact_count
-parallel_agents: false
-trace_level: summary
-```
+`configs/final.yaml` declares the six development instances, six disjoint
+holdout instances, physical fleet mode, common algorithm settings, and gate
+thresholds. The three final methods share the same physics, scenario, fleet size,
+release boundary, and deterministic seeds. MPC-MCTS methods both use Hp5, Hc1,
+48 iterations, customer limit 16, top-L 5, partial charging, and parameter-free
+coverage-diverse proposals. Root coverage is disabled so 48 is a strict
+iteration budget. Regret repair and one service-preserving fleet-compaction pass
+follow selection. No full ALNS, fleet expansion, or future information is used.
 
-Share `K_ref`, physics, information boundaries, and saved scenarios across methods.
-Record scenario and algorithm seeds separately. Report target and realized DoD,
-mark unattainable target counts ineligible, and disclose missing conditions.
+## Development
 
-## Validation and Smoke
+Run exactly `c101_21`, `c201_21`, `r101_21`, `r201_21`, `rc101_21`,
+`rc201_21` at target DoD 0 and 0.5, scenario and algorithm seeds 0, and the
+three comparison methods: 36 planned conditions. Generate each scenario once
+and share it across methods. Audit all completed records and disclose
+unrealized target DoD. Save manifests, raw records, and `GATE.md` under
+`results/development/`.
 
-Run physics, information-boundary, fixed-fleet, ownership, regret-ordering, local
-horizon, MILP-versus-enumeration, and seeded-execution checks. Validate references
-against the repository's Schneider validation metadata. Report current pass/fail
-evidence rather than repeating historical validation claims.
+The gate is fixed before execution: coordinated static service 6/6 complete,
+dynamic mean service at least 98%, dynamic at least 5/6 complete, all target
+DoDs realized, physically valid traces, and every coordinated run's event
+planning p95 at most five seconds. A failed gate blocks the holdout.
 
-Smoke checks cover small C, R, and RC examples, static/dynamic releases, unique
-service, safe return, and feasible retained routes before screening.
+If development fails, inspect the recorded reason and allow at most one
+targeted correction. Candidate pruning can justify raising the limit to at
+most 20; weak search selection can justify raising iterations to at most 64;
+a charging failure can justify a charging-construction fix; remaining locking
+can justify a flexible-suffix fix. Do not select favorable seeds, instances,
+fleet sizes, or objective changes. Any correction changes source identity
+and requires a fresh complete development run.
 
-## Stage 1: Feasibility
+## Holdout
 
-Use exactly these six 100-customer instances:
+Only after a verified development PASS, freeze source and configuration and
+run `c109_21`, `c208_21`, `r112_21`, `r211_21`, `rc108_21`,
+`rc208_21` at target DoD .25/.50/.75, scenario seeds 0/1/2, algorithm seed
+0, and the same three methods: 162 planned dynamic conditions. Exclude and
+report only conditions whose requested DoD cannot be realized; do not
+substitute a favorable seed. Run the same six instances statically at seed 0
+for 18 sanity conditions. No algorithm or configuration change is permitted
+after holdout begins.
 
-```text
-c101_21  c201_21  r101_21  r201_21  rc101_21  rc201_21
-```
+## Analysis and Reporting
 
-Use DoD `0.0/0.5`, scenario seed `0`, algorithm seed `0`, and the common
-32-simulation settings. Compare `RH_REGRET`, `INDEPENDENT_MPC_MCTS`, and
-`COORDINATED_MPC_MCTS`: 36 conditions. Optional GREEDY rows are sanity checks.
+Primary outcome is customers unserved. Report service ratio, full-service rate,
+and paired coordinated-minus-baseline wins/ties/losses, mean, median, and
+95% paired bootstrap CI. Compare EV activation only at equal service and
+distance only at equal service and activated EV count. Resample matched
+instance/scenario pairs using 2,000 deterministic percentile-bootstrap samples
+with seed 0. The six holdout instances and multiple scenarios per instance
+remain a small correlated sample; intervals do not establish independent
+population-level significance.
 
-Preferably serve 100/100 statically on all six instances. At DoD 0.5 target mean
-service at least 98%, preferably five of six complete. Show per-method and
-per-instance results; pooling must not conceal a weak method or family. State
-the actual pass/fail interpretation alongside its evidence.
+Report complete and incomplete valid runs, technical failures, ineligible
+conditions, maximum and p95 event planning times, the number of repair
+insertions, route compactions, and all decision-epoch coordination coverage
+fields. Archive all outputs inside `results/final/`: raw manifests and records,
+audited summaries, CSV/LaTeX tables, PNG figures with source CSVs, and
+`FINAL_REPORT.md`. The report must say clearly whether holdout evidence
+supports coordination, including negative results.
 
-The implemented gate was fixed before execution: coordinated static service must
-be complete on all six cases, dynamic mean service must be at least 98%, and at
-least five dynamic cases must be complete. All 36 conditions are recorded before
-the Stage-1 decision; service failure blocks Stage 2. Technical execution/audit
-failure stops immediately and cannot yield a PASS.
-
-If static service remains poor, stop further experiments. Diagnose ownership,
-insertion, pruning, horizon versus retained commitments, and candidate coverage.
-Increasing MCTS budget is not the first response. Stage 2 requires an explicit
-recorded Stage-1 pass; missing evidence is not a pass.
-
-## Stage 2: Small Screening
-
-Only after Stage 1 passes, use the same six instances at DoD `0.25/0.50/0.75`,
-scenario seeds `0/1`, and algorithm seed `0`. The three required methods give
-108 runs, or 144 with optional `DIVERSE_COORDINATED_MPC_MCTS`. Report ineligible,
-failed, and missing conditions separately from planned grid sizes.
-
-Write `results/screening/GATE.md` with source/configuration identity, validation
-status, Stage-1 evidence, Stage-2 evidence if executed, eligibility counts, and
-the decision. Primary comparisons use `customers_unserved`. Compare vehicles only
-on equal-service pairs and distance only on equal-service/equal-vehicle pairs.
-
-Report paired wins/ties/losses, mean and median differences, and a 95% paired
-bootstrap CI. State sign convention, eligible pair count, resampling unit,
-bootstrap seed, and replicate count; preserve pairing during resampling.
-
-For coordinated versus each comparator, assess systematic service degradation,
-meaningful dynamic service improvements or fewer EVs at equal service, breadth
-across instance families, and computational practicality. Make the judgment
-explicit. Unsupported direction means `GATE = FAIL` and blocks main execution.
-An incomplete screen stays unevaluated and cannot be presented as PASS.
-
-The numerical Stage-2 rule, fixed before execution, requires versus each baseline:
-mean unserved difference <= 0, service losses <= wins, and at least two service or
-equal-service EV improvements across at least two of C/R/RC. Every coordinated
-run's p95 event-planning latency must be <= 5 seconds. Paired mean-difference CIs
-use 2,000 bootstrap samples with seed 0, resampling matched scenario pairs. These
-small-sample descriptive intervals do not establish independent instance-level
-generalization. The thresholds and source identity are saved with the gate.
-
-## Main Study: Explicit Execution Only
-
-Proposed balanced instances:
-
-```text
-c101_21  c109_21  c201_21  c208_21
-r101_21  r112_21  r201_21  r211_21
-rc101_21 rc108_21 rc201_21 rc208_21
-```
-
-Use DoD `0.25/0.50/0.75`, scenario seeds `0/1/2`, and the three required methods.
-Add diversity only if screening supports it. Keep DoD 0 as separate static sanity
-evidence. Implement main but never launch it automatically: require the applicable
-passing gate and explicit `main --execute`.
-
-## Ablations and Realtime
-
-Prioritize independent/coordinated, continuity OFF/ON, and repair OFF/ON. Secondary
-comparisons use horizons `1/3/5`, top-L `1/3/5`, and quality/coverage-diverse
-proposals. `MPC_MCTS_H1` is an ablation only. Avoid a factorial study, unnecessary
-UCT sweeps, and unrelated charging studies.
-
-Realtime budgets are `0.05/0.10/0.25/0.50` seconds. Deadlines take priority over
-root coverage; retain a valid incumbent. Execute isolated from outer parallel
-workers. Report mean/median/p95/maximum planning latency, deadline overrun rate,
-service ratio, activated vehicles, and conditionally comparable distance. State
-timing scope, including coordination and repair: a local MCTS budget is not an
-end-to-end deadline.
-
-## Reporting
-
-Audit disk records before aggregation. Keep valid incomplete runs in service
-statistics and disclose invalid runs/failures. Pair by instance, shared scenario,
-algorithm seed, and compatible source/configuration identity. Preserve raw
-precision and round on display. Never mix historical outputs into current tables
-or infer superiority from studies that have not run.
+Run focused tests during development. Run the full suite once and the four
+Schneider reference validations after implementation is frozen, before the
+development grid. Holdout must not start when either verification or
+development fails.

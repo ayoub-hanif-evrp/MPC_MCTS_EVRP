@@ -200,20 +200,26 @@ def audit_result(result: ExperimentResult, instance, scenario) -> dict:
                   if p["actions"][0]["kind"] == "serve"]
         assert len(firsts) == len(set(firsts)), "Duplicate selected first action"
         if result.effective_config.get("route_continuity"):
+            owners = decision.get("route_owners_after_repair", {})
+            assert len(owners) == decision.get("coverage_after_repair"), "Final route coverage mismatch"
+            assert set(owners) <= set(decision["available"]), "Hidden customer in final route"
+            assert set(owners.values()) <= set(states), "Future route owner beyond fixed fleet"
+            assert decision.get("customers_available") == len(decision["available"])
+            assert decision.get("repair_insertions") == len(decision.get("route_insertions", ()))
+            assert decision.get("coverage_after_coordination", 0) <= decision["coverage_after_repair"]
+            assert decision.get("vehicles_after_compaction", 0) <= scenario.fleet_size
             for insertion in decision.get("route_insertions", ()):
                 assert insertion["customer"] in decision["available"], "Unreleased route insertion"
-                assert any(s.served == insertion["customer"] and s.before.id == insertion["vehicle_id"]
-                           and s.before.time >= decision["time"] - EPS for s in result.steps), \
-                    "Inserted customer not served by its route owner"
+                assert insertion["vehicle_id"] in states, "Insertion owner outside fixed fleet"
+                assert insertion["customer"] in owners, "Inserted customer lost during compaction"
             claimed = set(decision.get("background_intents", ()))
             for vehicle_id, plan in decision["plans"].items():
                 customers = {a["destination"] for a in plan["actions"] if a["kind"] == "serve"}
                 assert not claimed & customers, "Overlapping executable route reservations"
                 claimed.update(customers)
-                for customer in customers:
-                    assert any(s.served == customer and s.before.id == int(vehicle_id)
-                               and s.before.time >= decision["time"] - EPS for s in result.steps), \
-                        "Executable route reservation was not fulfilled by its owner"
+            assert all(owners.get(c) == int(vehicle_id) for vehicle_id, plan in decision["plans"].items()
+                       for c in (a["destination"] for a in plan["actions"] if a["kind"] == "serve")), \
+                "Selected route disagrees with final fleet ownership"
     assert all(s.location == instance.infrastructure.depot and s.finished and s.time <= instance.infrastructure.depot.due + EPS
                for s in states.values()), "Vehicle did not return safely"
     assert len(seen) == result.metrics["customers_served"]

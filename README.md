@@ -1,6 +1,6 @@
-# Persistent-Route Coordinated Multi-Agent MPC-MCTS for Dynamic EVRPTW
+# Coordinated Multi-Agent MPC-MCTS for Dynamic EVRPTW
 
-**Status: implementation and screening stage. No final paper-performance claim yet.**
+**Status: final-track development. No final paper-performance claim yet.**
 
 This training-free research implementation asks whether persistent route coordination
 between independently planned EVs improves dynamic EVRPTW performance over independent
@@ -12,13 +12,14 @@ not evidence for the current method.
 
 ```text
 Released requests and measured EV states
-  -> replay retained executable routes and preserve feasible ownership
+  -> preserve busy actions and use ready vehicles' old routes as soft incumbents
   -> finite-horizon MPC subproblems solved approximately by MCTS
   -> top-L feasible route candidates
   -> sequential MILP fleet coordination
   -> regret-2 repair of uncovered released requests
+  -> one service-preserving fleet-compaction pass
   -> one final validation/reconciliation pass
-  -> execute first actions, retain executable suffixes, replan after feedback
+  -> execute first actions, retain soft suffixes, replan after feedback
 ```
 
 Every matched algorithm has exactly `K_ref` physical EVs (`fleet_mode:
@@ -26,10 +27,10 @@ fixed_reference`). Only the reference fleet size reaches online policies; refere
 routes and unreleased requests do not. Unused depot EVs count as activated only
 after departure. No vehicles are created beyond `K_ref`.
 
-Each committed customer has at most one owner. An EV sees released unassigned
-customers and its own commitments, excluding customers owned by others. The finite
-prediction horizon bounds new MCTS search. Retained executable suffixes, including
-repaired commitments, may be longer and must remain feasible under replay.
+Only executing actions are hard commitments. A busy EV's future suffix is held
+until that action completes; when ready, its old feasible suffix is a candidate
+and its future customers return to the released planning pool. The finite
+prediction horizon bounds new MCTS search; old incumbents may be longer.
 Terminal WAIT/RETURN after the last service are not retained as commitments.
 Temporary idleness must not force premature return: an active EV can wait while
 latest-safe-return slack remains.
@@ -38,9 +39,10 @@ The fleet objective is lexicographic: minimize unserved customers, then activate
 vehicles, then distance. Coordination selects customer-disjoint executable routes;
 regret-2 repair follows coordination and precedes dispatch.
 
-Main algorithms are `GREEDY`, `RH_REGRET`, `INDEPENDENT_MPC_MCTS`, and
-`COORDINATED_MPC_MCTS`. `MPC_MCTS_H1` is an ablation. Coverage-diverse top-L selection
-is optional and enters the main study only if screening supports it.
+Final comparison algorithms are `RH_REGRET`, `INDEPENDENT_MPC_MCTS`, and
+`COORDINATED_MPC_MCTS`. `GREEDY` remains for sanity checks. The frozen development
+configuration uses 48 MCTS iterations, customer limit 16, top-L 5, and
+parameter-free coverage-diverse proposals for both MPC-MCTS methods.
 
 ## Setup and CLI
 
@@ -59,6 +61,8 @@ python -m evrp.cli validate
 python -m evrp.cli smoke
 python -m evrp.cli run --instance c101C5
 python -m evrp.cli screening
+python -m evrp.cli development
+python -m evrp.cli final --execute
 python -m evrp.cli aggregate
 python -m evrp.cli tables
 python -m evrp.cli plot
@@ -77,19 +81,30 @@ Never launch the main study automatically. All generated research artifacts,
 including scenarios, belong under repository-local `results/`. Output overrides
 must not escape that directory.
 
-## Screening Before Claims
+## Development and Holdout
 
-Stage 1 uses `c101_21`, `c201_21`, `r101_21`, `r201_21`, `rc101_21`, and `rc201_21`,
+The previous 32-iteration screen failed. Its raw evidence and diagnosis remain
+under `results/screening/` and `results/final/DIAGNOSIS.md`.
+
+The new development study uses the same six 100-customer instances, DoD 0/0.5,
+seeds 0, and the three final methods (36 runs). It writes a provenance-bound gate
+to `results/development/GATE.md`. A failed gate blocks holdout execution.
+
+After a development PASS, `final --execute` runs six different holdout instances
+at DoD .25/.50/.75 and scenario seeds 0/1/2 (162 planned dynamic runs), plus
+18 static sanity runs. Final outputs and `FINAL_REPORT.md` go under
+`results/final/`. Target DoD conditions that cannot be realized are disclosed and
+excluded from the dynamic comparison.
+
+## Previous Screening Record
+
+The earlier screen used `c101_21`, `c201_21`, `r101_21`, `r201_21`, `rc101_21`, and `rc201_21`,
 at DoD `0.0/0.5`, scenario/algorithm seeds `0`, and 32 MCTS simulations. Use horizon
 5, control horizon 1, top-L 3, partial charging, fixed `K_ref`, continuity, and
 regret repair. Compare RH_REGRET, independent MPC-MCTS, and coordinated MPC-MCTS.
 Stop and diagnose poor static service before launching further experiments.
 
-Stage 2 is conditional on Stage 1 passing: the same six instances, DoD
-`0.25/0.50/0.75`, scenario seeds `0/1`, and the same three methods (108 runs).
-Write evidence and the gate decision to `results/screening/GATE.md`. Compare service
-first, vehicles only at equal service, and distance only at equal service and
-vehicle count. Failed screening blocks the main campaign.
+Its Stage 2 was not run. See `results/screening/GATE.md` for its failed gate.
 
 ## Documentation
 
@@ -99,6 +114,4 @@ vehicle count. Failed screening blocks the main campaign.
 - [Reproducibility](docs/reproducibility.md): provenance, validation, and execution.
 - [Output policy](results/README.md): generated artifacts and Git exclusions.
 
-No new validation, screening, or superiority result is asserted by this README.
-Current local evidence is recorded in `results/IMPLEMENTATION_REPORT.md` and
-`results/screening/GATE.md`; generated evidence is intentionally not committed.
+Generated evidence is intentionally ignored by Git; the CLI writes it locally.

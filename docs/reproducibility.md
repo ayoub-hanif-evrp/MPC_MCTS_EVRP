@@ -1,7 +1,7 @@
 # Reproducibility
 
-Status: implementation and screening. These are execution and evidence requirements
-for the implemented fixed-fleet track.
+Status: final-track development. The old failed screen remains preserved under
+`results/screening/`; the new source/configuration has its own result identity.
 
 ## Environment and CLI
 
@@ -22,15 +22,16 @@ python -m evrp.cli validate
 python -m evrp.cli smoke
 python -m evrp.cli run --instance c101C5
 python -m evrp.cli screening
+python -m evrp.cli development
+python -m evrp.cli final --execute
 python -m evrp.cli aggregate
 python -m evrp.cli tables
 python -m evrp.cli plot
 python -m evrp.cli audit
 ```
 
-Check individual command help in the working revision. Configuration roles under
-`configs/` are `debug.yaml`, `validation.yaml`, `smoke.yaml`, `screening.yaml`,
-`main.yaml`, `ablations.yaml`, and `realtime.yaml`.
+The final development and holdout use `configs/final.yaml`. The legacy screen
+and other older study plans remain separate and do not authorize the holdout.
 
 For Stage-1 reporting, use its explicit input and study name:
 
@@ -44,7 +45,8 @@ Generic aggregate CIs are descriptive Student-t intervals; the screening gate us
 paired bootstrap intervals. Plots omit unexecuted studies and empty measurement
 panels. Screening plots are 300-dpi PNG with exact source CSV companions.
 
-After validation and applicable gates, later studies require explicit execution:
+The new final holdout requires explicit execution after a verified development
+PASS. Older study commands retain their existing gates:
 
 ```powershell
 python -m evrp.cli main --execute
@@ -101,8 +103,8 @@ historical cleanup is a one-time operation, not a step to repeat before executio
   Historical statements do not substitute for a current validation run.
 - Audit disk records before aggregation. Disclose failed, incomplete, invalid,
   missing, and ineligible conditions.
-- Report Stage 1, Stage 2 only if Stage 1 passed, and evidence behind
-  `results/screening/GATE.md`. Missing evidence is never PASS.
+- Report the new development gate, then holdout only if development passed.
+  The earlier `results/screening/GATE.md` remains a failed historical record.
 - Follow the protocol's service/vehicle/distance conditioning and record bootstrap
   provenance.
 - List remaining scientific blockers and studies not executed. Implementation

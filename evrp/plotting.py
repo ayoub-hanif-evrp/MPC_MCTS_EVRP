@@ -50,7 +50,8 @@ def make_figures(directory="results/summaries", output="results/figures", study=
         raise ValueError(f"No audited observations for study {study}")
     paths = []
     x = "time_limit" if study == "realtime" else "DoD_target"
-    for name, metric in [("service_vs_dod", "service_ratio"), ("complete_vs_dod", "complete_service"),
+    for name, metric in [("service_vs_dod", "service_ratio"), ("unserved_vs_dod", "customers_unserved"),
+                         ("complete_vs_dod", "complete_service"),
                          ("vehicles_vs_dod", "vehicles_activated"), ("distance_vs_dod", "distance_complete"),
                          ("mean_latency", "mean_planning_time"), ("median_latency", "median_planning_time"),
                          ("p95_latency", "p95_planning_time"), ("max_latency", "maximum_planning_time"),

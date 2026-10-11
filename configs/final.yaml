@@ -1,0 +1,33 @@
+study: final_track
+fleet_mode: fixed_reference
+prediction_horizon: 5
+control_horizon: 1
+mcts_iterations: 48
+candidate_limit: 16
+top_L: 5
+proposal_selection: coverage_diverse
+station_candidate_limit: 4
+charge_target_limit: 5
+charging_mode: partial
+route_continuity: true
+regret_repair: true
+dynamic_selection_mode: exact_count
+parallel_agents: false
+workers: 1
+trace_level: summary
+diagnostics: true
+max_idle_wait: 0
+require_root_coverage: false
+budget_mode: iterations
+experiment_seed: 0
+reference_solver_multistarts: 3
+reference_improvement_passes: 1
+reference_seed: 0
+reference_label_limit: 24
+instances: [c101_21, c201_21, r101_21, r201_21, rc101_21, rc201_21]
+holdout_instances: [c109_21, c208_21, r112_21, r211_21, rc108_21, rc208_21]
+gate:
+  static_complete: 6
+  dynamic_mean_service: 0.98
+  dynamic_complete: 5
+  max_p95_planning_seconds: 5.0

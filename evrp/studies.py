@@ -16,6 +16,7 @@ from .experiments import prepare, run_single, source_fingerprint
 from .storage import BENCHMARK, ROOT, identifier, load_json, save_json
 
 SCREEN_INSTANCES = ("c101_21", "c201_21", "r101_21", "r201_21", "rc101_21", "rc201_21")
+HOLDOUT_INSTANCES = ("c109_21", "c208_21", "r112_21", "r211_21", "rc108_21", "rc208_21")
 ALGORITHMS = ("RH_REGRET", "INDEPENDENT_MPC_MCTS", "COORDINATED_MPC_MCTS")
 GATED_STUDIES = {"main", "ablations", "realtime"}
 DEFAULTS = dict(fleet_mode="fixed_reference", prediction_horizon=5, control_horizon=1,
@@ -27,10 +28,12 @@ DEFAULTS = dict(fleet_mode="fixed_reference", prediction_horizon=5, control_hori
                 algorithm="COORDINATED_MPC_MCTS", reference_solver_multistarts=3,
                 reference_improvement_passes=1, reference_seed=0, reference_label_limit=24,
                 require_root_coverage=True, diagnostics=True)
-STRUCTURE = {"study", "instances", "grid", "variants", "gate", "stage1", "stage2"}
+STRUCTURE = {"study", "instances", "holdout_instances", "grid", "variants", "gate", "stage1", "stage2"}
 # Declared before execution, saved with the protocol and bound into gate evidence.
 GATE_POLICY = dict(bootstrap_samples=2000, bootstrap_seed=0, min_improving_pairs=2,
                    min_improving_families=2, max_p95_planning_seconds=5.0)
+FINAL_GATE_POLICY = dict(static_complete=6, dynamic_mean_service=0.98,
+                         dynamic_complete=5, max_p95_planning_seconds=5.0)
 
 
 def result_path(path):
@@ -73,9 +76,38 @@ def _screen_config(config):
     return effective, policy
 
 
+def final_config(config):
+    """Pin the two final-track grids and the predeclared development gate."""
+    if tuple(config.get("instances", ())) != SCREEN_INSTANCES or tuple(config.get("holdout_instances", ())) != HOLDOUT_INSTANCES:
+        raise ValueError("Final track requires the prescribed disjoint development and holdout instances")
+    if config.get("gate") != FINAL_GATE_POLICY or any(k in config for k in ("grid", "variants", "scenario_path")):
+        raise ValueError("Final-track gate and study grids are fixed")
+    effective = runtime_config(config)
+    fixed = dict(fleet_mode="fixed_reference", prediction_horizon=5, control_horizon=1,
+                 top_L=5, proposal_selection="coverage_diverse", station_candidate_limit=4,
+                 charge_target_limit=5, charging_mode="partial", route_continuity=True,
+                 regret_repair=True, dynamic_selection_mode="exact_count", parallel_agents=False,
+                 workers=1, trace_level="summary", diagnostics=True, max_idle_wait=0,
+                 require_root_coverage=False, budget_mode="iterations", experiment_seed=0)
+    for key, expected in fixed.items():
+        if effective.get(key) != expected:
+            raise ValueError(f"Final track requires {key}={expected!r}")
+    if effective["mcts_iterations"] not in (48, 64) or effective["candidate_limit"] not in (16, 20):
+        raise ValueError("Final track permits only the prescribed small development budgets")
+    return effective
+
+
 def plan_study(study, config):
     """Pure planning: never prepares references/scenarios or launches runs."""
     base = runtime_config(config)
+    if study in {"development", "holdout", "holdout_static"}:
+        final_config(config)
+        instances = SCREEN_INSTANCES if study == "development" else HOLDOUT_INSTANCES
+        dods = (0.0, 0.5) if study == "development" else (0.0,) if study == "holdout_static" else (0.25, 0.5, 0.75)
+        seeds = (0,) if study != "holdout" else (0, 1, 2)
+        return [(name, {**base, "study": study, "dynamicity": dod,
+                        "scenario_seed": seed, "algorithm": algorithm})
+                for name, dod, seed, algorithm in product(instances, dods, seeds, ALGORITHMS)]
     if study in {"stage1", "stage2"}:
         _screen_config(config)
         dods, seeds = ((0.0, 0.5), (0,)) if study == "stage1" else ((0.25, 0.5, 0.75), (0, 1))
@@ -130,7 +162,7 @@ def _file_hash(path):
 
 
 def _binding(config):
-    names = sorted(set(SCREEN_INSTANCES) | set(config.get("instances", [])))
+    names = sorted(set(SCREEN_INSTANCES) | set(config.get("instances", [])) | set(config.get("holdout_instances", [])))
     return dict(config=config, config_sha256=identifier(config), source_sha256=source_fingerprint(),
                 benchmarks={name: _file_hash(BENCHMARK / f"{name}.txt") for name in names})
 
@@ -166,7 +198,7 @@ def _run_phase(study, config, output, binding=None):
                     reason=None if eligible else "Requested DoD was not achieved")
         manifest["scenarios"].append(item)
         # Stage 1 always executes all 36 conditions and discloses achieved DoD.
-        if eligible or study in {"stage1", "smoke"}:
+        if eligible or study in {"stage1", "smoke", "development", "holdout_static"}:
             for effective in variants:
                 requested = {**effective, "scenario_path": str(scenario_path)}
                 path = result_path(run_single(name, requested, output / "runs"))
@@ -222,7 +254,7 @@ def _verified_records(manifest, config, study):
         achieved = math.isclose(item["dynamicity"], item["realized_DoD"], rel_tol=0, abs_tol=1e-12)
         if item["eligible"] != achieved:
             raise ValueError("Scenario eligibility mismatch")
-        if study in {"stage1", "stage2"} and item["customer_count"] != 100:
+        if study in {"stage1", "stage2", "development", "holdout", "holdout_static"} and item["customer_count"] != 100:
             raise ValueError("Screening requires 100-customer instances")
         scenarios[key] = item
     if set(scenarios) != groups:
@@ -230,7 +262,7 @@ def _verified_records(manifest, config, study):
     expected = {}
     for name, effective in plan:
         item = scenarios[_condition(name, effective)]
-        if item["eligible"] or study in {"stage1", "smoke"}:
+        if item["eligible"] or study in {"stage1", "smoke", "development", "holdout_static"}:
             requested = {**effective, "scenario_path": item["scenario_path"]}
             expected[identifier((name, requested))] = item
     records, seen = [], set()
@@ -455,3 +487,224 @@ def run_study(study, config, output, *, execute=False, screening="results/screen
                 executed_runs=len(manifest["runs"]), failed_runs=failures,
                 ineligible_scenarios=sum(not s["eligible"] for s in manifest["scenarios"]),
                 manifest=str(output / "manifest.json"))
+
+
+def development_gate(records, manifest):
+    decision = stage1_gate(records)
+    reasons = list(decision["reasons"])
+    if any(not s["eligible"] for s in manifest["scenarios"]):
+        reasons.append("A development condition did not achieve its target DoD")
+    coordinated = [r["metrics"] for r in records if r["metadata"]["algorithm"] == ALGORITHMS[2]]
+    maximum_p95 = max((m["p95_planning_time"] for m in coordinated), default=float("inf"))
+    if maximum_p95 > FINAL_GATE_POLICY["max_p95_planning_seconds"]:
+        reasons.append("Coordinated run-level p95 planning time exceeds 5 seconds")
+    return dict(status="FAIL" if reasons else "PASS", reasons=reasons,
+                algorithms=decision["algorithms"], maximum_coordinated_p95=maximum_p95,
+                planned_runs=36, completed_runs=len(records),
+                eligible_scenarios=sum(s["eligible"] for s in manifest["scenarios"]))
+
+
+def _development_gate_file(output, gate):
+    save_json(output / "GATE.json", gate)
+    lines = ["# Final-Track Development Gate", "", f"GATE = {gate['status']}", "",
+             "The six development instances are not holdout evidence.",
+             "The gate requires coordinated static 6/6 complete, dynamic mean >=98%,",
+             "dynamic >=5/6 complete, all target DoDs realized, valid replays,",
+             "and each coordinated run's event-planning p95 <=5 seconds.", ""]
+    lines += [f"- {reason}" for reason in gate["reasons"]]
+    lines += ["", "| Algorithm | Static complete /6 | Dynamic complete /6 | Dynamic mean service |",
+              "|---|---:|---:|---:|"]
+    for algorithm, metrics in gate["algorithms"].items():
+        lines.append(f"| {algorithm} | {metrics['static_complete']} | {metrics['dynamic_complete']} | {metrics['dynamic_mean_service']:.3f} |")
+    lines += ["", f"Maximum coordinated run-level p95: {gate['maximum_coordinated_p95']:.3f} s.",
+              f"Source SHA-256: `{gate['binding']['source_sha256']}`.",
+              f"Config SHA-256: `{gate['binding']['config_sha256']}`.",
+              f"Manifest: `{gate['manifest']}`.", ""]
+    (output / "GATE.md").write_text("\n".join(lines), encoding="utf-8")
+
+
+def run_final_development(config, output="results/development"):
+    final_config(config)
+    output = result_path(output)
+    binding = _binding(config)
+    attempt = output / "attempts" / (binding["source_sha256"][:12] + "_" + binding["config_sha256"][:8])
+    manifest = _run_phase("development", config, attempt, binding)
+    records = _verified_records(manifest, config, "development")
+    gate = development_gate(records, manifest)
+    gate.update(binding=binding, manifest=str(attempt / "manifest.json"),
+                manifest_sha256=_file_hash(attempt / "manifest.json"))
+    _development_gate_file(output, gate)
+    gate["report"] = str(write_final_report(config, "results/final", output))
+    return gate
+
+
+def require_development_pass(config, output="results/development"):
+    final_config(config)
+    output = result_path(output)
+    if not (output / "GATE.json").exists():
+        raise ValueError("A fresh development PASS for the current source/config/benchmarks is required")
+    gate = load_json(output / "GATE.json")
+    if gate.get("status") != "PASS" or gate.get("binding") != _binding(config):
+        raise ValueError("A fresh development PASS for the current source/config/benchmarks is required")
+    path = result_path(gate["manifest"])
+    if _file_hash(path) != gate.get("manifest_sha256"):
+        raise ValueError("Development manifest changed since its gate")
+    manifest = load_json(path)
+    decision = development_gate(_verified_records(manifest, config, "development"), manifest)
+    if any(gate.get(key) != value for key, value in decision.items()) or decision["status"] != "PASS":
+        raise ValueError("Development evidence no longer supports PASS")
+    return gate
+
+
+def write_final_report(config, output="results/final", development="results/development",
+                       holdout=None, static=None):
+    """Build one evidence-backed report, including explicit absent-study sections."""
+    import csv
+    from xml.etree import ElementTree
+
+    output = result_path(output)
+    output.mkdir(parents=True, exist_ok=True)
+    for directory in ("raw", "summaries", "tables", "figures"):
+        (output / directory).mkdir(exist_ok=True)
+    gate = load_json(result_path(development) / "GATE.json")
+    dev_manifest = load_json(result_path(gate["manifest"]))
+    development_runs = _verified_records(dev_manifest, config, "development")
+    lines = ["# Final MPC-MCTS EVRP Report", "", f"**Development gate: {gate['status']}**", "",
+             "All outputs are development evidence until a separate holdout executes.", "",
+             "## Frozen Configuration", "", "```yaml",
+             (ROOT / "configs/final.yaml").read_text(encoding="utf-8").rstrip(), "```", "",
+             "## Identity and Verification", "",
+             f"- Source SHA-256: `{source_fingerprint()}`.",
+             f"- Config SHA-256: `{identifier(config)}`.",
+             f"- Git revision at run time: `{development_runs[0]['provenance']['git_commit']}`.",
+             f"- Development manifest: `{gate['manifest']}`."]
+    validation = result_path("results/validate/reference_validation.csv")
+    if validation.exists():
+        with validation.open(newline="", encoding="utf-8") as stream:
+            rows = list(csv.DictReader(stream))
+        lines.append(f"- Schneider reference validation: {sum(r['validation_status'] == 'passed' for r in rows)}/{len(rows)} passed.")
+    tests = result_path("results/verification/pytest.xml")
+    if tests.exists():
+        suite = ElementTree.parse(tests).getroot()
+        if suite.tag == "testsuites":
+            suite = suite.find("testsuite")
+        lines.append(f"- Full tests: {suite.attrib.get('tests', 'unknown')} run, "
+                     f"{suite.attrib.get('failures', 'unknown')} failures, "
+                     f"{suite.attrib.get('errors', 'unknown')} errors.")
+    lines += ["", "## Development Results", "",
+              "Customers served out of 100; same K_ref within each matched scenario.", "",
+              "| Instance | K_ref | DoD | RH_REGRET | Independent | Coordinated |",
+              "|---|---:|---:|---:|---:|---:|"]
+    def append_service_table(records, dods):
+        index = {(r["metadata"]["instance"], r["metadata"]["DoD_target"], r["metadata"]["algorithm"]): r
+                 for r in records}
+        instances = sorted({r["metadata"]["instance"] for r in records})
+        for dod in dods:
+            for name in instances:
+                triplet = [index.get((name, dod, algorithm)) for algorithm in ALGORITHMS]
+                if all(triplet):
+                    lines.append(f"| {name} | {triplet[0]['metadata']['K_ref']} | {dod:g} | "
+                                 + " | ".join(str(r["metrics"]["customers_served"]) for r in triplet) + " |")
+    append_service_table(development_runs, (0.0, 0.5))
+    lines += ["", f"- Coordinated static complete: {gate['algorithms'][ALGORITHMS[2]]['static_complete']}/6.",
+              f"- Coordinated dynamic complete: {gate['algorithms'][ALGORITHMS[2]]['dynamic_complete']}/6.",
+              f"- Coordinated dynamic mean service: {gate['algorithms'][ALGORITHMS[2]]['dynamic_mean_service']:.3%}.",
+              f"- Largest coordinated run-level p95: {gate['maximum_coordinated_p95']:.3f} s."]
+    lines += [f"- Gate reason: {reason}" for reason in gate["reasons"]]
+    if holdout is None or static is None:
+        lines += ["", "## Holdout Results", "", "Not run because the development gate did not pass.", "",
+                  "## Paired Comparisons", "", "Not estimable without holdout runs.", "",
+                  "## Runtime, Failures, and Limitations", "",
+                  "Development timing and incomplete service are recorded in the audited per-run files.",
+                  "The six development instances cannot establish a paper claim. No holdout result exists.", "",
+                  "## Conclusion", "", "The current evidence does not support the coordination hypothesis."]
+    else:
+        dynamic_runs = _verified_records(holdout, config, "holdout")
+        static_runs = _verified_records(static, config, "holdout_static")
+        comparison = screening_gate(dynamic_runs)
+        lines += ["", "## Holdout Results", "",
+                  f"Dynamic planned: 162; eligible executed: {len(dynamic_runs)}; "
+                  f"ineligible scenarios: {sum(not s['eligible'] for s in holdout['scenarios'])}.",
+                  "Static sanity: 18 planned and executed.", "",
+                  "### Per-Instance Dynamic Service", "",
+                  "Mean customers served over the three fixed scenario seeds; complete counts in parentheses.", "",
+                  "| Instance | DoD | RH_REGRET | Independent | Coordinated |",
+                  "|---|---:|---:|---:|---:|"]
+        for name, dod in product(HOLDOUT_INSTANCES, (0.25, 0.5, 0.75)):
+            row = []
+            for algorithm in ALGORITHMS:
+                group = [r["metrics"] for r in dynamic_runs if r["metadata"]["instance"] == name
+                         and r["metadata"]["DoD_target"] == dod and r["metadata"]["algorithm"] == algorithm]
+                row.append(f"{statistics.mean(m['customers_served'] for m in group):.1f} "
+                           f"({sum(m['complete_service'] for m in group)}/{len(group)} full)" if group else "ineligible")
+            lines.append(f"| {name} | {dod:g} | " + " | ".join(row) + " |")
+        lines += ["", "### Static Holdout Sanity", "",
+                  "| Instance | K_ref | RH_REGRET | Independent | Coordinated |",
+                  "|---|---:|---:|---:|---:|"]
+        for name in HOLDOUT_INSTANCES:
+            triplet = [next(r for r in static_runs if r["metadata"]["instance"] == name and
+                            r["metadata"]["algorithm"] == algorithm) for algorithm in ALGORITHMS]
+            lines.append(f"| {name} | {triplet[0]['metadata']['K_ref']} | "
+                         + " | ".join(str(r["metrics"]["customers_served"]) for r in triplet) + " |")
+        lines += ["", "## Paired Comparisons", "",
+                  "Coordinated minus baseline; negative is better. Bootstrap resamples matched scenario pairs "
+                  "2,000 times with seed 0. Vehicle comparisons require equal service; distance additionally "
+                  "requires equal activated EVs. Intervals with fewer than two pairs are undefined.", "",
+                  "| Baseline | Metric | Eligible n | Wins/Ties/Losses | Mean | Median | 95% paired bootstrap CI |",
+                  "|---|---|---:|---:|---:|---:|---|"]
+        for baseline in ALGORITHMS[:2]:
+            for metric, stats in comparison["comparisons"][baseline]["metrics"].items():
+                interval = "undefined" if stats["ci95"][0] is None else f"[{stats['ci95'][0]:.3f}, {stats['ci95'][1]:.3f}]"
+                mean = "undefined" if stats["mean"] is None else f"{stats['mean']:.3f}"
+                median = "undefined" if stats["median"] is None else f"{stats['median']:.3f}"
+                lines.append(f"| {baseline} | {metric} | {stats['n']} | "
+                             f"{stats['wins']}/{stats['ties']}/{stats['losses']} | {mean} | {median} | {interval} |")
+        lines += ["", "## Runtime, Failures, and Eligibility", "",
+                  "| Algorithm | Mean run-level p95 planning (s) | Max event planning (s) | Mean total planning (s) |",
+                  "|---|---:|---:|---:|"]
+        for algorithm in ALGORITHMS:
+            group = [r["metrics"] for r in dynamic_runs if r["metadata"]["algorithm"] == algorithm]
+            lines.append(f"| {algorithm} | {statistics.mean(m['p95_planning_time'] for m in group):.3f} | "
+                         f"{max(m['maximum_planning_time'] for m in group):.3f} | "
+                         f"{statistics.mean(m['total_planning_time'] for m in group):.3f} |" if group else
+                         f"| {algorithm} | not measured | not measured | not measured |")
+        lines += ["", f"- Technically failed runs: 0; independently audited runs: {len(dynamic_runs) + len(static_runs)}.",
+                  f"- Ineligible dynamic scenarios: {sum(not s['eligible'] for s in holdout['scenarios'])}.",
+                  "- Valid incomplete-service runs remain in service statistics; they are not discarded.",
+                  "- Development and holdout are small, seeded benchmark samples; no significance claim follows from these intervals.",
+                  "- Charging insertion is heuristic, and wall-clock MCTS deadlines are cooperative.",
+                  "", "## Conclusion", ""]
+        if comparison["status"] == "PASS":
+            lines.append("The predeclared paired-service and practical-time criteria support a coordination advantage on this holdout.")
+        else:
+            lines.append("The holdout does not support a robust coordination advantage under the predeclared criteria.")
+            lines += [f"- {reason}" for reason in comparison["reasons"]]
+        save_json(output / "holdout_comparisons.json", comparison)
+        lines += ["", "## Artifacts", "",
+                  "Audited per-run CSVs and summaries: `results/final/summaries/`.",
+                  "CSV/LaTeX tables: `results/final/tables/`.",
+                  "Measured PNG figures and source CSVs: `results/final/figures/`.",
+                  "Raw dynamic and static manifests: `results/final/raw/`."]
+    path = output / "FINAL_REPORT.md"
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    return path
+
+
+def run_final_holdout(config, output="results/final", *, execute=False, development="results/development"):
+    final_config(config)
+    output = result_path(output)
+    if not execute:
+        return dict(status="PLANNED", dynamic_runs=len(plan_study("holdout", config)),
+                    static_runs=len(plan_study("holdout_static", config)), output=str(output))
+    require_development_pass(config, development)
+    binding = _binding(config)
+    dynamic = _run_phase("holdout", config, output / "raw" / "holdout", binding)
+    static = _run_phase("holdout_static", config, output / "raw" / "static", binding)
+    from .analysis import aggregate, export_tables
+    from .plotting import make_figures
+    aggregate(output / "raw" / "holdout" / "runs", output / "summaries")
+    export_tables(output / "summaries", output / "tables")
+    make_figures(output / "summaries", output / "figures", study="holdout")
+    report = write_final_report(config, output, development, dynamic, static)
+    return dict(status="COMPLETED", dynamic_runs=len(dynamic["runs"]), static_runs=len(static["runs"]),
+                report=str(report))

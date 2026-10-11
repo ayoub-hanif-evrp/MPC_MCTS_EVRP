@@ -1,6 +1,6 @@
 # Methodology
 
-Status: implementation and screening. This describes the implementation, not a
+Status: final-track development. This describes the implementation, not a
 claim of experimental superiority. Current measurements live under `results/`.
 
 ## Fleet and Information
@@ -14,22 +14,24 @@ after departure. There is no dynamic fleet expansion.
 
 ## Persistent Ownership and Event Cycle
 
-Maintain `vehicle_id -> executable future action/customer suffix`. A committed
-customer has at most one owner, including customers on busy vehicles' routes.
+Maintain `vehicle_id -> feasible soft future action/customer suffix`. Only a
+currently executing action is a hard commitment. Future customers on busy routes
+are temporarily frozen; a ready EV's old suffix is an incumbent candidate and
+those customers return to the shared released planning pool.
 
 1. Process all releases and action completions at the event timestamp.
-2. Update physical states and replay retained routes. Keep feasible commitments;
-   an invalidated commitment is an explicit run failure, never silently dropped.
-3. Expose released unassigned customers and each EV's own commitments to its local
-   planner. Hide other EVs' commitments. Busy actions remain non-preemptive.
-4. Solve finite-horizon local MPC problems approximately with MCTS and collect
-   feasible top-L proposals consistent with retained commitments.
+2. Update physical states and replay busy routes. A physically executing action
+   remains non-preemptible. An infeasible soft incumbent can be discarded.
+3. Expose released customers to ready EVs, except those still frozen behind busy
+   actions. Previously assigned future customers may move to another ready EV.
+4. Solve finite-horizon local MPC problems approximately with MCTS, preserving each
+   ready EV's old feasible route as an additional incumbent candidate.
 5. Select compatible executable routes using fleet coordination.
 6. Apply regret-2 repair to uncovered released requests.
-7. Perform at most one final validation/reconciliation pass, dispatch first actions,
-   and retain the remaining executable suffixes.
+7. Perform one deterministic service-preserving compaction pass, validate routes,
+   dispatch first actions, and retain soft suffixes for the next event.
 
-Selected future tails are commitments, not overlapping intentions. Trim terminal
+Selected future tails are disjoint for the current decision, not permanent owners. Trim terminal
 WAIT/RETURN actions after the final service from retained commitments; safe return
 must remain feasible.
 
@@ -73,14 +75,14 @@ lexicographically: more predicted services, then lower predicted distance includ
 safe return, followed by charging/waiting/completion time and deterministic ties.
 Finite budgets and pruning do not establish local or global optimality.
 
-Initial settings are 32 simulations, prediction horizon 5, top-L 3, customer limit
-12, station limit 4, and charge-target limit 5. Maintain a valid incumbent.
+Final development settings are 48 simulations, prediction horizon 5, top-L 5,
+customer limit 16, station limit 4, and charge-target limit 5. Maintain a valid incumbent.
 Iteration mode covers the root even if its branching exceeds the nominal budget;
 actual simulations and root coverage are recorded. Wall-clock deadlines take
 priority over root coverage; report measured overruns without claiming hard
 realtime guarantees. A single non-preemptible evaluation may overrun a deadline.
 
-Quality-based top-L is the default. Optional `coverage_diverse` selects the normal
+The final track uses `coverage_diverse`: it selects the normal
 best proposal first, then maximizes newly covered customers relative to proposals
 already selected, breaking ties by the existing quality key. No diversity
 coefficient is introduced.
@@ -118,7 +120,9 @@ Prioritize a unique feasible insertion, then largest regret, smallest remaining
 time-window slack, earliest due date, and customer ID. Insert into the cheapest
 feasible location with deterministic ties. Update routes and repeat until no more
 customers can be inserted. Perform at most one final validation/reconciliation
-pass before dispatch. Do not iterate coordination and repair indefinitely.
+pass before dispatch. Then transfer the entire route of an unused EV to already
+activated EVs only when every customer remains covered and physically feasible.
+Do not iterate coordination and repair indefinitely.
 
 Route construction tries direct travel, bounded single-station partial-charge
 bridges, then full-charge multi-station connections. It does not backtrack earlier
@@ -132,7 +136,7 @@ distance including safe return; activation only breaks exact distance ties.
 event. No optional relocate pass is implemented. It uses no MCTS or
 MILP and shares the fixed fleet, physics, and information boundary.
 
-Independent MPC-MCTS preserves ownership with deterministic conflict handling
+Independent MPC-MCTS resolves current candidate conflicts deterministically
 without fleet MILP optimization. Coordinated MPC-MCTS adds joint selection before
 repair. Record continuity and repair settings so this comparison isolates
 coordination. GREEDY is a sanity baseline; `MPC_MCTS_H1` is an ablation only.

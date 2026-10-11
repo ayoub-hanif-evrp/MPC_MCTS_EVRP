@@ -1,0 +1,100 @@
+{
+  "algorithms": {
+    "COORDINATED_MPC_MCTS": {
+      "dynamic_complete": 0,
+      "dynamic_mean_service": 0.885,
+      "static_complete": 1
+    },
+    "INDEPENDENT_MPC_MCTS": {
+      "dynamic_complete": 0,
+      "dynamic_mean_service": 0.9016666666666666,
+      "static_complete": 0
+    },
+    "RH_REGRET": {
+      "dynamic_complete": 0,
+      "dynamic_mean_service": 0.8483333333333334,
+      "static_complete": 2
+    }
+  },
+  "binding": {
+    "benchmarks": {
+      "c101_21": "c5cda6ca63a7d518902cf4b02d98b4aa0f373aaa0658d5c666d1c46d38871cb9",
+      "c109_21": "c139ad52f11e291a5e17b4aa03bc1f1d6ca704b7b2c1a1cec53489d1e749664f",
+      "c201_21": "cc755a6ec3edab8c320bf901f0c3bd34cea80123cf831b0059ea01c13c96bf1d",
+      "c208_21": "6238a471231c4a029781b0059d2394708f055df07192948a8e1e1f462a7ccbea",
+      "r101_21": "0e5a3dffffbd3c516b528ef32ba1a488b817d2f151fc3e8c81023814de1c103a",
+      "r112_21": "004d91650145be584ea6392f9bac9bef40e22a63e0f25f4e87e04fdbd2278b0c",
+      "r201_21": "777cdc28fef020cd4df5ada1700f1a95d97eee53d26f5b26958b67cfd8cc51f2",
+      "r211_21": "79349433753cf23f69aef92bb7e6c6847b15e700badf73129a68b6d1e4915201",
+      "rc101_21": "272a3e58d53d4ba9516f01506164cf8a9b98bfeeb8dbd1fd62f6557e4c98e3a1",
+      "rc108_21": "e0bbd077f766d20a9e4c89f20604194bd7854b957653654cc6daa8fc729da355",
+      "rc201_21": "05de9a222789707ffcce07b31776e71b0ca87b7f72f5c0d115af11e39f2a2841",
+      "rc208_21": "848ac4428c45536e665596eb3031d4cf06747a109edbb2a5ab6498422157954d"
+    },
+    "config": {
+      "budget_mode": "iterations",
+      "candidate_limit": 16,
+      "charge_target_limit": 5,
+      "charging_mode": "partial",
+      "control_horizon": 1,
+      "diagnostics": true,
+      "dynamic_selection_mode": "exact_count",
+      "experiment_seed": 0,
+      "fleet_mode": "fixed_reference",
+      "gate": {
+        "dynamic_complete": 5,
+        "dynamic_mean_service": 0.98,
+        "max_p95_planning_seconds": 5.0,
+        "static_complete": 6
+      },
+      "holdout_instances": [
+        "c109_21",
+        "c208_21",
+        "r112_21",
+        "r211_21",
+        "rc108_21",
+        "rc208_21"
+      ],
+      "instances": [
+        "c101_21",
+        "c201_21",
+        "r101_21",
+        "r201_21",
+        "rc101_21",
+        "rc201_21"
+      ],
+      "max_idle_wait": 0,
+      "mcts_iterations": 48,
+      "parallel_agents": false,
+      "prediction_horizon": 5,
+      "proposal_selection": "coverage_diverse",
+      "reference_improvement_passes": 1,
+      "reference_label_limit": 24,
+      "reference_seed": 0,
+      "reference_solver_multistarts": 3,
+      "regret_repair": true,
+      "require_root_coverage": false,
+      "route_continuity": true,
+      "station_candidate_limit": 4,
+      "study": "final_track",
+      "top_L": 5,
+      "trace_level": "summary",
+      "workers": 1
+    },
+    "config_sha256": "b69a2d9f4ef78b80272c0dac537098729813da402baa93802a761643e113e116",
+    "source_sha256": "6bea24e2211d179ba464b202f3fe4f7b1556aa5fbd85f959e3c5be9588cdc0af"
+  },
+  "completed_runs": 36,
+  "eligible_scenarios": 12,
+  "manifest": "C:\\Users\\AYOUB\\OneDrive - EMSI\\Bureau\\PHD_WORK\\MPC_MCTS_Multi_agents_EVRP\\results\\development\\attempts\\6bea24e2211d_b69a2d9f\\manifest.json",
+  "manifest_sha256": "da097040337fa20d7e98ebfce5601ba40d9946bf97d269f6dce79c3cddfa3c1f",
+  "maximum_coordinated_p95": 7.848191780003253,
+  "planned_runs": 36,
+  "reasons": [
+    "Coordinated dynamic mean service is below 98%",
+    "Coordinated dynamic service must be complete on at least five instances",
+    "Coordinated static service must be complete on all six instances",
+    "Coordinated run-level p95 planning time exceeds 5 seconds"
+  ],
+  "status": "FAIL"
+}

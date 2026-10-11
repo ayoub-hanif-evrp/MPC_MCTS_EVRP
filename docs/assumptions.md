@@ -31,8 +31,9 @@ completions are processed before planning.
 
 ## Commitments and Approximation
 
-Each customer has at most one owner. Replay retained suffixes after feedback and
-explicitly reconcile invalidated commitments. Do not retain terminal WAIT/RETURN
+At each decision, selected future routes are customer-disjoint. Future ownership
+can change when a vehicle becomes ready; dispatched physical actions cannot.
+Replay busy suffixes and retain feasible old ready suffixes as incumbents. Do not retain terminal WAIT/RETURN
 after the last service. Idle active EVs may wait until latest-safe-return slack is
 exhausted; temporary lack of released work must not force retirement.
 

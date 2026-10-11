@@ -51,14 +51,57 @@ def test_hidden_geometry_cannot_change_pre_release_policy():
     assert [d for d in a.decisions if d["time"] < 30] == [d for d in b.decisions if d["time"] < 30]
 
 
-def test_retained_infeasible_commitment_cannot_disappear():
-    from evrp.continuity import preserve_continuation
+def test_ready_suffix_is_a_feasible_incumbent_not_a_permanent_reservation():
+    from evrp.continuity import route_observation, with_soft_incumbent
     from evrp.mcts import MCTSOptimizer
     from tests.test_planning import problem
     p = problem(iterations=8)
     r = MCTSOptimizer().solve(p, 0)
-    with pytest.raises(RuntimeError, match="cannot be discarded"):
-        preserve_continuation(r, p.current_state, p.observation, p.config, (Action("serve", "HIDDEN"),))
+    old_route = next(p.actions for p in r.proposals if p.first.kind == "serve")
+    updated = with_soft_incumbent(r, p.current_state, p.observation, p.config, old_route)
+    assert old_route in [candidate.actions for candidate in updated.candidates]
+    assert r.proposals == updated.proposals[:len(r.proposals)]
+    other = route_observation(p.observation, {})
+    assert set(a.destination for a in old_route if a.kind == "serve") <= set(other.customer_by_id)
+    assert with_soft_incumbent(r, p.current_state, p.observation, p.config,
+                               (Action("serve", "HIDDEN"),)) == r
+
+
+def test_coordinator_can_reassign_old_future_customer_to_another_ev():
+    from evrp.continuity import with_soft_incumbent
+    from evrp.coordinator import coordinate
+    from evrp.mpc import PlanningResult
+    from evrp.repair import route_proposal
+    from evrp.simulator import idle_proposal
+    from tests.test_repair import customer, serves, setup
+    first, obs, config = setup((customer("A", -10), customer("B", 10)))
+    second = replace(first, id=1, location=obs.customer_by_id["B"], departed=True)
+    old = serves("A", "B")
+    a = route_proposal(first, serves("A"), obs, config)
+    b = route_proposal(second, serves("B"), obs, config)
+    first_plan = with_soft_incumbent(PlanningResult((a,), idle_proposal(first, obs, config)),
+                                     first, obs, config, old)
+    second_plan = PlanningResult((b,), idle_proposal(second, obs, config))
+    assert old in [p.actions for p in first_plan.candidates]
+    chosen = coordinate({0: first_plan.candidates, 1: second_plan.candidates},
+                        available=frozenset({"A", "B"}))
+    assert chosen[0].predicted_customer_sequence == ("A",)
+    assert chosen[1].predicted_customer_sequence == ("B",)
+
+
+def test_busy_action_stays_committed_while_only_its_future_tail_is_frozen():
+    from evrp.continuity import route_observation
+    from evrp.model import Observation, transition
+    from tests.test_repair import customer, setup, serves
+    state, obs, _ = setup((customer("BUSY", 1), customer("FUTURE", 2), customer("FREE", 3)))
+    action = transition(state, Action("serve", "BUSY"), obs)
+    observed = replace(obs, committed_customers=(("BUSY", 0),))
+    masked = route_observation(observed, {0: serves("FUTURE")}, 1)
+    assert action.action == Action("serve", "BUSY")
+    assert action.after.current_committed_action is None
+    assert "BUSY" in masked.committed_ids
+    assert "FUTURE" not in masked.customer_by_id
+    assert "FREE" in masked.customer_by_id
 
 
 def test_repair_is_after_coordination_and_not_iterated(monkeypatch):

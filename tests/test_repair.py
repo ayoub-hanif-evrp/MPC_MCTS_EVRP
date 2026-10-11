@@ -8,7 +8,7 @@ from evrp import repair
 from evrp.instance import Infrastructure, Location, Parameters
 from evrp.model import Action, Observation, VehicleState, transition
 from evrp.mpc import MPCConfig
-from evrp.repair import build_route, regret_repair, route_proposal
+from evrp.repair import build_route, compact_unused_routes, regret_repair, route_proposal
 
 
 def customer(name, x, due=100, ready=0, demand=1, service=0):
@@ -299,3 +299,23 @@ def test_deterministic_finite_termination_with_infeasible_leftovers():
     assert len(claims(updated)) == len(set(claims(updated)))
     assert "impossible" not in claims(updated)
     assert regret_repair(origins, updated, obs, config) == (updated, [])
+
+
+def test_compaction_transfers_only_complete_route_to_already_active_ev():
+    state, obs, config = setup((customer("A", 1), customer("B", 2)))
+    origins = {0: state, 1: replace(state, id=1, departed=True)}
+    routes = {0: serves("A", "B"), 1: ()}
+    result, changes = compact_unused_routes(origins, routes, obs, config)
+    assert result[0] == ()
+    assert sorted(claims(result)) == ["A", "B"]
+    assert len(changes) == 1 and changes[0]["from_vehicle"] == 0
+    assert all(route_proposal(origins[k], actions, obs, config) for k, actions in result.items() if actions)
+    assert routes[0] == serves("A", "B")
+
+
+def test_compaction_never_loses_customer_when_transfer_is_infeasible():
+    state, obs, config = setup((customer("A", 1), customer("B", 2)))
+    origins = {0: state, 1: replace(state, id=1, departed=True, load=1)}
+    routes = {0: serves("A", "B"), 1: ()}
+    result, changes = compact_unused_routes(origins, routes, obs, config)
+    assert result == routes and changes == []
